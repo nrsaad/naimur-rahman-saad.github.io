@@ -1,2303 +1,5523 @@
-<!-- =========================================================
-     10X LIVE THEME ENGINE
-     No external images required
-========================================================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>MD. Naimur Rahman Saad | Civil Engineer</title>
+
+<meta name="description"
+content="MD. Naimur Rahman Saad — Civil Engineer | Construction Engineering & Project Management">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-#themeWorld{
-  position:fixed;
-  inset:0;
-  z-index:9998;
-  display:none;
-  overflow:hidden;
-  background:#020604;
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --bg:#020604;
+    --panel:rgba(5,15,10,.68);
+    --text:#f2fff8;
+    --muted:#9db7ac;
+
+    --green:#36f29b;
+    --red:#ff4f68;
+    --cyan:#54ddff;
+    --gold:#ffd36b;
+    --purple:#a986ff;
+
+    --line:rgba(255,255,255,.10);
+
+    --display:"Space Grotesk",sans-serif;
+    --tech:"Rajdhani",sans-serif;
+    --body:"Inter",sans-serif;
 }
 
-#themeWorld.active{
-  display:block;
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font-family:var(--display);
+}
+
+
+/* =========================================================
+   MAIN BACKGROUND
+========================================================= */
+
+#background{
+    position:fixed;
+    inset:0;
+    z-index:-20;
+    background:
+        radial-gradient(
+            circle at 70% 20%,
+            rgba(54,242,155,.11),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 20% 75%,
+            rgba(84,221,255,.07),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #020604,
+            #07160f 60%,
+            #020604
+        );
+}
+
+
+/* =========================================================
+   STAR FIELD
+========================================================= */
+
+#stars{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+    pointer-events:none;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+
+    background:white;
+    border-radius:50%;
+
+    opacity:.45;
+
+    animation:
+        twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+
+    0%,100%{
+        opacity:.12;
+        transform:scale(.7);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.5);
+    }
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+header{
+    position:fixed;
+
+    top:14px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(1180px,94%);
+
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:12px 15px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        22px;
+
+    background:
+        rgba(2,7,5,.74);
+
+    backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 12px 45px rgba(0,0,0,.2);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand-flag{
+    font-size:25px;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(54,242,155,.45)
+        );
+}
+
+.brand-name{
+    font-family:var(--display);
+}
+
+.brand-name strong{
+    display:block;
+    font-size:14px;
+    letter-spacing:.5px;
+}
+
+.brand-name small{
+    display:block;
+    color:#8ea89d;
+    font-family:var(--tech);
+    font-size:9px;
+    letter-spacing:1.7px;
+}
+
+.green{
+    color:var(--green);
+}
+
+.red{
+    color:var(--red);
+}
+
+nav{
+    display:flex;
+    gap:19px;
+}
+
+nav a{
+    font-family:var(--tech);
+    font-size:13px;
+    color:#c8ddd5;
+    transition:.25s;
+}
+
+nav a:hover{
+    color:var(--green);
+}
+
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+.lang-switch{
+    display:flex;
+
+    gap:3px;
+
+    padding:4px;
+
+    border-radius:99px;
+
+    border:
+        1px solid var(--line);
+}
+
+.lang-switch button{
+    border:0;
+
+    padding:6px 9px;
+
+    border-radius:99px;
+
+    color:#a8bdb4;
+
+    background:transparent;
+
+    cursor:pointer;
+
+    font-size:9px;
+}
+
+.lang-switch button.active{
+    color:#03110a;
+
+    background:
+        linear-gradient(
+            100deg,
+            var(--green),
+            var(--cyan)
+        );
+
+    font-weight:800;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+
+    padding:
+        135px 6vw 80px;
+
+    display:grid;
+
+    grid-template-columns:
+        1.08fr .92fr;
+
+    gap:35px;
+
+    align-items:center;
+}
+
+.kicker{
+    display:inline-flex;
+
+    padding:
+        8px 14px;
+
+    border-radius:99px;
+
+    border:
+        1px solid
+        rgba(84,221,255,.20);
+
+    color:
+        #91eaff;
+
+    background:
+        rgba(84,221,255,.05);
+
+    font-family:
+        var(--tech);
+
+    font-size:
+        11px;
+
+    letter-spacing:
+        3px;
+
+    text-transform:
+        uppercase;
+}
+
+.hero h1{
+    margin:
+        20px 0;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        clamp(46px,7vw,92px);
+
+    line-height:
+        .92;
+
+    letter-spacing:
+        -5px;
+}
+
+.hero-sub{
+    color:
+        #d5e8e0;
+
+    font-family:
+        var(--tech);
+
+    font-size:
+        21px;
+
+    line-height:
+        1.5;
+}
+
+.mission{
+    margin:
+        28px 0;
+
+    max-width:
+        720px;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        clamp(25px,3.2vw,43px);
+
+    line-height:
+        1.08;
+}
+
+.mission b{
+    color:
+        var(--green);
+}
+
+.hero-description{
+    max-width:
+        760px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        14px;
+
+    line-height:
+        1.9;
+}
+
+.actions{
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        9px;
+
+    margin-top:
+        28px;
+}
+
+.btn{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:
+        11px 17px;
+
+    border-radius:
+        999px;
+
+    border:
+        1px solid
+        rgba(54,242,155,.30);
+
+    color:
+        #effff8;
+
+    background:
+        rgba(255,255,255,.045);
+
+    font-family:
+        var(--tech);
+
+    font-size:
+        12px;
+
+    cursor:
+        pointer;
+
+    transition:
+        .3s;
+}
+
+.btn:hover{
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 13px 40px
+        rgba(54,242,155,.13);
+}
+
+.btn-primary{
+    border:0;
+
+    color:
+        #031009;
+
+    background:
+        linear-gradient(
+            100deg,
+            var(--green),
+            var(--cyan)
+        );
+
+    font-weight:
+        800;
+}
+
+
+/* =========================================================
+   ENGINEERING VISUAL
+========================================================= */
+
+.hero-visual{
+    height:
+        480px;
+
+    position:
+        relative;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    transition:
+        .25s;
+}
+
+.orbit{
+    position:
+        absolute;
+
+    width:
+        88%;
+
+    height:
+        60%;
+
+    border:
+        1px solid
+        rgba(84,221,255,.25);
+
+    border-radius:
+        50%;
+
+    transform:
+        rotate(-10deg);
+
+    animation:
+        rotateOrbit
+        18s
+        linear
+        infinite;
+}
+
+.orbit.two{
+    width:
+        66%;
+
+    height:
+        45%;
+
+    border-color:
+        rgba(54,242,155,.25);
+
+    animation-duration:
+        11s;
+
+    animation-direction:
+        reverse;
+}
+
+.core{
+    width:
+        195px;
+
+    height:
+        195px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffffff 0 3%,
+            #36f29b 8%,
+            #0b4a30 30%,
+            #020604 67%
+        );
+
+    box-shadow:
+        0 0 120px
+        rgba(54,242,155,.28);
+
+    animation:
+        corePulse
+        4s
+        ease-in-out
+        infinite;
+}
+
+@keyframes rotateOrbit{
+    to{
+        transform:
+            rotate(350deg);
+    }
+}
+
+@keyframes corePulse{
+    50%{
+        transform:
+            scale(1.08);
+
+        box-shadow:
+            0 0 160px
+            rgba(84,221,255,.20);
+    }
+}
+
+.float-card{
+    position:absolute;
+
+    padding:
+        11px 14px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        17px;
+
+    background:
+        rgba(3,10,7,.74);
+
+    backdrop-filter:
+        blur(15px);
+
+    font-family:
+        var(--tech);
+
+    font-size:
+        12px;
+
+    box-shadow:
+        0 18px 55px
+        rgba(0,0,0,.25);
+}
+
+.fc1{
+    left:0;
+    top:4%;
+    color:#7af2ae;
+}
+
+.fc2{
+    right:0;
+    top:42%;
+    color:#67dfff;
+}
+
+.fc3{
+    left:5%;
+    bottom:4%;
+    color:#ffd36b;
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section{
+    width:min(1200px,100%);
+
+    margin:
+        0 auto;
+
+    padding:
+        95px 6vw;
+}
+
+.section-label{
+    color:
+        var(--green);
+
+    font-family:
+        var(--tech);
+
+    font-size:
+        11px;
+
+    letter-spacing:
+        3px;
+
+    text-transform:
+        uppercase;
+}
+
+.section-title{
+    margin:
+        10px 0;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        clamp(32px,4.3vw,56px);
+
+    line-height:
+        1;
+
+    letter-spacing:
+        -2px;
+}
+
+.section-desc{
+    max-width:
+        820px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        14px;
+
+    line-height:
+        1.9;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+    margin-top:
+        30px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:
+        14px;
+}
+
+.stat{
+    padding:
+        24px;
+
+    text-align:
+        center;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        22px;
+
+    background:
+        var(--panel);
+
+    backdrop-filter:
+        blur(18px);
+}
+
+.stat strong{
+    display:
+        block;
+
+    font-family:
+        var(--display);
+
+    color:
+        var(--green);
+
+    font-size:
+        35px;
+}
+
+.stat span{
+    display:block;
+    margin-top:5px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+
+/* =========================================================
+   GRIDS
+========================================================= */
+
+.grid{
+    margin-top:
+        30px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:
+        16px;
+}
+
+.card{
+    padding:
+        25px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        24px;
+
+    background:
+        var(--panel);
+
+    backdrop-filter:
+        blur(18px);
+
+    transition:
+        .35s;
+}
+
+.card:hover{
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(54,242,155,.32);
+}
+
+.card h3{
+    margin:
+        0 0 10px;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        20px;
+}
+
+.card p,
+.card li{
+    color:
+        #b4c9c0;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.85;
+}
+
+.card ul{
+    padding-left:
+        18px;
+}
+
+
+/* =========================================================
+   ENGINEERING TAGS
+========================================================= */
+
+.tags{
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        7px;
+
+    margin-top:
+        16px;
+}
+
+.tag{
+    padding:
+        7px 10px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        999px;
+
+    color:
+        #c9ddd5;
+
+    background:
+        rgba(255,255,255,.04);
+
+    font-family:
+        var(--tech);
+
+    font-size:
+        10px;
+}
+
+
+/* =========================================================
+   AGENCIES
+========================================================= */
+
+.agencies{
+    margin-top:
+        30px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:
+        14px;
+}
+
+.agency{
+    min-height:
+        235px;
+
+    padding:
+        23px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        22px;
+
+    background:
+        var(--panel);
+
+    backdrop-filter:
+        blur(18px);
+
+    transition:
+        .35s;
+}
+
+.agency:hover{
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(54,242,155,.30);
+}
+
+.agency-icon{
+    font-size:
+        30px;
+}
+
+.agency h3{
+    margin:
+        9px 0;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        25px;
+}
+
+.agency p{
+    flex:
+        1;
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.7;
+}
+
+.agency a{
+    margin-top:
+        12px;
+
+    color:
+        var(--green);
+
+    font-family:
+        var(--tech);
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects{
+    margin-top:
+        30px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:
+        15px;
+}
+
+.project{
+    padding:
+        24px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        23px;
+
+    background:
+        var(--panel);
+
+    backdrop-filter:
+        blur(18px);
+
+    transition:
+        .35s;
+}
+
+.project:hover{
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(84,221,255,.30);
+}
+
+.project-agency{
+    color:
+        var(--cyan);
+
+    font-family:
+        var(--tech);
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        2px;
+
+    text-transform:
+        uppercase;
+}
+
+.project h3{
+    margin:
+        9px 0;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        18px;
+
+    line-height:
+        1.45;
+}
+
+.project p{
+    color:
+        #b0c6bc;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.75;
+}
+
+.project a{
+    display:
+        inline-block;
+
+    margin-top:
+        12px;
+
+    color:
+        var(--green);
+
+    font-family:
+        var(--tech);
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills{
+    margin-top:
+        30px;
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        8px;
+}
+
+.skill{
+    padding:
+        9px 12px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        10px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:
+        #d7eae2;
+
+    font-family:
+        var(--tech);
+
+    font-size:
+        11px;
+}
+
+
+/* =========================================================
+   FUTURE
+========================================================= */
+
+.future{
+    padding:
+        45px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        30px;
+
+    background:
+        radial-gradient(
+            circle at 15% 30%,
+            rgba(54,242,155,.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 82% 20%,
+            rgba(169,133,255,.11),
+            transparent 28%
+        ),
+        rgba(5,15,10,.74);
+
+    backdrop-filter:
+        blur(18px);
+}
+
+.future-title{
+    margin-top:
+        10px;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        clamp(35px,5vw,72px);
+
+    background:
+        linear-gradient(
+            90deg,
+            #73ffd0,
+            #fff,
+            #69c9ff,
+            #ab8aff
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+}
+
+.future-grid{
+    margin-top:
+        30px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:
+        12px;
+}
+
+.future-item{
+    padding:
+        20px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        18px;
+
+    background:
+        rgba(255,255,255,.035);
+}
+
+.future-item small{
+    color:
+        var(--green);
+
+    font-family:
+        var(--tech);
+
+    letter-spacing:
+        2px;
+}
+
+.future-item h3{
+    margin:
+        9px 0;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        17px;
+}
+
+.future-item p{
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================================================
+   THESIS
+========================================================= */
+
+.thesis{
+    margin-top:
+        30px;
+
+    padding:
+        30px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        24px;
+
+    background:
+        var(--panel);
+
+    backdrop-filter:
+        blur(18px);
+}
+
+.thesis h3{
+    font-family:
+        var(--display);
+
+    font-size:
+        22px;
+
+    margin-bottom:
+        12px;
+}
+
+.thesis p{
+    color:
+        #b7cbc2;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.85;
+
+    margin-bottom:
+        12px;
+}
+
+
+/* =========================================================
+   LIVE MOOD BAR
+========================================================= */
+
+.moodbar{
+    position:
+        fixed;
+
+    left:
+        50%;
+
+    bottom:
+        13px;
+
+    transform:
+        translateX(-50%);
+
+    z-index:
+        1500;
+
+    width:
+        min(1120px,95%);
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        7px;
+}
+
+.mood{
+    padding:
+        9px 11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    border-radius:
+        13px;
+
+    background:
+        rgba(2,7,4,.86);
+
+    color:
+        #effff8;
+
+    backdrop-filter:
+        blur(15px);
+
+    cursor:
+        pointer;
+
+    font-family:
+        var(--tech);
+
+    font-size:
+        11px;
+
+    transition:
+        .25s;
+}
+
+.mood:hover{
+    transform:
+        translateY(-3px);
+
+    border-color:
+        var(--green);
+}
+
+
+/* =========================================================
+   LIVE THEME SCREEN
+========================================================= */
+
+#themeScreen{
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        3000;
+
+    display:
+        none;
+
+    overflow:
+        hidden;
+
+    background:
+        #000;
+}
+
+#themeScreen.active{
+    display:
+        block;
 }
 
 #themeCanvas{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    width:
+        100%;
+
+    height:
+        100%;
 }
 
-.theme-ui{
-  position:absolute;
-  inset:0;
-  z-index:5;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  pointer-events:none;
-  padding:30px;
+.theme-overlay{
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.08),
+            rgba(0,0,0,.78)
+        ),
+        radial-gradient(
+            circle at center,
+            transparent 35%,
+            rgba(0,0,0,.55)
+        );
+}
+
+.theme-content{
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        3;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+    padding:
+        30px;
 }
 
 .theme-icon{
-  font-size:70px;
-  filter:drop-shadow(0 0 25px rgba(255,255,255,.45));
+    font-size:
+        68px;
 }
 
 .theme-title{
-  margin:10px 0;
-  color:white;
-  font-family:"Space Grotesk",Arial,sans-serif;
-  font-size:clamp(42px,7vw,90px);
-  line-height:1;
-  text-shadow:0 8px 45px rgba(0,0,0,.75);
+    margin:
+        10px 0;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        clamp(44px,7vw,95px);
+
+    line-height:
+        1;
+
+    text-shadow:
+        0 10px 50px rgba(0,0,0,.8);
 }
 
 .theme-description{
-  max-width:760px;
-  color:rgba(255,255,255,.83);
-  font-family:"Times New Roman",serif;
-  font-size:17px;
-  line-height:1.7;
+    max-width:
+        800px;
+
+    color:
+        #edf7f2;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.8;
 }
 
 .theme-close{
-  pointer-events:auto;
-  margin-top:25px;
-  padding:12px 20px;
-  border:1px solid rgba(255,255,255,.22);
-  border-radius:999px;
-  color:white;
-  background:rgba(0,0,0,.32);
-  backdrop-filter:blur(12px);
-  cursor:pointer;
-  font-family:"Space Grotesk",Arial,sans-serif;
+    margin-top:
+        22px;
+
+    padding:
+        12px 19px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.24);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(0,0,0,.32);
+
+    color:
+        white;
+
+    cursor:
+        pointer;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        11px;
 }
 
 .theme-close:hover{
-  background:rgba(255,255,255,.12);
+    background:
+        rgba(255,255,255,.10);
 }
 
-.theme-flag{
-  position:absolute;
-  top:30px;
-  right:30px;
-  font-size:42px;
-  filter:drop-shadow(0 0 18px rgba(0,255,120,.45));
+.bd-large{
+    position:
+        absolute;
+
+    top:
+        28px;
+
+    right:
+        30px;
+
+    z-index:
+        5;
+
+    display:
+        none;
+
+    font-size:
+        48px;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(0,255,120,.45)
+        );
 }
 
-.theme-backdrop{
-  position:absolute;
-  inset:0;
-  transition:background .8s ease;
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:
+        40px 6vw;
+
+    border-top:
+        1px solid var(--line);
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    color:
+        #8da59b;
+
+    font-family:
+        var(--tech);
+
+    font-size:
+        12px;
 }
 
-@keyframes themeZoom{
-  from{transform:scale(1);}
-  to{transform:scale(1.09);}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:
+        0;
+
+    transform:
+        translateY(30px);
+
+    transition:
+        1s ease;
 }
 
-@keyframes themeSpin{
-  to{transform:rotate(360deg);}
+.reveal.show{
+    opacity:
+        1;
+
+    transform:
+        none;
 }
 
-@media(max-width:600px){
 
-  .theme-icon{
-    font-size:50px;
-  }
+/* =========================================================
+   MOBILE
+========================================================= */
 
-  .theme-title{
-    font-size:42px;
-  }
+@media(max-width:980px){
 
-  .theme-description{
-    font-size:14px;
-  }
+    nav{
+        display:none;
+    }
 
-  .theme-flag{
-    top:20px;
-    right:20px;
-    font-size:30px;
-  }
+    .hero{
+        grid-template-columns:
+            1fr;
+    }
+
+    .hero-visual{
+        min-height:
+            340px;
+    }
+
+    .stats,
+    .agencies,
+    .future-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .projects,
+    .grid{
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+@media(max-width:650px){
+
+    section{
+        padding:
+            70px 5vw;
+    }
+
+    .hero{
+        padding:
+            112px 5vw 60px;
+    }
+
+    .hero h1{
+        letter-spacing:
+            -2px;
+    }
+
+    .stats,
+    .agencies,
+    .future-grid{
+        grid-template-columns:
+            1fr;
+    }
+
+    .hero-visual{
+        transform:
+            scale(.84);
+    }
+
+    .moodbar{
+        bottom:
+            7px;
+    }
+
+    .mood{
+        padding:
+            8px;
+        font-size:
+            9px;
+    }
+
+    .future{
+        padding:
+            30px 20px;
+    }
+
+    footer{
+        display:block;
+    }
+
+    footer div+div{
+        margin-top:
+            14px;
+    }
 
 }
 
 </style>
+</head>
+
+
+<body>
 
 
 <!-- =========================================================
-     THEME BUTTONS
+     STAR FIELD
 ========================================================= -->
 
-<div id="liveThemeButtons"
-style="
-position:fixed;
-left:50%;
-bottom:15px;
-transform:translateX(-50%);
-z-index:9999;
-display:flex;
-gap:7px;
-flex-wrap:wrap;
-justify-content:center;
-width:min(1100px,95%);
-">
-
-<button class="moodBtn" onclick="startLiveTheme('ocean')">🌊 Ocean</button>
-<button class="moodBtn" onclick="startLiveTheme('forest')">🌲 Amazon Forest</button>
-<button class="moodBtn" onclick="startLiveTheme('dragon')">🐉 Dragon</button>
-<button class="moodBtn" onclick="startLiveTheme('galaxy')">🌌 Galaxy</button>
-<button class="moodBtn" onclick="startLiveTheme('moon')">🌙 Moonlight</button>
-<button class="moodBtn" onclick="startLiveTheme('night')">🌃 Night</button>
-<button class="moodBtn" onclick="startLiveTheme('day')">☀️ Day</button>
-<button class="moodBtn" onclick="startLiveTheme('snow')">❄️ Snow 🇧🇩</button>
-<button class="moodBtn" onclick="startLiveTheme('wall')">🎨 Color Wall</button>
-
-</div>
-
-
-<style>
-
-.moodBtn{
-  border:1px solid rgba(255,255,255,.20);
-  background:rgba(2,8,5,.86);
-  color:#fff;
-  padding:10px 13px;
-  border-radius:13px;
-  cursor:pointer;
-  backdrop-filter:blur(14px);
-  font-family:"Space Grotesk",Arial,sans-serif;
-  font-size:11px;
-  transition:.25s;
-}
-
-.moodBtn:hover{
-  transform:translateY(-3px);
-  border-color:#36f29b;
-  box-shadow:0 10px 30px rgba(54,242,155,.18);
-}
-
-</style>
+<div id="stars"></div>
 
 
 <!-- =========================================================
-     LIVE THEME SCREEN
+     HEADER
 ========================================================= -->
 
-<div id="themeWorld">
+<header>
 
-  <div class="theme-backdrop" id="themeBackdrop"></div>
+    <a class="brand" href="#home">
 
-  <canvas id="themeCanvas"></canvas>
+        <span class="brand-flag">
+            🇧🇩
+        </span>
 
-  <div class="theme-ui">
+        <span class="brand-name">
 
-    <div class="theme-icon" id="themeIcon"></div>
+            <strong>
 
-    <div class="theme-title" id="themeTitle"></div>
+                <span class="green">MD.</span>
 
-    <div class="theme-description" id="themeDescription"></div>
+                <span class="red">
+                    NAIMUR RAHMAN
+                </span>
 
-    <button
-      class="theme-close"
-      onclick="closeLiveTheme()">
-      ← Return to Portfolio
+                <span class="green">
+                    SAAD
+                </span>
+
+            </strong>
+
+            <small>
+                CIVIL ENGINEER • CONSTRUCTION • SUSTAINABLE FUTURE
+            </small>
+
+        </span>
+
+    </a>
+
+
+    <nav>
+
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#engineering">Engineering</a>
+        <a href="#future">Future</a>
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+
+    <div class="lang-switch">
+
+        <button
+            id="enBtn"
+            class="active"
+            onclick="setLanguage('en')">
+            EN
+        </button>
+
+        <button
+            id="bnBtn"
+            onclick="setLanguage('bn')">
+            বাংলা
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+    <div>
+
+        <div
+            class="kicker"
+            data-en="CIVIL ENGINEERING • CONSTRUCTION • INFRASTRUCTURE"
+            data-bn="CIVIL ENGINEERING • CONSTRUCTION • INFRASTRUCTURE">
+
+            CIVIL ENGINEERING • CONSTRUCTION • INFRASTRUCTURE
+
+        </div>
+
+
+        <h1>
+
+            <span class="green">
+                MD. NAIMUR
+            </span>
+
+            <br>
+
+            <span class="red">
+                RAHMAN
+            </span>
+
+            <span class="green">
+                SAAD
+            </span>
+
+        </h1>
+
+
+        <div class="hero-sub">
+
+            Civil Engineer |
+            Construction Engineering & Project Management
+            <br>
+            Transportation Engineering |
+            Environmental Engineering
+
+        </div>
+
+
+        <div class="mission">
+
+            A <b>Dream</b> Becomes <b>Reality</b>
+
+            <br>
+
+            When <b>Vision</b> Becomes <b>Mission.</b>
+
+        </div>
+
+
+        <p class="hero-description">
+
+            Building practical experience today while preparing
+            for a smarter, safer and more sustainable infrastructure future.
+
+        </p>
+
+
+        <div class="actions">
+
+            <a class="btn btn-primary"
+               href="#projects">
+
+                Explore My Journey →
+
+            </a>
+
+
+            <a class="btn"
+               href="#experience">
+
+                View Experience
+
+            </a>
+
+
+            <a class="btn"
+               href="mailto:naimurrahmansaad0@gmail.com">
+
+                Contact Me
+
+            </a>
+
+
+            <a class="btn"
+               href="CV.pdf"
+               download>
+
+                Download CV ↓
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ENGINEERING TRIAD -->
+
+    <div class="hero-visual"
+         id="heroVisual">
+
+        <div class="orbit"></div>
+
+        <div class="orbit two"></div>
+
+        <div class="core"></div>
+
+
+        <div class="float-card fc1">
+
+            🌿 Environment
+
+            <br>
+
+            <small>
+                Sustainable Infrastructure
+            </small>
+
+        </div>
+
+
+        <div class="float-card fc2">
+
+            🚆 Transportation
+
+            <br>
+
+            <small>
+                Smart Mobility
+            </small>
+
+        </div>
+
+
+        <div class="float-card fc3">
+
+            🏗️ Building
+
+            <br>
+
+            <small>
+                Construction Management
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section id="about" class="reveal">
+
+    <div class="section-label">
+        01 / PROFILE
+    </div>
+
+    <h2 class="section-title">
+        Engineering with Purpose.
+    </h2>
+
+    <p class="section-desc">
+
+        Civil Engineering graduate with
+        6+ years of practical construction
+        experience through M/S. Mahima Steel & Cong.,
+        progressing from Trainee Site Engineer
+        to Site Engineer.
+
+        Experienced in site supervision,
+        QA/QC, construction material testing,
+        reinforcement inspection, BBS review,
+        quantity verification, contractor billing,
+        material reconciliation, project coordination
+        and construction documentation.
+
+    </p>
+
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <strong>6+</strong>
+
+            <span>
+                Years Experience
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>11+</strong>
+
+            <span>
+                Civil Projects
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>25.7 Cr</strong>
+
+            <span>
+                BDT Project Exposure
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>~$2.1M</strong>
+
+            <span>
+                Approx. USD Exposure
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ENGINEERING FOCUS
+========================================================= -->
+
+<section id="engineering" class="reveal">
+
+    <div class="section-label">
+        02 / ENGINEERING FOCUS
+    </div>
+
+    <h2 class="section-title">
+        Build • Sustain • Connect
+    </h2>
+
+    <p class="section-desc">
+
+        A multidisciplinary direction combining
+        Construction Engineering & Project Management,
+        Environmental Engineering and Transportation
+        Engineering for resilient and sustainable infrastructure.
+
+    </p>
+
+
+    <div class="grid">
+
+
+        <article class="card">
+
+            <h3>
+                🏗️ Construction Management
+            </h3>
+
+            <p>
+
+                Construction planning & scheduling,
+                QA/QC, quantity verification,
+                material management, risk,
+                site coordination and project delivery.
+
+            </p>
+
+
+            <div class="tags">
+
+                <span class="tag">Planning</span>
+                <span class="tag">QA/QC</span>
+                <span class="tag">P6</span>
+                <span class="tag">Site Management</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <h3>
+                🌱 Environmental Engineering
+            </h3>
+
+            <p>
+
+                Sustainable infrastructure,
+                environmental management,
+                water & wastewater systems,
+                pollution control and climate resilience.
+
+            </p>
+
+
+            <div class="tags">
+
+                <span class="tag">Sustainability</span>
+                <span class="tag">Water</span>
+                <span class="tag">Green Infrastructure</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <h3>
+                🚆 Transportation Engineering
+            </h3>
+
+            <p>
+
+                Transportation infrastructure,
+                pavement rehabilitation,
+                transportation planning,
+                traffic engineering and sustainable mobility.
+
+            </p>
+
+
+            <div class="tags">
+
+                <span class="tag">Pavement</span>
+                <span class="tag">Traffic</span>
+                <span class="tag">Mobility</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <h3>
+                🌍 One Future
+            </h3>
+
+            <p>
+
+                Bringing construction, transportation
+                and environmental thinking together
+                to create safer, smarter and more
+                sustainable infrastructure.
+
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GOVERNMENT AGENCIES
+========================================================= -->
+
+<section class="reveal">
+
+    <div class="section-label">
+        03 / GOVERNMENT EXPERIENCE
+    </div>
+
+    <h2 class="section-title">
+        Government Engineering Agencies.
+    </h2>
+
+
+    <div class="agencies">
+
+
+        <article class="agency">
+
+            <div class="agency-icon">
+                🏗️
+            </div>
+
+            <h3>
+                LGED
+            </h3>
+
+            <p>
+
+                Local Government Engineering Department —
+                rural roads, RCC roads, market development,
+                rehabilitation and local infrastructure.
+
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+
+                Official Website ↗
+
+            </a>
+
+        </article>
+
+
+        <article class="agency">
+
+            <div class="agency-icon">
+                🏢
+            </div>
+
+            <h3>
+                PWD
+            </h3>
+
+            <p>
+
+                Public Works Department —
+                building construction, structural/civil works,
+                quantity measurement and coordination.
+
+            </p>
+
+            <a href="https://pwd.gov.bd/"
+               target="_blank">
+
+                Official Website ↗
+
+            </a>
+
+        </article>
+
+
+        <article class="agency">
+
+            <div class="agency-icon">
+                🌊
+            </div>
+
+            <h3>
+                BWDB
+            </h3>
+
+            <p>
+
+                Bangladesh Water Development Board —
+                emergency protection, riverbank protection
+                and water-resource related works.
+
+            </p>
+
+            <a href="https://www.bwdb.gov.bd/"
+               target="_blank">
+
+                Official Website ↗
+
+            </a>
+
+        </article>
+
+
+        <article class="agency">
+
+            <div class="agency-icon">
+                🛣️
+            </div>
+
+            <h3>
+                RHD
+            </h3>
+
+            <p>
+
+                Roads and Highways Department —
+                road rehabilitation, pavement repair
+                and transportation infrastructure.
+
+            </p>
+
+            <a href="https://rhd.gov.bd/"
+               target="_blank">
+
+                Official Website ↗
+
+            </a>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EXPERIENCE
+========================================================= -->
+
+<section id="experience" class="reveal">
+
+    <div class="section-label">
+        04 / PROFESSIONAL EXPERIENCE
+    </div>
+
+    <h2 class="section-title">
+        M/S. MAHIMA STEEL & CONG.
+    </h2>
+
+    <p class="section-desc">
+        Civil Works Contractor • Sirajganj, Bangladesh
+    </p>
+
+
+    <div class="grid">
+
+
+        <article class="card">
+
+            <h3>
+                Site Engineer | 2024 – Present
+            </h3>
+
+            <p>
+
+                Supervise road and civil infrastructure construction
+                according to approved drawings, specifications and
+                project requirements. Monitor earthwork, excavation,
+                filling, compaction, subgrade, pavement, RCC,
+                reinforcement, formwork, casting and curing.
+
+            </p>
+
+        </article>
+
+
+        <article class="card">
+
+            <h3>
+                Trainee Site Engineer | 2020 – 2023
+            </h3>
+
+            <p>
+
+                Assisted senior engineers with construction execution,
+                quality control, measurements, material testing,
+                progress monitoring and construction documentation.
+
+            </p>
+
+        </article>
+
+
+        <article class="card">
+
+            <h3>
+                QA/QC & Material Testing
+            </h3>
+
+            <p>
+
+                Slump, concrete cube, sand field-density,
+                brick and bentonite slurry testing;
+                reinforcement, cover-block, dimensions,
+                levels and BBS inspection.
+
+            </p>
+
+        </article>
+
+
+        <article class="card">
+
+            <h3>
+                Coordination & Documentation
+            </h3>
+
+            <p>
+
+                Workers, suppliers and contractor coordination;
+                measurements, inspection records,
+                progress reports, billing verification
+                and material reconciliation.
+
+            </p>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
+
+<section id="projects" class="reveal">
+
+    <div class="section-label">
+        05 / PROJECT PORTFOLIO
+    </div>
+
+    <h2 class="section-title">
+        11+ Government Projects.
+    </h2>
+
+    <p class="section-desc">
+        Selected civil infrastructure experience
+        through M/S. Mahima Steel & Cong.
+    </p>
+
+
+    <div class="projects">
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                LGED • KURIGRAM
+            </div>
+
+            <h3>
+                Naykerhat Rural Market Development (NOBIDEP)
+            </h3>
+
+            <p>
+                Tender ID: 107138 |
+                Package: WNOBI-Kur-RM-147 (C)
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                LGED ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                LGED • SIRAJGANJ
+            </div>
+
+            <h3>
+                Bagbati–Kazipur C&B Ghorachora
+                Monsur Ali Road to Sarkar Bari
+                Jame Mosque RCC Road
+            </h3>
+
+            <p>
+                Tender ID: 810008 |
+                Package: ADP/SAD/SER/2022-23/06
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                LGED ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                LGED • SIRAJGANJ
+            </div>
+
+            <h3>
+                Char Someshpur Central Mosque
+                Washblock & Ojukhana
+            </h3>
+
+            <p>
+                Tender ID: 757953 |
+                Package: GSID-2/SRJ/DW-04
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                LGED ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                LGED • SIRAJGANJ
+            </div>
+
+            <h3>
+                Kaelgati Mosque to Kalumondol
+                Bari RCC Road Development
+            </h3>
+
+            <p>
+                Tender ID: 810013 |
+                Package: UDF/SAD/SER/2022-23
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                LGED ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                LGED • SIRAJGANJ
+            </div>
+
+            <h3>
+                Tamai RHD (Bashtola) to Char Tengrail
+                Road Improvement
+            </h3>
+
+            <p>
+                700 m |
+                Project Value ≈ BDT 8.11 Crore |
+                Package: LGED/XEN/Siraj/2017/1214
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                LGED ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                PWD • SIRAJGANJ
+            </div>
+
+            <h3>
+                07 RAB Complex Project (RAB-12),
+                Hatikumrul
+            </h3>
+
+            <p>
+                Package: 02(U)(OTM)/2015-2016
+            </p>
+
+            <a href="https://pwd.gov.bd/"
+               target="_blank">
+                PWD ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                LGED
+            </div>
+
+            <h3>
+                Kuthi Satbaria UZR to Khas Satbaria
+                Utterpara Road Improvement & Link Road
+            </h3>
+
+            <p>
+                805 m |
+                Project Value ≈ BDT 1.68 Crore |
+                Tender ID: 599746 |
+                IRIDP-3/SRJ/DW-35
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                LGED ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                LGED • PABNA
+            </div>
+
+            <h3>
+                Masumdia UP Office to Dear Bramndi
+                Hat Road Rehabilitation
+            </h3>
+
+            <p>
+                1,240 m |
+                ID No.: 615468 |
+                GOBM/2021-22/W-33
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                LGED ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                BWDB • SIRAJGANJ
+            </div>
+
+            <h3>
+                Emergency Repair & Protection Work
+                at Betil Spur-1, Belkuchi
+            </h3>
+
+            <p>
+                Tender ID: 535754 |
+                L/NDR/08/2020-2021
+            </p>
+
+            <a href="https://www.bwdb.gov.bd/"
+               target="_blank">
+                BWDB ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                BWDB • SIRAJGANJ
+            </div>
+
+            <h3>
+                Temporary Emergency Protection Work
+            </h3>
+
+            <p>
+                Package: I-NDR-05/2021 |
+                Sirajganj O&M Division
+            </p>
+
+            <a href="https://www.bwdb.gov.bd/"
+               target="_blank">
+                BWDB ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                RHD • SIRAJGANJ
+            </div>
+
+            <h3>
+                Repair of Damaged Pavement by HBB Work
+                at 9th Km of Tarash–Hamkuria (Z-6032) Road
+            </h3>
+
+            <p>
+                Tender ID: 621337 LTM |
+                Package: 12/e-GP/eeshid/2021-2022
+            </p>
+
+            <a href="https://rhd.gov.bd/"
+               target="_blank">
+                RHD ↗
+            </a>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EDUCATION
+========================================================= -->
+
+<section class="reveal">
+
+    <div class="section-label">
+        06 / EDUCATION
+    </div>
+
+    <h2 class="section-title">
+        Academic Foundation.
+    </h2>
+
+
+    <div class="grid">
+
+
+        <article class="card">
+
+            <h3>
+                Daffodil International University
+            </h3>
+
+            <p>
+                Bachelor of Science in Civil Engineering |
+                January 2019 – May 2026
+            </p>
+
+            <p>
+                CGPA: 2.57/4.00 |
+                Medium of Instruction: English
+            </p>
+
+            <p>
+                Undergraduate Thesis:
+                <b>
+                    Investigation on the Causes of Cracks
+                    in RCC Structures and Possible
+                    Preventive Measures
+                </b>
+            </p>
+
+
+            <div class="actions">
+
+                <a class="btn"
+                   href="https://daffodilvarsity.edu.bd/"
+                   target="_blank">
+
+                    University Website ↗
+
+                </a>
+
+
+                <a class="btn"
+                   href="https://faculty.daffodilvarsity.edu.bd/teachers/ce"
+                   target="_blank">
+
+                    Civil Engineering ↗
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <h3>
+                Sirajganj Collectorate School & College
+            </h3>
+
+            <p>
+                Higher Secondary Certificate (HSC), Science |
+                2018
+            </p>
+
+            <p>
+                GPA: 3.17/5.00
+            </p>
+
+
+            <div class="actions">
+
+                <a class="btn"
+                   href="https://scsc.edu.bd/"
+                   target="_blank">
+
+                    Official Website ↗
+
+                </a>
+
+                <a class="btn"
+                   href="https://english.scsc.edu.bd/"
+                   target="_blank">
+
+                    English Version ↗
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     THESIS
+========================================================= -->
+
+<section class="reveal">
+
+    <div class="section-label">
+        07 / UNDERGRADUATE THESIS
+    </div>
+
+    <h2 class="section-title">
+        RCC Crack Investigation.
+    </h2>
+
+
+    <div class="thesis">
+
+        <h3>
+            Investigation on the Causes of Cracks in RCC Structures
+            and Possible Preventive Measures
+        </h3>
+
+        <p>
+            Investigated structural and non-structural cracking
+            in RCC structures and examined construction,
+            material, environmental and workmanship factors.
+        </p>
+
+        <p>
+            Reviewed preventive measures and repair approaches
+            to improve durability and structural performance.
+        </p>
+
+        <p>
+            Connected academic investigation with practical
+            construction and QA/QC observations.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SKILLS
+========================================================= -->
+
+<section id="skills" class="reveal">
+
+    <div class="section-label">
+        08 / TECHNICAL CAPABILITY
+    </div>
+
+    <h2 class="section-title">
+        Tools • Testing • Execution.
+    </h2>
+
+
+    <div class="skills">
+
+        <span class="skill">Site Supervision</span>
+        <span class="skill">RCC Construction</span>
+        <span class="skill">Concrete Casting</span>
+        <span class="skill">Reinforcement Inspection</span>
+        <span class="skill">Cover Block Inspection</span>
+        <span class="skill">BBS Review</span>
+        <span class="skill">Quantity Verification</span>
+        <span class="skill">Contractor Billing</span>
+        <span class="skill">Material Reconciliation</span>
+        <span class="skill">Slump Testing</span>
+        <span class="skill">Concrete Cube Sampling</span>
+        <span class="skill">Bentonite Slurry Testing</span>
+        <span class="skill">Sand Field-Density Testing</span>
+        <span class="skill">Brick Testing</span>
+        <span class="skill">AutoCAD 2D</span>
+        <span class="skill">AutoCAD 3D</span>
+        <span class="skill">ETABS</span>
+        <span class="skill">Primavera P6</span>
+        <span class="skill">Revit</span>
+        <span class="skill">MS Excel</span>
+        <span class="skill">MS Word</span>
+        <span class="skill">PowerPoint</span>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FUTURE VISION
+========================================================= -->
+
+<section id="future" class="reveal">
+
+    <div class="future">
+
+        <div class="section-label">
+            09 / FUTURE VISION
+        </div>
+
+        <div class="future-title">
+            Engineering the Future.
+        </div>
+
+        <p class="section-desc">
+
+            From practical construction experience
+            to advanced engineering knowledge —
+            building a future focused on sustainable
+            infrastructure, intelligent project delivery,
+            resilient transportation and environmental
+            responsibility.
+
+        </p>
+
+
+        <div class="future-grid">
+
+
+            <div class="future-item">
+
+                <small>
+                    01 — FOUNDATION
+                </small>
+
+                <h3>
+                    🏗️ Construction Leadership
+                </h3>
+
+                <p>
+                    Planning, scheduling, quality,
+                    risk and project delivery.
+                </p>
+
+            </div>
+
+
+            <div class="future-item">
+
+                <small>
+                    02 — SUSTAINABILITY
+                </small>
+
+                <h3>
+                    🌱 Environmental Innovation
+                </h3>
+
+                <p>
+                    Sustainable infrastructure,
+                    water systems and resilience.
+                </p>
+
+            </div>
+
+
+            <div class="future-item">
+
+                <small>
+                    03 — CONNECTIVITY
+                </small>
+
+                <h3>
+                    🚆 Smarter Transportation
+                </h3>
+
+                <p>
+                    Transportation planning,
+                    pavement, traffic and
+                    sustainable mobility.
+                </p>
+
+            </div>
+
+
+            <div class="future-item">
+
+                <small>
+                    04 — GLOBAL IMPACT
+                </small>
+
+                <h3>
+                    🌍 Better Infrastructure
+                </h3>
+
+                <p>
+                    Safer, smarter and more
+                    sustainable infrastructure systems.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section id="contact" class="reveal">
+
+    <div class="section-label">
+        10 / CONTACT
+    </div>
+
+    <h2 class="section-title">
+        Let's Build a Better Tomorrow.
+    </h2>
+
+    <p class="section-desc">
+
+        Sirajganj, Bangladesh •
+        +880 1570-279183 •
+        naimurrahmansaad0@gmail.com
+
+    </p>
+
+
+    <div class="actions">
+
+        <a class="btn btn-primary"
+           href="mailto:naimurrahmansaad0@gmail.com">
+            Email Me
+        </a>
+
+        <a class="btn"
+           href="https://linkedin.com/in/md-naimur-rahman-saad-4240ba431"
+           target="_blank">
+            LinkedIn ↗
+        </a>
+
+        <a class="btn"
+           href="https://github.com/nrsaad"
+           target="_blank">
+            GitHub ↗
+        </a>
+
+        <a class="btn"
+           href="CV.pdf"
+           download>
+            Download CV ↓
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     LIVE MOODS
+========================================================= -->
+
+<div class="moodbar">
+
+    <button class="mood"
+            onclick="openTheme('ocean')">
+        🌊 Ocean
     </button>
 
-  </div>
+    <button class="mood"
+            onclick="openTheme('forest')">
+        🌲 Amazon Forest
+    </button>
 
-  <div class="theme-flag"
-       id="themeFlag"
-       style="display:none;">
-    🇧🇩
-  </div>
+    <button class="mood"
+            onclick="openTheme('dragon')">
+        🐉 Dragon
+    </button>
+
+    <button class="mood"
+            onclick="openTheme('galaxy')">
+        🌌 Galaxy + Black Hole
+    </button>
+
+    <button class="mood"
+            onclick="openTheme('moon')">
+        🌙 Moonlight
+    </button>
+
+    <button class="mood"
+            onclick="openTheme('night')">
+        🌃 Night
+    </button>
+
+    <button class="mood"
+            onclick="openTheme('day')">
+        ☀️ Day
+    </button>
+
+    <button class="mood"
+            onclick="openTheme('snow')">
+        ❄️ Bangladesh Snow
+    </button>
+
+    <button class="mood"
+            onclick="openTheme('wall')">
+        🎨 Color Wall
+    </button>
 
 </div>
+
+
+<!-- =========================================================
+     FULLSCREEN LIVE THEME
+========================================================= -->
+
+<div id="themeScreen">
+
+    <canvas id="themeCanvas"></canvas>
+
+    <div class="theme-overlay"></div>
+
+    <div class="bd-large"
+         id="bdLarge">
+        🇧🇩
+    </div>
+
+
+    <div class="theme-content">
+
+        <div class="theme-icon"
+             id="themeIcon">
+        </div>
+
+        <div class="theme-title"
+             id="themeTitle">
+        </div>
+
+        <div class="theme-description"
+             id="themeDescription">
+        </div>
+
+
+        <button class="theme-close"
+                onclick="closeTheme()">
+
+            ← Return to Portfolio
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div>
+
+        🇧🇩
+
+        <strong>
+            MD. Naimur Rahman Saad
+        </strong>
+
+        <br>
+
+        Civil Engineer •
+        Construction •
+        Environment •
+        Transportation
+
+        <br>
+
+        © 2026 All Rights Reserved.
+
+    </div>
+
+
+    <div>
+
+        Better Infrastructure
+        <br>
+        A Greener Planet
+        <br>
+        A Brighter Future
+
+    </div>
+
+</footer>
 
 
 <script>
 
 /* =========================================================
-   LIVE THEME ENGINE
+   LANGUAGE
 ========================================================= */
 
-const themeWorld =
-  document.getElementById("themeWorld");
+function setLanguage(lang){
 
-const themeCanvas =
-  document.getElementById("themeCanvas");
+    document
+        .querySelectorAll(
+            "[data-en][data-bn]"
+        )
+        .forEach(
+            el=>{
 
-const themeCtx =
-  themeCanvas.getContext("2d");
+                el.textContent =
+                    lang==="bn"
+                    ? el.dataset.bn
+                    : el.dataset.en;
 
-const themeBackdrop =
-  document.getElementById("themeBackdrop");
-
-const themeIcon =
-  document.getElementById("themeIcon");
-
-const themeTitle =
-  document.getElementById("themeTitle");
-
-const themeDescription =
-  document.getElementById("themeDescription");
-
-const themeFlag =
-  document.getElementById("themeFlag");
+            }
+        );
 
 
-let activeTheme = "";
+    document
+        .getElementById("enBtn")
+        .classList
+        .toggle(
+            "active",
+            lang==="en"
+        );
 
-let animationId = null;
 
-let objects = [];
+    document
+        .getElementById("bnBtn")
+        .classList
+        .toggle(
+            "active",
+            lang==="bn"
+        );
 
-let themeTime = 0;
 
-
-/* =========================================================
-   CANVAS SIZE
-========================================================= */
-
-function resizeThemeCanvas(){
-
-  const dpr =
-    Math.min(window.devicePixelRatio || 1,2);
-
-  themeCanvas.width =
-    window.innerWidth*dpr;
-
-  themeCanvas.height =
-    window.innerHeight*dpr;
-
-  themeCanvas.style.width =
-    window.innerWidth+"px";
-
-  themeCanvas.style.height =
-    window.innerHeight+"px";
-
-  themeCtx.setTransform(
-    dpr,
-    0,
-    0,
-    dpr,
-    0,
-    0
-  );
+    localStorage.setItem(
+        "portfolioLanguage",
+        lang
+    );
 
 }
 
-resizeThemeCanvas();
 
-window.addEventListener(
-  "resize",
-  resizeThemeCanvas
+/* restore */
+const savedLang =
+    localStorage.getItem(
+        "portfolioLanguage"
+    );
+
+if(savedLang){
+    setLanguage(savedLang);
+}
+
+
+/* =========================================================
+   CREATE STARS
+========================================================= */
+
+const starLayer =
+    document.getElementById(
+        "stars"
+    );
+
+for(
+    let i=0;
+    i<170;
+    i++
+){
+
+    const star =
+        document.createElement("i");
+
+    star.className =
+        "star";
+
+    star.style.left =
+        Math.random()*100+"%";
+
+    star.style.top =
+        Math.random()*100+"%";
+
+    star.style.animationDelay =
+        Math.random()*4+"s";
+
+    starLayer.appendChild(
+        star
+    );
+
+}
+
+
+/* =========================================================
+   HERO PARALLAX
+========================================================= */
+
+const heroVisual =
+    document.getElementById(
+        "heroVisual"
+    );
+
+document.addEventListener(
+    "mousemove",
+    e=>{
+
+        if(!heroVisual)
+            return;
+
+        const x =
+            (e.clientX/
+            window.innerWidth-
+            .5)*10;
+
+        const y =
+            (e.clientY/
+            window.innerHeight-
+            .5)*10;
+
+        heroVisual.style.transform =
+            `translate(${x*.6}px,${y*.6}px)`;
+
+    }
 );
 
 
 /* =========================================================
-   THEME DATA
+   REVEAL
 ========================================================= */
 
-const themeData = {
+const revealObserver =
+    new IntersectionObserver(
+        entries=>{
 
-  ocean:{
-    icon:"🌊",
-    title:"Ocean World",
-    description:
-      "A living ocean atmosphere — moving waves, deep water light and a calm horizon.",
-    flag:false
-  },
+            entries.forEach(
+                entry=>{
 
-  forest:{
-    icon:"🌲",
-    title:"Amazon Forest",
-    description:
-      "A living green world with layered trees, mist, fireflies and drifting atmosphere.",
-    flag:false
-  },
+                    if(
+                        entry.isIntersecting
+                    ){
 
-  dragon:{
-    icon:"🐉",
-    title:"Dragon Realm",
-    description:
-      "A cinematic fantasy world filled with fire, smoke, mountains and a moving dragon silhouette.",
-    flag:false
-  },
+                        entry.target.classList.add(
+                            "show"
+                        );
 
-  galaxy:{
-    icon:"🌌",
-    title:"Galaxy • Black Hole",
-    description:
-      "Deep space with stars, nebula clouds, orbiting energy and a gravitational black-hole core.",
-    flag:false
-  },
+                    }
 
-  moon:{
-    icon:"🌙",
-    title:"Moonlight",
-    description:
-      "A peaceful moonlit world with stars, clouds and soft blue night light.",
-    flag:false
-  },
+                }
+            );
 
-  night:{
-    icon:"🌃",
-    title:"Night City",
-    description:
-      "A modern city atmosphere with moving lights, skyline silhouettes and a cinematic night sky.",
-    flag:false
-  },
+        },
+        {
+            threshold:.10
+        }
+    );
 
-  day:{
-    icon:"☀️",
-    title:"Daylight",
-    description:
-      "A fresh daylight environment with sun, clouds, landscape and moving atmosphere.",
-    flag:false
-  },
 
-  snow:{
-    icon:"❄️",
-    title:"Winter Bangladesh",
-    description:
-      "A dreamlike winter landscape with live snowfall and the Bangladesh flag.",
-    flag:true
-  },
-
-  wall:{
-    icon:"🎨",
-    title:"Architectural Color Wall",
-    description:
-      "A premium interior-wall atmosphere with slowly shifting magazine-style architectural colors.",
-    flag:false
-  }
-
-};
+document
+    .querySelectorAll(".reveal")
+    .forEach(
+        element=>
+            revealObserver.observe(
+                element
+            )
+    );
 
 
 /* =========================================================
-   CREATE OBJECTS
+   LIVE THEME ENGINE
+========================================================= */
+
+const themeScreen =
+    document.getElementById(
+        "themeScreen"
+    );
+
+const canvas =
+    document.getElementById(
+        "themeCanvas"
+    );
+
+const ctx =
+    canvas.getContext("2d");
+
+const themeIcon =
+    document.getElementById(
+        "themeIcon"
+    );
+
+const themeTitle =
+    document.getElementById(
+        "themeTitle"
+    );
+
+const themeDescription =
+    document.getElementById(
+        "themeDescription"
+    );
+
+const bdLarge =
+    document.getElementById(
+        "bdLarge"
+    );
+
+
+let currentTheme =
+    "";
+
+let animationFrame;
+
+let objects =
+    [];
+
+let time =
+    0;
+
+
+/* canvas */
+function resizeCanvas(){
+
+    const dpr =
+        Math.min(
+            window.devicePixelRatio || 1,
+            2
+        );
+
+    canvas.width =
+        window.innerWidth*dpr;
+
+    canvas.height =
+        window.innerHeight*dpr;
+
+    canvas.style.width =
+        window.innerWidth+"px";
+
+    canvas.style.height =
+        window.innerHeight+"px";
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+}
+
+resizeCanvas();
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+/* =========================================================
+   OBJECT CREATION
 ========================================================= */
 
 function createObjects(theme){
 
-  objects=[];
+    objects=[];
 
-  const w =
-    window.innerWidth;
+    const w =
+        window.innerWidth;
 
-  const h =
-    window.innerHeight;
+    const h =
+        window.innerHeight;
 
 
-  /* OCEAN */
+    /* GALAXY */
 
-  if(theme==="ocean"){
-
-    for(
-      let i=0;
-      i<25;
-      i++
+    if(
+        theme==="galaxy"
     ){
 
-      objects.push({
+        for(
+            let i=0;
+            i<520;
+            i++
+        ){
 
-        type:"wave",
+            const angle =
+                Math.random()*
+                Math.PI*2;
 
-        y:
-          h*.55+
-          i*18,
+            const radius =
+                30+
+                Math.random()*
+                Math.min(
+                    w,
+                    h
+                )*.48;
 
-        amp:
-          4+Math.random()*10,
+            objects.push({
 
-        speed:
-          .7+Math.random()*1.2,
+                type:"star",
 
-        phase:
-          Math.random()*10
+                angle,
 
-      });
+                radius,
 
-    }
+                speed:
+                    .0002+
+                    Math.random()*.0008,
 
-  }
+                size:
+                    .4+
+                    Math.random()*2,
 
+                alpha:
+                    .2+
+                    Math.random()*.8
 
-  /* FOREST */
+            });
 
-  if(theme==="forest"){
-
-    for(
-      let i=0;
-      i<38;
-      i++
-    ){
-
-      objects.push({
-
-        type:"tree",
-
-        x:
-          Math.random()*w,
-
-        y:
-          h*.62+
-          Math.random()*100,
-
-        size:
-          .45+
-          Math.random()*.8,
-
-        depth:
-          Math.random()
-
-      });
+        }
 
     }
 
 
-    for(
-      let i=0;
-      i<55;
-      i++
+    /* SNOW */
+
+    if(
+        theme==="snow"
     ){
 
-      objects.push({
+        for(
+            let i=0;
+            i<550;
+            i++
+        ){
 
-        type:"firefly",
+            objects.push({
 
-        x:
-          Math.random()*w,
+                type:"snow",
 
-        y:
-          h*.2+
-          Math.random()*(h*.65),
+                x:
+                    Math.random()*w,
 
-        speed:
-          .3+
-          Math.random()*.8,
+                y:
+                    Math.random()*h,
 
-        phase:
-          Math.random()*10
+                size:
+                    1+
+                    Math.random()*4,
 
-      });
+                speed:
+                    .7+
+                    Math.random()*2,
+
+                drift:
+                    .2+
+                    Math.random()*.8
+
+            });
+
+        }
 
     }
 
-  }
 
+    /* FOREST */
 
-  /* DRAGON */
-
-  if(theme==="dragon"){
-
-    for(
-      let i=0;
-      i<100;
-      i++
+    if(
+        theme==="forest"
     ){
 
-      objects.push({
+        for(
+            let i=0;
+            i<42;
+            i++
+        ){
 
-        type:"ember",
+            objects.push({
 
-        x:
-          Math.random()*w,
+                type:"tree",
 
-        y:
-          h*.85+
-          Math.random()*h*.15,
+                x:
+                    Math.random()*w,
 
-        speed:
-          1+
-          Math.random()*3,
+                y:
+                    h*.62+
+                    Math.random()*100,
 
-        size:
-          1+
-          Math.random()*3
+                size:
+                    .5+
+                    Math.random()*.85,
 
-      });
+                depth:
+                    Math.random()
+
+            });
+
+        }
+
+
+        for(
+            let i=0;
+            i<70;
+            i++
+        ){
+
+            objects.push({
+
+                type:"firefly",
+
+                x:
+                    Math.random()*w,
+
+                y:
+                    h*.2+
+                    Math.random()*
+                    (h*.65),
+
+                phase:
+                    Math.random()*10,
+
+                speed:
+                    .5+
+                    Math.random()
+
+            });
+
+        }
 
     }
 
-  }
 
+    /* OCEAN */
 
-  /* GALAXY */
-
-  if(theme==="galaxy"){
-
-    for(
-      let i=0;
-      i<500;
-      i++
+    if(
+        theme==="ocean"
     ){
 
-      const angle =
-        Math.random()*
-        Math.PI*2;
+        for(
+            let i=0;
+            i<24;
+            i++
+        ){
 
-      const radius =
-        30+
-        Math.random()*
-        Math.min(w,h)*.48;
+            objects.push({
 
-      objects.push({
+                type:"wave",
 
-        type:"star",
+                y:
+                    h*.50+
+                    i*23,
 
-        angle:angle,
+                amp:
+                    4+
+                    Math.random()*11,
 
-        radius:radius,
+                speed:
+                    .6+
+                    Math.random(),
 
-        speed:
-          .0002+
-          Math.random()*.0007,
+                phase:
+                    Math.random()*20
 
-        size:
-          .4+
-          Math.random()*2,
+            });
 
-        alpha:
-          .2+
-          Math.random()*.8
-
-      });
+        }
 
     }
 
-  }
 
+    /* DRAGON */
 
-  /* MOON */
-
-  if(theme==="moon"){
-
-    for(
-      let i=0;
-      i<80;
-      i++
+    if(
+        theme==="dragon"
     ){
 
-      objects.push({
+        for(
+            let i=0;
+            i<150;
+            i++
+        ){
 
-        type:"moonStar",
+            objects.push({
 
-        x:
-          Math.random()*w,
+                type:"ember",
 
-        y:
-          Math.random()*h*.65,
+                x:
+                    Math.random()*w,
 
-        size:
-          .5+
-          Math.random()*1.5,
+                y:
+                    Math.random()*h,
 
-        phase:
-          Math.random()*10
+                speed:
+                    1+
+                    Math.random()*3,
 
-      });
+                size:
+                    1+
+                    Math.random()*3
+
+            });
+
+        }
 
     }
 
-  }
 
+    /* MOON */
 
-  /* NIGHT CITY */
-
-  if(theme==="night"){
-
-    for(
-      let i=0;
-      i<180;
-      i++
+    if(
+        theme==="moon"
     ){
 
-      objects.push({
+        for(
+            let i=0;
+            i<120;
+            i++
+        ){
 
-        type:"cityLight",
+            objects.push({
 
-        x:
-          Math.random()*w,
+                type:"moonstar",
 
-        y:
-          h*.48+
-          Math.random()*h*.42,
+                x:
+                    Math.random()*w,
 
-        size:
-          1+
-          Math.random()*3,
+                y:
+                    Math.random()*h*.65,
 
-        speed:
-          .2+
-          Math.random()*1
+                size:
+                    .5+
+                    Math.random()*1.5,
 
-      });
+                phase:
+                    Math.random()*20
+
+            });
+
+        }
 
     }
 
-  }
 
+    /* NIGHT */
 
-  /* DAY */
-
-  if(theme==="day"){
-
-    for(
-      let i=0;
-      i<22;
-      i++
+    if(
+        theme==="night"
     ){
 
-      objects.push({
+        for(
+            let i=0;
+            i<160;
+            i++
+        ){
 
-        type:"cloud",
+            objects.push({
 
-        x:
-          Math.random()*w,
+                type:"citylight",
 
-        y:
-          70+
-          Math.random()*h*.35,
+                x:
+                    Math.random()*w,
 
-        size:
-          25+
-          Math.random()*70,
+                y:
+                    h*.47+
+                    Math.random()*h*.45,
 
-        speed:
-          .15+
-          Math.random()*.4
+                speed:
+                    .3+
+                    Math.random()*1.5,
 
-      });
+                size:
+                    1+
+                    Math.random()*3
+
+            });
+
+        }
 
     }
 
-  }
 
+    /* DAY */
 
-  /* SNOW */
-
-  if(theme==="snow"){
-
-    for(
-      let i=0;
-      i<500;
-      i++
+    if(
+        theme==="day"
     ){
 
-      objects.push({
+        for(
+            let i=0;
+            i<25;
+            i++
+        ){
 
-        type:"snow",
+            objects.push({
 
-        x:
-          Math.random()*w,
+                type:"cloud",
 
-        y:
-          Math.random()*h,
+                x:
+                    Math.random()*w,
 
-        size:
-          1+
-          Math.random()*4,
+                y:
+                    70+
+                    Math.random()*h*.30,
 
-        speed:
-          .8+
-          Math.random()*2,
+                size:
+                    20+
+                    Math.random()*70,
 
-        drift:
-          Math.random()*.7
+                speed:
+                    .1+
+                    Math.random()*.45
 
-      });
+            });
+
+        }
 
     }
-
-  }
 
 }
 
 
 /* =========================================================
-   DRAW OCEAN
+   OCEAN
 ========================================================= */
 
 function drawOcean(){
 
-  const w =
-    window.innerWidth;
+    const w =
+        innerWidth;
 
-  const h =
-    window.innerHeight;
+    const h =
+        innerHeight;
 
 
-  const gradient =
-    themeCtx.createLinearGradient(
-      0,
-      0,
-      0,
-      h
+    const gradient =
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            h
+        );
+
+    gradient.addColorStop(
+        0,
+        "#0b3b58"
     );
 
-  gradient.addColorStop(
-    0,
-    "#092f4a"
-  );
+    gradient.addColorStop(
+        .50,
+        "#07516e"
+    );
 
-  gradient.addColorStop(
-    .45,
-    "#063b57"
-  );
+    gradient.addColorStop(
+        1,
+        "#00141e"
+    );
 
-  gradient.addColorStop(
-    1,
-    "#00131e"
-  );
+    ctx.fillStyle =
+        gradient;
 
-  themeCtx.fillStyle =
-    gradient;
-
-  themeCtx.fillRect(
-    0,
-    0,
-    w,
-    h
-  );
+    ctx.fillRect(
+        0,
+        0,
+        w,
+        h
+    );
 
 
-  /* moon/sun reflection */
+    /* sun reflection */
 
-  themeCtx.fillStyle =
-    "rgba(130,235,255,.13)";
+    ctx.fillStyle =
+        "rgba(180,240,255,.13)";
 
-  themeCtx.beginPath();
+    ctx.beginPath();
 
-  themeCtx.arc(
-    w*.72,
-    h*.22,
-    100,
-    0,
-    Math.PI*2
-  );
+    ctx.arc(
+        w*.75,
+        h*.21,
+        115,
+        0,
+        Math.PI*2
+    );
 
-  themeCtx.fill();
-
-
-  /* horizon */
-
-  themeCtx.fillStyle =
-    "rgba(0,0,0,.32)";
-
-  themeCtx.fillRect(
-    0,
-    h*.52,
-    w,
-    h*.48
-  );
+    ctx.fill();
 
 
-  objects.forEach(o=>{
+    /* water */
 
-    if(o.type!=="wave")
-      return;
+    ctx.fillStyle =
+        "rgba(0,0,0,.30)";
 
-    themeCtx.beginPath();
+    ctx.fillRect(
+        0,
+        h*.50,
+        w,
+        h*.50
+    );
 
-    for(
-      let x=0;
-      x<=w;
-      x+=12
-    ){
 
-      const y =
-        o.y+
-        Math.sin(
-          x*.012+
-          themeTime*
-          o.speed+
-          o.phase
-        )*
-        o.amp;
+    objects.forEach(
+        wave=>{
 
-      themeCtx.lineTo(
-        x,
-        y
-      );
+            if(
+                wave.type!=="wave"
+            )
+                return;
 
-    }
 
-    themeCtx.strokeStyle =
-      "rgba(150,235,255,.14)";
+            ctx.beginPath();
 
-    themeCtx.lineWidth=
-      1.2;
 
-    themeCtx.stroke();
+            for(
+                let x=0;
+                x<=w;
+                x+=12
+            ){
 
-  });
+                const y =
+                    wave.y+
+                    Math.sin(
+                        x*.012+
+                        time*
+                        wave.speed+
+                        wave.phase
+                    )*
+                    wave.amp;
+
+                ctx.lineTo(
+                    x,
+                    y
+                );
+
+            }
+
+
+            ctx.strokeStyle =
+                "rgba(160,245,255,.16)";
+
+            ctx.lineWidth=1.2;
+
+            ctx.stroke();
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   DRAW FOREST
+   FOREST
 ========================================================= */
 
 function drawForest(){
 
-  const w =
-    window.innerWidth;
+    const w=
+        innerWidth;
 
-  const h =
-    window.innerHeight;
+    const h=
+        innerHeight;
 
 
-  const gradient =
-    themeCtx.createLinearGradient(
-      0,
-      0,
-      0,
-      h
+    const gradient=
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            h
+        );
+
+    gradient.addColorStop(
+        0,
+        "#082117"
     );
 
-  gradient.addColorStop(
-    0,
-    "#071d17"
-  );
-
-  gradient.addColorStop(
-    .55,
-    "#0b3826"
-  );
-
-  gradient.addColorStop(
-    1,
-    "#03150e"
-  );
-
-  themeCtx.fillStyle =
-    gradient;
-
-  themeCtx.fillRect(
-    0,
-    0,
-    w,
-    h
-  );
-
-
-  /* fog */
-
-  const fog =
-    themeCtx.createRadialGradient(
-      w*.5,
-      h*.55,
-      30,
-      w*.5,
-      h*.55,
-      500
+    gradient.addColorStop(
+        .60,
+        "#0a482c"
     );
 
-  fog.addColorStop(
-    0,
-    "rgba(220,255,235,.10)"
-  );
+    gradient.addColorStop(
+        1,
+        "#03150c"
+    );
 
-  fog.addColorStop(
-    1,
-    "transparent"
-  );
+    ctx.fillStyle=
+        gradient;
 
-  themeCtx.fillStyle =
-    fog;
-
-  themeCtx.fillRect(
-    0,
-    0,
-    w,
-    h
-  );
-
-
-  /* trees */
-
-  objects.forEach(o=>{
-
-    if(o.type!=="tree")
-      return;
-
-
-    const s =
-      o.size*100;
-
-    const trunk =
-      s*.12;
-
-
-    themeCtx.fillStyle =
-      "#3b281b";
-
-    themeCtx.fillRect(
-      o.x-trunk/2,
-      o.y-s,
-      trunk,
-      s
+    ctx.fillRect(
+        0,
+        0,
+        w,
+        h
     );
 
 
-    themeCtx.fillStyle =
-      o.depth>.5
-      ? "#0b4f2c"
-      : "#126b39";
+    /* trees */
+
+    objects.forEach(
+        tree=>{
+
+            if(
+                tree.type!=="tree"
+            )
+                return;
 
 
-    themeCtx.beginPath();
+            const size =
+                tree.size*100;
 
-    themeCtx.arc(
-      o.x,
-      o.y-s*.82,
-      s*.42,
-      0,
-      Math.PI*2
+
+            ctx.fillStyle =
+                "#3d291b";
+
+            ctx.fillRect(
+                tree.x-6,
+                tree.y-size,
+                12,
+                size
+            );
+
+
+            ctx.fillStyle =
+                tree.depth>.5
+                ? "#0b4d2d"
+                : "#126f3c";
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                tree.x,
+                tree.y-size*.80,
+                size*.42,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                tree.x-size*.25,
+                tree.y-size*.65,
+                size*.30,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                tree.x+size*.25,
+                tree.y-size*.63,
+                size*.30,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+        }
     );
 
-    themeCtx.fill();
+
+    /* fireflies */
+
+    objects.forEach(
+        fly=>{
+
+            if(
+                fly.type!=="firefly"
+            )
+                return;
 
 
-    themeCtx.beginPath();
+            const glow =
+                .4+
+                .6*
+                Math.abs(
+                    Math.sin(
+                        time*
+                        fly.speed+
+                        fly.phase
+                    )
+                );
 
-    themeCtx.arc(
-      o.x-s*.25,
-      o.y-s*.65,
-      s*.31,
-      0,
-      Math.PI*2
+
+            ctx.fillStyle =
+                `rgba(190,255,120,${glow})`;
+
+            ctx.shadowBlur=18;
+
+            ctx.shadowColor="#aaff70";
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                fly.x,
+                fly.y+
+                Math.sin(time)*3,
+                2,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+            ctx.shadowBlur=0;
+
+        }
     );
 
-    themeCtx.fill();
 
+    /* mist */
 
-    themeCtx.beginPath();
+    const fog =
+        ctx.createRadialGradient(
+            w*.5,
+            h*.55,
+            20,
+            w*.5,
+            h*.55,
+            470
+        );
 
-    themeCtx.arc(
-      o.x+s*.25,
-      o.y-s*.63,
-      s*.30,
-      0,
-      Math.PI*2
+    fog.addColorStop(
+        0,
+        "rgba(225,255,235,.10)"
     );
 
-    themeCtx.fill();
-
-  });
-
-
-  /* fireflies */
-
-  objects.forEach(o=>{
-
-    if(o.type!=="firefly")
-      return;
-
-    const glow =
-      .5+
-      .5*
-      Math.sin(
-        themeTime*o.speed+
-        o.phase
-      );
-
-    themeCtx.fillStyle =
-      `rgba(190,255,115,${glow})`;
-
-    themeCtx.shadowBlur =
-      18;
-
-    themeCtx.shadowColor =
-      "#aaff66";
-
-    themeCtx.beginPath();
-
-    themeCtx.arc(
-      o.x,
-      o.y+
-        Math.sin(
-          themeTime
-        )*3,
-      2,
-      0,
-      Math.PI*2
+    fog.addColorStop(
+        1,
+        "transparent"
     );
 
-    themeCtx.fill();
+    ctx.fillStyle=
+        fog;
 
-    themeCtx.shadowBlur=0;
-
-  });
+    ctx.fillRect(
+        0,
+        0,
+        w,
+        h
+    );
 
 }
 
 
 /* =========================================================
-   DRAW DRAGON
+   DRAGON
 ========================================================= */
 
 function drawDragon(){
 
-  const w =
-    window.innerWidth;
+    const w=
+        innerWidth;
 
-  const h =
-    window.innerHeight;
+    const h=
+        innerHeight;
 
 
-  const gradient =
-    themeCtx.createLinearGradient(
-      0,
-      0,
-      0,
-      h
+    const gradient=
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            h
+        );
+
+    gradient.addColorStop(
+        0,
+        "#050103"
     );
 
-  gradient.addColorStop(
-    0,
-    "#080104"
-  );
-
-  gradient.addColorStop(
-    .5,
-    "#260708"
-  );
-
-  gradient.addColorStop(
-    1,
-    "#050000"
-  );
-
-  themeCtx.fillStyle =
-    gradient;
-
-  themeCtx.fillRect(
-    0,
-    0,
-    w,
-    h
-  );
-
-
-  /* red moon */
-
-  themeCtx.fillStyle =
-    "rgba(255,64,48,.18)";
-
-  themeCtx.beginPath();
-
-  themeCtx.arc(
-    w*.74,
-    h*.26,
-    120,
-    0,
-    Math.PI*2
-  );
-
-  themeCtx.fill();
-
-
-  /* mountains */
-
-  themeCtx.fillStyle =
-    "#100406";
-
-  themeCtx.beginPath();
-
-  themeCtx.moveTo(
-    0,
-    h*.82
-  );
-
-  themeCtx.lineTo(
-    w*.20,
-    h*.55
-  );
-
-  themeCtx.lineTo(
-    w*.35,
-    h*.78
-  );
-
-  themeCtx.lineTo(
-    w*.55,
-    h*.48
-  );
-
-  themeCtx.lineTo(
-    w*.75,
-    h*.76
-  );
-
-  themeCtx.lineTo(
-    w*.90,
-    h*.56
-  );
-
-  themeCtx.lineTo(
-    w,
-    h*.80
-  );
-
-  themeCtx.lineTo(
-    w,
-    h
-  );
-
-  themeCtx.lineTo(
-    0,
-    h
-  );
-
-  themeCtx.closePath();
-
-  themeCtx.fill();
-
-
-  /* dragon silhouette */
-
-  const dx =
-    w*.58;
-
-  const dy =
-    h*.42;
-
-  themeCtx.fillStyle =
-    "#010101";
-
-  themeCtx.beginPath();
-
-  themeCtx.ellipse(
-    dx,
-    dy,
-    110,
-    46,
-    0,
-    0,
-    Math.PI*2
-  );
-
-  themeCtx.fill();
-
-
-  /* wings */
-
-  themeCtx.beginPath();
-
-  themeCtx.moveTo(
-    dx-45,
-    dy-15
-  );
-
-  themeCtx.quadraticCurveTo(
-    dx-170,
-    dy-150,
-    dx-15,
-    dy-50
-  );
-
-  themeCtx.lineTo(
-    dx-45,
-    dy+20
-  );
-
-  themeCtx.fill();
-
-
-  themeCtx.beginPath();
-
-  themeCtx.moveTo(
-    dx+45,
-    dy-15
-  );
-
-  themeCtx.quadraticCurveTo(
-    dx+170,
-    dy-150,
-    dx+15,
-    dy-50
-  );
-
-  themeCtx.lineTo(
-    dx+45,
-    dy+20
-  );
-
-  themeCtx.fill();
-
-
-  /* head */
-
-  themeCtx.beginPath();
-
-  themeCtx.arc(
-    dx+105,
-    dy-10,
-    27,
-    0,
-    Math.PI*2
-  );
-
-  themeCtx.fill();
-
-
-  /* tail */
-
-  themeCtx.beginPath();
-
-  themeCtx.moveTo(
-    dx-90,
-    dy+20
-  );
-
-  themeCtx.quadraticCurveTo(
-    dx-230,
-    dy+90+
-      Math.sin(themeTime)*10,
-    dx-180,
-    dy+135
-  );
-
-  themeCtx.lineWidth=
-    12;
-
-  themeCtx.strokeStyle=
-    "#010101";
-
-  themeCtx.stroke();
-
-
-  /* fire particles */
-
-  objects.forEach(o=>{
-
-    if(o.type!=="ember")
-      return;
-
-    o.y-=o.speed;
-
-    o.x+=
-      Math.sin(
-        themeTime+
-        o.y*.02
-      )*.6;
-
-    if(o.y<0){
-      o.y=h;
-      o.x=Math.random()*w;
-    }
-
-    themeCtx.fillStyle=
-      `rgba(255,${80+Math.random()*100},20,.${Math.max(.2,o.alpha||.6)})`;
-
-    themeCtx.beginPath();
-
-    themeCtx.arc(
-      o.x,
-      o.y,
-      o.size,
-      0,
-      Math.PI*2
+    gradient.addColorStop(
+        .55,
+        "#270608"
     );
 
-    themeCtx.fill();
+    gradient.addColorStop(
+        1,
+        "#040000"
+    );
 
-  });
+    ctx.fillStyle=
+        gradient;
+
+    ctx.fillRect(
+        0,
+        0,
+        w,
+        h
+    );
+
+
+    /* red moon */
+
+    ctx.fillStyle=
+        "rgba(255,70,55,.18)";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        w*.74,
+        h*.24,
+        130,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+
+
+    /* mountains */
+
+    ctx.fillStyle=
+        "#110405";
+
+    ctx.beginPath();
+
+    ctx.moveTo(0,h*.82);
+    ctx.lineTo(w*.16,h*.56);
+    ctx.lineTo(w*.33,h*.79);
+    ctx.lineTo(w*.52,h*.47);
+    ctx.lineTo(w*.73,h*.76);
+    ctx.lineTo(w*.88,h*.55);
+    ctx.lineTo(w,h*.80);
+    ctx.lineTo(w,h);
+    ctx.lineTo(0,h);
+    ctx.closePath();
+
+    ctx.fill();
+
+
+    /* dragon */
+
+    const dx =
+        w*.56;
+
+    const dy =
+        h*.42;
+
+
+    ctx.fillStyle="#000";
+
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        dx,
+        dy,
+        115,
+        48,
+        0,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+
+
+    /* wings */
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        dx-35,
+        dy-15
+    );
+
+    ctx.quadraticCurveTo(
+        dx-175,
+        dy-165,
+        dx-10,
+        dy-48
+    );
+
+    ctx.lineTo(
+        dx-35,
+        dy+20
+    );
+
+    ctx.fill();
+
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        dx+35,
+        dy-15
+    );
+
+    ctx.quadraticCurveTo(
+        dx+175,
+        dy-165,
+        dx+10,
+        dy-48
+    );
+
+    ctx.lineTo(
+        dx+35,
+        dy+20
+    );
+
+    ctx.fill();
+
+
+    /* head */
+
+    ctx.beginPath();
+
+    ctx.arc(
+        dx+112,
+        dy-8,
+        28,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+
+
+    /* tail */
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        dx-95,
+        dy+20
+    );
+
+    ctx.quadraticCurveTo(
+        dx-240,
+        dy+90+
+        Math.sin(time)*10,
+        dx-170,
+        dy+135
+    );
+
+    ctx.strokeStyle="#000";
+
+    ctx.lineWidth=13;
+
+    ctx.stroke();
+
+
+    /* fire particles */
+
+    objects.forEach(
+        ember=>{
+
+            if(
+                ember.type!=="ember"
+            )
+                return;
+
+
+            ember.y -=
+                ember.speed;
+
+            ember.x +=
+                Math.sin(
+                    time+
+                    ember.y*.02
+                )*.7;
+
+
+            if(
+                ember.y<0
+            ){
+
+                ember.y=h;
+
+                ember.x=
+                    Math.random()*w;
+
+            }
+
+
+            ctx.fillStyle =
+                `rgba(255,${80+Math.random()*90},25,.76)`;
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                ember.x,
+                ember.y,
+                ember.size,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   DRAW GALAXY
+   GALAXY
 ========================================================= */
 
 function drawGalaxy(){
 
-  const w =
-    window.innerWidth;
+    const w=
+        innerWidth;
 
-  const h =
-    window.innerHeight;
+    const h=
+        innerHeight;
 
-  const cx =
-    w/2;
+    const cx=
+        w/2;
 
-  const cy =
-    h/2;
+    const cy=
+        h/2;
 
 
-  const gradient =
-    themeCtx.createRadialGradient(
-      cx,
-      cy,
-      10,
-      cx,
-      cy,
-      Math.max(w,h)*.65
+    const gradient=
+        ctx.createRadialGradient(
+            cx,
+            cy,
+            0,
+            cx,
+            cy,
+            Math.max(w,h)*.72
+        );
+
+
+    gradient.addColorStop(
+        0,
+        "#11001f"
     );
 
-  gradient.addColorStop(
-    0,
-    "#07000e"
-  );
-
-  gradient.addColorStop(
-    .45,
-    "#17003f"
-  );
-
-  gradient.addColorStop(
-    .75,
-    "#03000a"
-  );
-
-  gradient.addColorStop(
-    1,
-    "#000"
-  );
-
-  themeCtx.fillStyle =
-    gradient;
-
-  themeCtx.fillRect(
-    0,
-    0,
-    w,
-    h
-  );
-
-
-  /* nebula */
-
-  const nebula =
-    themeCtx.createRadialGradient(
-      w*.3,
-      h*.4,
-      10,
-      w*.3,
-      h*.4,
-      400
+    gradient.addColorStop(
+        .45,
+        "#210052"
     );
 
-  nebula.addColorStop(
-    0,
-    "rgba(150,70,255,.25)"
-  );
-
-  nebula.addColorStop(
-    .4,
-    "rgba(40,170,255,.11)"
-  );
-
-  nebula.addColorStop(
-    1,
-    "transparent"
-  );
-
-  themeCtx.fillStyle=
-    nebula;
-
-  themeCtx.fillRect(
-    0,
-    0,
-    w,
-    h
-  );
-
-
-  /* stars */
-
-  objects.forEach(o=>{
-
-    if(o.type!=="star")
-      return;
-
-    o.angle+=o.speed;
-
-    const x =
-      cx+
-      Math.cos(o.angle)*
-      o.radius;
-
-    const y =
-      cy+
-      Math.sin(o.angle)*
-      o.radius*
-      .58;
-
-
-    themeCtx.fillStyle =
-      `rgba(200,235,255,${o.alpha})`;
-
-    themeCtx.beginPath();
-
-    themeCtx.arc(
-      x,
-      y,
-      o.size,
-      0,
-      Math.PI*2
+    gradient.addColorStop(
+        .78,
+        "#06000f"
     );
 
-    themeCtx.fill();
-
-  });
-
-
-  /* accretion ring */
-
-  themeCtx.save();
-
-  themeCtx.translate(
-    cx,
-    cy
-  );
-
-  themeCtx.rotate(
-    -.22
-  );
-
-  themeCtx.strokeStyle =
-    "rgba(255,150,55,.65)";
-
-  themeCtx.lineWidth=14;
-
-  themeCtx.beginPath();
-
-  themeCtx.ellipse(
-    0,
-    0,
-    185,
-    52,
-    0,
-    0,
-    Math.PI*2
-  );
-
-  themeCtx.stroke();
+    gradient.addColorStop(
+        1,
+        "#000"
+    );
 
 
-  themeCtx.strokeStyle =
-    "rgba(120,80,255,.55)";
+    ctx.fillStyle=
+        gradient;
 
-  themeCtx.lineWidth=8;
-
-  themeCtx.beginPath();
-
-  themeCtx.ellipse(
-    0,
-    0,
-    230,
-    68,
-    0,
-    0,
-    Math.PI*2
-  );
-
-  themeCtx.stroke();
-
-  themeCtx.restore();
+    ctx.fillRect(
+        0,
+        0,
+        w,
+        h
+    );
 
 
-  /* black hole */
+    /* nebula */
 
-  themeCtx.fillStyle="#000";
+    const nebula=
+        ctx.createRadialGradient(
+            w*.3,
+            h*.36,
+            10,
+            w*.3,
+            h*.36,
+            450
+        );
 
-  themeCtx.beginPath();
+    nebula.addColorStop(
+        0,
+        "rgba(160,75,255,.28)"
+    );
 
-  themeCtx.arc(
-    cx,
-    cy,
-    86,
-    0,
-    Math.PI*2
-  );
+    nebula.addColorStop(
+        .4,
+        "rgba(45,170,255,.12)"
+    );
 
-  themeCtx.fill();
+    nebula.addColorStop(
+        1,
+        "transparent"
+    );
+
+
+    ctx.fillStyle=
+        nebula;
+
+    ctx.fillRect(
+        0,
+        0,
+        w,
+        h
+    );
+
+
+    /* stars */
+
+    objects.forEach(
+        star=>{
+
+            if(
+                star.type!=="star"
+            )
+                return;
+
+
+            star.angle +=
+                star.speed;
+
+
+            const x=
+                cx+
+                Math.cos(
+                    star.angle
+                )*
+                star.radius;
+
+
+            const y=
+                cy+
+                Math.sin(
+                    star.angle
+                )*
+                star.radius*
+                .58;
+
+
+            ctx.fillStyle=
+                `rgba(200,235,255,${star.alpha})`;
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                x,
+                y,
+                star.size,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+        }
+    );
+
+
+    /* accretion ring */
+
+    ctx.save();
+
+    ctx.translate(
+        cx,
+        cy
+    );
+
+    ctx.rotate(
+        -.23
+    );
+
+
+    ctx.strokeStyle=
+        "rgba(255,145,50,.65)";
+
+    ctx.lineWidth=
+        13;
+
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        0,
+        0,
+        185,
+        52,
+        0,
+        0,
+        Math.PI*2
+    );
+
+    ctx.stroke();
+
+
+    ctx.strokeStyle=
+        "rgba(125,85,255,.60)";
+
+    ctx.lineWidth=
+        7;
+
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        0,
+        0,
+        230,
+        68,
+        0,
+        0,
+        Math.PI*2
+    );
+
+    ctx.stroke();
+
+
+    ctx.restore();
+
+
+    /* black hole */
+
+    ctx.fillStyle=
+        "#000";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        cx,
+        cy,
+        87,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
 
 }
 
 
 /* =========================================================
-   DRAW MOON
+   MOON
 ========================================================= */
 
 function drawMoon(){
 
-  const w =
-    window.innerWidth;
+    const w=
+        innerWidth;
 
-  const h =
-    window.innerHeight;
+    const h=
+        innerHeight;
 
 
-  const gradient =
-    themeCtx.createLinearGradient(
-      0,
-      0,
-      0,
-      h
+    const gradient=
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            h
+        );
+
+    gradient.addColorStop(
+        0,
+        "#071743"
     );
 
-  gradient.addColorStop(
-    0,
-    "#06133a"
-  );
-
-  gradient.addColorStop(
-    1,
-    "#02050d"
-  );
-
-  themeCtx.fillStyle=
-    gradient;
-
-  themeCtx.fillRect(
-    0,
-    0,
-    w,
-    h
-  );
-
-
-  /* stars */
-
-  objects.forEach(o=>{
-
-    if(
-      o.type!=="moonStar"
-    )
-      return;
-
-    const a =
-      .3+
-      .7*
-      Math.abs(
-        Math.sin(
-          themeTime+
-          o.phase
-        )
-      );
-
-    themeCtx.fillStyle=
-      `rgba(255,255,255,${a})`;
-
-    themeCtx.beginPath();
-
-    themeCtx.arc(
-      o.x,
-      o.y,
-      o.size,
-      0,
-      Math.PI*2
+    gradient.addColorStop(
+        1,
+        "#02050f"
     );
 
-    themeCtx.fill();
+    ctx.fillStyle=
+        gradient;
 
-  });
-
-
-  /* moon */
-
-  const mx =
-    w*.73;
-
-  const my =
-    h*.22;
-
-  const radius=100;
-
-
-  themeCtx.shadowBlur=
-    45;
-
-  themeCtx.shadowColor=
-    "rgba(230,240,255,.55)";
-
-  themeCtx.fillStyle=
-    "#eef4ff";
-
-  themeCtx.beginPath();
-
-  themeCtx.arc(
-    mx,
-    my,
-    radius,
-    0,
-    Math.PI*2
-  );
-
-  themeCtx.fill();
-
-  themeCtx.shadowBlur=0;
-
-
-  /* moon shadow */
-
-  themeCtx.fillStyle=
-    "#06133a";
-
-  themeCtx.beginPath();
-
-  themeCtx.arc(
-    mx+35,
-    my-5,
-    radius,
-    0,
-    Math.PI*2
-  );
-
-  themeCtx.fill();
-
-
-  /* clouds */
-
-  themeCtx.fillStyle=
-    "rgba(255,255,255,.045)";
-
-  for(
-    let i=0;
-    i<5;
-    i++
-  ){
-
-    const x =
-      ((themeTime*18+
-        i*270)%
-        (w+400))-200;
-
-    themeCtx.beginPath();
-
-    themeCtx.ellipse(
-      x,
-      h*.65+i*22,
-      170,
-      35,
-      0,
-      0,
-      Math.PI*2
+    ctx.fillRect(
+        0,
+        0,
+        w,
+        h
     );
 
-    themeCtx.fill();
 
-  }
+    /* stars */
+
+    objects.forEach(
+        star=>{
+
+            if(
+                star.type!=="moonstar"
+            )
+                return;
+
+
+            const glow=
+                .35+
+                .65*
+                Math.abs(
+                    Math.sin(
+                        time+
+                        star.phase
+                    )
+                );
+
+
+            ctx.fillStyle=
+                `rgba(255,255,255,${glow})`;
+
+            ctx.beginPath();
+
+            ctx.arc(
+                star.x,
+                star.y,
+                star.size,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+        }
+    );
+
+
+    /* moon */
+
+    const mx=
+        w*.73;
+
+    const my=
+        h*.23;
+
+    const radius=
+        105;
+
+
+    ctx.shadowBlur=
+        55;
+
+    ctx.shadowColor=
+        "rgba(235,245,255,.52)";
+
+    ctx.fillStyle=
+        "#eef4ff";
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        mx,
+        my,
+        radius,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+
+
+    ctx.shadowBlur=0;
+
+
+    ctx.fillStyle=
+        "#071743";
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        mx+38,
+        my-4,
+        radius,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
 
 }
 
 
 /* =========================================================
-   DRAW NIGHT CITY
+   NIGHT
 ========================================================= */
 
 function drawNight(){
 
-  const w =
-    window.innerWidth;
+    const w=
+        innerWidth;
 
-  const h =
-    window.innerHeight;
+    const h=
+        innerHeight;
 
 
-  const gradient=
-    themeCtx.createLinearGradient(
-      0,
-      0,
-      0,
-      h
+    const gradient=
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            h
+        );
+
+    gradient.addColorStop(
+        0,
+        "#07103d"
     );
 
-  gradient.addColorStop(
-    0,
-    "#050a27"
-  );
-
-  gradient.addColorStop(
-    1,
-    "#010204"
-  );
-
-  themeCtx.fillStyle=
-    gradient;
-
-  themeCtx.fillRect(
-    0,
-    0,
-    w,
-    h
-  );
-
-
-  /* skyline */
-
-  let x=0;
-
-  while(
-    x<w
-  ){
-
-    const bw =
-      35+
-      Math.random()*65;
-
-    const bh =
-      80+
-      Math.random()*230;
-
-    themeCtx.fillStyle=
-      "#05080d";
-
-    themeCtx.fillRect(
-      x,
-      h*.75-bh,
-      bw,
-      bh
+    gradient.addColorStop(
+        1,
+        "#010307"
     );
 
-    x+=bw+8;
 
-  }
+    ctx.fillStyle=
+        gradient;
 
-
-  /* moving lights */
-
-  objects.forEach(o=>{
-
-    if(
-      o.type!=="cityLight"
-    )
-      return;
-
-    o.x+=o.speed;
-
-    if(o.x>w)
-      o.x=0;
-
-    const glow =
-      .4+
-      .6*
-      Math.abs(
-        Math.sin(
-          themeTime+
-          o.x
-        )
-      );
-
-    themeCtx.fillStyle=
-      `rgba(255,218,105,${glow})`;
-
-    themeCtx.shadowBlur=
-      10;
-
-    themeCtx.shadowColor=
-      "#ffd86b";
-
-    themeCtx.fillRect(
-      o.x,
-      o.y,
-      o.size,
-      o.size
+    ctx.fillRect(
+        0,
+        0,
+        w,
+        h
     );
 
-    themeCtx.shadowBlur=0;
 
-  });
+    /* skyline */
+
+    let x=0;
+
+
+    while(
+        x<w
+    ){
+
+        const width=
+            32+
+            Math.random()*55;
+
+        const height=
+            80+
+            Math.random()*240;
+
+
+        ctx.fillStyle=
+            "#05080e";
+
+
+        ctx.fillRect(
+            x,
+            h*.78-height,
+            width,
+            height
+        );
+
+
+        x +=
+            width+7;
+
+    }
+
+
+    /* city lights */
+
+    objects.forEach(
+        light=>{
+
+            if(
+                light.type!=="citylight"
+            )
+                return;
+
+
+            light.x +=
+                light.speed;
+
+
+            if(
+                light.x>w
+            )
+                light.x=0;
+
+
+            ctx.fillStyle=
+                "rgba(255,220,105,.30)";
+
+
+            ctx.shadowBlur=
+                10;
+
+            ctx.shadowColor=
+                "#ffd96a";
+
+
+            ctx.fillRect(
+                light.x,
+                light.y,
+                light.size,
+                light.size
+            );
+
+
+            ctx.shadowBlur=0;
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   DRAW DAY
+   DAY
 ========================================================= */
 
 function drawDay(){
 
-  const w =
-    window.innerWidth;
+    const w=
+        innerWidth;
 
-  const h =
-    window.innerHeight;
+    const h=
+        innerHeight;
 
 
-  const gradient=
-    themeCtx.createLinearGradient(
-      0,
-      0,
-      0,
-      h
+    const gradient=
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            h
+        );
+
+    gradient.addColorStop(
+        0,
+        "#5ac5f4"
     );
 
-  gradient.addColorStop(
-    0,
-    "#4ab8ef"
-  );
-
-  gradient.addColorStop(
-    .6,
-    "#ccefff"
-  );
-
-  gradient.addColorStop(
-    1,
-    "#3f9968"
-  );
-
-  themeCtx.fillStyle=
-    gradient;
-
-  themeCtx.fillRect(
-    0,
-    0,
-    w,
-    h
-  );
-
-
-  /* sun */
-
-  themeCtx.shadowBlur=
-    55;
-
-  themeCtx.shadowColor=
-    "#fff2a0";
-
-  themeCtx.fillStyle=
-    "#fff1a0";
-
-  themeCtx.beginPath();
-
-  themeCtx.arc(
-    w*.75,
-    h*.20,
-    75,
-    0,
-    Math.PI*2
-  );
-
-  themeCtx.fill();
-
-  themeCtx.shadowBlur=0;
-
-
-  /* clouds */
-
-  objects.forEach(o=>{
-
-    if(
-      o.type!=="cloud"
-    )
-      return;
-
-    o.x+=o.speed;
-
-    if(o.x>w+150)
-      o.x=-150;
-
-    themeCtx.fillStyle=
-      "rgba(255,255,255,.65)";
-
-    themeCtx.beginPath();
-
-    themeCtx.arc(
-      o.x,
-      o.y,
-      o.size,
-      0,
-      Math.PI*2
+    gradient.addColorStop(
+        .60,
+        "#e3fbff"
     );
 
-    themeCtx.arc(
-      o.x+o.size*.8,
-      o.y+10,
-      o.size*.72,
-      0,
-      Math.PI*2
+    gradient.addColorStop(
+        1,
+        "#459b68"
     );
 
-    themeCtx.arc(
-      o.x-o.size*.7,
-      o.y+12,
-      o.size*.65,
-      0,
-      Math.PI*2
+
+    ctx.fillStyle=
+        gradient;
+
+    ctx.fillRect(
+        0,
+        0,
+        w,
+        h
     );
 
-    themeCtx.fill();
 
-  });
+    /* sun */
+
+    ctx.shadowBlur=
+        60;
+
+    ctx.shadowColor=
+        "#fff0a0";
+
+    ctx.fillStyle=
+        "#fff0a0";
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        w*.75,
+        h*.19,
+        80,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+
+    ctx.shadowBlur=0;
+
+
+    /* clouds */
+
+    objects.forEach(
+        cloud=>{
+
+            if(
+                cloud.type!=="cloud"
+            )
+                return;
+
+
+            cloud.x +=
+                cloud.speed;
+
+
+            if(
+                cloud.x>w+150
+            )
+                cloud.x=-150;
+
+
+            ctx.fillStyle=
+                "rgba(255,255,255,.62)";
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                cloud.x,
+                cloud.y,
+                cloud.size,
+                0,
+                Math.PI*2
+            );
+
+            ctx.arc(
+                cloud.x+
+                cloud.size*.8,
+                cloud.y+8,
+                cloud.size*.72,
+                0,
+                Math.PI*2
+            );
+
+            ctx.arc(
+                cloud.x-
+                cloud.size*.7,
+                cloud.y+12,
+                cloud.size*.65,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   DRAW SNOW
+   SNOW
 ========================================================= */
 
 function drawSnow(){
 
-  const w =
-    window.innerWidth;
+    const w=
+        innerWidth;
 
-  const h =
-    window.innerHeight;
+    const h=
+        innerHeight;
 
 
-  const gradient=
-    themeCtx.createLinearGradient(
-      0,
-      0,
-      0,
-      h
+    const gradient=
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            h
+        );
+
+    gradient.addColorStop(
+        0,
+        "#74c6e8"
     );
 
-  gradient.addColorStop(
-    0,
-    "#79c8ea"
-  );
-
-  gradient.addColorStop(
-    .6,
-    "#edfaff"
-  );
-
-  gradient.addColorStop(
-    1,
-    "#a9c9db"
-  );
-
-  themeCtx.fillStyle=
-    gradient;
-
-  themeCtx.fillRect(
-    0,
-    0,
-    w,
-    h
-  );
-
-
-  /* mountains */
-
-  themeCtx.fillStyle=
-    "rgba(255,255,255,.72)";
-
-  themeCtx.beginPath();
-
-  themeCtx.moveTo(
-    0,
-    h*.72
-  );
-
-  themeCtx.lineTo(
-    w*.18,
-    h*.43
-  );
-
-  themeCtx.lineTo(
-    w*.35,
-    h*.72
-  );
-
-  themeCtx.lineTo(
-    w*.55,
-    h*.38
-  );
-
-  themeCtx.lineTo(
-    w*.78,
-    h*.72
-  );
-
-  themeCtx.lineTo(
-    w,
-    h*.45
-  );
-
-  themeCtx.lineTo(
-    w,
-    h
-  );
-
-  themeCtx.lineTo(
-    0,
-    h
-  );
-
-  themeCtx.closePath();
-
-  themeCtx.fill();
-
-
-  /* snow */
-
-  objects.forEach(o=>{
-
-    if(
-      o.type!=="snow"
-    )
-      return;
-
-    o.y+=o.speed;
-
-    o.x+=
-      Math.sin(
-        themeTime+
-        o.y*.01
-      )*
-      o.drift;
-
-    if(o.y>h+10){
-
-      o.y=-10;
-
-      o.x=
-        Math.random()*w;
-
-    }
-
-    themeCtx.fillStyle=
-      "rgba(255,255,255,.9)";
-
-    themeCtx.beginPath();
-
-    themeCtx.arc(
-      o.x,
-      o.y,
-      o.size,
-      0,
-      Math.PI*2
+    gradient.addColorStop(
+        .55,
+        "#f2fcff"
     );
 
-    themeCtx.fill();
+    gradient.addColorStop(
+        1,
+        "#a7cada"
+    );
 
-  });
+
+    ctx.fillStyle=
+        gradient;
+
+    ctx.fillRect(
+        0,
+        0,
+        w,
+        h
+    );
+
+
+    /* mountains */
+
+    ctx.fillStyle=
+        "rgba(255,255,255,.80)";
+
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        0,
+        h*.72
+    );
+
+    ctx.lineTo(
+        w*.17,
+        h*.43
+    );
+
+    ctx.lineTo(
+        w*.35,
+        h*.72
+    );
+
+    ctx.lineTo(
+        w*.54,
+        h*.38
+    );
+
+    ctx.lineTo(
+        w*.77,
+        h*.72
+    );
+
+    ctx.lineTo(
+        w,
+        h*.46
+    );
+
+    ctx.lineTo(
+        w,
+        h
+    );
+
+    ctx.lineTo(
+        0,
+        h
+    );
+
+    ctx.closePath();
+
+    ctx.fill();
+
+
+    /* snowfall */
+
+    objects.forEach(
+        snow=>{
+
+            if(
+                snow.type!=="snow"
+            )
+                return;
+
+
+            snow.y +=
+                snow.speed;
+
+
+            snow.x +=
+                Math.sin(
+                    time+
+                    snow.y*.01
+                )*
+                snow.drift;
+
+
+            if(
+                snow.y>h+10
+            ){
+
+                snow.y=-10;
+
+                snow.x=
+                    Math.random()*w;
+
+            }
+
+
+            ctx.fillStyle=
+                "rgba(255,255,255,.94)";
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                snow.x,
+                snow.y,
+                snow.size,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   DRAW WALL
+   COLOR WALL
 ========================================================= */
 
 function drawWall(){
 
-  const w =
-    window.innerWidth;
+    const w=
+        innerWidth;
 
-  const h =
-    window.innerHeight;
-
-
-  const shift =
-    (themeTime*.025)%1;
+    const h=
+        innerHeight;
 
 
-  const gradient =
-    themeCtx.createLinearGradient(
-      0,
-      0,
-      w,
-      h
+    const shift=
+        (time*.018)%1;
+
+
+    const g=
+        ctx.createLinearGradient(
+            0,
+            0,
+            w,
+            h
+        );
+
+
+    g.addColorStop(
+        0,
+        `hsl(${(shift*360)%360},75%,60%)`
+    );
+
+    g.addColorStop(
+        .25,
+        `hsl(${((shift*360)+60)%360},65%,70%)`
+    );
+
+    g.addColorStop(
+        .5,
+        `hsl(${((shift*360)+130)%360},60%,66%)`
+    );
+
+    g.addColorStop(
+        .75,
+        `hsl(${((shift*360)+200)%360},65%,66%)`
+    );
+
+    g.addColorStop(
+        1,
+        `hsl(${((shift*360)+280)%360},70%,58%)`
     );
 
 
-  gradient.addColorStop(
-    0,
-    `hsl(${(shift*360)%360},68%,58%)`
-  );
+    ctx.fillStyle=g;
 
-  gradient.addColorStop(
-    .25,
-    `hsl(${((shift*360)+55)%360},55%,70%)`
-  );
-
-  gradient.addColorStop(
-    .5,
-    `hsl(${((shift*360)+120)%360},52%,68%)`
-  );
-
-  gradient.addColorStop(
-    .75,
-    `hsl(${((shift*360)+190)%360},60%,65%)`
-  );
-
-  gradient.addColorStop(
-    1,
-    `hsl(${((shift*360)+280)%360},65%,60%)`
-  );
-
-  themeCtx.fillStyle=
-    gradient;
-
-  themeCtx.fillRect(
-    0,
-    0,
-    w,
-    h
-  );
-
-
-  /* architectural panels */
-
-  themeCtx.strokeStyle=
-    "rgba(255,255,255,.18)";
-
-  themeCtx.lineWidth=1;
-
-  const size=100;
-
-  for(
-    let x=0;
-    x<w;
-    x+=size
-  ){
-
-    themeCtx.strokeRect(
-      x,
-      0,
-      size,
-      h
+    ctx.fillRect(
+        0,
+        0,
+        w,
+        h
     );
 
-  }
+
+    /* architectural panel lines */
+
+    ctx.strokeStyle=
+        "rgba(255,255,255,.16)";
+
+    ctx.lineWidth=1;
 
 
-  for(
-    let y=0;
-    y<h;
-    y+=size
-  ){
+    for(
+        let x=0;
+        x<w;
+        x+=120
+    ){
 
-    themeCtx.strokeRect(
-      0,
-      y,
-      w,
-      size
-    );
+        ctx.beginPath();
 
-  }
+        ctx.moveTo(
+            x,
+            0
+        );
+
+        ctx.lineTo(
+            x,
+            h
+        );
+
+        ctx.stroke();
+
+    }
+
+
+    for(
+        let y=0;
+        y<h;
+        y+=120
+    ){
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            0,
+            y
+        );
+
+        ctx.lineTo(
+            w,
+            y
+        );
+
+        ctx.stroke();
+
+    }
 
 }
 
 
 /* =========================================================
-   RENDER LOOP
+   RENDER THEME
 ========================================================= */
 
 function renderTheme(){
 
-  themeTime+=.016;
+    time +=
+        .016;
 
 
-  themeCtx.clearRect(
-    0,
-    0,
-    window.innerWidth,
-    window.innerHeight
-  );
-
-
-  if(activeTheme==="ocean")
-    drawOcean();
-
-  else if(activeTheme==="forest")
-    drawForest();
-
-  else if(activeTheme==="dragon")
-    drawDragon();
-
-  else if(activeTheme==="galaxy")
-    drawGalaxy();
-
-  else if(activeTheme==="moon")
-    drawMoon();
-
-  else if(activeTheme==="night")
-    drawNight();
-
-  else if(activeTheme==="day")
-    drawDay();
-
-  else if(activeTheme==="snow")
-    drawSnow();
-
-  else if(activeTheme==="wall")
-    drawWall();
-
-
-  animationId =
-    requestAnimationFrame(
-      renderTheme
+    ctx.clearRect(
+        0,
+        0,
+        innerWidth,
+        innerHeight
     );
+
+
+    switch(
+        currentTheme
+    ){
+
+        case "ocean":
+            drawOcean();
+            break;
+
+        case "forest":
+            drawForest();
+            break;
+
+        case "dragon":
+            drawDragon();
+            break;
+
+        case "galaxy":
+            drawGalaxy();
+            break;
+
+        case "moon":
+            drawMoon();
+            break;
+
+        case "night":
+            drawNight();
+            break;
+
+        case "day":
+            drawDay();
+            break;
+
+        case "snow":
+            drawSnow();
+            break;
+
+        case "wall":
+            drawWall();
+            break;
+
+    }
+
+
+    animationFrame =
+        requestAnimationFrame(
+            renderTheme
+        );
 
 }
 
 
 /* =========================================================
-   START THEME
+   OPEN THEME
 ========================================================= */
 
-function startLiveTheme(
-  theme
+function openTheme(
+    theme
 ){
 
-  const data =
-    themeData[theme];
+    currentTheme =
+        theme;
 
-  if(!data)
-    return;
-
-
-  activeTheme =
-    theme;
-
-  themeTime=0;
+    time=0;
 
 
-  themeIcon.textContent =
-    data.icon;
+    const info={
 
-  themeTitle.textContent =
-    data.title;
+        ocean:{
+            icon:"🌊",
+            title:"Ocean World",
+            desc:"A living ocean atmosphere with moving waves, deep-water glow and a calm horizon.",
+            flag:false
+        },
 
-  themeDescription.textContent =
-    data.description;
+        forest:{
+            icon:"🌲",
+            title:"Amazon Forest",
+            desc:"A living green environment with layered jungle trees, mist and fireflies.",
+            flag:false
+        },
+
+        dragon:{
+            icon:"🐉",
+            title:"Dragon Realm",
+            desc:"A cinematic fantasy world with mountains, fire, smoke and a moving dragon silhouette.",
+            flag:false
+        },
+
+        galaxy:{
+            icon:"🌌",
+            title:"Galaxy • Black Hole",
+            desc:"Deep space with moving stars, nebula energy, orbiting particles and a gravitational black hole.",
+            flag:false
+        },
+
+        moon:{
+            icon:"🌙",
+            title:"Moonlight",
+            desc:"Soft lunar light, stars and a calm deep-blue night atmosphere.",
+            flag:false
+        },
+
+        night:{
+            icon:"🌃",
+            title:"Night City",
+            desc:"A modern city-night environment with skyline silhouettes and moving lights.",
+            flag:false
+        },
+
+        day:{
+            icon:"☀️",
+            title:"Daylight",
+            desc:"Bright daylight with moving clouds, warm sunlight and fresh landscape.",
+            flag:false
+        },
+
+        snow:{
+            icon:"❄️ 🇧🇩",
+            title:"Winter World • Bangladesh",
+            desc:"A dreamlike winter world with live snowfall and Bangladesh at the heart of the scene.",
+            flag:true
+        },
+
+        wall:{
+            icon:"🎨",
+            title:"Architectural Color Wall",
+            desc:"A premium moving color atmosphere inspired by modern magazine interiors and architectural wall finishes.",
+            flag:false
+        }
+
+    }[theme];
 
 
-  themeFlag.style.display =
-    data.flag
-    ? "block"
-    : "none";
+    themeIcon.textContent=
+        info.icon;
+
+    themeTitle.textContent=
+        info.title;
+
+    themeDescription.textContent=
+        info.desc;
 
 
-  createObjects(theme);
+    bdLarge.style.display=
+        info.flag
+        ? "block"
+        : "none";
 
 
-  /* show */
-
-  themeWorld.classList.add(
-    "active"
-  );
-
-  document.body.style.overflow =
-    "hidden";
-
-
-  /* restart */
-
-  if(animationId){
-
-    cancelAnimationFrame(
-      animationId
+    createObjects(
+        theme
     );
 
-  }
 
-  renderTheme();
+    themeScreen.classList.add(
+        "active"
+    );
+
+
+    document.body.style.overflow=
+        "hidden";
+
+
+    cancelAnimationFrame(
+        animationFrame
+    );
+
+
+    renderTheme();
 
 }
 
@@ -2306,35 +5526,26 @@ function startLiveTheme(
    CLOSE THEME
 ========================================================= */
 
-function closeLiveTheme(){
+function closeTheme(){
 
-  themeWorld.classList.remove(
-    "active"
-  );
-
-  document.body.style.overflow="";
-
-  activeTheme="";
-
-
-  if(animationId){
-
-    cancelAnimationFrame(
-      animationId
+    themeScreen.classList.remove(
+        "active"
     );
 
-    animationId=null;
+    document.body.style.overflow=
+        "";
 
-  }
+    currentTheme=
+        "";
 
-
-  themeCtx.clearRect(
-    0,
-    0,
-    window.innerWidth,
-    window.innerHeight
-  );
+    cancelAnimationFrame(
+        animationFrame
+    );
 
 }
 
 </script>
+
+
+</body>
+</html>
