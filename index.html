@@ -4517,3 +4517,446 @@ setMood("galaxy");
 </body>
 </html>
 ```
+```html
+<!-- =========================================================
+     PREMIUM ENGINEERING TRIAD
+     CPM + ENVIRONMENTAL + TRANSPORTATION
+========================================================= -->
+
+<style>
+/* ===== ENGINEERING TRIAD ===== */
+
+.engineering-triad{
+    position:relative;
+    margin:90px auto;
+    max-width:1250px;
+    padding:35px;
+    border-radius:32px;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(0,255,170,.12), transparent 30%),
+      radial-gradient(circle at 85% 25%, rgba(0,170,255,.13), transparent 30%),
+      radial-gradient(circle at 50% 100%, rgba(120,80,255,.12), transparent 35%),
+      rgba(8,12,22,.78);
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow:
+      0 30px 90px rgba(0,0,0,.35),
+      inset 0 0 50px rgba(255,255,255,.025);
+    backdrop-filter:blur(18px);
+}
+
+/* animated engineering grid */
+.engineering-triad::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:35px 35px;
+    mask-image:linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+    pointer-events:none;
+}
+
+.triad-heading{
+    position:relative;
+    text-align:center;
+    z-index:2;
+}
+
+.triad-heading .mini-label{
+    display:inline-block;
+    padding:7px 15px;
+    border-radius:50px;
+    font-size:.72rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#9fffe0;
+    background:rgba(0,255,170,.07);
+    border:1px solid rgba(0,255,170,.15);
+}
+
+.triad-heading h2{
+    margin:18px 0 10px;
+    font-size:clamp(2rem,4vw,3.6rem);
+    font-weight:900;
+    letter-spacing:-2px;
+    background:linear-gradient(
+        90deg,
+        #6dffca,
+        #ffffff,
+        #7dcfff,
+        #b79cff
+    );
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.triad-heading p{
+    max-width:720px;
+    margin:auto;
+    color:rgba(255,255,255,.65);
+    line-height:1.8;
+}
+
+/* cards */
+.triad-grid{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+    margin-top:38px;
+}
+
+.triad-card{
+    position:relative;
+    min-height:360px;
+    padding:30px;
+    border-radius:26px;
+    overflow:hidden;
+    transition:
+      transform .45s cubic-bezier(.2,.8,.2,1),
+      box-shadow .45s ease,
+      border-color .45s ease;
+}
+
+.triad-card:hover{
+    transform:translateY(-12px) scale(1.015);
+}
+
+/* CPM */
+.cpm-card{
+    background:
+      radial-gradient(circle at 50% 20%, rgba(255,180,50,.17), transparent 35%),
+      linear-gradient(145deg,rgba(255,180,50,.09),rgba(255,255,255,.025));
+    border:1px solid rgba(255,190,70,.25);
+    box-shadow:inset 0 0 45px rgba(255,180,50,.035);
+}
+
+.cpm-card:hover{
+    box-shadow:0 25px 70px rgba(255,170,40,.16);
+}
+
+/* Environment */
+.environment-card{
+    background:
+      radial-gradient(circle at 50% 20%, rgba(0,255,150,.16), transparent 35%),
+      linear-gradient(145deg,rgba(0,255,150,.08),rgba(255,255,255,.025));
+    border:1px solid rgba(0,255,150,.23);
+}
+
+.environment-card:hover{
+    box-shadow:0 25px 70px rgba(0,255,150,.14);
+}
+
+/* Transportation */
+.transport-card{
+    background:
+      radial-gradient(circle at 50% 20%, rgba(70,180,255,.18), transparent 35%),
+      linear-gradient(145deg,rgba(50,150,255,.08),rgba(255,255,255,.025));
+    border:1px solid rgba(80,180,255,.25);
+}
+
+.transport-card:hover{
+    box-shadow:0 25px 70px rgba(60,170,255,.16);
+}
+
+/* icons */
+.triad-icon{
+    width:70px;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:20px;
+    font-size:34px;
+    margin-bottom:24px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow:inset 0 0 25px rgba(255,255,255,.025);
+}
+
+.triad-card h3{
+    font-size:1.45rem;
+    margin:0 0 5px;
+    color:#fff;
+}
+
+.triad-card .subtitle{
+    font-size:.75rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+    opacity:.65;
+}
+
+.triad-card p{
+    color:rgba(255,255,255,.65);
+    line-height:1.75;
+    font-size:.94rem;
+}
+
+/* skill chips */
+.triad-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:22px;
+}
+
+.triad-tags span{
+    padding:7px 11px;
+    border-radius:30px;
+    font-size:.72rem;
+    color:rgba(255,255,255,.75);
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+/* moving glow */
+.triad-orb{
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:.16;
+    pointer-events:none;
+    animation:orbFloat 7s ease-in-out infinite alternate;
+}
+
+.orb-one{
+    background:#00ffb0;
+    top:-90px;
+    right:-70px;
+}
+
+.orb-two{
+    background:#49baff;
+    bottom:-100px;
+    left:-80px;
+    animation-delay:1.5s;
+}
+
+@keyframes orbFloat{
+    from{
+        transform:translate(0,0) scale(1);
+    }
+    to{
+        transform:translate(-30px,25px) scale(1.2);
+    }
+}
+
+/* center connection line */
+.triad-connection{
+    position:absolute;
+    left:12%;
+    right:12%;
+    top:50%;
+    height:1px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.16),
+        transparent
+    );
+    z-index:1;
+}
+
+/* responsive */
+@media(max-width:900px){
+    .triad-grid{
+        grid-template-columns:1fr;
+    }
+
+    .triad-card{
+        min-height:auto;
+    }
+
+    .triad-connection{
+        display:none;
+    }
+}
+
+@media(max-width:600px){
+    .engineering-triad{
+        margin:55px 12px;
+        padding:22px;
+        border-radius:24px;
+    }
+
+    .triad-heading h2{
+        letter-spacing:-1px;
+    }
+
+    .triad-card{
+        padding:24px;
+    }
+}
+</style>
+
+
+<section class="engineering-triad" id="engineering-focus">
+
+    <div class="triad-orb orb-one"></div>
+    <div class="triad-orb orb-two"></div>
+
+    <div class="triad-heading">
+
+        <span class="mini-label">
+            ENGINEERING FOCUS
+        </span>
+
+        <h2>
+            Build • Sustain • Connect
+        </h2>
+
+        <p>
+            An interdisciplinary engineering perspective combining
+            Construction Engineering & Project Management,
+            Environmental Engineering and Transportation Engineering
+            for resilient and sustainable infrastructure.
+        </p>
+
+    </div>
+
+
+    <div class="triad-connection"></div>
+
+
+    <div class="triad-grid">
+
+        <!-- CONSTRUCTION MANAGEMENT -->
+        <article class="triad-card cpm-card">
+
+            <div class="triad-icon">
+                🏗️
+            </div>
+
+            <h3>
+                Construction Management
+            </h3>
+
+            <div class="subtitle">
+                Plan • Execute • Control
+            </div>
+
+            <p>
+                Focused on construction planning, scheduling,
+                site execution, quality assurance, quantity
+                verification, material management and efficient
+                project delivery.
+            </p>
+
+            <div class="triad-tags">
+                <span>Project Planning</span>
+                <span>QA/QC</span>
+                <span>Cost Control</span>
+                <span>Site Management</span>
+                <span>Primavera P6</span>
+                <span>Construction</span>
+            </div>
+
+        </article>
+
+
+        <!-- ENVIRONMENTAL ENGINEERING -->
+        <article class="triad-card environment-card">
+
+            <div class="triad-icon">
+                🌱
+            </div>
+
+            <h3>
+                Environmental Engineering
+            </h3>
+
+            <div class="subtitle">
+                Protect • Restore • Sustain
+            </div>
+
+            <p>
+                Exploring sustainable infrastructure, environmental
+                management, water and wastewater systems, pollution
+                control and climate-resilient engineering solutions.
+            </p>
+
+            <div class="triad-tags">
+                <span>Sustainability</span>
+                <span>Water Systems</span>
+                <span>Wastewater</span>
+                <span>Pollution Control</span>
+                <span>Climate</span>
+                <span>Green Infrastructure</span>
+            </div>
+
+        </article>
+
+
+        <!-- TRANSPORTATION ENGINEERING -->
+        <article class="triad-card transport-card">
+
+            <div class="triad-icon">
+                🛣️
+            </div>
+
+            <h3>
+                Transportation Engineering
+            </h3>
+
+            <div class="subtitle">
+                Move • Connect • Improve
+            </div>
+
+            <p>
+                Interested in transportation infrastructure,
+                pavement rehabilitation, transportation planning,
+                traffic engineering and sustainable mobility systems.
+            </p>
+
+            <div class="triad-tags">
+                <span>Road Construction</span>
+                <span>Pavement</span>
+                <span>Traffic</span>
+                <span>Transport Planning</span>
+                <span>Rehabilitation</span>
+                <span>Mobility</span>
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<script>
+/* subtle mouse interaction for the engineering section */
+const triad = document.querySelector(".engineering-triad");
+
+if(triad){
+
+    triad.addEventListener("mousemove", function(e){
+
+        const rect = triad.getBoundingClientRect();
+
+        const x = ((e.clientX - rect.left) / rect.width - .5) * 10;
+        const y = ((e.clientY - rect.top) / rect.height - .5) * 10;
+
+        triad.style.transform =
+            `perspective(1200px) rotateX(${-y * .12}deg) rotateY(${x * .12}deg)`;
+
+    });
+
+    triad.addEventListener("mouseleave", function(){
+
+        triad.style.transform =
+            "perspective(1200px) rotateX(0deg) rotateY(0deg)";
+
+    });
+
+}
+</script>
+```
