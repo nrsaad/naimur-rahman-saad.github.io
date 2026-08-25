@@ -311,17 +311,17 @@ body.mood-milk .exp-close{color:#4b4840;background:rgba(255,255,255,.55);border-
    Known values are only those explicitly stated in the portfolio.
 */
 const projectFinanceData = [
-  {value:null, credit:["Site supervision, measurement and quantity verification.","Material inspection/reconciliation and progress documentation."]},
-  {value:null, credit:["RCC road execution monitoring, reinforcement/formwork inspection.","Concrete QA/QC, measurement, BBS support and contractor billing inputs."]},
-  {value:null, credit:["Building/sanitation civil-work supervision and dimensional checks.","Material control, measurement and contractor documentation support."]},
-  {value:null, credit:["RCC road execution, reinforcement/formwork checks and casting readiness.","Concrete quality control, quantity verification and material reconciliation."]},
-  {value:81100000, credit:["Road improvement supervision with practical focus on earthwork, compaction and pavement.","Measurement, material management and progress monitoring support."]},
-  {value:null, credit:["Building/structural civil-work support, quantity measurement and variation documentation.","Coordination of site activities and material requirements."]},
-  {value:16800000, credit:["Road improvement and link-road execution support.","Measurement, material movement, quantity verification and progress tracking."]},
-  {value:null, credit:["Road rehabilitation and pavement-stage monitoring.","Field measurement, material inspection and progress documentation."]},
-  {value:null, credit:["Emergency repair/protection support under time-sensitive site conditions.","Rapid material coordination, measurement and progress monitoring."]},
-  {value:null, credit:["Temporary emergency protection work support.","Material handling, measurement, field coordination and documentation."]},
-  {value:null, credit:["HBB pavement repair and road-maintenance support.","Measurement, material inspection, workmanship observation and billing-support records."]}
+  {value:null, credit:["Daily site supervision and quantity verification can reduce measurement errors.","Material reconciliation and progress tracking help control avoidable wastage.","Further reduction: planned procurement, tighter stock records and early correction of rework risks."], savings:"No verified taka saving is stated in the available project record."},
+  {value:null, credit:["RCC execution control: reinforcement, cover blocks, formwork, casting and curing checks.","Slump/cube QA support, BBS review and quantity verification strengthen cost control.","Further reduction: pre-pour checklist, exact bar-cutting/BBS reconciliation and controlled concrete ordering."], savings:"No verified taka saving is stated in the available project record."},
+  {value:null, credit:["Building/civil-work supervision with dimensional and material checks.","Measurement, billing support and material control can reduce over-measurement and wastage risk.","Further reduction: tighter BOQ-to-site reconciliation and planned material issue records."], savings:"No verified taka saving is stated in the available project record."},
+  {value:null, credit:["RCC road supervision with reinforcement, formwork, casting and curing control.","Quantity verification and material reconciliation support efficient resource use.","Further reduction: pre-pour inspection, concrete quantity planning and reinforcement wastage control."], savings:"No verified taka saving is stated in the available project record."},
+  {value:81100000, credit:["Portfolio states approximately BDT 8.11 crore project value.","Roadwork supervision focused on earthwork, compaction, pavement, measurement and material management.","Further reduction: layer-by-layer quantity checks, compaction control and delivery scheduling."], savings:"Actual expenditure/profit is not stated; enter verified cost to calculate."},
+  {value:null, credit:["Building/structural civil-work support, quantity measurement and variation documentation.","Material requirements and site coordination help reduce delay and rework exposure.","Further reduction: variation control, material forecasting and daily productivity tracking."], savings:"No verified taka saving is stated in the available project record."},
+  {value:16800000, credit:["Portfolio states approximately BDT 1.68 crore project value.","Road/link-road execution support with measurement, material movement and quantity verification.","Further reduction: planned aggregate/material delivery and tighter pavement quantity reconciliation."], savings:"Actual expenditure/profit is not stated; enter verified cost to calculate."},
+  {value:null, credit:["Road rehabilitation monitoring with field measurement, pavement inspection and progress documentation.","Material inspection and quantity verification support cost control.","Further reduction: repair-stage measurement before and after work, minimizing rework and material loss."], savings:"No verified taka saving is stated in the available project record."},
+  {value:null, credit:["Emergency protection support with rapid measurement, material coordination and progress monitoring.","Time-sensitive coordination can reduce idle time and emergency logistics waste.","Further reduction: pre-position critical materials and maintain emergency quantity logs."], savings:"No verified taka saving is stated in the available project record."},
+  {value:null, credit:["Temporary emergency protection support with material handling, measurement and field coordination.","Progress records and quantity checks strengthen billing and resource control.","Further reduction: pre-approved emergency material plans and daily reconciliation."], savings:"No verified taka saving is stated in the available project record."},
+  {value:null, credit:["HBB pavement repair support with measurement, material inspection and workmanship observation.","Billing-support records and quantity checks help avoid unsupported quantities.","Further reduction: verify repair limits before material deployment and reconcile HBB quantities daily."], savings:"No verified taka saving is stated in the available project record."}
 ];
 
 function moneyBDT(n){
@@ -348,6 +348,16 @@ function calculateProjectFinance(){
   const label=profit>=0 ? "Gross surplus / profit" : "Cost overrun";
   out.innerHTML=label+": "+moneyBDT(profit)+" <em>("+margin.toFixed(2)+"% of target value)</em>";
 }
+function calculatePortfolioFinance(){
+  const exposure=parseFloat(document.getElementById("portfolioValue").value);
+  const cost=parseFloat(document.getElementById("portfolioCost").value);
+  const out=document.getElementById("portfolioResult");
+  if(!Number.isFinite(exposure)||exposure<=0||!Number.isFinite(cost)||cost<0){out.textContent="Enter verified exposure and actual expenditure.";return;}
+  const diff=exposure-cost;
+  const pct=(diff/exposure)*100;
+  out.textContent=(diff>=0?"Portfolio surplus / profit: ":"Portfolio shortfall / overrun: ")+moneyBDT(Math.abs(diff))+" ("+Math.abs(pct).toFixed(2)+"% of stated exposure)";
+}
+
 function populateCostTable(){
   const cards=document.querySelectorAll("#projects .project");
   const body=document.getElementById("costTableBody");
@@ -428,6 +438,16 @@ populateCostTable();
   .detail-grid{grid-template-columns:1fr}
 }
 
+
+
+.portfolio-finance-box{margin-top:20px;padding:20px;border-radius:20px;border:1px solid rgba(28,83,62,.14);background:rgba(247,252,248,.76)}
+.portfolio-finance-title{font:800 12px var(--heading);letter-spacing:1.5px;color:#2f7656}
+.portfolio-finance-copy{margin-top:7px;color:#687b72;font-size:12px;line-height:1.7}
+.portfolio-finance-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end;margin-top:14px}
+.portfolio-finance-row label{display:block;color:#71847b;font:700 9px var(--heading);letter-spacing:.8px;text-transform:uppercase}
+.portfolio-finance-row input{width:100%;box-sizing:border-box;margin-top:6px;padding:10px;border-radius:10px;border:1px solid rgba(28,83,62,.16);background:#fff;color:#294e3e}
+.portfolio-result{margin-top:12px;padding:12px 14px;border-radius:12px;background:rgba(76,155,110,.08);color:#245840;font:800 13px var(--heading)}
+@media(max-width:700px){.portfolio-finance-row{grid-template-columns:1fr}.portfolio-finance-row .btn{width:100%}}
 
 /* ===== PROJECT COST / PROFIT ANALYSIS ===== */
 .cost-analysis{
@@ -1155,6 +1175,17 @@ body.mood-milk .hero h1,body.mood-milk .section-title,body.mood-milk .future-tit
       <div class="cost-stat"><span>Projects Analysed</span><strong>11</strong><small>Government project cards</small></div>
       <div class="cost-stat"><span>Verified Project Values</span><strong>2</strong><small>Values explicitly stated in current portfolio</small></div>
       <div class="cost-stat"><span>Profit Data</span><strong>Input-Based</strong><small>Actual cost/profit not stated in source</small></div>
+    </div>
+
+    <div class="portfolio-finance-box">
+      <div class="portfolio-finance-title">11-PROJECT PORTFOLIO CALCULATOR</div>
+      <div class="portfolio-finance-copy">The portfolio states <b>25.7 Cr BDT project exposure</b>. Enter the verified total actual expenditure below to calculate a portfolio-level surplus/shortfall. This is a calculator, not an invented claim of profit.</div>
+      <div class="portfolio-finance-row">
+        <div><label>Portfolio exposure (BDT)</label><input id="portfolioValue" type="number" value="257000000" min="0"></div>
+        <div><label>Verified actual expenditure (BDT)</label><input id="portfolioCost" type="number" min="0" placeholder="Enter verified total cost"></div>
+        <button class="btn" type="button" onclick="calculatePortfolioFinance()">CALCULATE</button>
+      </div>
+      <div id="portfolioResult" class="portfolio-result">Enter verified expenditure to show the actual portfolio surplus/shortfall.</div>
     </div>
 
     <div class="cost-disclaimer">
@@ -2008,6 +2039,7 @@ function openProject(index){
     ? "The portfolio states a project value of "+moneyBDT(f.value)+". Actual expenditure, audited savings and contractor profit are not stated, so the calculation below stays input-based."
     : "No project-wise contract/project value is stated in the current portfolio for this project. Enter the verified contract value and actual cost from your tender/BOQ/billing records to calculate the result.";
   modalCostCredit.innerHTML=(f.credit||[]).map(x=>"<li>"+x+"</li>").join("");
+  modalCostCredit.innerHTML += "<li><b>Financial status:</b> "+(f.savings||"No verified saving figure available.")+"</li>";
 
   fillDetailList(modalActivities,p.activities);
   fillDetailList(modalQA,p.qa);
