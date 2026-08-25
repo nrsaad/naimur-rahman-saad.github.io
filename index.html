@@ -506,6 +506,131 @@ body.mood-environmental .core{background:radial-gradient(circle,#fff 0 10%,#d9f5
 /* Milk remains the dedicated warm-white mood. */
 body.mood-milk .hero h1,body.mood-milk .section-title,body.mood-milk .future-title{font-family:var(--heading)}
 @media(max-width:980px){.nav{display:none}}
+
+/* ===== CLICKABLE SKILL VIDEO SYSTEM ===== */
+.skills .skill-video{
+  appearance:none;
+  -webkit-appearance:none;
+  font:inherit;
+  text-align:left;
+  cursor:pointer;
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+}
+.skills .skill-video:hover{
+  transform:translateY(-3px);
+  border-color:rgba(45,126,82,.42);
+  box-shadow:0 10px 28px rgba(45,126,82,.14);
+}
+.skill-play{
+  display:inline-grid;
+  place-items:center;
+  width:20px;height:20px;
+  border-radius:50%;
+  font-size:9px;
+  line-height:1;
+  background:rgba(45,126,82,.12);
+  color:#26754a;
+  flex:0 0 20px;
+}
+.video-modal{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(238,246,239,.78);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+.video-modal.open{display:flex}
+.video-modal-box{
+  width:min(920px,96vw);
+  max-height:92vh;
+  overflow:auto;
+  border:1px solid rgba(48,103,70,.18);
+  border-radius:28px;
+  background:linear-gradient(145deg,rgba(255,255,252,.98),rgba(239,248,239,.98));
+  box-shadow:0 35px 100px rgba(38,77,52,.22);
+  padding:22px;
+}
+.video-modal-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:16px;
+}
+.video-modal-title{
+  margin:0;
+  font-size:clamp(20px,3vw,30px);
+  color:#214b36;
+}
+.video-modal-sub{
+  margin:5px 0 0;
+  color:#6b796f;
+  font-size:13px;
+}
+.video-frame-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:20px;
+  overflow:hidden;
+  background:#eaf3ea;
+  border:1px solid rgba(48,103,70,.12);
+}
+.video-frame-wrap iframe{
+  width:100%;
+  height:100%;
+  border:0;
+}
+.video-search-card{
+  min-height:280px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:30px;
+}
+.video-search-card .video-icon{
+  width:72px;height:72px;border-radius:50%;
+  display:grid;place-items:center;
+  margin:0 auto 14px;
+  background:linear-gradient(145deg,#dff0e2,#f9fff9);
+  color:#2f8654;
+  font-size:26px;
+}
+.video-search-card h3{margin:0 0 8px;color:#244d38}
+.video-search-card p{margin:0 auto 18px;max-width:620px;color:#6d776f}
+.video-watch-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:12px 18px;
+  border-radius:999px;
+  text-decoration:none;
+  color:#fff;
+  background:linear-gradient(110deg,#28794d,#49a76d);
+  box-shadow:0 10px 24px rgba(40,121,77,.18);
+}
+.video-close{
+  width:42px;height:42px;border-radius:50%;
+  border:1px solid rgba(48,103,70,.15);
+  background:rgba(255,255,255,.7);
+  color:#34533f;
+  cursor:pointer;
+  font-size:20px;
+}
+@media(max-width:640px){
+  .video-modal{padding:12px}
+  .video-modal-box{padding:14px;border-radius:20px}
+}
+
 </style>
 </head>
 
@@ -937,28 +1062,28 @@ body.mood-milk .hero h1,body.mood-milk .section-title,body.mood-milk .future-tit
   <h2 class="section-title">Tools • Testing • Execution.</h2>
 
   <div class="skills">
-    <span class="skill">Site Supervision</span>
-    <span class="skill">RCC Construction</span>
-    <span class="skill">Concrete Casting</span>
-    <span class="skill">Reinforcement Inspection</span>
-    <span class="skill">Cover Block Inspection</span>
-    <span class="skill">BBS Review</span>
-    <span class="skill">Quantity Verification</span>
-    <span class="skill">Contractor Billing</span>
-    <span class="skill">Material Reconciliation</span>
-    <span class="skill">Slump Testing</span>
-    <span class="skill">Concrete Cube Sampling</span>
-    <span class="skill">Bentonite Slurry Testing</span>
-    <span class="skill">Sand Field-Density Testing</span>
-    <span class="skill">Brick Testing</span>
-    <span class="skill">AutoCAD 2D</span>
-    <span class="skill">AutoCAD 3D</span>
-    <span class="skill">ETABS</span>
-    <span class="skill">Primavera P6</span>
-    <span class="skill">Revit</span>
-    <span class="skill">MS Excel</span>
-    <span class="skill">MS Word</span>
-    <span class="skill">PowerPoint</span>
+    <button class="skill skill-video" type="button" data-skill="Site Supervision" data-video-url="https://www.youtube.com/results?search_query=site+supervision+civil+engineering+construction+site+work" data-video-kind="search"><span class="skill-play">▶</span>Site Supervision</button>
+    <button class="skill skill-video" type="button" data-skill="RCC Construction" data-video-url="https://www.youtube.com/results?search_query=RCC+construction+site+execution+civil+engineering" data-video-kind="search"><span class="skill-play">▶</span>RCC Construction</button>
+    <button class="skill skill-video" type="button" data-skill="Concrete Casting" data-video-url="https://www.youtube.com/results?search_query=concrete+casting+construction+civil+engineering" data-video-kind="search"><span class="skill-play">▶</span>Concrete Casting</button>
+    <button class="skill skill-video" type="button" data-skill="Reinforcement Inspection" data-video-url="https://www.youtube.com/results?search_query=reinforcement+inspection+RCC+civil+engineering" data-video-kind="search"><span class="skill-play">▶</span>Reinforcement Inspection</button>
+    <button class="skill skill-video" type="button" data-skill="Cover Block Inspection" data-video-url="https://www.youtube.com/results?search_query=cover+block+inspection+RCC+construction" data-video-kind="search"><span class="skill-play">▶</span>Cover Block Inspection</button>
+    <button class="skill skill-video" type="button" data-skill="BBS Review" data-video-url="https://www.youtube.com/results?search_query=bar+bending+schedule+BBS+review+civil+engineering" data-video-kind="search"><span class="skill-play">▶</span>BBS Review</button>
+    <button class="skill skill-video" type="button" data-skill="Quantity Verification" data-video-url="https://www.youtube.com/results?search_query=quantity+verification+construction+civil+engineering" data-video-kind="search"><span class="skill-play">▶</span>Quantity Verification</button>
+    <button class="skill skill-video" type="button" data-skill="Contractor Billing" data-video-url="https://www.youtube.com/results?search_query=contractor+billing+construction+measurement+civil+engineering" data-video-kind="search"><span class="skill-play">▶</span>Contractor Billing</button>
+    <button class="skill skill-video" type="button" data-skill="Material Reconciliation" data-video-url="https://www.youtube.com/results?search_query=material+reconciliation+construction+civil+engineering" data-video-kind="search"><span class="skill-play">▶</span>Material Reconciliation</button>
+    <button class="skill skill-video" type="button" data-skill="Slump Testing" data-video-url="https://www.youtube.com/watch?v=Kuk8gsBBv90" data-video-kind="video"><span class="skill-play">▶</span>Slump Testing</button>
+    <button class="skill skill-video" type="button" data-skill="Concrete Cube Sampling" data-video-url="https://www.youtube.com/results?search_query=concrete+cube+sampling+test+civil+engineering" data-video-kind="search"><span class="skill-play">▶</span>Concrete Cube Sampling</button>
+    <button class="skill skill-video" type="button" data-skill="Bentonite Slurry Testing" data-video-url="https://www.youtube.com/results?search_query=bentonite+slurry+test+diaphragm+wall+civil+engineering" data-video-kind="search"><span class="skill-play">▶</span>Bentonite Slurry Testing</button>
+    <button class="skill skill-video" type="button" data-skill="Sand Field-Density Testing" data-video-url="https://www.youtube.com/results?search_query=sand+field+density+test+soil+compaction+civil+engineering" data-video-kind="search"><span class="skill-play">▶</span>Sand Field-Density Testing</button>
+    <button class="skill skill-video" type="button" data-skill="Brick Testing" data-video-url="https://www.youtube.com/results?search_query=brick+test+civil+engineering+water+absorption+compressive+strength" data-video-kind="search"><span class="skill-play">▶</span>Brick Testing</button>
+    <button class="skill skill-video" type="button" data-skill="AutoCAD 2D" data-video-url="https://www.youtube.com/results?search_query=AutoCAD+2D+civil+engineering+tutorial" data-video-kind="search"><span class="skill-play">▶</span>AutoCAD 2D</button>
+    <button class="skill skill-video" type="button" data-skill="AutoCAD 3D" data-video-url="https://www.youtube.com/results?search_query=AutoCAD+3D+civil+engineering+tutorial" data-video-kind="search"><span class="skill-play">▶</span>AutoCAD 3D</button>
+    <button class="skill skill-video" type="button" data-skill="ETABS" data-video-url="https://www.youtube.com/results?search_query=ETABS+structural+analysis+tutorial+civil+engineering" data-video-kind="search"><span class="skill-play">▶</span>ETABS</button>
+    <button class="skill skill-video" type="button" data-skill="Primavera P6" data-video-url="https://www.youtube.com/results?search_query=Primavera+P6+project+scheduling+tutorial" data-video-kind="search"><span class="skill-play">▶</span>Primavera P6</button>
+    <button class="skill skill-video" type="button" data-skill="Revit" data-video-url="https://www.youtube.com/results?search_query=Revit+structure+civil+engineering+tutorial" data-video-kind="search"><span class="skill-play">▶</span>Revit</button>
+    <button class="skill skill-video" type="button" data-skill="MS Excel" data-video-url="https://www.youtube.com/results?search_query=MS+Excel+civil+engineering+quantity+estimation+tutorial" data-video-kind="search"><span class="skill-play">▶</span>MS Excel</button>
+    <button class="skill skill-video" type="button" data-skill="MS Word" data-video-url="https://www.youtube.com/results?search_query=MS+Word+engineering+report+documentation+tutorial" data-video-kind="search"><span class="skill-play">▶</span>MS Word</button>
+    <button class="skill skill-video" type="button" data-skill="PowerPoint" data-video-url="https://www.youtube.com/results?search_query=PowerPoint+engineering+presentation+tutorial" data-video-kind="search"><span class="skill-play">▶</span>PowerPoint</button>
   </div>
 </section>
 
@@ -1716,6 +1841,84 @@ function addCadFiles(fs){fs.forEach(f=>{if(!cadFiles.some(x=>x.name===f.name&&x.
 function renderCad(){cadList.innerHTML=cadFiles.map((f,i)=>'<div class="cad-file"><div><div class="cad-file-name">📐 '+esc(f.name)+'</div><div class="cad-file-size">'+bytes(f.size)+'</div></div><button class="cad-remove" onclick="removeCad('+i+')">REMOVE</button></div>').join('');}
 function removeCad(i){cadFiles.splice(i,1);renderCad();}
 cadInput.addEventListener('change',e=>{addCadFiles([...e.target.files]);cadInput.value=''});['dragenter','dragover'].forEach(x=>cadDrop.addEventListener(x,e=>{e.preventDefault();cadDrop.classList.add('dragging')}));['dragleave','drop'].forEach(x=>cadDrop.addEventListener(x,e=>{e.preventDefault();cadDrop.classList.remove('dragging')}));cadDrop.addEventListener('drop',e=>addCadFiles([...e.dataTransfer.files]));
+</script>
+
+
+<!-- ===== SKILL VIDEO MODAL ===== -->
+<div class="video-modal" id="skillVideoModal" aria-hidden="true">
+  <div class="video-modal-box" role="dialog" aria-modal="true" aria-labelledby="skillVideoTitle">
+    <div class="video-modal-top">
+      <div>
+        <h2 class="video-modal-title" id="skillVideoTitle">Skill Video</h2>
+        <p class="video-modal-sub" id="skillVideoSub">Practical learning resource</p>
+      </div>
+      <button class="video-close" id="skillVideoClose" type="button" aria-label="Close video">×</button>
+    </div>
+    <div class="video-frame-wrap" id="skillVideoFrame"></div>
+  </div>
+</div>
+
+
+<script>
+/* ===== SKILL VIDEO CLICK HANDLER =====
+   Each skill opens a relevant YouTube resource immediately.
+   For the verified Slump Testing item, the selected video is embedded.
+   Other skills open a focused YouTube search so the visitor can choose
+   the most suitable current tutorial instead of relying on a dead video ID.
+*/
+(function(){
+  const modal=document.getElementById("skillVideoModal");
+  const frame=document.getElementById("skillVideoFrame");
+  const title=document.getElementById("skillVideoTitle");
+  const sub=document.getElementById("skillVideoSub");
+  const close=document.getElementById("skillVideoClose");
+
+  function closeVideo(){
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden","true");
+    frame.innerHTML="";
+    document.body.style.overflow="";
+  }
+
+  document.querySelectorAll(".skill-video").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const name=btn.dataset.skill || "Skill Video";
+      const url=btn.dataset.videoUrl;
+      const kind=btn.dataset.videoKind;
+      title.textContent=name;
+      sub.textContent="Opening a practical video resource for "+name;
+
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden","false");
+      document.body.style.overflow="hidden";
+
+      if(kind==="video"){
+        const u=new URL(url);
+        const id=u.searchParams.get("v");
+        frame.innerHTML =
+          '<iframe src="https://www.youtube-nocookie.com/embed/'+encodeURIComponent(id)+'?autoplay=1&rel=0" '+
+          'title="'+name.replace(/"/g,'&quot;')+' video" '+
+          'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+      }else{
+        const safeUrl=url;
+        frame.innerHTML =
+          '<div class="video-search-card">'+
+          '<div>'+
+          '<div class="video-icon">▶</div>'+
+          '<h3>Find the latest '+name+' tutorial</h3>'+
+          '<p>This skill opens a focused YouTube search for '+name+'. YouTube does not allow current search results to be embedded directly inside an iframe, so the button opens the live results in a new tab.</p>'+
+          '<a class="video-watch-btn" href="'+safeUrl+'" target="_blank" rel="noopener noreferrer">▶ Watch Videos on YouTube</a>'+
+          '</div></div>';
+        // Open immediately as requested.
+        window.open(safeUrl,"_blank","noopener,noreferrer");
+      }
+    });
+  });
+
+  close.addEventListener("click",closeVideo);
+  modal.addEventListener("click",e=>{if(e.target===modal)closeVideo()});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape" && modal.classList.contains("open"))closeVideo()});
+})();
 </script>
 
 </body>
