@@ -4,36 +4,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="MD. Naimur Rahman Saad - Civil Engineer | Construction Engineering & Project Management">
-<title>MD. Naimur Rahman Saad | Civil Engineer</title>
+<meta name="theme-color" content="#071b12">
+<meta name="description" content="MD. Naimur Rahman Saad — Civil Engineer | Construction Engineering & Project Management">
+<title>MD. NAIMUR RAHMAN SAAD | Civil Engineer</title>
 
 <style>
+/* =========================================================
+   100X PROFESSIONAL ENGINEER PORTFOLIO
+   MD. NAIMUR RAHMAN SAAD
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;700;800&display=swap');
+
 :root{
-  --bg:#07130d;
-  --bg2:#0c2116;
-  --card:rgba(255,255,255,.07);
-  --text:#f4fff7;
-  --muted:#b7c9be;
-  --green:#18c978;
-  --red:#ef3340;
+  --bg:#050807;
+  --bg2:#09120e;
+  --card:rgba(10,22,17,.72);
+  --card2:rgba(255,255,255,.055);
+  --text:#f4fff8;
+  --muted:#a9bdb2;
+  --green:#16d47b;
+  --green2:#0aa65e;
+  --red:#ef3030;
   --gold:#ffd166;
-  --border:rgba(255,255,255,.14);
-  --shadow:0 20px 60px rgba(0,0,0,.35);
+  --blue:#55b8ff;
+  --purple:#9b6cff;
+  --border:rgba(255,255,255,.11);
+  --shadow:0 25px 80px rgba(0,0,0,.45);
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+html{
+  scroll-padding-top:90px;
+}
 
 body{
-  font-family:Inter,Segoe UI,Arial,sans-serif;
-  background:
-    radial-gradient(circle at 15% 20%,rgba(24,201,120,.14),transparent 28%),
-    radial-gradient(circle at 85% 80%,rgba(239,51,64,.10),transparent 30%),
-    var(--bg);
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);
   color:var(--text);
-  line-height:1.7;
-  transition:background .8s,color .5s;
   overflow-x:hidden;
+  transition:background .8s ease,color .5s ease;
 }
 
 body::before{
@@ -41,115 +57,361 @@ body::before{
   position:fixed;
   inset:0;
   pointer-events:none;
-  background-image:
-    radial-gradient(circle,rgba(255,255,255,.7) 1px,transparent 1px);
-  background-size:90px 90px;
-  opacity:.08;
-  animation:stars 25s linear infinite;
+  z-index:-5;
+  background:
+    radial-gradient(circle at 20% 10%,rgba(22,212,123,.10),transparent 25%),
+    radial-gradient(circle at 80% 80%,rgba(239,48,48,.07),transparent 25%);
 }
 
-@keyframes stars{
-  from{transform:translateY(0)}
-  to{transform:translateY(-90px)}
+/* =========================================================
+   LOADER
+   ========================================================= */
+
+#loader{
+  position:fixed;
+  inset:0;
+  background:#020403;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:18px;
+  transition:opacity .8s,visibility .8s;
 }
 
-a{color:inherit;text-decoration:none}
-
-.container{
-  width:min(1180px,92%);
-  margin:auto;
+#loader.hide{
+  opacity:0;
+  visibility:hidden;
 }
 
-nav{
+.loader-ring{
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  border:3px solid rgba(255,255,255,.1);
+  border-top-color:var(--green);
+  border-right-color:var(--red);
+  animation:spin 1s linear infinite;
+}
+
+.loader-text{
+  font-family:Orbitron,sans-serif;
+  font-size:12px;
+  letter-spacing:4px;
+  color:#b9d8c7;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* =========================================================
+   PARTICLES / SPACE
+   ========================================================= */
+
+#spaceCanvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:-3;
+  opacity:0;
+  transition:opacity 1s;
+}
+
+body.galaxy #spaceCanvas,
+body.blackhole #spaceCanvas{
+  opacity:1;
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.navbar{
   position:fixed;
   top:0;
-  width:100%;
-  z-index:1000;
-  background:rgba(5,15,10,.72);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
-}
-
-.nav-inner{
-  min-height:72px;
+  left:0;
+  right:0;
+  height:76px;
+  z-index:5000;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:20px;
+  padding:0 5%;
+  background:rgba(3,8,6,.68);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .logo{
-  font-size:1.05rem;
-  font-weight:900;
-  letter-spacing:.5px;
+  font-family:Orbitron,sans-serif;
+  font-weight:800;
+  letter-spacing:1px;
+  font-size:17px;
+  text-decoration:none;
+  white-space:nowrap;
 }
 
-.logo .md,.logo .saad{color:#28d979}
-.logo .rahman{color:#ef3340}
+.logo .md{color:#17c96e}
+.logo .naimur{color:#f43b3b}
+.logo .rahman{color:#18ce73}
+.logo .saad{color:#25e082}
 
 .nav-links{
   display:flex;
-  gap:18px;
-  flex-wrap:wrap;
+  gap:23px;
+  list-style:none;
 }
 
 .nav-links a{
-  color:var(--muted);
-  font-size:.88rem;
+  color:#c9d8d0;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:700;
   transition:.3s;
 }
 
-.nav-links a:hover{color:var(--green)}
+.nav-links a:hover{
+  color:var(--green);
+}
+
+.menu-btn{
+  display:none;
+  border:0;
+  background:none;
+  color:white;
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* =========================================================
+   MOOD PANEL
+   ========================================================= */
+
+.mood-wrapper{
+  position:fixed;
+  right:20px;
+  top:92px;
+  z-index:4000;
+}
+
+.mood-toggle{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(8,15,12,.75);
+  color:white;
+  cursor:pointer;
+  font-size:21px;
+  backdrop-filter:blur(15px);
+  box-shadow:0 8px 35px rgba(0,0,0,.35);
+  transition:.3s;
+}
+
+.mood-toggle:hover{
+  transform:rotate(20deg) scale(1.08);
+}
+
+.mood-panel{
+  width:210px;
+  margin-top:10px;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:rgba(5,10,8,.88);
+  backdrop-filter:blur(22px);
+  box-shadow:var(--shadow);
+  display:none;
+}
+
+.mood-panel.open{
+  display:block;
+  animation:drop .35s ease;
+}
+
+@keyframes drop{
+  from{opacity:0;transform:translateY(-10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.mood-title{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#92aa9d;
+  margin:4px 7px 10px;
+}
+
+.mood-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+
+.mood{
+  border:1px solid rgba(255,255,255,.09);
+  background:rgba(255,255,255,.045);
+  color:#eaf4ef;
+  padding:10px 7px;
+  border-radius:11px;
+  cursor:pointer;
+  font-size:11px;
+  font-weight:700;
+  transition:.25s;
+}
+
+.mood:hover{
+  transform:translateY(-2px);
+  border-color:var(--green);
+  background:rgba(22,212,123,.10);
+}
+
+/* =========================================================
+   BLACK HOLE
+   ========================================================= */
+
+.black-hole{
+  position:fixed;
+  width:480px;
+  height:480px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  z-index:-2;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity 1s;
+}
+
+body.blackhole .black-hole{
+  opacity:1;
+}
+
+.black-hole::before{
+  content:"";
+  position:absolute;
+  inset:90px;
+  border-radius:50%;
+  background:#000;
+  box-shadow:
+    0 0 40px #000,
+    0 0 100px rgba(255,100,0,.35);
+  z-index:2;
+}
+
+.black-hole::after{
+  content:"";
+  position:absolute;
+  inset:20px;
+  border-radius:50%;
+  border:18px solid transparent;
+  border-top-color:#ff8c28;
+  border-right-color:#ff4c15;
+  border-bottom-color:#9b2a0c;
+  filter:blur(4px);
+  animation:holeSpin 4s linear infinite;
+}
+
+@keyframes holeSpin{
+  to{transform:rotate(360deg)}
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .hero{
   min-height:100vh;
   display:flex;
   align-items:center;
-  padding:120px 0 70px;
+  justify-content:center;
   position:relative;
+  padding:120px 6% 70px;
+  overflow:hidden;
 }
 
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.25fr .75fr;
-  gap:45px;
-  align-items:center;
+.hero-content{
+  width:min(1150px,100%);
+  text-align:center;
+  position:relative;
+  z-index:3;
 }
 
-.badge{
-  display:inline-block;
-  padding:8px 15px;
-  border:1px solid rgba(24,201,120,.4);
-  border-radius:999px;
-  color:#7ff0b5;
-  background:rgba(24,201,120,.08);
-  margin-bottom:20px;
-  font-size:.85rem;
+.flag-line{
+  width:90px;
+  height:4px;
+  margin:0 auto 25px;
+  background:linear-gradient(90deg,#16a05a 0 33%,#ef3030 33% 66%,#16c76d 66%);
+  border-radius:20px;
+  box-shadow:0 0 25px rgba(22,212,123,.35);
 }
 
-h1{
-  font-size:clamp(3rem,7vw,6.5rem);
-  line-height:.98;
-  letter-spacing:-4px;
+.hero h1{
+  font-family:Orbitron,sans-serif;
+  font-size:clamp(36px,7vw,84px);
+  line-height:1.05;
+  letter-spacing:-2px;
+  margin-bottom:22px;
+  text-shadow:0 0 50px rgba(22,212,123,.12);
 }
 
-.name-md,.name-saad{color:#25d979}
-.name-rahman{color:#ef3340}
+.hero h1 .md{
+  color:#19ce70;
+}
+
+.hero h1 .naimur{
+  color:#f13b3b;
+}
+
+.hero h1 .rahman{
+  color:#19d176;
+}
+
+.hero h1 .saad{
+  color:#20df82;
+}
 
 .hero h2{
-  margin:25px 0 15px;
-  font-size:clamp(1.2rem,2.5vw,2rem);
+  font-size:clamp(15px,2vw,22px);
+  color:#d5e4dc;
+  font-weight:600;
+  margin-bottom:16px;
 }
 
 .hero p{
-  max-width:760px;
+  max-width:820px;
+  margin:auto;
   color:var(--muted);
-  font-size:1.05rem;
+  font-size:15px;
+  line-height:1.9;
+}
+
+.badges{
+  margin:27px 0;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:9px;
+}
+
+.badge{
+  border:1px solid rgba(22,212,123,.25);
+  background:rgba(22,212,123,.07);
+  color:#bdeed3;
+  padding:8px 13px;
+  border-radius:50px;
+  font-size:11px;
+  font-weight:700;
 }
 
 .hero-buttons{
   display:flex;
   gap:12px;
+  justify-content:center;
   flex-wrap:wrap;
   margin-top:30px;
 }
@@ -158,921 +420,1994 @@ h1{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:12px 19px;
+  gap:8px;
+  padding:13px 20px;
   border-radius:12px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.06);
+  text-decoration:none;
+  font-size:12px;
+  font-weight:800;
+  border:1px solid rgba(255,255,255,.13);
   transition:.3s;
-  font-weight:700;
-}
-
-.btn:hover{
-  transform:translateY(-3px);
-  border-color:var(--green);
-  box-shadow:0 10px 30px rgba(24,201,120,.15);
+  cursor:pointer;
 }
 
 .btn-primary{
-  background:linear-gradient(135deg,#18c978,#0c9d58);
-  color:#001b0d;
-  border:none;
+  background:linear-gradient(135deg,#14b968,#087b47);
+  color:white;
+  box-shadow:0 12px 35px rgba(22,212,123,.18);
 }
 
-.profile-card{
-  padding:35px;
-  border:1px solid var(--border);
-  border-radius:28px;
-  background:var(--card);
-  backdrop-filter:blur(18px);
-  box-shadow:var(--shadow);
-  text-align:center;
-  animation:float 5s ease-in-out infinite;
+.btn-secondary{
+  background:rgba(255,255,255,.05);
+  color:#e8f4ed;
 }
 
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
+.btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 15px 40px rgba(0,0,0,.3);
 }
 
-.profile-circle{
-  width:170px;
-  height:170px;
-  margin:auto auto 22px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  font-size:3rem;
-  font-weight:900;
-  background:
-    radial-gradient(circle,#ef3340 0 28%,#138a43 29% 100%);
-  border:5px solid rgba(255,255,255,.8);
-  box-shadow:0 0 50px rgba(24,201,120,.25);
-}
-
-section{
-  padding:95px 0;
-  position:relative;
-}
-
-.section-title{
-  margin-bottom:38px;
-}
-
-.section-title span{
-  color:var(--green);
-  font-size:.8rem;
-  font-weight:900;
-  letter-spacing:3px;
-  text-transform:uppercase;
-}
-
-.section-title h2{
-  font-size:clamp(2rem,4vw,3.3rem);
-  margin-top:5px;
-}
-
-.section-title p{color:var(--muted)}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:20px;
-}
-
-.card{
-  padding:27px;
-  border:1px solid var(--border);
-  border-radius:20px;
-  background:var(--card);
-  backdrop-filter:blur(15px);
-  transition:.35s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-  border-color:rgba(24,201,120,.45);
-}
-
-.card h3{margin-bottom:8px}
-.card p,.card li{color:var(--muted)}
-
-.card ul{
-  padding-left:20px;
-  margin-top:10px;
-}
+/* =========================================================
+   STATS
+   ========================================================= */
 
 .stats{
+  width:min(1100px,92%);
+  margin:-20px auto 80px;
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:15px;
-  margin-top:30px;
+  gap:12px;
+  position:relative;
+  z-index:4;
 }
 
 .stat{
   text-align:center;
-  padding:24px 10px;
+  padding:25px 15px;
   border:1px solid var(--border);
-  border-radius:18px;
   background:var(--card);
+  backdrop-filter:blur(15px);
+  border-radius:18px;
 }
 
 .stat strong{
   display:block;
-  font-size:2rem;
+  font-family:Orbitron,sans-serif;
+  font-size:25px;
   color:var(--green);
+  margin-bottom:7px;
 }
 
-.project-card{
-  position:relative;
-  overflow:hidden;
+.stat span{
+  color:#9eb2a7;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1.4px;
 }
 
-.project-card::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:4px;
-  height:100%;
-  background:linear-gradient(#18c978,#ef3340);
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+section{
+  width:min(1150px,92%);
+  margin:0 auto 105px;
 }
 
-.project-card h3{color:#fff}
+.section-head{
+  margin-bottom:35px;
+}
 
-.agency-grid{
+.eyebrow{
+  color:var(--green);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.section-head h2{
+  font-family:Orbitron,sans-serif;
+  font-size:clamp(25px,4vw,42px);
+  line-height:1.2;
+}
+
+.section-head p{
+  margin-top:12px;
+  color:var(--muted);
+  line-height:1.8;
+  max-width:780px;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:27px;
+  backdrop-filter:blur(16px);
+  box-shadow:var(--shadow);
+  transition:.4s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(22,212,123,.3);
+}
+
+.grid-2{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:20px;
+  gap:18px;
 }
 
-.agency{
-  padding:30px;
-  border-radius:22px;
-  border:1px solid var(--border);
-  background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.025));
-  transition:.35s;
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
 }
 
-.agency:hover{
-  transform:translateY(-7px) scale(1.01);
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.profile-card{
+  display:grid;
+  grid-template-columns:170px 1fr;
+  gap:30px;
+  align-items:center;
 }
 
-.agency-icon{font-size:2.2rem}
-.agency h3{font-size:1.5rem;margin-top:8px}
-.agency p{color:var(--muted);margin:10px 0 18px}
-
-.skills{
+.profile-avatar{
+  width:170px;
+  height:170px;
+  border-radius:50%;
+  border:2px solid rgba(22,212,123,.45);
   display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:18px;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle,#0d3d28 0 20%,transparent 21%),
+    linear-gradient(135deg,#0c1d15,#020503);
+  font-family:Orbitron,sans-serif;
+  font-size:48px;
+  color:#18d47a;
+  box-shadow:0 0 50px rgba(22,212,123,.13);
 }
 
-.skill{
-  padding:8px 13px;
-  border-radius:999px;
-  border:1px solid rgba(24,201,120,.25);
-  background:rgba(24,201,120,.07);
-  color:#bff8d8;
-  font-size:.86rem;
+.profile-card h3{
+  font-size:24px;
+  margin-bottom:10px;
 }
+
+.profile-card p{
+  color:var(--muted);
+  line-height:1.85;
+}
+
+/* =========================================================
+   EDUCATION / EXPERIENCE
+   ========================================================= */
 
 .timeline{
-  border-left:2px solid rgba(24,201,120,.35);
-  padding-left:25px;
+  position:relative;
 }
 
 .timeline-item{
-  margin-bottom:30px;
   position:relative;
+  padding:0 0 28px 30px;
+  border-left:1px solid rgba(22,212,123,.3);
+}
+
+.timeline-item:last-child{
+  border-left-color:transparent;
 }
 
 .timeline-item::before{
   content:"";
   position:absolute;
-  left:-34px;
-  top:8px;
-  width:14px;
-  height:14px;
-  border-radius:50%;
+  left:-6px;
+  top:3px;
+  width:11px;
+  height:11px;
   background:var(--green);
-  box-shadow:0 0 15px rgba(24,201,120,.5);
+  border-radius:50%;
+  box-shadow:0 0 20px rgba(22,212,123,.6);
 }
 
-.muted{color:var(--muted)}
+.timeline-item h3{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.timeline-item h4{
+  color:var(--green);
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+.timeline-item p{
+  color:var(--muted);
+  line-height:1.75;
+  font-size:13px;
+}
+
+.date{
+  display:inline-block;
+  font-size:10px;
+  color:#90a69a;
+  border:1px solid var(--border);
+  padding:5px 8px;
+  border-radius:20px;
+  margin-bottom:9px;
+}
+
+/* =========================================================
+   AGENCY CARDS
+   ========================================================= */
+
+.agency{
+  position:relative;
+  overflow:hidden;
+}
+
+.agency::before{
+  content:"";
+  position:absolute;
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  right:-70px;
+  top:-70px;
+  background:rgba(22,212,123,.08);
+  filter:blur(5px);
+}
+
+.agency-icon{
+  width:55px;
+  height:55px;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(22,212,123,.09);
+  border:1px solid rgba(22,212,123,.2);
+  font-size:27px;
+  margin-bottom:20px;
+}
+
+.agency h3{
+  font-family:Orbitron,sans-serif;
+  font-size:21px;
+  margin-bottom:5px;
+}
+
+.agency h4{
+  color:#8fb4a0;
+  font-size:12px;
+  margin-bottom:14px;
+}
+
+.agency p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.7;
+  margin-bottom:17px;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:20px;
+}
+
+.tag{
+  padding:5px 8px;
+  border-radius:20px;
+  background:rgba(255,255,255,.05);
+  color:#a9c2b5;
+  font-size:9px;
+}
+
+/* =========================================================
+   PROJECTS
+   ========================================================= */
+
+.project-card{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+
+.project-number{
+  font-family:Orbitron,sans-serif;
+  color:rgba(22,212,123,.65);
+  font-size:11px;
+  letter-spacing:2px;
+  margin-bottom:15px;
+}
+
+.project-card h3{
+  font-size:16px;
+  line-height:1.5;
+  margin-bottom:10px;
+}
+
+.project-meta{
+  color:#7f9a8b;
+  font-size:10px;
+  line-height:1.7;
+  margin-bottom:14px;
+}
+
+.project-card p{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.75;
+  margin-top:auto;
+}
+
+/* =========================================================
+   SKILLS
+   ========================================================= */
+
+.skill-group{
+  margin-bottom:18px;
+}
+
+.skill-group h3{
+  color:#eaf7f0;
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.skill-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.skill{
+  padding:9px 11px;
+  border-radius:10px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.08);
+  color:#b7cabe;
+  font-size:10px;
+  font-weight:600;
+}
+
+/* =========================================================
+   HIGHLIGHTS
+   ========================================================= */
+
+.grade-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.grade{
+  padding:13px;
+  border-radius:12px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.06);
+  font-size:10px;
+  color:#b9c9c0;
+}
+
+.grade strong{
+  display:block;
+  color:var(--green);
+  margin-top:5px;
+}
+
+/* =========================================================
+   THESIS
+   ========================================================= */
+
+.thesis{
+  border:1px solid rgba(155,108,255,.25);
+  background:
+    radial-gradient(circle at 90% 10%,rgba(155,108,255,.12),transparent 30%),
+    var(--card);
+}
+
+.thesis h3{
+  font-family:Orbitron,sans-serif;
+  font-size:20px;
+  line-height:1.5;
+  margin-bottom:15px;
+}
+
+.thesis p{
+  color:var(--muted);
+  line-height:1.85;
+  font-size:13px;
+}
+
+.thesis ul{
+  margin:18px 0 0 20px;
+  color:#b9c8c0;
+}
+
+.thesis li{
+  margin:8px 0;
+  font-size:12px;
+  line-height:1.6;
+}
+
+/* =========================================================
+   INTERESTS
+   ========================================================= */
+
+.interest{
+  padding:25px;
+  border-radius:18px;
+  border:1px solid var(--border);
+  background:var(--card);
+}
+
+.interest h3{
+  color:var(--green);
+  margin-bottom:10px;
+}
+
+.interest p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-box{
+  text-align:center;
+  padding:50px 25px;
+  border-radius:25px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(22,212,123,.13),transparent 40%),
+    var(--card);
+  border:1px solid var(--border);
+}
+
+.contact-box h2{
+  font-family:Orbitron,sans-serif;
+  font-size:30px;
+  margin-bottom:12px;
+}
+
+.contact-box p{
+  color:var(--muted);
+  margin-bottom:25px;
+}
+
+.contact-links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 footer{
-  padding:45px 0;
-  border-top:1px solid var(--border);
+  border-top:1px solid rgba(255,255,255,.07);
+  padding:35px 5%;
   text-align:center;
-  color:var(--muted);
+  color:#71857a;
+  font-size:10px;
+  line-height:1.8;
 }
 
-/* MOOD PANEL */
-.mood-panel{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  z-index:2000;
+footer strong{
+  color:#a8c4b5;
 }
 
-.mood-toggle{
-  width:52px;
-  height:52px;
-  border:1px solid var(--border);
-  border-radius:50%;
-  background:rgba(10,20,15,.8);
-  color:white;
-  font-size:1.3rem;
-  cursor:pointer;
-  backdrop-filter:blur(15px);
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:opacity .8s ease,transform .8s ease;
 }
 
-.mood-menu{
-  position:absolute;
-  right:0;
-  bottom:65px;
-  width:205px;
-  padding:10px;
-  border:1px solid var(--border);
-  border-radius:18px;
-  background:rgba(8,15,12,.92);
-  backdrop-filter:blur(20px);
-  display:none;
+.reveal.show{
+  opacity:1;
+  transform:none;
 }
 
-.mood-menu.open{display:block}
+/* =========================================================
+   MOOD THEMES
+   ========================================================= */
 
-.mood-option{
-  width:100%;
-  border:0;
-  color:white;
-  background:transparent;
-  padding:11px;
-  text-align:left;
-  border-radius:10px;
-  cursor:pointer;
-  transition:.25s;
+/* GALAXY */
+body.galaxy{
+  --bg:#02020b;
+  --bg2:#07031a;
+  --card:rgba(9,8,31,.67);
+  --green:#6ee7ff;
 }
 
-.mood-option:hover{
-  background:rgba(255,255,255,.1);
-  transform:translateX(3px);
+body.galaxy::before{
+  background:
+    radial-gradient(circle at 15% 20%,rgba(74,34,255,.25),transparent 28%),
+    radial-gradient(circle at 80% 25%,rgba(255,43,190,.18),transparent 25%),
+    radial-gradient(circle at 50% 90%,rgba(20,142,255,.17),transparent 30%);
 }
 
-/* MOODS */
-
-body.mood-galaxy{
-  --bg:#030617;
-  --bg2:#080d2a;
-  --green:#8b7cff;
-  --card:rgba(90,80,180,.12);
+body.galaxy .navbar{
+  background:rgba(2,2,12,.62);
 }
 
-body.mood-moon{
-  --bg:#0c111b;
-  --bg2:#182131;
-  --green:#c7d8ff;
-  --card:rgba(210,225,255,.09);
+body.galaxy .hero h1{
+  text-shadow:
+    0 0 15px rgba(80,190,255,.35),
+    0 0 60px rgba(160,80,255,.25);
 }
 
-body.mood-night{
-  --bg:#020303;
-  --bg2:#090b0b;
-  --green:#00ff9d;
-  --card:rgba(0,255,157,.06);
+body.galaxy .card{
+  box-shadow:
+    0 0 40px rgba(71,60,255,.06),
+    var(--shadow);
 }
 
-body.mood-day{
-  --bg:#eef7f1;
-  --bg2:#dcefe3;
-  --text:#102018;
-  --muted:#4c6357;
-  --card:rgba(255,255,255,.72);
-  --border:rgba(0,60,30,.14);
-  --green:#078c4b;
+/* BLACK HOLE */
+body.blackhole{
+  --bg:#010101;
+  --bg2:#090402;
+  --card:rgba(16,9,6,.72);
+  --green:#ffad38;
 }
 
-body.mood-day nav{
-  background:rgba(240,250,244,.78);
+body.blackhole::before{
+  background:
+    radial-gradient(circle at 50% 50%,rgba(255,89,0,.12),transparent 23%),
+    radial-gradient(circle at 10% 80%,rgba(255,40,0,.08),transparent 25%);
 }
 
-body.mood-day .nav-links a{color:#476154}
-body.mood-day .card,
-body.mood-day .agency,
-body.mood-day .stat{box-shadow:0 15px 45px rgba(0,60,30,.08)}
-body.mood-day .mood-menu{
-  background:rgba(245,255,248,.95);
-}
-body.mood-day .mood-option{color:#13251b}
-
-body.mood-forest{
-  --bg:#04140b;
-  --bg2:#0b2b18;
-  --green:#65e68f;
-  --card:rgba(30,120,65,.11);
+body.blackhole .hero h1{
+  text-shadow:0 0 45px rgba(255,100,0,.22);
 }
 
-body.mood-ocean{
-  --bg:#03131c;
-  --bg2:#06374b;
-  --green:#39d9ff;
-  --card:rgba(20,150,190,.11);
+body.blackhole .flag-line{
+  background:linear-gradient(90deg,#0f8f4c,#ff321f,#0f8f4c);
 }
 
-body.mood-ocean .name-md,
-body.mood-ocean .name-saad{color:#39d9ff}
-
-body.mood-ocean .name-rahman{color:#ff5260}
-
-@media(max-width:850px){
-  .nav-links{display:none}
-  .hero-grid,.grid,.agency-grid{grid-template-columns:1fr}
-  .stats{grid-template-columns:repeat(2,1fr)}
-  h1{letter-spacing:-2px}
+/* MOON */
+body.moon{
+  --bg:#08111c;
+  --bg2:#101e30;
+  --card:rgba(17,29,44,.72);
+  --green:#cde9ff;
 }
 
-@media(max-width:500px){
-  section{padding:70px 0}
-  .stats{grid-template-columns:1fr 1fr}
-  .profile-card{padding:25px}
+body.moon::before{
+  background:
+    radial-gradient(circle at 75% 12%,rgba(205,233,255,.17),transparent 18%),
+    radial-gradient(circle at 20% 70%,rgba(71,136,198,.12),transparent 30%);
+}
+
+/* NIGHT */
+body.night{
+  --bg:#020611;
+  --bg2:#071024;
+  --card:rgba(5,13,30,.72);
+  --green:#66aaff;
+}
+
+body.night::before{
+  background:
+    radial-gradient(circle at 80% 10%,rgba(66,104,255,.16),transparent 24%),
+    radial-gradient(circle at 20% 80%,rgba(40,80,170,.12),transparent 30%);
+}
+
+/* DAY */
+body.day{
+  --bg:#edf5f1;
+  --bg2:#ffffff;
+  --card:rgba(255,255,255,.8);
+  --card2:rgba(0,0,0,.035);
+  --text:#10231a;
+  --muted:#52665b;
+  --border:rgba(20,55,38,.12);
+  --green:#078447;
+  --green2:#056637;
+  --shadow:0 20px 55px rgba(23,60,43,.10);
+}
+
+body.day::before{
+  background:
+    radial-gradient(circle at 15% 10%,rgba(22,180,110,.12),transparent 25%),
+    radial-gradient(circle at 85% 15%,rgba(255,215,80,.12),transparent 25%);
+}
+
+body.day .navbar{
+  background:rgba(255,255,255,.76);
+}
+
+body.day .nav-links a,
+body.day .mood-toggle{
+  color:#183326;
+}
+
+body.day .mood-panel{
+  background:rgba(255,255,255,.95);
+}
+
+body.day .mood{
+  color:#173126;
+}
+
+body.day .badge{
+  color:#12653e;
+}
+
+body.day .profile-avatar{
+  background:#e7f4ed;
+}
+
+/* FOREST */
+body.forest{
+  --bg:#03120b;
+  --bg2:#071e12;
+  --card:rgba(5,28,17,.75);
+  --green:#63e892;
+}
+
+body.forest::before{
+  background:
+    radial-gradient(circle at 15% 30%,rgba(20,150,75,.18),transparent 30%),
+    radial-gradient(circle at 85% 70%,rgba(30,100,70,.15),transparent 30%);
+}
+
+/* OCEAN */
+body.ocean{
+  --bg:#02131b;
+  --bg2:#032a38;
+  --card:rgba(3,27,37,.74);
+  --green:#52e4ff;
+}
+
+body.ocean::before{
+  background:
+    radial-gradient(circle at 20% 20%,rgba(0,190,255,.18),transparent 28%),
+    radial-gradient(circle at 80% 80%,rgba(0,100,255,.14),transparent 30%);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:900px){
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:76px;
+    left:0;
+    right:0;
+    padding:20px;
+    flex-direction:column;
+    background:rgba(3,8,6,.96);
+    border-bottom:1px solid var(--border);
+  }
+
+  .nav-links.open{
+    display:flex;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .grid-3{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:650px){
+  .navbar{
+    padding:0 18px;
+  }
+
+  .logo{
+    font-size:12px;
+  }
+
+  .mood-wrapper{
+    right:12px;
+  }
+
+  .hero{
+    padding-top:120px;
+  }
+
+  .hero h1{
+    letter-spacing:-1px;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .grid-2,
+  .grid-3{
+    grid-template-columns:1fr;
+  }
+
+  .profile-card{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .profile-avatar{
+    margin:auto;
+  }
+
+  .grade-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  section{
+    margin-bottom:75px;
+  }
+}
+
+@media(max-width:430px){
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .hero-buttons .btn{
+    width:100%;
+  }
+
+  .grade-grid{
+    grid-template-columns:1fr;
+  }
+
+  .mood-panel{
+    width:190px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="container nav-inner">
-    <a href="#home" class="logo">
-      <span class="md">MD</span>
-      <span class="rahman">. Rahman</span>
-      <span class="saad"> Saad</span>
-    </a>
+<!-- =======================================================
+     LOADER
+======================================================= -->
 
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#agencies">Agencies</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
+<div id="loader">
+  <div class="loader-ring"></div>
+  <div class="loader-text">NAIMUR RAHMAN SAAD</div>
+</div>
+
+<!-- =======================================================
+     SPACE CANVAS
+======================================================= -->
+
+<canvas id="spaceCanvas"></canvas>
+<div class="black-hole"></div>
+
+<!-- =======================================================
+     NAVBAR
+======================================================= -->
+
+<header class="navbar">
+  <a href="#home" class="logo">
+    <span class="md">MD.</span>
+    <span class="naimur"> NAIMUR</span>
+    <span class="rahman"> RAHMAN</span>
+    <span class="saad"> SAAD</span>
+  </a>
+
+  <nav>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#education">EDUCATION</a></li>
+      <li><a href="#experience">EXPERIENCE</a></li>
+      <li><a href="#agencies">AGENCIES</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#skills">SKILLS</a></li>
+      <li><a href="#thesis">THESIS</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+</header>
+
+<!-- =======================================================
+     MOOD SELECTOR
+======================================================= -->
+
+<div class="mood-wrapper">
+  <button class="mood-toggle" onclick="toggleMoodPanel()" title="Change Mood">🎨</button>
+
+  <div class="mood-panel" id="moodPanel">
+    <div class="mood-title">Premium Atmosphere</div>
+
+    <div class="mood-grid">
+      <button class="mood" onclick="setMood('galaxy')">🌌 Galaxy</button>
+      <button class="mood" onclick="setMood('blackhole')">🕳️ Black Hole</button>
+      <button class="mood" onclick="setMood('moon')">🌙 Moon Light</button>
+      <button class="mood" onclick="setMood('night')">🌃 Night</button>
+      <button class="mood" onclick="setMood('day')">☀️ Day</button>
+      <button class="mood" onclick="setMood('forest')">🌲 Forest</button>
+      <button class="mood" onclick="setMood('ocean')">🌊 Ocean</button>
+      <button class="mood" onclick="setMood('default')">🇧🇩 Classic</button>
     </div>
   </div>
-</nav>
+</div>
+
+<!-- =======================================================
+     HERO
+======================================================= -->
 
 <main>
 
 <section class="hero" id="home">
-  <div class="container hero-grid">
+  <div class="hero-content reveal">
+
+    <div class="flag-line"></div>
+
+    <h1>
+      <span class="md">MD.</span>
+      <span class="naimur"> NAIMUR</span>
+      <span class="rahman"> RAHMAN</span>
+      <span class="saad"> SAAD</span>
+    </h1>
+
+    <h2>Civil Engineer | Construction Engineering & Project Management</h2>
+
+    <p>
+      Construction-focused Civil Engineering graduate with 6+ years of practical
+      contractor-side experience in road construction, RCC works, building works,
+      rehabilitation, emergency protection, QA/QC, material testing, quantity
+      verification and project coordination.
+    </p>
+
+    <div class="badges">
+      <span class="badge">🏗️ Civil Engineering</span>
+      <span class="badge">📐 Construction Management</span>
+      <span class="badge">🛣️ Transportation</span>
+      <span class="badge">🌱 Sustainable Infrastructure</span>
+      <span class="badge">📊 QA/QC</span>
+    </div>
+
+    <div class="hero-buttons">
+      <a class="btn btn-primary" href="CV.pdf" download>⬇️ DOWNLOAD CV</a>
+      <a class="btn btn-secondary" href="https://www.linkedin.com/in/md-naimur-rahman-saad-4240ba431/" target="_blank">LinkedIn ↗</a>
+      <a class="btn btn-secondary" href="https://github.com/nrsaad" target="_blank">GitHub ↗</a>
+      <a class="btn btn-secondary" href="mailto:naimurrahmansaad0@gmail.com">✉️ Email</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- =======================================================
+     STATS
+======================================================= -->
+
+<div class="stats reveal">
+  <div class="stat">
+    <strong>6+</strong>
+    <span>Years Experience</span>
+  </div>
+
+  <div class="stat">
+    <strong>11+</strong>
+    <span>Civil Projects</span>
+  </div>
+
+  <div class="stat">
+    <strong>৳25.7Cr</strong>
+    <span>Project Value Exposure</span>
+  </div>
+
+  <div class="stat">
+    <strong>4</strong>
+    <span>Government Agencies</span>
+  </div>
+</div>
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
+
+<section id="about" class="reveal">
+  <div class="section-head">
+    <div class="eyebrow">01 — PROFILE</div>
+    <h2>Professional Profile</h2>
+  </div>
+
+  <div class="profile-card card">
+    <div class="profile-avatar">NRS</div>
 
     <div>
-      <span class="badge">CIVIL ENGINEER • CONSTRUCTION • PROJECT MANAGEMENT</span>
-
-      <h1>
-        <span class="name-md">MD</span><span class="name-rahman">. Rahman</span>
-        <span class="name-saad"> Saad</span>
-      </h1>
-
-      <h2>Civil Engineer | Construction Engineering & Project Management</h2>
+      <h3>Construction & Project Management Engineer</h3>
 
       <p>
-        Civil Engineering graduate with 6+ years of practical construction
-        experience through M/S. Mahima Steel & Cong., with hands-on exposure
-        to road construction, RCC works, building works, emergency protection,
-        QA/QC, material testing, quantity verification and project coordination.
+        Civil Engineering graduate with <strong>6+ years of practical
+        construction experience</strong> through M/S. Mahima Steel & Cong.,
+        progressing from Trainee Site Engineer to Site Engineer.
+        Experienced in site supervision, QA/QC, construction material testing,
+        reinforcement inspection, BBS review, quantity verification,
+        contractor billing, material reconciliation, project coordination and
+        construction documentation.
       </p>
 
-      <div class="hero-buttons">
-        <a class="btn btn-primary" href="#projects">Explore Projects</a>
-        <a class="btn" href="#contact">Contact Me</a>
-        <a class="btn" href="CV.pdf" download>Download CV</a>
+      <br>
+
+      <p>
+        Hands-on exposure to road construction and rehabilitation, rigid
+        pavement, RCC works, building works, emergency protection and riverbank
+        protection. Seeking graduate study in
+        <strong>Construction Engineering & Project Management,
+        Environmental Engineering, or Transportation Engineering</strong>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- =======================================================
+     EDUCATION
+======================================================= -->
+
+<section id="education" class="reveal">
+  <div class="section-head">
+    <div class="eyebrow">02 — ACADEMIC JOURNEY</div>
+    <h2>Education</h2>
+  </div>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <span class="date">JANUARY 2019 — MAY 2026</span>
+      <h3>Daffodil International University</h3>
+      <h4>Bachelor of Science in Civil Engineering</h4>
+
+      <p>
+        Dhaka, Bangladesh<br>
+        CGPA: <strong>2.57/4.00</strong><br>
+        Medium of Instruction: English
+      </p>
+    </div>
+
+    <div class="timeline-item">
+      <span class="date">2018</span>
+      <h3>Sirajganj Collectorate College</h3>
+      <h4>Higher Secondary Certificate — Science</h4>
+
+      <p>
+        Sirajganj, Bangladesh<br>
+        GPA: <strong>3.17/5.00</strong>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =======================================================
+     EXPERIENCE
+======================================================= -->
+
+<section id="experience" class="reveal">
+  <div class="section-head">
+    <div class="eyebrow">03 — PROFESSIONAL EXPERIENCE</div>
+    <h2>Construction Experience</h2>
+  </div>
+
+  <div class="card">
+
+    <h3 style="font-size:24px;margin-bottom:7px;">
+      M/S. MAHIMA STEEL & CONG.
+    </h3>
+
+    <p style="color:var(--green);font-weight:700;margin-bottom:8px;">
+      Civil Works Contractor — Sirajganj, Bangladesh
+    </p>
+
+    <p style="color:#91a79b;font-size:12px;margin-bottom:25px;">
+      Site Engineer | 2024 – Present &nbsp; • &nbsp;
+      Trainee Site Engineer | 2020 – 2023
+    </p>
+
+    <div class="grid-2">
+
+      <div>
+        <h4 style="color:var(--green);margin-bottom:12px;">Core Responsibilities</h4>
+
+        <ul style="color:var(--muted);padding-left:18px;line-height:1.9;font-size:12px;">
+          <li>Supervise road and civil infrastructure construction.</li>
+          <li>Monitor earthwork, excavation, filling and compaction.</li>
+          <li>Monitor subgrade, sub-base, base-course and pavement works.</li>
+          <li>Supervise RCC, reinforcement, formwork, casting and curing.</li>
+          <li>Inspect drawings, dimensions, levels and construction activities.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="color:var(--green);margin-bottom:12px;">QA/QC & Management</h4>
+
+        <ul style="color:var(--muted);padding-left:18px;line-height:1.9;font-size:12px;">
+          <li>Slump and concrete cube testing.</li>
+          <li>Sand field-density testing.</li>
+          <li>Brick and bentonite slurry testing.</li>
+          <li>Reinforcement, cover-block and BBS review.</li>
+          <li>Quantity verification and contractor billing.</li>
+          <li>Material reconciliation and site documentation.</li>
+          <li>Worker, supplier and contractor coordination.</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- =======================================================
+     GOVERNMENT AGENCIES
+======================================================= -->
+
+<section id="agencies" class="reveal">
+
+  <div class="section-head">
+    <div class="eyebrow">04 — GOVERNMENT PROJECT EXPERIENCE</div>
+    <h2>Government Engineering Agencies</h2>
+
+    <p>
+      Professional exposure through civil infrastructure projects executed
+      under major government engineering agencies of Bangladesh.
+      Click any agency to visit its official website.
+    </p>
+  </div>
+
+  <div class="grid-2">
+
+    <!-- LGED -->
+    <div class="agency card">
+      <div class="agency-icon">🏗️</div>
+
+      <h3>LGED</h3>
+      <h4>Local Government Engineering Department</h4>
+
+      <p>
+        Rural roads, RCC roads, market development, rehabilitation and local
+        infrastructure projects.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Road Construction</span>
+        <span class="tag">RCC Road</span>
+        <span class="tag">Rural Infrastructure</span>
+      </div>
+
+      <a class="btn btn-primary"
+         href="https://www.lged.gov.bd/"
+         target="_blank">
+        Official Website ↗
+      </a>
+    </div>
+
+    <!-- PWD -->
+    <div class="agency card">
+      <div class="agency-icon">🏢</div>
+
+      <h3>PWD</h3>
+      <h4>Public Works Department</h4>
+
+      <p>
+        Building construction, structural and civil works, quantity measurement
+        and site coordination.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Building Works</span>
+        <span class="tag">Structural Works</span>
+        <span class="tag">Civil Works</span>
+      </div>
+
+      <a class="btn btn-primary"
+         href="https://pwd.gov.bd/"
+         target="_blank">
+        Official Website ↗
+      </a>
+    </div>
+
+    <!-- BWDB -->
+    <div class="agency card">
+      <div class="agency-icon">🌊</div>
+
+      <h3>BWDB</h3>
+      <h4>Bangladesh Water Development Board</h4>
+
+      <p>
+        Emergency repair, riverbank protection and water-resource-related
+        infrastructure works.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Riverbank Protection</span>
+        <span class="tag">Emergency Work</span>
+        <span class="tag">Water Resources</span>
+      </div>
+
+      <a class="btn btn-primary"
+         href="https://www.bwdb.gov.bd/"
+         target="_blank">
+        Official Website ↗
+      </a>
+    </div>
+
+    <!-- RHD -->
+    <div class="agency card">
+      <div class="agency-icon">🛣️</div>
+
+      <h3>RHD</h3>
+      <h4>Roads and Highways Department</h4>
+
+      <p>
+        Road pavement repair and rehabilitation works with practical exposure
+        to road construction and site execution.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Road Rehabilitation</span>
+        <span class="tag">HBB Pavement</span>
+        <span class="tag">Road Infrastructure</span>
+      </div>
+
+      <a class="btn btn-primary"
+         href="https://rhd.gov.bd/"
+         target="_blank">
+        Official Website ↗
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- =======================================================
+     PROJECTS
+======================================================= -->
+
+<section id="projects" class="reveal">
+
+  <div class="section-head">
+    <div class="eyebrow">05 — PROJECT PORTFOLIO</div>
+    <h2>11+ Civil Infrastructure Projects</h2>
+
+    <p>
+      Contractor-side construction experience through M/S. Mahima Steel &
+      Cong. across LGED, PWD, BWDB and RHD projects.
+    </p>
+  </div>
+
+  <div class="grid-3">
+
+    <div class="project-card card">
+      <div class="project-number">PROJECT 01</div>
+      <h3>Naykerhat Rural Market Development (NOBIDEP)</h3>
+      <div class="project-meta">
+        LGED — Kurigram<br>
+        Tender ID: 107138<br>
+        Package: WNOBI-Kur-RM-147 (C)<br>
+        Role: Site Engineer
+      </div>
+      <p>
+        Site supervision, construction execution, material inspection,
+        quantity verification and progress monitoring.
+      </p>
+    </div>
+
+    <div class="project-card card">
+      <div class="project-number">PROJECT 02</div>
+      <h3>Bagbati–Kazipur C&B Ghorachora Monsur Ali Road to Sarkar Bari Jame Mosque RCC Road</h3>
+      <div class="project-meta">
+        LGED — Sirajganj<br>
+        Tender ID: 810008<br>
+        Package: ADP/SAD/SER/2022-23/06<br>
+        Role: Site Engineer
+      </div>
+      <p>
+        RCC road construction, reinforcement inspection, concrete quality
+        control, material testing and site measurement.
+      </p>
+    </div>
+
+    <div class="project-card card">
+      <div class="project-number">PROJECT 03</div>
+      <h3>Char Someshpur Central Mosque Washblock & Ojukhana</h3>
+      <div class="project-meta">
+        LGED — Sirajganj<br>
+        Tender ID: 757953<br>
+        Package: GSID-2/SRJ/DW-04<br>
+        Role: Site Engineer
+      </div>
+      <p>
+        Building-related civil works, RCC/concrete activities, repair work,
+        material inspection and site supervision.
+      </p>
+    </div>
+
+    <div class="project-card card">
+      <div class="project-number">PROJECT 04</div>
+      <h3>Kaelgati Mosque to Kalumondol Bari RCC Road Development</h3>
+      <div class="project-meta">
+        LGED — Sirajganj<br>
+        Tender ID: 810013<br>
+        Package: UDF/SAD/SER/2022-23<br>
+        Role: Site Engineer
+      </div>
+      <p>
+        RCC road execution, reinforcement and formwork inspection, concrete
+        casting, curing and quantity verification.
+      </p>
+    </div>
+
+    <div class="project-card card">
+      <div class="project-number">PROJECT 05</div>
+      <h3>Tamai RHD (Bashtola) to Char Tengrail Road Improvement</h3>
+      <div class="project-meta">
+        LGED — Sirajganj<br>
+        700 m<br>
+        Project Value: ~BDT 8.11 Crore<br>
+        Package: LGED/XEN/Siraj/2017/1214<br>
+        Role: Trainee Site Engineer
+      </div>
+      <p>
+        Earthwork, filling, compaction, subgrade, pavement activities, site
+        measurement and progress monitoring.
+      </p>
+    </div>
+
+    <div class="project-card card">
+      <div class="project-number">PROJECT 06</div>
+      <h3>07 RAB Complex Project (RAB-12), Hatikumrul</h3>
+      <div class="project-meta">
+        PWD — Sirajganj<br>
+        Package: 02(U)(OTM)/2015-2016<br>
+        Role: Trainee Site Engineer
+      </div>
+      <p>
+        Building construction, structural/civil works, variation works,
+        quantity measurement and site coordination.
+      </p>
+    </div>
+
+    <div class="project-card card">
+      <div class="project-number">PROJECT 07</div>
+      <h3>Kuthi Satbaria UZR to Khas Satbaria Utterpara Road Improvement & Link Road</h3>
+      <div class="project-meta">
+        LGED<br>
+        805 m<br>
+        Project Value: ~BDT 1.68 Crore<br>
+        Tender ID: 599746<br>
+        Package: IRIDP-3/SRJ/DW-35
+      </div>
+      <p>
+        Road improvement, earthwork, pavement activities, measurement,
+        material management and progress monitoring.
+      </p>
+    </div>
+
+    <div class="project-card card">
+      <div class="project-number">PROJECT 08</div>
+      <h3>Masumdia UP Office to Dear Bramndi Hat Road Rehabilitation</h3>
+      <div class="project-meta">
+        LGED — Pabna<br>
+        1,240 m<br>
+        ID No.: 615468<br>
+        Package: GOBM/2021-22/W-33
+      </div>
+      <p>
+        Road rehabilitation, pavement-related works, site supervision,
+        quantity measurement and material inspection.
+      </p>
+    </div>
+
+    <div class="project-card card">
+      <div class="project-number">PROJECT 09</div>
+      <h3>Emergency Repair & Protection Work at Betil Spur-1, Belkuchi</h3>
+      <div class="project-meta">
+        BWDB — Sirajganj<br>
+        Tender ID: 535754<br>
+        Package: L/NDR/08/2020-2021<br>
+        Role: Trainee Site Engineer
+      </div>
+      <p>
+        Emergency repair, riverbank protection works, material coordination,
+        site measurement and progress monitoring.
+      </p>
+    </div>
+
+    <div class="project-card card">
+      <div class="project-number">PROJECT 10</div>
+      <h3>Temporary Emergency Protection Work</h3>
+      <div class="project-meta">
+        BWDB — Sirajganj O&M Division<br>
+        Package: I-NDR-05/2021<br>
+        Role: Trainee Site Engineer
+      </div>
+      <p>
+        Emergency protection works, site supervision, material handling,
+        measurement, documentation and contractor coordination.
+      </p>
+    </div>
+
+    <div class="project-card card">
+      <div class="project-number">PROJECT 11</div>
+      <h3>Repair of Damaged Pavement by HBB Work at 9th Km of Tarash–Hamkuria (Z-6032) Road</h3>
+      <div class="project-meta">
+        RHD — Sirajganj<br>
+        Tender ID: 621337 LTM<br>
+        Package: 12/e-GP/eeshid/2021-2022<br>
+        Role: Trainee Site Engineer
+      </div>
+      <p>
+        HBB pavement repair, site execution, material inspection, quantity
+        measurement and quality monitoring.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =======================================================
+     THESIS
+======================================================= -->
+
+<section id="thesis" class="reveal">
+
+  <div class="section-head">
+    <div class="eyebrow">06 — UNDERGRADUATE RESEARCH</div>
+    <h2>Thesis</h2>
+  </div>
+
+  <div class="thesis card">
+
+    <h3>
+      Investigation on the Causes of Cracks in RCC Structures and Possible
+      Preventive Measures
+    </h3>
+
+    <p>
+      Undergraduate thesis focused on structural and non-structural cracking
+      in reinforced concrete structures and the factors affecting durability
+      and performance.
+    </p>
+
+    <ul>
+      <li>
+        Investigated structural and non-structural cracking in RCC structures.
+      </li>
+
+      <li>
+        Examined construction, material, environmental and workmanship factors.
+      </li>
+
+      <li>
+        Reviewed preventive measures and repair approaches.
+      </li>
+
+      <li>
+        Connected academic investigation with practical construction and
+        QA/QC observations.
+      </li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- =======================================================
+     SKILLS
+======================================================= -->
+
+<section id="skills" class="reveal">
+
+  <div class="section-head">
+    <div class="eyebrow">07 — ENGINEERING CAPABILITIES</div>
+    <h2>Technical Skills</h2>
+  </div>
+
+  <div class="grid-2">
+
+    <div class="card">
+      <div class="skill-group">
+        <h3>🏗️ Construction & QA/QC</h3>
+        <div class="skill-list">
+          <span class="skill">Site Supervision</span>
+          <span class="skill">RCC Construction</span>
+          <span class="skill">Concrete Casting</span>
+          <span class="skill">Reinforcement Inspection</span>
+          <span class="skill">Cover-Block Inspection</span>
+          <span class="skill">BBS Review</span>
+          <span class="skill">Quantity Verification</span>
+          <span class="skill">Contractor Billing</span>
+          <span class="skill">Material Reconciliation</span>
+        </div>
       </div>
     </div>
 
-    <div class="profile-card">
-      <div class="profile-circle">NR</div>
-      <h3>MD. Naimur Rahman Saad</h3>
-      <p class="muted">Construction & Project Management Engineer</p>
+    <div class="card">
+      <div class="skill-group">
+        <h3>🧪 Testing</h3>
+        <div class="skill-list">
+          <span class="skill">Slump Testing</span>
+          <span class="skill">Concrete Cube Sampling</span>
+          <span class="skill">Bentonite Slurry Testing</span>
+          <span class="skill">Sand Field-Density Testing</span>
+          <span class="skill">Brick Testing</span>
+          <span class="skill">Material Inspection</span>
+        </div>
+      </div>
+    </div>
 
-      <div class="stats">
-        <div class="stat"><strong>6+</strong>Years</div>
-        <div class="stat"><strong>11+</strong>Projects</div>
-        <div class="stat"><strong>25.7</strong>Crore BDT</div>
-        <div class="stat"><strong>4</strong>Agencies</div>
+    <div class="card">
+      <div class="skill-group">
+        <h3>📊 Project Management</h3>
+        <div class="skill-list">
+          <span class="skill">Construction Planning Support</span>
+          <span class="skill">Progress Monitoring</span>
+          <span class="skill">Project Execution</span>
+          <span class="skill">Site Coordination</span>
+          <span class="skill">Material Management</span>
+          <span class="skill">Technical Documentation</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="skill-group">
+        <h3>💻 Software</h3>
+        <div class="skill-list">
+          <span class="skill">AutoCAD 2D — Intermediate</span>
+          <span class="skill">AutoCAD 3D — Self-directed</span>
+          <span class="skill">ETABS — Working Knowledge</span>
+          <span class="skill">Primavera P6 — Basic</span>
+          <span class="skill">Revit — Self-directed</span>
+          <span class="skill">MS Excel — Proficient</span>
+          <span class="skill">MS Word — Proficient</span>
+          <span class="skill">PowerPoint — Working Knowledge</span>
+        </div>
       </div>
     </div>
 
   </div>
 </section>
 
-<section id="about">
-<div class="container">
+<!-- =======================================================
+     ENGINEERING KNOWLEDGE
+======================================================= -->
 
-<div class="section-title">
-<span>01 — Professional Profile</span>
-<h2>About Me</h2>
-<p>Engineering experience, academic background and graduate-study direction.</p>
-</div>
+<section class="reveal">
 
-<div class="card">
-<p>
-Civil Engineering graduate with <strong>6+ years of practical construction
-experience</strong> through M/S. Mahima Steel & Cong., progressing from
-Trainee Site Engineer to Site Engineer. Experienced in site supervision,
-QA/QC, construction material testing, reinforcement inspection, BBS review,
-quantity verification, contractor billing, material reconciliation,
-project coordination and construction documentation.
-</p>
-<br>
-<p>
-Seeking graduate study in <strong>Construction Engineering & Project Management,
-Environmental Engineering, or Transportation Engineering</strong>, with
-interests in sustainable infrastructure, construction planning, quality
-management and infrastructure project delivery.
-</p>
-</div>
+  <div class="section-head">
+    <div class="eyebrow">08 — KNOWLEDGE AREAS</div>
+    <h2>Relevant Engineering Knowledge</h2>
+  </div>
 
-<div class="stats">
-<div class="stat"><strong>11+</strong>Government Projects</div>
-<div class="stat"><strong>BDT 25.7 Cr</strong>Project Value Exposure</div>
-<div class="stat"><strong>~USD 2.1M</strong>Equivalent Exposure</div>
-<div class="stat"><strong>4</strong>Major Agencies</div>
-</div>
+  <div class="grid-3">
 
-</div>
+    <div class="interest">
+      <h3>🏗️ Construction</h3>
+      <p>
+        Construction Management, Reinforced Concrete Structures,
+        Construction Materials and Project Delivery.
+      </p>
+    </div>
+
+    <div class="interest">
+      <h3>🛣️ Transportation</h3>
+      <p>
+        Transportation Engineering, Pavement Construction, Road
+        Rehabilitation and Transportation Infrastructure.
+      </p>
+    </div>
+
+    <div class="interest">
+      <h3>🌱 Environment</h3>
+      <p>
+        Environmental Engineering, Sustainable Infrastructure and
+        Environmental Management.
+      </p>
+    </div>
+
+    <div class="interest">
+      <h3>🌊 Water Resources</h3>
+      <p>
+        Water Resources Engineering, Riverbank Protection and emergency
+        infrastructure works.
+      </p>
+    </div>
+
+    <div class="interest">
+      <h3>⛰️ Geotechnical</h3>
+      <p>
+        Geotechnical Engineering, earthwork, filling, compaction and
+        field-density-related construction activities.
+      </p>
+    </div>
+
+    <div class="interest">
+      <h3>📐 Structures</h3>
+      <p>
+        Reinforced Concrete Structures, reinforcement inspection, BBS review,
+        concrete quality and crack investigation.
+      </p>
+    </div>
+
+  </div>
 </section>
 
-<section id="agencies">
-<div class="container">
+<!-- =======================================================
+     GRADUATE INTERESTS
+======================================================= -->
 
-<div class="section-title">
-<span>02 — Government Experience</span>
-<h2>Government Agencies</h2>
-<p>Major Bangladesh government engineering agencies connected with project experience.</p>
-</div>
+<section class="reveal">
 
-<div class="agency-grid">
+  <div class="section-head">
+    <div class="eyebrow">09 — FUTURE DIRECTION</div>
+    <h2>Graduate Study Interests</h2>
+  </div>
 
-<div class="agency">
-<div class="agency-icon">🏗️</div>
-<h3>LGED</h3>
-<h4>Local Government Engineering Department</h4>
-<p>
-Rural roads, RCC roads, market development, rehabilitation and local
-infrastructure projects.
-</p>
-<a class="btn btn-primary" href="https://www.lged.gov.bd/" target="_blank" rel="noopener">
-Official Website ↗
-</a>
-</div>
+  <div class="grid-3">
 
-<div class="agency">
-<div class="agency-icon">🏢</div>
-<h3>PWD</h3>
-<h4>Public Works Department</h4>
-<p>
-Building construction, structural and civil works, quantity measurement
-and site coordination.
-</p>
-<a class="btn btn-primary" href="https://pwd.gov.bd/" target="_blank" rel="noopener">
-Official Website ↗
-</a>
-</div>
+    <div class="interest">
+      <h3>🎓 Construction Engineering & Project Management</h3>
+      <p>
+        Construction Planning & Scheduling, Quality Management, Project Risk
+        Management, Construction Methods and Project Delivery.
+      </p>
+    </div>
 
-<div class="agency">
-<div class="agency-icon">🌊</div>
-<h3>BWDB</h3>
-<h4>Bangladesh Water Development Board</h4>
-<p>
-Emergency protection, riverbank protection, water resources and
-infrastructure-related civil works.
-</p>
-<a class="btn btn-primary" href="https://www.bwdb.gov.bd/" target="_blank" rel="noopener">
-Official Website ↗
-</a>
-</div>
+    <div class="interest">
+      <h3>🌱 Environmental Engineering</h3>
+      <p>
+        Sustainable Infrastructure, Environmental Management, Water &
+        Wastewater Systems and Pollution Control.
+      </p>
+    </div>
 
-<div class="agency">
-<div class="agency-icon">🛣️</div>
-<h3>RHD</h3>
-<h4>Roads and Highways Department</h4>
-<p>
-Road rehabilitation, HBB pavement repair, highway-related civil
-infrastructure and road maintenance works.
-</p>
-<a class="btn btn-primary" href="https://rhd.gov.bd/" target="_blank" rel="noopener">
-Official Website ↗
-</a>
-</div>
+    <div class="interest">
+      <h3>🛣️ Transportation Engineering</h3>
+      <p>
+        Transportation Infrastructure, Transportation Planning, Traffic
+        Engineering, Pavement Rehabilitation and Sustainable Transportation.
+      </p>
+    </div>
 
-</div>
-</div>
+  </div>
 </section>
 
-<section id="experience">
-<div class="container">
+<!-- =======================================================
+     ACADEMIC HIGHLIGHTS
+======================================================= -->
 
-<div class="section-title">
-<span>03 — Career</span>
-<h2>Professional Experience</h2>
-</div>
+<section class="reveal">
 
-<div class="timeline">
+  <div class="section-head">
+    <div class="eyebrow">10 — ACADEMIC PERFORMANCE</div>
+    <h2>Selected Academic Highlights</h2>
+  </div>
 
-<div class="timeline-item card">
-<h3>M/S. MAHIMA STEEL & CONG.</h3>
-<h4>Site Engineer | 2024 – Present</h4>
-<p class="muted">Civil Works Contractor — Sirajganj, Bangladesh</p>
-<ul>
-<li>Supervise road and civil infrastructure construction.</li>
-<li>Monitor earthwork, excavation, filling, compaction, subgrade, sub-base and pavement.</li>
-<li>Inspect RCC, reinforcement, formwork, casting and curing.</li>
-<li>Perform/assist QA/QC and construction material testing.</li>
-<li>Verify quantities, billing, material usage and reconciliation.</li>
-<li>Coordinate workers, suppliers, contractors and project personnel.</li>
-</ul>
-</div>
+  <div class="grade-grid">
 
-<div class="timeline-item card">
-<h3>M/S. MAHIMA STEEL & CONG.</h3>
-<h4>Trainee Site Engineer | 2020 – 2023</h4>
-<p class="muted">Civil Works Contractor — Sirajganj, Bangladesh</p>
-<ul>
-<li>Assisted senior engineers in construction execution.</li>
-<li>Supported quality control and material testing.</li>
-<li>Assisted measurement, progress monitoring and documentation.</li>
-<li>Supported site coordination and material management.</li>
-</ul>
-</div>
+    <div class="grade">Physics I<strong>A+ — 4.00</strong></div>
+    <div class="grade">Physics I Laboratory<strong>A+ — 4.00</strong></div>
+    <div class="grade">English<strong>A — 3.75</strong></div>
 
-</div>
-</div>
+    <div class="grade">Environmental Engineering II Laboratory<strong>A- — 3.50</strong></div>
+    <div class="grade">Socio Economics of Development Project<strong>A- — 3.50</strong></div>
+    <div class="grade">Transportation Engineering I Laboratory<strong>B+ — 3.25</strong></div>
+
+    <div class="grade">Engineering Ethics & Professional Practice<strong>B+ — 3.25</strong></div>
+    <div class="grade">Mathematics I<strong>B+ — 3.25</strong></div>
+    <div class="grade">Geotechnical Engineering II<strong>B — 3.00</strong></div>
+
+    <div class="grade">Surveying<strong>B — 3.00</strong></div>
+    <div class="grade">Water Resources Engineering II Laboratory<strong>B- — 2.75</strong></div>
+    <div class="grade">Climate Change & Sustainable Development<strong>B- — 2.75</strong></div>
+
+    <div class="grade">Quantity Surveying Laboratory<strong>B- — 2.75</strong></div>
+
+  </div>
 </section>
 
-<section id="projects">
-<div class="container">
+<!-- =======================================================
+     LANGUAGES
+======================================================= -->
 
-<div class="section-title">
-<span>04 — Portfolio</span>
-<h2>Selected Government Projects</h2>
-<p>11+ civil infrastructure projects through M/S. Mahima Steel & Cong.</p>
-</div>
+<section class="reveal">
 
-<div class="grid">
+  <div class="section-head">
+    <div class="eyebrow">11 — COMMUNICATION</div>
+    <h2>Languages</h2>
+  </div>
 
-<div class="card project-card">
-<h3>Naykerhat Rural Market Development — LGED</h3>
-<p>Tender ID: 107138</p>
-<p>Package: WNOBI-Kur-RM-147 (C)</p>
-<p>Site supervision, construction execution, material inspection, quantity verification and progress monitoring.</p>
-</div>
+  <div class="grid-2">
 
-<div class="card project-card">
-<h3>Bagbati–Kazipur C&B Ghorachora Monsur Ali Road to Sarkar Bari Jame Mosque RCC Road</h3>
-<p>LGED, Sirajganj | Tender ID: 810008</p>
-<p>RCC road construction, reinforcement inspection, concrete quality control, material testing and site measurement.</p>
-</div>
+    <div class="card">
+      <h3 style="margin-bottom:8px;">🇧🇩 Bengali</h3>
+      <p style="color:var(--muted);font-size:13px;">
+        Native
+      </p>
+    </div>
 
-<div class="card project-card">
-<h3>Char Someshpur Central Mosque Washblock & Ojukhana</h3>
-<p>LGED, Sirajganj | Tender ID: 757953</p>
-<p>Building-related civil works, RCC/concrete activities, repair work, material inspection and supervision.</p>
-</div>
+    <div class="card">
+      <h3 style="margin-bottom:8px;">🇬🇧 English</h3>
+      <p style="color:var(--muted);font-size:13px;">
+        Academic & Professional Working Proficiency
+      </p>
+    </div>
 
-<div class="card project-card">
-<h3>Kaelgati Mosque to Kalumondol Bari RCC Road</h3>
-<p>LGED, Sirajganj | Tender ID: 810013</p>
-<p>RCC road execution, reinforcement, formwork, casting, curing and quantity verification.</p>
-</div>
-
-<div class="card project-card">
-<h3>Tamai RHD (Bashtola) to Char Tengrail Road Improvement</h3>
-<p>LGED, Sirajganj | 700 m | ~BDT 8.11 Crore</p>
-<p>Earthwork, filling, compaction, subgrade, pavement, measurement and progress monitoring.</p>
-</div>
-
-<div class="card project-card">
-<h3>07 RAB Complex Project (RAB-12), Hatikumrul</h3>
-<p>PWD, Sirajganj | Package: 02(U)(OTM)/2015-2016</p>
-<p>Building construction, structural/civil works, variation works, quantity measurement and coordination.</p>
-</div>
-
-<div class="card project-card">
-<h3>Kuthi Satbaria UZR to Khas Satbaria Utterpara Road</h3>
-<p>LGED | 805 m | ~BDT 1.68 Crore</p>
-<p>Tender ID: 599746 | Package: IRIDP-3/SRJ/DW-35</p>
-</div>
-
-<div class="card project-card">
-<h3>Masumdia UP Office to Dear Bramndi Hat Road Rehabilitation</h3>
-<p>LGED, Pabna | 1,240 m | ID: 615468</p>
-<p>Road rehabilitation, pavement works, supervision, quantity measurement and material inspection.</p>
-</div>
-
-<div class="card project-card">
-<h3>Emergency Repair & Protection Work at Betil Spur-1</h3>
-<p>BWDB, Belkuchi, Sirajganj | Tender ID: 535754</p>
-<p>Emergency repair, riverbank protection, material coordination, measurement and monitoring.</p>
-</div>
-
-<div class="card project-card">
-<h3>Temporary Emergency Protection Work</h3>
-<p>BWDB, Sirajganj O&M Division | Package: I-NDR-05/2021</p>
-<p>Emergency protection, material handling, measurement, documentation and contractor coordination.</p>
-</div>
-
-<div class="card project-card">
-<h3>Tarash–Hamkuria (Z-6032) Road HBB Pavement Repair</h3>
-<p>RHD, Sirajganj | Tender ID: 621337 LTM</p>
-<p>Package: 12/e-GP/eeshid/2021-2022</p>
-</div>
-
-</div>
-</div>
+  </div>
 </section>
 
-<section id="education">
-<div class="container">
+<!-- =======================================================
+     CONTACT
+======================================================= -->
 
-<div class="section-title">
-<span>05 — Academic</span>
-<h2>Education</h2>
-</div>
+<section id="contact" class="reveal">
 
-<div class="grid">
+  <div class="contact-box">
 
-<div class="card">
-<h3>Daffodil International University</h3>
-<h4>BSc in Civil Engineering</h4>
-<p>January 2019 – May 2026</p>
-<p><strong>CGPA: 2.57/4.00</strong></p>
-<p>Medium of Instruction: English</p>
-</div>
+    <div class="eyebrow">12 — CONNECT</div>
 
-<div class="card">
-<h3>Sirajganj Collectorate College</h3>
-<h4>Higher Secondary Certificate — Science</h4>
-<p>2018</p>
-<p><strong>GPA: 3.17/5.00</strong></p>
-</div>
+    <h2>Let's Connect</h2>
 
-</div>
-</div>
-</section>
+    <p>
+      For graduate study, academic collaboration, professional opportunities,
+      construction engineering and project management discussions.
+    </p>
 
-<section id="thesis">
-<div class="container">
+    <div class="contact-links">
 
-<div class="section-title">
-<span>06 — Research</span>
-<h2>Undergraduate Thesis</h2>
-</div>
+      <a class="btn btn-primary"
+         href="mailto:naimurrahmansaad0@gmail.com">
+        ✉️ Email Me
+      </a>
 
-<div class="card">
-<h3>Investigation on the Causes of Cracks in RCC Structures and Possible Preventive Measures</h3>
-<ul>
-<li>Investigated structural and non-structural cracking in RCC structures.</li>
-<li>Examined construction, material, environmental and workmanship factors.</li>
-<li>Reviewed preventive measures and repair approaches.</li>
-<li>Connected academic investigation with practical construction and QA/QC observations.</li>
-</ul>
-</div>
+      <a class="btn btn-secondary"
+         href="https://www.linkedin.com/in/md-naimur-rahman-saad-4240ba431/"
+         target="_blank">
+        LinkedIn ↗
+      </a>
 
-</div>
-</section>
+      <a class="btn btn-secondary"
+         href="https://github.com/nrsaad"
+         target="_blank">
+        GitHub ↗
+      </a>
 
-<section id="skills">
-<div class="container">
+      <a class="btn btn-secondary"
+         href="CV.pdf"
+         download>
+        ⬇️ Download CV
+      </a>
 
-<div class="section-title">
-<span>07 — Engineering Toolkit</span>
-<h2>Technical Skills</h2>
-</div>
+    </div>
 
-<div class="grid">
+    <div style="margin-top:30px;color:#8da398;font-size:11px;">
+      📍 Sirajganj, Bangladesh &nbsp; | &nbsp;
+      📞 +880 1570-279183 &nbsp; | &nbsp;
+      ✉️ naimurrahmansaad0@gmail.com
+    </div>
 
-<div class="card">
-<h3>Construction & QA/QC</h3>
-<div class="skills">
-<span class="skill">Site Supervision</span>
-<span class="skill">RCC Construction</span>
-<span class="skill">Concrete Casting</span>
-<span class="skill">Reinforcement Inspection</span>
-<span class="skill">Cover Block Inspection</span>
-<span class="skill">BBS Review</span>
-<span class="skill">Quantity Verification</span>
-<span class="skill">Contractor Billing</span>
-<span class="skill">Material Reconciliation</span>
-</div>
-</div>
+  </div>
 
-<div class="card">
-<h3>Testing</h3>
-<div class="skills">
-<span class="skill">Slump Testing</span>
-<span class="skill">Concrete Cube</span>
-<span class="skill">Bentonite Slurry</span>
-<span class="skill">Sand Field Density</span>
-<span class="skill">Brick Testing</span>
-<span class="skill">Material Inspection</span>
-</div>
-</div>
-
-<div class="card">
-<h3>Software</h3>
-<div class="skills">
-<span class="skill">AutoCAD 2D — Intermediate</span>
-<span class="skill">AutoCAD 3D — Learning</span>
-<span class="skill">ETABS — Working Knowledge</span>
-<span class="skill">Primavera P6 — Basic</span>
-<span class="skill">Revit — Learning</span>
-<span class="skill">MS Excel — Proficient</span>
-<span class="skill">MS Word — Proficient</span>
-<span class="skill">PowerPoint</span>
-</div>
-</div>
-
-<div class="card">
-<h3>Project Management</h3>
-<div class="skills">
-<span class="skill">Construction Planning</span>
-<span class="skill">Progress Monitoring</span>
-<span class="skill">Project Execution</span>
-<span class="skill">Site Coordination</span>
-<span class="skill">Material Management</span>
-<span class="skill">Technical Documentation</span>
-</div>
-</div>
-
-</div>
-</div>
-</section>
-
-<section id="interests">
-<div class="container">
-
-<div class="section-title">
-<span>08 — Future Direction</span>
-<h2>Graduate Study Interests</h2>
-</div>
-
-<div class="grid">
-
-<div class="card">
-<h3>Construction Engineering & Project Management</h3>
-<p>Construction Planning & Scheduling • Quality Management • Project Risk Management • Construction Methods & Project Delivery</p>
-</div>
-
-<div class="card">
-<h3>Environmental Engineering</h3>
-<p>Sustainable Infrastructure • Environmental Management • Water & Wastewater Systems • Pollution Control</p>
-</div>
-
-<div class="card">
-<h3>Transportation Engineering</h3>
-<p>Transportation Infrastructure • Transportation Planning • Traffic Engineering • Pavement Rehabilitation • Sustainable Transportation Systems</p>
-</div>
-
-</div>
-</div>
-</section>
-
-<section id="contact">
-<div class="container">
-
-<div class="section-title">
-<span>09 — Connect</span>
-<h2>Contact</h2>
-</div>
-
-<div class="grid">
-
-<div class="card">
-<h3>MD. Naimur Rahman Saad</h3>
-<p>Sirajganj, Bangladesh</p>
-<p>+880 1570-279183</p>
-<p>naimurrahmansaad0@gmail.com</p>
-</div>
-
-<div class="card">
-<h3>Online Profiles</h3>
-
-<div class="hero-buttons">
-<a class="btn btn-primary"
-href="https://www.linkedin.com/in/md-naimur-rahman-saad-4240ba431/"
-target="_blank" rel="noopener">
-LinkedIn ↗
-</a>
-
-<a class="btn"
-href="https://github.com/nrsaad"
-target="_blank" rel="noopener">
-GitHub ↗
-</a>
-
-<a class="btn"
-href="https://nrsaad.github.io/naimur-rahman-saad.github.io/"
-target="_blank" rel="noopener">
-Portfolio ↗
-</a>
-</div>
-
-</div>
-
-</div>
-</div>
 </section>
 
 </main>
 
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
 <footer>
-<div class="container">
-<p>© 2026 MD. Naimur Rahman Saad</p>
-<p>Civil Engineer • Construction Engineering & Project Management</p>
-</div>
+
+  <strong>MD. NAIMUR RAHMAN SAAD</strong><br>
+
+  Civil Engineer | Construction Engineering & Project Management<br>
+
+  © <span id="year"></span> — Professional Engineering Portfolio
+
 </footer>
 
-<!-- MOOD SYSTEM -->
-<div class="mood-panel">
-
-<button class="mood-toggle" onclick="toggleMoodMenu()" aria-label="Change website mood">
-🎨
-</button>
-
-<div class="mood-menu" id="moodMenu">
-
-<button class="mood-option" onclick="setMood('galaxy')">
-🌌 Galaxy Mood
-</button>
-
-<button class="mood-option" onclick="setMood('moon')">
-🌙 Moon Light Mood
-</button>
-
-<button class="mood-option" onclick="setMood('night')">
-🌃 Night Mood
-</button>
-
-<button class="mood-option" onclick="setMood('day')">
-☀️ Day Mood
-</button>
-
-<button class="mood-option" onclick="setMood('forest')">
-🌲 Forest Mood
-</button>
-
-<button class="mood-option" onclick="setMood('ocean')">
-🌊 Ocean Mood
-</button>
-
-</div>
-</div>
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
 
 <script>
-const moods = [
-  "mood-galaxy",
-  "mood-moon",
-  "mood-night",
-  "mood-day",
-  "mood-forest",
-  "mood-ocean"
-];
 
-function toggleMoodMenu(){
-  document.getElementById("moodMenu").classList.toggle("open");
+/* =========================================================
+   LOADER
+========================================================= */
+
+window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    document.getElementById("loader").classList.add("hide");
+  },700);
+});
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("open");
 }
+
+document.querySelectorAll(".nav-links a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    document.getElementById("navLinks").classList.remove("open");
+  });
+});
+
+
+/* =========================================================
+   MOOD PANEL
+========================================================= */
+
+function toggleMoodPanel(){
+  document.getElementById("moodPanel").classList.toggle("open");
+}
+
+
+/* =========================================================
+   MOOD SYSTEM
+========================================================= */
+
+const moods=[
+  "default",
+  "galaxy",
+  "blackhole",
+  "moon",
+  "night",
+  "day",
+  "forest",
+  "ocean"
+];
 
 function setMood(mood){
 
-  moods.forEach(item=>{
-    document.body.classList.remove(item);
+  moods.forEach(m=>{
+    document.body.classList.remove(m);
   });
 
-  document.body.classList.add("mood-" + mood);
+  if(mood!=="default"){
+    document.body.classList.add(mood);
+  }
 
-  localStorage.setItem("naimurPortfolioMood", mood);
+  localStorage.setItem("naimurMood",mood);
 
-  document.getElementById("moodMenu").classList.remove("open");
+  document.getElementById("moodPanel").classList.remove("open");
+
+  if(mood==="galaxy" || mood==="blackhole"){
+    createSpace();
+  }
 }
 
-const savedMood = localStorage.getItem("naimurPortfolioMood");
+
+/* =========================================================
+   REMEMBER LAST MOOD
+========================================================= */
+
+const savedMood=localStorage.getItem("naimurMood");
 
 if(savedMood){
   setMood(savedMood);
-}else{
-  setMood("galaxy");
 }
 
-document.addEventListener("click",function(e){
-  const panel=document.querySelector(".mood-panel");
 
-  if(!panel.contains(e.target)){
-    document.getElementById("moodMenu").classList.remove("open");
+/* =========================================================
+   SPACE / GALAXY PARTICLE ENGINE
+========================================================= */
+
+const canvas=document.getElementById("spaceCanvas");
+const ctx=canvas.getContext("2d");
+
+let stars=[];
+let shootingStars=[];
+let animationRunning=false;
+
+function resizeCanvas(){
+
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+
+  stars=[];
+
+  const amount=Math.min(420,Math.floor(
+    (window.innerWidth*window.innerHeight)/7000
+  ));
+
+  for(let i=0;i<amount;i++){
+
+    stars.push({
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height,
+      r:Math.random()*1.8+.2,
+      a:Math.random()*.8+.2,
+      speed:Math.random()*.25+.05,
+      twinkle:Math.random()*.03+.005
+    });
+
   }
+}
+
+function createSpace(){
+
+  resizeCanvas();
+
+  if(!animationRunning){
+    animationRunning=true;
+    animateSpace();
+  }
+
+}
+
+function animateSpace(){
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  const galaxyMode=document.body.classList.contains("galaxy");
+  const holeMode=document.body.classList.contains("blackhole");
+
+  if(galaxyMode || holeMode){
+
+    /* Nebula glow */
+    const gradient=ctx.createRadialGradient(
+      canvas.width*.5,
+      canvas.height*.5,
+      0,
+      canvas.width*.5,
+      canvas.height*.5,
+      Math.max(canvas.width,canvas.height)*.7
+    );
+
+    if(galaxyMode){
+      gradient.addColorStop(0,"rgba(70,40,180,.10)");
+      gradient.addColorStop(.35,"rgba(20,70,160,.05)");
+      gradient.addColorStop(1,"rgba(0,0,0,0)");
+    }else{
+      gradient.addColorStop(0,"rgba(255,80,0,.06)");
+      gradient.addColorStop(.25,"rgba(80,20,0,.03)");
+      gradient.addColorStop(1,"rgba(0,0,0,0)");
+    }
+
+    ctx.fillStyle=gradient;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    /* Stars */
+    stars.forEach(s=>{
+
+      s.a+=Math.sin(Date.now()*s.twinkle)*.003;
+
+      s.y+=s.speed;
+
+      if(s.y>canvas.height){
+        s.y=0;
+        s.x=Math.random()*canvas.width;
+      }
+
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+
+      if(galaxyMode){
+        ctx.fillStyle=`rgba(190,225,255,${Math.max(.1,s.a)})`;
+      }else{
+        ctx.fillStyle=`rgba(255,190,130,${Math.max(.08,s.a)})`;
+      }
+
+      ctx.fill();
+    });
+
+    /* Galaxy spiral */
+    if(galaxyMode){
+
+      const cx=canvas.width/2;
+      const cy=canvas.height/2;
+
+      for(let arm=0;arm<4;arm++){
+
+        for(let i=0;i<120;i++){
+
+          const angle=i*.08+arm*Math.PI/2;
+          const radius=i*2.3;
+
+          const x=cx+
+            Math.cos(angle+radius*.004)*radius;
+
+          const y=cy+
+            Math.sin(angle+radius*.004)*radius*.48;
+
+          ctx.beginPath();
+          ctx.arc(x,y,Math.random()*1.1+.2,0,Math.PI*2);
+
+          ctx.fillStyle="rgba(130,170,255,.20)";
+          ctx.fill();
+        }
+      }
+    }
+
+  }
+
+  requestAnimationFrame(animateSpace);
+}
+
+window.addEventListener("resize",resizeCanvas);
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer=new IntersectionObserver(
+  entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+      }
+    });
+  },
+  {
+    threshold:.12
+  }
+);
+
+document.querySelectorAll(".reveal").forEach(el=>{
+  observer.observe(el);
 });
+
+
+/* =========================================================
+   CURRENT YEAR
+========================================================= */
+
+document.getElementById("year").textContent=new Date().getFullYear();
+
+
+/* =========================================================
+   CLOSE MOOD PANEL OUTSIDE CLICK
+========================================================= */
+
+document.addEventListener("click",(event)=>{
+
+  const wrapper=document.querySelector(".mood-wrapper");
+
+  if(!wrapper.contains(event.target)){
+    document.getElementById("moodPanel").classList.remove("open");
+  }
+
+});
+
+
+/* =========================================================
+   START SPACE ENGINE
+========================================================= */
+
+resizeCanvas();
+
 </script>
 
 </body>
