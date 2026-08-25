@@ -4,15 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MD. Naimur Rahman Saad | Civil Engineer</title>
+<title>Naimur Rahman Saad | Civil Engineer | Future Engineering 2050</title>
 
 <meta name="description"
-content="MD. Naimur Rahman Saad — Civil Engineer | Construction Engineering | Transportation | Environmental Engineering | Future Infrastructure">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+content="Naimur Rahman Saad — Civil Engineer, Construction & Project Management, Future Engineering 2050 Vision and AutoCAD Portfolio.">
 
 <style>
 
@@ -21,229 +16,248 @@ content="MD. Naimur Rahman Saad — Civil Engineer | Construction Engineering | 
 ========================================================= */
 
 :root{
-  --bg:#050b09;
-  --bg2:#091510;
-  --panel:rgba(8,20,14,.78);
-  --panel2:rgba(12,28,20,.86);
+    --bg:#05070b;
+    --bg2:#0a0e15;
+    --card:#0d131d;
+    --card2:#111925;
+    --text:#f4f7fb;
+    --muted:#91a0b5;
+    --line:rgba(255,255,255,.09);
 
-  --text:#f4fff9;
-  --muted:#9db5aa;
+    --accent:#7df9ff;
+    --accent2:#8b5cf6;
+    --accent3:#22d3ee;
 
-  --green:#39f39e;
-  --cyan:#55dcff;
-  --blue:#6e9dff;
-  --gold:#ffd46a;
-  --violet:#a98cff;
-  --red:#ff4f68;
+    --shadow:0 25px 80px rgba(0,0,0,.45);
 
-  --line:rgba(255,255,255,.10);
-
-  --heading:"Manrope",sans-serif;
-  --body:"Inter",sans-serif;
+    --milk:#fffdf5;
+    --milk2:#f8f3df;
+    --milk3:#eee6cc;
+    --milkText:#28251e;
 }
 
+/* =========================================================
+   BASIC RESET
+========================================================= */
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  min-height:100vh;
-  overflow-x:hidden;
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
-  color:var(--text);
-  font-family:var(--body);
+    background:
+        radial-gradient(circle at 10% 10%,rgba(125,249,255,.08),transparent 28%),
+        radial-gradient(circle at 90% 20%,rgba(139,92,246,.10),transparent 30%),
+        var(--bg);
 
-  background:
-    radial-gradient(circle at 75% 10%,rgba(57,243,158,.09),transparent 28%),
-    radial-gradient(circle at 15% 75%,rgba(85,220,255,.05),transparent 30%),
-    linear-gradient(145deg,var(--bg),var(--bg2));
+    color:var(--text);
+    overflow-x:hidden;
 
-  transition:background 1s ease;
-}
-
-body.modal-open{
-  overflow:hidden;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-button,
-input{
-  font:inherit;
+    transition:
+        background .7s ease,
+        color .7s ease;
 }
 
 /* =========================================================
-   BACKGROUND CANVAS
+   MILK MODE
 ========================================================= */
 
-#worldCanvas{
-  position:fixed;
-  inset:0;
+body.milk-mode{
 
-  width:100%;
-  height:100%;
+    --bg:#fffdf5;
+    --bg2:#faf7eb;
+    --card:#fffefa;
+    --card2:#f7f2df;
 
-  z-index:-10;
-  pointer-events:none;
+    --text:#28251e;
+    --muted:#756f61;
+
+    --line:rgba(65,58,42,.12);
+
+    --accent:#e4b95f;
+    --accent2:#c89a3d;
+    --accent3:#f0ce82;
+
+    background:
+        radial-gradient(circle at 10% 10%,rgba(255,255,255,.95),transparent 32%),
+        radial-gradient(circle at 90% 20%,rgba(238,230,204,.7),transparent 30%),
+        linear-gradient(135deg,#fffefa,#f8f3df);
+
+    color:var(--milkText);
 }
 
-#starLayer{
-  position:fixed;
-  inset:0;
-
-  z-index:-9;
-  pointer-events:none;
+body.milk-mode .glass{
+    background:rgba(255,255,255,.70);
+    border-color:rgba(80,70,45,.10);
+    box-shadow:0 25px 70px rgba(110,95,55,.10);
 }
 
-.star{
-  position:absolute;
-
-  width:2px;
-  height:2px;
-
-  border-radius:50%;
-  background:#fff;
-
-  opacity:.35;
-
-  animation:twinkle 3s ease-in-out infinite;
+body.milk-mode .hero::before{
+    background:
+        radial-gradient(circle,#fff 0%,rgba(255,255,255,.4) 30%,transparent 70%);
 }
 
-@keyframes twinkle{
-  0%,100%{opacity:.10}
-  50%{opacity:1}
+body.milk-mode .grid-line{
+    opacity:.05;
+}
+
+body.milk-mode .future-card:hover{
+    box-shadow:
+        0 30px 80px rgba(120,100,50,.15),
+        0 0 0 1px rgba(200,154,61,.18);
 }
 
 /* =========================================================
-   HEADER
+   BACKGROUND
 ========================================================= */
 
-.header{
-  position:fixed;
+.grid-line{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-2;
 
-  z-index:1000;
+    background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
 
-  top:14px;
-  left:50%;
-
-  transform:translateX(-50%);
-
-  width:min(1200px,94%);
-
-  padding:12px 15px;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  gap:18px;
-
-  border:1px solid var(--line);
-  border-radius:22px;
-
-  background:rgba(3,9,6,.76);
-  backdrop-filter:blur(22px);
-
-  box-shadow:
-    0 15px 60px rgba(0,0,0,.18);
+    background-size:50px 50px;
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.orb{
+    position:fixed;
+    width:400px;
+    height:400px;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:.12;
+    pointer-events:none;
+    z-index:-1;
+    animation:floatOrb 12s ease-in-out infinite alternate;
 }
 
-.brand-flag{
-  font-size:26px;
-  filter:drop-shadow(0 0 11px rgba(57,243,158,.45));
+.orb.one{
+    background:var(--accent);
+    top:-150px;
+    left:-100px;
 }
 
-.brand-name strong{
-  display:block;
-
-  font:800 14px var(--heading);
-  letter-spacing:.45px;
+.orb.two{
+    background:var(--accent2);
+    bottom:-150px;
+    right:-100px;
+    animation-delay:-5s;
 }
 
-.brand-name small{
-  display:block;
-
-  margin-top:3px;
-
-  color:#8fa89d;
-
-  font:600 9px var(--heading);
-  letter-spacing:1.3px;
+@keyframes floatOrb{
+    from{
+        transform:translate(0,0) scale(1);
+    }
+    to{
+        transform:translate(80px,50px) scale(1.2);
+    }
 }
 
-.green{
-  color:var(--green);
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    background:rgba(5,7,11,.65);
+    border-bottom:1px solid var(--line);
+
+    transition:.5s;
 }
 
-.red{
-  color:var(--red);
+body.milk-mode .navbar{
+    background:rgba(255,253,245,.78);
 }
 
-.nav{
-  display:flex;
-  gap:17px;
-  flex-wrap:wrap;
+.nav-inner{
+    max-width:1250px;
+    margin:auto;
+
+    min-height:78px;
+    padding:0 25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
 
-.nav a{
-  color:#c9ddd5;
+.logo{
+    font-size:19px;
+    font-weight:900;
+    letter-spacing:-.5px;
 
-  font:700 10px var(--heading);
-
-  transition:.25s;
+    color:var(--text);
 }
 
-.nav a:hover{
-  color:var(--green);
+.logo span{
+    color:var(--accent);
 }
 
-.lang{
-  display:flex;
-  gap:4px;
-
-  padding:4px;
-
-  border:1px solid var(--line);
-  border-radius:99px;
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:25px;
 }
 
-.lang button{
-  border:0;
-  background:transparent;
+.nav-links a{
+    text-decoration:none;
+    color:var(--muted);
+    font-size:14px;
+    font-weight:600;
 
-  color:#aabdb5;
-
-  border-radius:99px;
-
-  padding:6px 9px;
-
-  font-size:10px;
-
-  cursor:pointer;
+    transition:.3s;
 }
 
-.lang button.active{
-  color:#041108;
+.nav-links a:hover{
+    color:var(--accent);
+}
 
-  background:
-    linear-gradient(100deg,var(--green),var(--cyan));
+.milk-toggle{
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--text);
 
-  font-weight:800;
+    padding:10px 15px;
+    border-radius:999px;
+
+    cursor:pointer;
+    font-weight:800;
+    font-size:13px;
+
+    transition:.35s;
+}
+
+.milk-toggle:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
 /* =========================================================
@@ -251,1503 +265,703 @@ input{
 ========================================================= */
 
 .hero{
-  min-height:100vh;
+    min-height:100vh;
+    position:relative;
 
-  width:min(1280px,100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  margin:auto;
+    padding:130px 25px 80px;
 
-  padding:145px 6vw 80px;
-
-  display:grid;
-
-  grid-template-columns:1.1fr .9fr;
-
-  align-items:center;
-
-  gap:30px;
+    text-align:center;
 }
 
-.kicker{
-  display:inline-block;
+.hero::before{
+    content:"";
+    position:absolute;
 
-  padding:8px 13px;
+    width:700px;
+    height:700px;
 
-  border-radius:99px;
+    border-radius:50%;
 
-  border:1px solid rgba(85,220,255,.22);
+    background:
+        radial-gradient(
+            circle,
+            rgba(125,249,255,.12),
+            transparent 65%
+        );
 
-  background:rgba(85,220,255,.05);
-
-  color:#8ee9ff;
-
-  font:700 10px var(--heading);
-
-  letter-spacing:2.5px;
+    filter:blur(10px);
+    pointer-events:none;
 }
 
-.hero h1{
-  margin:20px 0;
-
-  font:
-    800 clamp(47px,7vw,92px)/.92
-    var(--heading);
-
-  letter-spacing:-4.5px;
+.hero-content{
+    max-width:1000px;
+    position:relative;
+    z-index:2;
 }
 
-.hero-sub{
-  color:#d6e8e1;
+.future-label{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
 
-  font:
-    700 clamp(17px,2vw,22px)/1.5
-    var(--heading);
+    padding:9px 16px;
+
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.025);
+
+    border-radius:999px;
+
+    color:var(--accent);
+    font-size:12px;
+    font-weight:900;
+
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    margin-bottom:25px;
+
+    animation:fadeUp .8s ease both;
 }
 
-.mission{
-  margin:28px 0;
-
-  max-width:730px;
-
-  font:
-    700 clamp(25px,3.2vw,43px)/1.08
-    var(--heading);
-}
-
-.mission b{
-  color:var(--green);
-}
-
-.hero-desc{
-  max-width:760px;
-
-  color:var(--muted);
-
-  font-size:14px;
-
-  line-height:1.9;
-}
-
-.actions{
-  margin-top:28px;
-
-  display:flex;
-  flex-wrap:wrap;
-
-  gap:9px;
-}
-
-.btn{
-  display:inline-flex;
-
-  align-items:center;
-  justify-content:center;
-
-  padding:11px 17px;
-
-  border-radius:999px;
-
-  border:1px solid rgba(57,243,158,.30);
-
-  color:#effff8;
-
-  background:rgba(255,255,255,.045);
-
-  font:700 11px var(--heading);
-
-  cursor:pointer;
-
-  transition:.3s;
-}
-
-.btn:hover{
-  transform:translateY(-3px);
-
-  box-shadow:
-    0 13px 36px rgba(57,243,158,.12);
-}
-
-.btn.primary{
-  border:0;
-
-  color:#031109;
-
-  background:
-    linear-gradient(100deg,var(--green),var(--cyan));
-
-  font-weight:800;
-}
-
-.hero-visual{
-  height:470px;
-
-  position:relative;
-
-  display:grid;
-  place-items:center;
-}
-
-.orbit{
-  position:absolute;
-
-  width:88%;
-  height:60%;
-
-  border:
-    1px solid rgba(85,220,255,.26);
-
-  border-radius:50%;
-
-  transform:rotate(-10deg);
-
-  animation:spin 17s linear infinite;
-}
-
-.orbit.two{
-  width:66%;
-  height:45%;
-
-  border-color:rgba(57,243,158,.25);
-
-  animation-duration:11s;
-
-  animation-direction:reverse;
-}
-
-.core{
-  width:195px;
-  height:195px;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle,
-      #f3fff9 0 3%,
-      #39f39e 8%,
-      #0b4a2e 30%,
-      #020604 67%
-    );
-
-  box-shadow:
-    0 0 120px rgba(57,243,158,.28);
-
-  animation:pulse 4s ease-in-out infinite;
-}
-
-@keyframes spin{
-  to{
-    transform:rotate(350deg);
-  }
+.future-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 20px var(--accent);
+    animation:pulse 1.5s infinite;
 }
 
 @keyframes pulse{
-  50%{
-    transform:scale(1.08);
-
-    box-shadow:
-      0 0 150px rgba(85,220,255,.20);
-  }
+    0%,100%{
+        transform:scale(1);
+        opacity:1;
+    }
+    50%{
+        transform:scale(1.6);
+        opacity:.5;
+    }
 }
 
-.float{
-  position:absolute;
+.hero h1{
+    font-size:clamp(45px,8vw,92px);
+    line-height:.95;
+    letter-spacing:-5px;
 
-  padding:11px 14px;
+    margin-bottom:25px;
 
-  border:1px solid var(--line);
-
-  border-radius:16px;
-
-  background:rgba(3,10,7,.74);
-
-  backdrop-filter:blur(15px);
-
-  font:700 11px var(--heading);
+    animation:fadeUp .9s .1s ease both;
 }
 
-.float.one{
-  left:0;
-  top:4%;
-  color:#79f2ae;
+.gradient-text{
+    background:
+        linear-gradient(
+            100deg,
+            var(--text),
+            var(--accent),
+            var(--accent2)
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
 }
 
-.float.two{
-  right:0;
-  top:42%;
-  color:#67ddff;
+.hero p{
+    max-width:800px;
+    margin:0 auto;
+
+    color:var(--muted);
+
+    font-size:18px;
+    line-height:1.8;
+
+    animation:fadeUp .9s .2s ease both;
 }
 
-.float.three{
-  left:5%;
-  bottom:4%;
-  color:#ffd46a;
+.hero-buttons{
+    margin-top:35px;
+
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+
+    animation:fadeUp .9s .3s ease both;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    text-decoration:none;
+
+    padding:14px 22px;
+
+    border-radius:12px;
+
+    font-weight:800;
+    font-size:14px;
+
+    cursor:pointer;
+
+    border:1px solid var(--line);
+
+    transition:.35s;
+}
+
+.btn-primary{
+    background:var(--accent);
+    color:#061014;
+    border-color:transparent;
+}
+
+.btn-secondary{
+    background:var(--card);
+    color:var(--text);
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 40px rgba(0,0,0,.2);
 }
 
 /* =========================================================
-   GENERAL SECTIONS
+   SECTIONS
 ========================================================= */
 
 section{
-  width:min(1200px,100%);
-
-  margin:auto;
-
-  padding:95px 6vw;
+    max-width:1250px;
+    margin:auto;
+    padding:100px 25px;
 }
 
-.section-label{
-  color:#6d9dfd;
-
-  font:
-    800 10px var(--heading);
-
-  letter-spacing:3px;
+.section-head{
+    margin-bottom:45px;
 }
 
-.section-title{
-  margin:10px 0;
-
-  font:
-    800 clamp(32px,4.3vw,56px)/1
-    var(--heading);
-
-  letter-spacing:-2px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #173e8f,
-      #2f62d4 52%,
-      #7aa5ff
-    );
-
-  -webkit-background-clip:text;
-  background-clip:text;
-
-  color:transparent;
+.eyebrow{
+    color:var(--accent);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:12px;
 }
 
-.section-desc{
-  max-width:830px;
+.section-head h2{
+    font-size:clamp(32px,5vw,55px);
+    letter-spacing:-2px;
+    margin-bottom:15px;
+}
 
-  color:var(--muted);
-
-  font-size:14px;
-
-  line-height:1.9;
+.section-head p{
+    max-width:800px;
+    color:var(--muted);
+    line-height:1.8;
 }
 
 /* =========================================================
-   CARDS
+   FUTURE 2050
 ========================================================= */
-
-.grid{
-  margin-top:30px;
-
-  display:grid;
-
-  grid-template-columns:repeat(2,1fr);
-
-  gap:16px;
-}
-
-.card{
-  padding:25px;
-
-  border:1px solid var(--line);
-
-  border-radius:24px;
-
-  background:var(--panel);
-
-  backdrop-filter:blur(18px);
-
-  transition:.35s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-
-  border-color:
-    rgba(57,243,158,.32);
-}
-
-.card h3{
-  margin-bottom:10px;
-
-  font:
-    700 20px var(--heading);
-
-  color:#5e91ff;
-}
-
-.card p,
-.card li{
-  color:#b5c9c0;
-
-  font-size:13px;
-
-  line-height:1.85;
-}
-
-.card ul{
-  padding-left:18px;
-}
-
-.tags{
-  display:flex;
-
-  flex-wrap:wrap;
-
-  gap:7px;
-
-  margin-top:16px;
-}
-
-.tag{
-  padding:6px 10px;
-
-  border:1px solid var(--line);
-
-  border-radius:999px;
-
-  background:rgba(255,255,255,.035);
-
-  color:#d3e6de;
-
-  font:
-    700 10px var(--heading);
-}
-
-/* =========================================================
-   STATS
-========================================================= */
-
-.stats{
-  margin-top:30px;
-
-  display:grid;
-
-  grid-template-columns:repeat(4,1fr);
-
-  gap:14px;
-}
-
-.stat{
-  padding:24px;
-
-  text-align:center;
-
-  border:1px solid var(--line);
-
-  border-radius:22px;
-
-  background:var(--panel);
-
-  backdrop-filter:blur(17px);
-}
-
-.stat strong{
-  display:block;
-
-  color:var(--green);
-
-  font:
-    800 35px var(--heading);
-}
-
-.stat span{
-  display:block;
-
-  margin-top:5px;
-
-  color:var(--muted);
-
-  font-size:12px;
-}
-
-/* =========================================================
-   AGENCIES
-========================================================= */
-
-.agencies{
-  margin-top:30px;
-
-  display:grid;
-
-  grid-template-columns:repeat(4,1fr);
-
-  gap:14px;
-}
-
-.agency{
-  min-height:235px;
-
-  padding:23px;
-
-  display:flex;
-  flex-direction:column;
-
-  border:1px solid var(--line);
-
-  border-radius:23px;
-
-  background:var(--panel);
-
-  backdrop-filter:blur(18px);
-
-  transition:.35s;
-}
-
-.agency:hover{
-  transform:translateY(-7px);
-
-  border-color:
-    rgba(57,243,158,.30);
-}
-
-.agency-icon{
-  font-size:29px;
-}
-
-.agency h3{
-  margin:9px 0;
-
-  font:
-    800 25px var(--heading);
-
-  color:#5e91ff;
-}
-
-.agency p{
-  flex:1;
-
-  color:var(--muted);
-
-  font-size:12px;
-
-  line-height:1.7;
-}
-
-.agency a{
-  color:#6fa6ff;
-
-  font:
-    700 11px var(--heading);
-}
-
-/* =========================================================
-   PROJECTS
-========================================================= */
-
-.projects{
-  margin-top:30px;
-
-  display:grid;
-
-  grid-template-columns:repeat(2,1fr);
-
-  gap:15px;
-}
-
-.project{
-  padding:23px;
-
-  border:1px solid var(--line);
-
-  border-radius:23px;
-
-  background:var(--panel);
-
-  backdrop-filter:blur(18px);
-
-  transition:.35s;
-
-  cursor:pointer;
-}
-
-.project:hover{
-  transform:translateY(-6px);
-
-  border-color:
-    rgba(85,220,255,.30);
-}
-
-.project-agency{
-  color:#78a9ff;
-
-  font:
-    800 10px var(--heading);
-
-  letter-spacing:2px;
-}
-
-.project h3{
-  margin:9px 0;
-
-  font:
-    700 18px/1.45
-    var(--heading);
-
-  color:#5e91ff;
-}
-
-.project p{
-  color:#b1c7bd;
-
-  font-size:13px;
-
-  line-height:1.75;
-}
-
-.project-open{
-  display:inline-block;
-
-  margin-top:12px;
-
-  color:#8fb5ff;
-
-  font:
-    700 10px var(--heading);
-
-  letter-spacing:.5px;
-}
-
-/* =========================================================
-   SKILLS
-========================================================= */
-
-.skills{
-  margin-top:30px;
-
-  display:flex;
-
-  flex-wrap:wrap;
-
-  gap:8px;
-}
-
-.skill{
-  padding:9px 12px;
-
-  border:
-    1px solid rgba(74,115,198,.20);
-
-  border-radius:10px;
-
-  background:rgba(255,255,255,.035);
-
-  color:#d8e7ff;
-
-  font:
-    700 11px var(--heading);
-}
-
-/* =========================================================
-   THESIS
-========================================================= */
-
-.thesis{
-  margin-top:30px;
-
-  padding:30px;
-
-  border:1px solid var(--line);
-
-  border-radius:24px;
-
-  background:var(--panel);
-
-  backdrop-filter:blur(18px);
-}
-
-.thesis h3{
-  font:
-    700 21px var(--heading);
-
-  margin-bottom:12px;
-
-  color:#5e91ff;
-}
-
-.thesis p{
-  color:#b7cbc2;
-
-  font-size:13px;
-
-  line-height:1.85;
-
-  margin-bottom:12px;
-}
-
-/* =========================================================
-   FUTURE VISION
-========================================================= */
-
-.future{
-  padding:45px;
-
-  border:1px solid var(--line);
-
-  border-radius:30px;
-
-  background:
-    radial-gradient(
-      circle at 15% 30%,
-      rgba(57,243,158,.10),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 82% 20%,
-      rgba(156,130,255,.10),
-      transparent 28%
-    ),
-    rgba(5,15,10,.73);
-
-  backdrop-filter:blur(18px);
-}
-
-.future-title{
-  margin-top:10px;
-
-  font:
-    800 clamp(35px,5vw,72px)
-    var(--heading);
-
-  background:
-    linear-gradient(
-      90deg,
-      #75ffd1,
-      #fff,
-      #69caff,
-      #ab8aff
-    );
-
-  -webkit-background-clip:text;
-  background-clip:text;
-
-  color:transparent;
-}
 
 .future-grid{
-  margin-top:30px;
-
-  display:grid;
-
-  grid-template-columns:repeat(4,1fr);
-
-  gap:12px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
 }
 
-.future-item{
-  padding:20px;
+.future-card{
+    position:relative;
 
-  min-height:240px;
+    min-height:330px;
 
-  display:flex;
-  flex-direction:column;
+    padding:32px;
 
-  justify-content:space-between;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.015)
+        );
 
-  border:1px solid var(--line);
+    border:1px solid var(--line);
+    border-radius:25px;
 
-  border-radius:20px;
+    overflow:hidden;
 
-  background:rgba(255,255,255,.035);
+    cursor:pointer;
 
-  transition:.35s;
-
-  cursor:pointer;
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease,
+        border-color .4s ease;
 }
 
-.future-item:hover{
-  transform:
-    translateY(-8px)
-    scale(1.015);
+.future-card::before{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
 
-  border-color:
-    rgba(57,243,158,.45);
+    right:-90px;
+    top:-90px;
 
-  box-shadow:
-    0 20px 60px rgba(57,243,158,.08);
+    border-radius:50%;
+
+    background:var(--accent);
+    opacity:.07;
+
+    filter:blur(30px);
+
+    transition:.5s;
 }
 
-.future-item small{
-  color:var(--green);
+.future-card:hover{
+    transform:translateY(-8px);
 
-  font:
-    800 10px var(--heading);
+    border-color:rgba(125,249,255,.25);
 
-  letter-spacing:2px;
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.35),
+        0 0 50px rgba(125,249,255,.04);
 }
 
-.future-item h3{
-  margin:9px 0;
-
-  font:
-    700 17px var(--heading);
-
-  color:#5e91ff;
+.future-card:hover::before{
+    transform:scale(2);
+    opacity:.12;
 }
 
-.future-item p{
-  color:var(--muted);
-
-  font-size:12px;
-
-  line-height:1.7;
+.card-number{
+    font-size:12px;
+    font-weight:900;
+    color:var(--accent);
+    letter-spacing:2px;
+    margin-bottom:25px;
 }
 
-.future-click{
-  margin-top:18px;
-
-  color:#7bdcff;
-
-  font:
-    800 10px var(--heading);
-
-  letter-spacing:1px;
+.future-icon{
+    font-size:42px;
+    margin-bottom:20px;
 }
 
-/* =========================================================
-   AUTOCAD PORTFOLIO
-========================================================= */
-
-.autocad-zone{
-  margin-top:30px;
-
-  padding:32px;
-
-  border:1px solid rgba(85,220,255,.16);
-
-  border-radius:28px;
-
-  background:
-    radial-gradient(
-      circle at 15% 20%,
-      rgba(85,220,255,.08),
-      transparent 30%
-    ),
-    rgba(5,15,12,.78);
-
-  backdrop-filter:blur(20px);
+.future-card h3{
+    font-size:25px;
+    margin-bottom:13px;
 }
 
-.autocad-header{
-  display:flex;
-
-  align-items:flex-start;
-
-  justify-content:space-between;
-
-  gap:25px;
-
-  margin-bottom:25px;
+.future-card .short{
+    color:var(--muted);
+    line-height:1.7;
 }
 
-.autocad-title{
-  font:
-    800 28px var(--heading);
-
-  color:#eafff7;
-}
-
-.autocad-sub{
-  margin-top:8px;
-
-  max-width:720px;
-
-  color:var(--muted);
-
-  font-size:13px;
-
-  line-height:1.8;
-}
-
-.upload-box{
-  position:relative;
-
-  padding:34px;
-
-  border:
-    1px dashed
-    rgba(85,220,255,.40);
-
-  border-radius:22px;
-
-  text-align:center;
-
-  background:
-    rgba(85,220,255,.035);
-
-  transition:.3s;
-}
-
-.upload-box:hover{
-  border-color:var(--cyan);
-
-  background:
-    rgba(85,220,255,.06);
-}
-
-.upload-icon{
-  font-size:40px;
-
-  margin-bottom:12px;
-}
-
-.upload-box h3{
-  font:
-    800 18px var(--heading);
-}
-
-.upload-box p{
-  margin:8px auto 18px;
-
-  max-width:600px;
-
-  color:var(--muted);
-
-  font-size:12px;
-
-  line-height:1.7;
-}
-
-.file-input{
-  display:none;
-}
-
-.upload-button{
-  display:inline-flex;
-
-  align-items:center;
-  justify-content:center;
-
-  padding:12px 20px;
-
-  border-radius:999px;
-
-  cursor:pointer;
-
-  color:#04120b;
-
-  background:
-    linear-gradient(
-      100deg,
-      var(--green),
-      var(--cyan)
-    );
-
-  font:
-    800 11px var(--heading);
-}
-
-.file-types{
-  margin-top:14px;
-
-  color:#76938a;
-
-  font-size:10px;
-}
-
-.cad-list{
-  margin-top:25px;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap:12px;
-}
-
-.cad-empty{
-  grid-column:1/-1;
-
-  padding:28px;
-
-  text-align:center;
-
-  border:1px solid var(--line);
-
-  border-radius:18px;
-
-  color:#76938a;
-
-  font-size:12px;
-}
-
-.cad-file{
-  position:relative;
-
-  padding:18px;
-
-  border:1px solid var(--line);
-
-  border-radius:18px;
-
-  background:rgba(255,255,255,.035);
-
-  transition:.3s;
-}
-
-.cad-file:hover{
-  transform:translateY(-4px);
-
-  border-color:
-    rgba(85,220,255,.35);
-}
-
-.cad-file-top{
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-}
-
-.cad-file-icon{
-  width:44px;
-  height:44px;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:12px;
-
-  background:
-    rgba(85,220,255,.08);
-
-  font-size:20px;
-}
-
-.cad-file-name{
-  flex:1;
-
-  min-width:0;
-
-  color:#eafff8;
-
-  font:
-    700 12px var(--heading);
-
-  overflow:hidden;
-
-  text-overflow:ellipsis;
-
-  white-space:nowrap;
-}
-
-.cad-file-meta{
-  margin-top:4px;
-
-  color:#718b82;
-
-  font-size:9px;
-}
-
-.cad-actions{
-  margin-top:14px;
-
-  display:flex;
-
-  gap:7px;
-
-  flex-wrap:wrap;
-}
-
-.small-btn{
-  padding:7px 10px;
-
-  border:1px solid var(--line);
-
-  border-radius:9px;
-
-  background:rgba(255,255,255,.035);
-
-  color:#b9d7cd;
-
-  font:
-    700 9px var(--heading);
-
-  cursor:pointer;
-}
-
-.small-btn:hover{
-  border-color:var(--cyan);
-
-  color:#fff;
-}
-
-.small-btn.delete:hover{
-  border-color:var(--red);
-
-  color:#ff8c9d;
-}
-
-.upload-warning{
-  margin-top:18px;
-
-  padding:13px 15px;
-
-  border-left:
-    3px solid var(--gold);
-
-  border-radius:10px;
-
-  background:
-    rgba(255,212,106,.045);
-
-  color:#b9c6bd;
-
-  font-size:10px;
-
-  line-height:1.7;
+.click-hint{
+    position:absolute;
+    bottom:25px;
+    right:28px;
+
+    color:var(--accent);
+    font-size:12px;
+    font-weight:800;
 }
 
 /* =========================================================
-   MODAL SYSTEM
+   MODAL
 ========================================================= */
 
 .modal{
-  position:fixed;
+    position:fixed;
+    inset:0;
+    z-index:2000;
 
-  inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
 
-  z-index:5000;
+    padding:25px;
 
-  display:none;
+    background:rgba(0,0,0,.72);
 
-  align-items:center;
-
-  justify-content:center;
-
-  padding:25px;
-
-  background:
-    rgba(0,0,0,.78);
-
-  backdrop-filter:blur(12px);
+    backdrop-filter:blur(15px);
 }
 
-.modal.open{
-  display:flex;
+.modal.active{
+    display:flex;
+    animation:modalIn .35s ease;
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
 }
 
 .modal-box{
-  width:min(1050px,96vw);
+    width:min(950px,100%);
 
-  max-height:90vh;
+    max-height:90vh;
+    overflow:auto;
 
-  overflow:auto;
+    padding:40px;
 
-  padding:32px;
+    background:var(--card);
+    border:1px solid var(--line);
 
-  border:
-    1px solid
-    rgba(105,157,255,.24);
+    border-radius:28px;
 
-  border-radius:28px;
+    box-shadow:
+        0 50px 150px rgba(0,0,0,.6);
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(8,24,47,.98),
-      rgba(4,13,25,.98)
-    );
+    position:relative;
 
-  box-shadow:
-    0 35px 120px rgba(0,0,0,.65);
+    animation:modalBox .4s ease;
 }
 
-.modal-top{
-  display:flex;
-
-  align-items:flex-start;
-
-  justify-content:space-between;
-
-  gap:20px;
+@keyframes modalBox{
+    from{
+        transform:translateY(30px) scale(.97);
+        opacity:0;
+    }
+    to{
+        transform:none;
+        opacity:1;
+    }
 }
 
-.modal-kicker{
-  color:#82aaff;
+.modal-close{
+    position:absolute;
+    right:20px;
+    top:20px;
 
-  font:
-    800 10px var(--heading);
+    width:40px;
+    height:40px;
 
-  letter-spacing:2px;
+    border-radius:50%;
+
+    border:1px solid var(--line);
+    background:var(--card2);
+
+    color:var(--text);
+
+    cursor:pointer;
+    font-size:20px;
 }
 
-.modal h2{
-  margin:8px 0 12px;
-
-  color:#f4f8ff;
-
-  font:
-    800 clamp(27px,4vw,50px)/1.08
-    var(--heading);
+.modal-label{
+    color:var(--accent);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:12px;
 }
 
-.modal-sub{
-  max-width:820px;
-
-  color:#aebfda;
-
-  font-size:12px;
-
-  line-height:1.8;
+.modal-box h2{
+    font-size:clamp(30px,5vw,52px);
+    letter-spacing:-2px;
+    margin-bottom:20px;
 }
 
-.close-btn{
-  width:40px;
-  height:40px;
-
-  flex:0 0 40px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.16);
-
-  border-radius:50%;
-
-  background:
-    rgba(255,255,255,.06);
-
-  color:#fff;
-
-  cursor:pointer;
-
-  font-size:20px;
+.modal-intro{
+    color:var(--muted);
+    line-height:1.8;
+    margin-bottom:30px;
 }
 
-.close-btn:hover{
-  border-color:#5e91ff;
-
-  background:
-    rgba(94,145,255,.12);
+.plan-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
 }
 
-/* =========================================================
-   FUTURE DETAIL
-========================================================= */
+.plan{
+    padding:22px;
 
-.future-detail-grid{
-  margin-top:26px;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap:14px;
+    background:var(--card2);
+    border:1px solid var(--line);
+    border-radius:17px;
 }
 
-.future-detail-card{
-  padding:20px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.09);
-
-  border-radius:18px;
-
-  background:
-    rgba(255,255,255,.035);
+.plan h4{
+    color:var(--accent);
+    margin-bottom:10px;
 }
 
-.future-detail-card.full{
-  grid-column:1/-1;
-}
-
-.future-detail-card h4{
-  margin-bottom:9px;
-
-  color:#7eaaff;
-
-  font:
-    800 11px var(--heading);
-
-  letter-spacing:1px;
-
-  text-transform:uppercase;
-}
-
-.future-detail-card p,
-.future-detail-card li{
-  color:#c2d0df;
-
-  font-size:12px;
-
-  line-height:1.85;
-}
-
-.future-detail-card ul{
-  padding-left:18px;
-}
-
-.future-tags{
-  display:flex;
-
-  flex-wrap:wrap;
-
-  gap:7px;
-}
-
-.future-tag{
-  padding:7px 10px;
-
-  border:
-    1px solid
-    rgba(126,170,255,.18);
-
-  border-radius:999px;
-
-  color:#d7e4ff;
-
-  background:
-    rgba(126,170,255,.05);
-
-  font:
-    700 9px var(--heading);
-}
-
-.timeline{
-  margin-top:15px;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  gap:8px;
-}
-
-.timeline-item{
-  padding:14px;
-
-  border-radius:13px;
-
-  border:1px solid var(--line);
-
-  background:
-    rgba(255,255,255,.025);
-}
-
-.timeline-item strong{
-  display:block;
-
-  color:var(--green);
-
-  font:
-    800 14px var(--heading);
-}
-
-.timeline-item span{
-  display:block;
-
-  margin-top:6px;
-
-  color:#aebdcc;
-
-  font-size:10px;
-
-  line-height:1.6;
-}
-
-.vision-note{
-  margin-top:20px;
-
-  padding:14px 16px;
-
-  border-left:
-    3px solid var(--cyan);
-
-  border-radius:10px;
-
-  background:
-    rgba(85,220,255,.05);
-
-  color:#afc1d8;
-
-  font-size:10px;
-
-  line-height:1.8;
+.plan p{
+    color:var(--muted);
+    line-height:1.7;
+    font-size:14px;
 }
 
 /* =========================================================
-   PROJECT MODAL
+   ADVANCED VISION
 ========================================================= */
 
-.detail-grid{
-  margin-top:24px;
+.vision-box{
+    padding:40px;
 
-  display:grid;
+    border:1px solid var(--line);
+    border-radius:28px;
 
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap:14px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(125,249,255,.05),
+            rgba(139,92,246,.04)
+        );
 }
 
-.detail-card{
-  padding:18px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.09);
-
-  border-radius:18px;
-
-  background:
-    rgba(255,255,255,.04);
+.vision-list{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
 
-.detail-card h4{
-  margin-bottom:8px;
+.vision-item{
+    padding:25px;
 
-  color:#7eaaff;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:18px;
 
-  font:
-    800 12px var(--heading);
-
-  letter-spacing:1px;
-
-  text-transform:uppercase;
+    transition:.35s;
 }
 
-.detail-card p,
-.detail-card li{
-  color:#c2d0df;
-
-  font-size:13px;
-
-  line-height:1.8;
+.vision-item:hover{
+    transform:translateY(-5px);
 }
 
-.detail-card ul{
-  padding-left:18px;
+.vision-item h3{
+    margin-bottom:10px;
 }
 
-.project-note{
-  margin-top:18px;
-
-  padding:13px 15px;
-
-  border-left:
-    3px solid #5d91ff;
-
-  border-radius:10px;
-
-  background:
-    rgba(74,123,255,.07);
-
-  color:#afc1d8;
-
-  font-size:11px;
-
-  line-height:1.7;
+.vision-item p{
+    color:var(--muted);
+    line-height:1.7;
+    font-size:14px;
 }
 
 /* =========================================================
-   CONTACT
+   AUTOCAD UPLOAD
 ========================================================= */
 
-.contact-box{
-  margin-top:30px;
+.upload-zone{
 
-  padding:30px;
+    position:relative;
 
-  border:1px solid var(--line);
+    border:2px dashed var(--line);
 
-  border-radius:25px;
+    border-radius:28px;
 
-  background:var(--panel);
+    padding:55px 25px;
 
-  backdrop-filter:blur(18px);
+    text-align:center;
+
+    background:var(--card);
+
+    transition:.35s;
+}
+
+.upload-zone.dragover{
+    border-color:var(--accent);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(125,249,255,.07),
+            transparent
+        );
+
+    transform:scale(1.01);
+}
+
+.upload-icon{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.upload-zone h3{
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.upload-zone p{
+    color:var(--muted);
+    margin-bottom:25px;
+    line-height:1.7;
+}
+
+.file-input{
+    display:none;
+}
+
+.upload-button{
+    display:inline-flex;
+
+    padding:13px 22px;
+
+    background:var(--accent);
+    color:#071015;
+
+    border-radius:12px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.upload-button:hover{
+    transform:translateY(-3px);
+}
+
+.file-list{
+    margin-top:30px;
+
+    display:grid;
+    gap:12px;
+}
+
+.file-item{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+
+    padding:16px 18px;
+
+    background:var(--card);
+    border:1px solid var(--line);
+
+    border-radius:15px;
+}
+
+.file-info{
+    display:flex;
+    align-items:center;
+    gap:13px;
+
+    min-width:0;
+}
+
+.file-icon{
+    font-size:25px;
+}
+
+.file-name{
+    font-weight:700;
+
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.file-size{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:4px;
+}
+
+.remove-file{
+    border:none;
+    background:transparent;
+
+    color:#ff7272;
+
+    cursor:pointer;
+    font-weight:800;
 }
 
 /* =========================================================
-   MOOD
+   PROFILE
 ========================================================= */
 
-#moodStatus{
-  position:fixed;
-
-  right:20px;
-  top:91px;
-
-  z-index:600;
-
-  padding:8px 13px;
-
-  border:1px solid var(--line);
-
-  border-radius:999px;
-
-  background:
-    rgba(0,0,0,.28);
-
-  backdrop-filter:blur(14px);
-
-  color:#9dbdff;
-
-  font:
-    700 10px var(--heading);
-
-  letter-spacing:1.6px;
+.profile-grid{
+    display:grid;
+    grid-template-columns:1fr 1.5fr;
+    gap:25px;
 }
 
-.moodbar{
-  position:fixed;
-
-  left:50%;
-  bottom:13px;
-
-  transform:translateX(-50%);
-
-  z-index:700;
-
-  width:min(980px,95%);
-
-  display:flex;
-
-  justify-content:center;
-
-  flex-wrap:wrap;
-
-  gap:7px;
+.profile-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:25px;
+    padding:30px;
 }
 
-.mood-btn{
-  padding:9px 12px;
+.profile-avatar{
+    width:120px;
+    height:120px;
 
-  border:
-    1px solid
-    rgba(255,255,255,.18);
+    border-radius:50%;
 
-  border-radius:13px;
+    margin-bottom:20px;
 
-  background:
-    rgba(2,7,4,.84);
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  color:#fff;
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent2)
+        );
 
-  backdrop-filter:blur(15px);
+    color:#061014;
 
-  cursor:pointer;
-
-  font:
-    700 10px var(--heading);
-
-  transition:.25s;
+    font-size:35px;
+    font-weight:1000;
 }
 
-.mood-btn:hover{
-  transform:translateY(-3px);
+.profile-card h3{
+    font-size:25px;
+    margin-bottom:8px;
+}
 
-  border-color:var(--green);
+.profile-role{
+    color:var(--accent);
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.profile-card p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.info-list{
+    display:grid;
+    gap:13px;
+}
+
+.info-row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+
+    padding:14px 0;
+
+    border-bottom:1px solid var(--line);
+}
+
+.info-row span:first-child{
+    color:var(--muted);
+}
+
+.info-row span:last-child{
+    font-weight:700;
+    text-align:right;
 }
 
 /* =========================================================
@@ -1755,3286 +969,1062 @@ section{
 ========================================================= */
 
 footer{
-  padding:40px 6vw;
+    max-width:1250px;
+    margin:auto;
 
-  border-top:
-    1px solid var(--line);
+    padding:50px 25px 80px;
 
-  display:flex;
+    border-top:1px solid var(--line);
 
-  justify-content:space-between;
+    text-align:center;
+}
 
-  gap:20px;
+footer h3{
+    font-size:25px;
+    margin-bottom:10px;
+}
 
-  color:#8fa79d;
+footer p{
+    color:var(--muted);
+    line-height:1.7;
+}
 
-  font:
-    600 11px var(--heading);
+.footer-future{
+    margin-top:25px;
+
+    color:var(--accent);
+
+    font-size:12px;
+    font-weight:900;
+
+    letter-spacing:3px;
 }
 
 /* =========================================================
-   REVEAL
+   SCROLL ANIMATION
 ========================================================= */
 
 .reveal{
-  opacity:0;
+    opacity:0;
+    transform:translateY(35px);
 
-  transform:translateY(28px);
-
-  transition:1s;
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
 }
 
-.reveal.show{
-  opacity:1;
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
 
-  transform:none;
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
 }
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:980px){
+@media(max-width:850px){
 
-  .nav{
-    display:none;
-  }
+    .nav-links{
+        display:none;
+    }
 
-  .hero{
-    grid-template-columns:1fr;
-  }
+    .future-grid{
+        grid-template-columns:1fr;
+    }
 
-  .hero-visual{
-    height:340px;
-  }
+    .vision-list{
+        grid-template-columns:1fr;
+    }
 
-  .stats,
-  .agencies,
-  .future-grid{
-    grid-template-columns:
-      repeat(2,1fr);
-  }
+    .profile-grid{
+        grid-template-columns:1fr;
+    }
 
-  .grid,
-  .projects{
-    grid-template-columns:1fr;
-  }
+    .plan-grid{
+        grid-template-columns:1fr;
+    }
 
-  .cad-list{
-    grid-template-columns:1fr;
-  }
-
+    .hero h1{
+        letter-spacing:-3px;
+    }
 }
 
-@media(max-width:650px){
+@media(max-width:550px){
 
-  section{
-    padding:70px 5vw;
-  }
+    section{
+        padding:75px 18px;
+    }
 
-  .hero{
-    padding:
-      112px 5vw 60px;
-  }
+    .hero{
+        padding-left:18px;
+        padding-right:18px;
+    }
 
-  .hero h1{
-    letter-spacing:-2px;
-  }
+    .modal-box{
+        padding:28px 20px;
+    }
 
-  .stats,
-  .agencies,
-  .future-grid{
-    grid-template-columns:1fr;
-  }
+    .future-card{
+        min-height:300px;
+        padding:25px;
+    }
 
-  .hero-visual{
-    transform:scale(.85);
-  }
+    .vision-box{
+        padding:25px 18px;
+    }
 
-  .moodbar{
-    bottom:7px;
-  }
-
-  .mood-btn{
-    padding:8px;
-
-    font-size:9px;
-  }
-
-  footer{
-    display:block;
-  }
-
-  .future{
-    padding:30px 20px;
-  }
-
-  .future-detail-grid,
-  .detail-grid{
-    grid-template-columns:1fr;
-  }
-
-  .future-detail-card.full{
-    grid-column:auto;
-  }
-
-  .timeline{
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-
-  .modal{
-    padding:10px;
-  }
-
-  .modal-box{
-    padding:20px;
-
-    border-radius:20px;
-  }
-
-  .autocad-zone{
-    padding:20px;
-  }
-
-}
-
-/* =========================================================
-   FUTURE MOOD BACKGROUNDS
-========================================================= */
-
-body.future-construction{
-  background:
-    radial-gradient(
-      circle at 70% 20%,
-      rgba(255,193,77,.12),
-      transparent 28%
-    ),
-    linear-gradient(
-      145deg,
-      #130f05,
-      #07100d
-    );
-}
-
-body.future-environment{
-  background:
-    radial-gradient(
-      circle at 70% 20%,
-      rgba(57,243,158,.14),
-      transparent 30%
-    ),
-    linear-gradient(
-      145deg,
-      #03150c,
-      #06100c
-    );
-}
-
-body.future-transport{
-  background:
-    radial-gradient(
-      circle at 70% 20%,
-      rgba(85,220,255,.15),
-      transparent 30%
-    ),
-    linear-gradient(
-      145deg,
-      #03101c,
-      #040b10
-    );
-}
-
-body.future-global{
-  background:
-    radial-gradient(
-      circle at 70% 20%,
-      rgba(169,140,255,.15),
-      transparent 30%
-    ),
-    linear-gradient(
-      145deg,
-      #0b0618,
-      #05070f
-    );
+    .file-item{
+        align-items:flex-start;
+    }
 }
 
 </style>
 </head>
 
+
 <body>
 
-<canvas id="worldCanvas"></canvas>
+<!-- =====================================================
+     BACKGROUND
+====================================================== -->
 
-<div id="starLayer"></div>
+<div class="grid-line"></div>
 
-<!-- =======================================================
-     HEADER
-======================================================= -->
+<div class="orb one"></div>
+<div class="orb two"></div>
 
-<header class="header">
 
-  <a class="brand" href="#home">
+<!-- =====================================================
+     NAVBAR
+====================================================== -->
 
-    <span class="brand-flag">🇧🇩</span>
+<header class="navbar">
 
-    <span class="brand-name">
+<div class="nav-inner">
 
-      <strong>
-        <span class="green">MD.</span>
-        <span class="red">NAIMUR RAHMAN</span>
-        <span class="green">SAAD</span>
-      </strong>
+    <div class="logo">
+        NAIMUR <span>RAHMAN SAAD</span>
+    </div>
 
-      <small>
-        CIVIL ENGINEER • CONSTRUCTION • FUTURE INFRASTRUCTURE
-      </small>
+    <nav class="nav-links">
 
-    </span>
+        <a href="#home">Home</a>
 
-  </a>
+        <a href="#future">Future 2050</a>
 
-  <nav class="nav">
+        <a href="#vision">Vision</a>
 
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#autocad">AutoCAD</a>
-    <a href="#future">Future 2050</a>
-    <a href="#contact">Contact</a>
+        <a href="#autocad">AutoCAD</a>
 
-  </nav>
+        <a href="#about">About</a>
 
-  <div class="lang">
+    </nav>
 
-    <button id="enBtn"
-            class="active"
-            onclick="setLang('en')">
-      EN
+    <button
+        class="milk-toggle"
+        id="milkToggle"
+        onclick="toggleMilkMode()">
+
+        🥛 MILK MODE
+
     </button>
 
-    <button id="bnBtn"
-            onclick="setLang('bn')">
-      বাংলা
-    </button>
-
-  </div>
+</div>
 
 </header>
 
 
-<!-- =======================================================
+<!-- =====================================================
      HERO
-======================================================= -->
+====================================================== -->
 
-<section class="hero" id="home">
+<main>
 
-  <div>
+<section
+    class="hero"
+    id="home">
 
-    <div class="kicker">
-      CIVIL ENGINEERING • CONSTRUCTION • INFRASTRUCTURE
+<div class="hero-content">
+
+    <div class="future-label">
+
+        <span class="future-dot"></span>
+
+        ENGINEERING BEYOND 2050
+
     </div>
+
 
     <h1>
 
-      <span class="green">
-        MD. NAIMUR
-      </span>
-
-      <br>
-
-      <span class="red">
-        RAHMAN
-      </span>
-
-      <span class="green">
-        SAAD
-      </span>
+        Building The
+        <span class="gradient-text">
+            Unbuilt Future.
+        </span>
 
     </h1>
 
-    <div class="hero-sub">
 
-      Civil Engineer |
-      Construction Engineering & Project Management
+    <p>
 
-      <br>
-
-      Transportation Engineering |
-      Environmental Engineering
-
-    </div>
-
-    <div class="mission">
-
-      A <b>Dream</b> Becomes <b>Reality</b>
-
-      <br>
-
-      When <b>Vision</b> Becomes <b>Mission.</b>
-
-    </div>
-
-    <p class="hero-desc">
-
-      Building practical engineering experience today while developing
-      advanced concepts for intelligent, resilient, sustainable and
-      autonomous infrastructure of the future.
+        Naimur Rahman Saad —
+        Civil Engineer focused on Construction,
+        Project Management, Digital Engineering,
+        BIM, Automation and the next generation
+        of infrastructure.
 
     </p>
 
-    <div class="actions">
 
-      <a class="btn primary"
-         href="#projects">
-        Explore My Journey →
-      </a>
+    <div class="hero-buttons">
 
-      <a class="btn"
-         href="#future">
-        Explore 2050 Vision
-      </a>
+        <a
+            href="#future"
+            class="btn btn-primary">
 
-      <a class="btn"
-         href="#autocad">
-        AutoCAD Portfolio
-      </a>
+            Explore Future 2050 →
 
-      <a class="btn"
-         href="CV.pdf"
-         download>
-        Download CV ↓
-      </a>
-
-    </div>
-
-  </div>
-
-
-  <div class="hero-visual"
-       id="heroVisual">
-
-    <div class="orbit"></div>
-
-    <div class="orbit two"></div>
-
-    <div class="core"></div>
-
-    <div class="float one">
-
-      🌿 Environment
-
-      <br>
-
-      <small>
-        Sustainable Infrastructure
-      </small>
-
-    </div>
-
-    <div class="float two">
-
-      🚆 Transportation
-
-      <br>
-
-      <small>
-        Smart Mobility
-      </small>
-
-    </div>
-
-    <div class="float three">
-
-      🏗️ Building
-
-      <br>
-
-      <small>
-        Construction Management
-      </small>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     ABOUT
-======================================================= -->
-
-<section id="about" class="reveal">
-
-  <div class="section-label">
-    01 / PROFILE
-  </div>
-
-  <h2 class="section-title">
-    Engineering with Purpose.
-  </h2>
-
-  <p class="section-desc">
-
-    Civil Engineering graduate with practical construction experience
-    through M/S. Mahima Steel & Cong., progressing from Trainee Site
-    Engineer to Site Engineer.
-
-    Experienced in site supervision, QA/QC, construction material
-    testing, reinforcement inspection, BBS review, quantity verification,
-    contractor billing, material reconciliation, project coordination
-    and construction documentation.
-
-  </p>
-
-  <div class="stats">
-
-    <div class="stat">
-      <strong>6+</strong>
-      <span>Years Experience</span>
-    </div>
-
-    <div class="stat">
-      <strong>11+</strong>
-      <span>Civil Projects</span>
-    </div>
-
-    <div class="stat">
-      <strong>25.7 Cr</strong>
-      <span>BDT Project Exposure</span>
-    </div>
-
-    <div class="stat">
-      <strong>~$2.1M</strong>
-      <span>Approx. USD Exposure</span>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     ENGINEERING
-======================================================= -->
-
-<section id="engineering"
-         class="reveal">
-
-  <div class="section-label">
-    02 / ENGINEERING FOCUS
-  </div>
-
-  <h2 class="section-title">
-    Build • Sustain • Connect
-  </h2>
-
-  <p class="section-desc">
-
-    Construction Management, Transportation Engineering and Environmental
-    Engineering connected through a practical infrastructure mindset.
-
-  </p>
-
-  <div class="grid">
-
-    <article class="card">
-
-      <h3>
-        🏗️ Construction Engineering & Project Management
-      </h3>
-
-      <p>
-        Construction planning, scheduling, site execution, QA/QC,
-        quantity verification, material management, coordination,
-        risk and project delivery.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Planning</span>
-        <span class="tag">QA/QC</span>
-        <span class="tag">Primavera P6</span>
-        <span class="tag">Project Delivery</span>
-      </div>
-
-    </article>
-
-
-    <article class="card">
-
-      <h3>
-        🛣️ Roads & Transportation
-      </h3>
-
-      <p>
-        Road construction and rehabilitation, pavement-related works,
-        transportation planning, traffic engineering and sustainable mobility.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Pavement</span>
-        <span class="tag">Roads</span>
-        <span class="tag">Traffic</span>
-        <span class="tag">Mobility</span>
-      </div>
-
-    </article>
-
-
-    <article class="card">
-
-      <h3>
-        🌿 Environmental Engineering
-      </h3>
-
-      <p>
-        Sustainable infrastructure, environmental management,
-        water and wastewater systems, pollution control and resilient development.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Sustainability</span>
-        <span class="tag">Water</span>
-        <span class="tag">Resilience</span>
-      </div>
-
-    </article>
-
-
-    <article class="card">
-
-      <h3>
-        🌍 Integrated Future
-      </h3>
-
-      <p>
-        Connecting construction, roads, transportation and environmental
-        thinking to create safer, smarter and more sustainable infrastructure.
-      </p>
-
-      <div class="tags">
-        <span class="tag">BIM</span>
-        <span class="tag">Digital Twin</span>
-        <span class="tag">AI</span>
-        <span class="tag">Resilience</span>
-      </div>
-
-    </article>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     GOVERNMENT EXPERIENCE
-======================================================= -->
-
-<section class="reveal">
-
-  <div class="section-label">
-    03 / GOVERNMENT EXPERIENCE
-  </div>
-
-  <h2 class="section-title">
-    LGED • PWD • BWDB • RHD
-  </h2>
-
-  <div class="agencies">
-
-    <article class="agency">
-
-      <div class="agency-icon">🏗️</div>
-
-      <h3>LGED</h3>
-
-      <p>
-        Local Government Engineering Department —
-        rural roads, RCC roads, market development,
-        rehabilitation and local infrastructure.
-      </p>
-
-      <a href="https://lged.gov.bd/"
-         target="_blank">
-        Official Website ↗
-      </a>
-
-    </article>
-
-
-    <article class="agency">
-
-      <div class="agency-icon">🏢</div>
-
-      <h3>PWD</h3>
-
-      <p>
-        Public Works Department — building construction,
-        structural/civil works, quantity measurement and coordination.
-      </p>
-
-      <a href="https://ss.pwd.gov.bd/home/"
-         target="_blank">
-        Official Website ↗
-      </a>
-
-    </article>
-
-
-    <article class="agency">
-
-      <div class="agency-icon">🌊</div>
-
-      <h3>BWDB</h3>
-
-      <p>
-        Bangladesh Water Development Board — emergency protection,
-        riverbank protection and water-resource related works.
-      </p>
-
-      <a href="https://www.bwdb.gov.bd/"
-         target="_blank">
-        Official Website ↗
-      </a>
-
-    </article>
-
-
-    <article class="agency">
-
-      <div class="agency-icon">🛣️</div>
-
-      <h3>RHD</h3>
-
-      <p>
-        Roads and Highways Department — road rehabilitation,
-        pavement repair and transportation infrastructure.
-      </p>
-
-      <a href="https://rhd.gov.bd/"
-         target="_blank">
-        Official Website ↗
-      </a>
-
-    </article>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     EXPERIENCE
-======================================================= -->
-
-<section id="experience"
-         class="reveal">
-
-  <div class="section-label">
-    04 / PROFESSIONAL EXPERIENCE
-  </div>
-
-  <h2 class="section-title">
-    M/S. MAHIMA STEEL & CONG.
-  </h2>
-
-  <p class="section-desc">
-    Civil Works Contractor • Sirajganj, Bangladesh
-  </p>
-
-  <div class="grid">
-
-    <article class="card">
-
-      <h3>
-        Site Engineer | 2024 – Present
-      </h3>
-
-      <p>
-        Supervise road and civil infrastructure construction according
-        to approved drawings, specifications and project requirements.
-        Monitor earthwork, filling, compaction, pavement, RCC,
-        reinforcement, formwork, casting and curing.
-      </p>
-
-    </article>
-
-
-    <article class="card">
-
-      <h3>
-        Trainee Site Engineer | 2020 – 2023
-      </h3>
-
-      <p>
-        Assisted senior engineers with construction execution,
-        quality control, measurements, material testing,
-        progress monitoring and construction documentation.
-      </p>
-
-    </article>
-
-
-    <article class="card">
-
-      <h3>
-        QA/QC & Material Testing
-      </h3>
-
-      <p>
-        Slump, concrete cube, sand field-density, brick and bentonite
-        slurry testing; reinforcement, cover-block, dimensions,
-        levels and BBS inspection.
-      </p>
-
-    </article>
-
-
-    <article class="card">
-
-      <h3>
-        Coordination & Documentation
-      </h3>
-
-      <p>
-        Worker, supplier and contractor coordination; measurements,
-        inspection records, progress reports, billing verification
-        and material reconciliation.
-      </p>
-
-    </article>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     PROJECTS
-======================================================= -->
-
-<section id="projects"
-         class="reveal">
-
-  <div class="section-label">
-    05 / PROJECT PORTFOLIO
-  </div>
-
-  <h2 class="section-title">
-    11+ Government Projects.
-  </h2>
-
-  <p class="section-desc">
-
-    Click any project card to open a detailed project-level view
-    of role, site activities, QA/QC exposure, measurement,
-    coordination and documentation.
-
-  </p>
-
-  <div class="projects">
-
-
-    <article class="project"
-             onclick="openProject(0)">
-
-      <div class="project-agency">
-        LGED • KURIGRAM
-      </div>
-
-      <h3>
-        Naykerhat Rural Market Development (NOBIDEP)
-      </h3>
-
-      <p>
-        Tender ID: 107138 • Package: WNOBI-Kur-RM-147 (C)
-      </p>
-
-      <span class="project-open">
-        CLICK TO VIEW MY WORK DETAILS →
-      </span>
-
-    </article>
-
-
-    <article class="project"
-             onclick="openProject(1)">
-
-      <div class="project-agency">
-        LGED • SIRAJGANJ
-      </div>
-
-      <h3>
-        Bagbati–Kazipur C&B Ghorachora Monsur Ali Road
-        to Sarkar Bari Jame Mosque RCC Road
-      </h3>
-
-      <p>
-        Tender ID: 810008 • Package: ADP/SAD/SER/2022-23/06
-      </p>
-
-      <span class="project-open">
-        CLICK TO VIEW MY WORK DETAILS →
-      </span>
-
-    </article>
-
-
-    <article class="project"
-             onclick="openProject(2)">
-
-      <div class="project-agency">
-        LGED • SIRAJGANJ
-      </div>
-
-      <h3>
-        Char Someshpur Central Mosque Washblock & Ojukhana
-      </h3>
-
-      <p>
-        Tender ID: 757953 • Package: GSID-2/SRJ/DW-04
-      </p>
-
-      <span class="project-open">
-        CLICK TO VIEW MY WORK DETAILS →
-      </span>
-
-    </article>
-
-
-    <article class="project"
-             onclick="openProject(3)">
-
-      <div class="project-agency">
-        LGED • SIRAJGANJ
-      </div>
-
-      <h3>
-        Kaelgati Mosque to Kalumondol Bari RCC Road Development
-      </h3>
-
-      <p>
-        Tender ID: 810013 • Package: UDF/SAD/SER/2022-23
-      </p>
-
-      <span class="project-open">
-        CLICK TO VIEW MY WORK DETAILS →
-      </span>
-
-    </article>
-
-
-    <article class="project"
-             onclick="openProject(4)">
-
-      <div class="project-agency">
-        LGED • SIRAJGANJ
-      </div>
-
-      <h3>
-        Tamai RHD (Bashtola) to Char Tengrail Road Improvement
-      </h3>
-
-      <p>
-        700 m • Project Value ≈ BDT 8.11 Crore
-      </p>
-
-      <span class="project-open">
-        CLICK TO VIEW MY WORK DETAILS →
-      </span>
-
-    </article>
-
-
-    <article class="project"
-             onclick="openProject(5)">
-
-      <div class="project-agency">
-        PWD • SIRAJGANJ
-      </div>
-
-      <h3>
-        07 RAB Complex Project (RAB-12), Hatikumrul
-      </h3>
-
-      <p>
-        Package: 02(U)(OTM)/2015-2016
-      </p>
-
-      <span class="project-open">
-        CLICK TO VIEW MY WORK DETAILS →
-      </span>
-
-    </article>
-
-
-    <article class="project"
-             onclick="openProject(6)">
-
-      <div class="project-agency">
-        LGED
-      </div>
-
-      <h3>
-        Kuthi Satbaria UZR to Khas Satbaria
-        Utterpara Road Improvement & Link Road
-      </h3>
-
-      <p>
-        805 m • Tender ID: 599746 • IRIDP-3/SRJ/DW-35
-      </p>
-
-      <span class="project-open">
-        CLICK TO VIEW MY WORK DETAILS →
-      </span>
-
-    </article>
-
-
-    <article class="project"
-             onclick="openProject(7)">
-
-      <div class="project-agency">
-        LGED • PABNA
-      </div>
-
-      <h3>
-        Masumdia UP Office to Dear Bramndi Hat
-        Road Rehabilitation
-      </h3>
-
-      <p>
-        1,240 m • ID No.: 615468
-      </p>
-
-      <span class="project-open">
-        CLICK TO VIEW MY WORK DETAILS →
-      </span>
-
-    </article>
-
-
-    <article class="project"
-             onclick="openProject(8)">
-
-      <div class="project-agency">
-        BWDB • SIRAJGANJ
-      </div>
-
-      <h3>
-        Emergency Repair & Protection Work
-        at Betil Spur-1, Belkuchi
-      </h3>
-
-      <p>
-        Tender ID: 535754 • Package: L/NDR/08/2020-2021
-      </p>
-
-      <span class="project-open">
-        CLICK TO VIEW MY WORK DETAILS →
-      </span>
-
-    </article>
-
-
-    <article class="project"
-             onclick="openProject(9)">
-
-      <div class="project-agency">
-        BWDB • SIRAJGANJ
-      </div>
-
-      <h3>
-        Temporary Emergency Protection Work
-      </h3>
-
-      <p>
-        Package: I-NDR-05/2021 • Sirajganj O&M Division
-      </p>
-
-      <span class="project-open">
-        CLICK TO VIEW MY WORK DETAILS →
-      </span>
-
-    </article>
-
-
-    <article class="project"
-             onclick="openProject(10)">
-
-      <div class="project-agency">
-        RHD • SIRAJGANJ
-      </div>
-
-      <h3>
-        Repair of Damaged Pavement by HBB Work
-        at 9th Km of Tarash–Hamkuria (Z-6032) Road
-      </h3>
-
-      <p>
-        Tender ID: 621337 LTM
-      </p>
-
-      <span class="project-open">
-        CLICK TO VIEW MY WORK DETAILS →
-      </span>
-
-    </article>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     EDUCATION
-======================================================= -->
-
-<section id="education"
-         class="reveal">
-
-  <div class="section-label">
-    06 / EDUCATION
-  </div>
-
-  <h2 class="section-title">
-    Academic Foundation.
-  </h2>
-
-  <div class="grid">
-
-    <article class="card">
-
-      <h3>
-        Daffodil International University
-      </h3>
-
-      <p>
-        Bachelor of Science in Civil Engineering |
-        January 2019 – May 2026
-      </p>
-
-      <p>
-        CGPA: 2.57/4.00 •
-        Medium of Instruction: English
-      </p>
-
-      <p>
-        Undergraduate Thesis:
-        <b>
-          Investigation on the Causes of Cracks in RCC Structures
-          and Possible Preventive Measures
-        </b>
-      </p>
-
-      <div class="actions">
-
-        <a class="btn"
-           href="https://daffodilvarsity.edu.bd/"
-           target="_blank">
-          University Website ↗
         </a>
 
-      </div>
 
-    </article>
+        <a
+            href="#autocad"
+            class="btn btn-secondary">
 
+            AutoCAD Portfolio
 
-    <article class="card">
+        </a>
 
-      <h3>
-        Sirajganj Collectorate School & College
-      </h3>
+    </div>
 
-      <p>
-        Higher Secondary Certificate (HSC), Science | 2018
-      </p>
-
-      <p>
-        GPA: 3.17/5.00
-      </p>
-
-    </article>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =======================================================
-     THESIS
-======================================================= -->
+<!-- =====================================================
+     FUTURE ENGINEERING 2050
+====================================================== -->
 
-<section class="reveal">
+<section id="future">
 
-  <div class="section-label">
-    07 / UNDERGRADUATE THESIS
-  </div>
+<div class="section-head reveal">
 
-  <h2 class="section-title">
-    RCC Crack Investigation.
-  </h2>
+    <div class="eyebrow">
+        Future Engineering
+    </div>
 
-  <div class="thesis">
+    <h2>
+        Four Directions.
+        One 2050 Vision.
+    </h2>
+
+    <p>
+        প্রতিটি section আলাদা engineering direction।
+        Card-এ click করলে পুরো concept, long-term plan,
+        research direction এবং তোমার সম্ভাব্য role দেখা যাবে।
+    </p>
+
+</div>
+
+
+<div class="future-grid">
+
+
+<!-- =====================================================
+     CARD 01
+====================================================== -->
+
+<div
+    class="future-card reveal"
+    onclick="openFuture(1)">
+
+    <div class="card-number">
+        01 / STRUCTURAL INTELLIGENCE
+    </div>
+
+    <div class="future-icon">
+        🏗️
+    </div>
 
     <h3>
-      Investigation on the Causes of Cracks in RCC Structures
-      and Possible Preventive Measures
+        Autonomous Structural Systems
+    </h3>
+
+    <p class="short">
+
+        এমন structural infrastructure
+        যা নিজের condition বুঝবে,
+        damage detect করবে এবং
+        ভবিষ্যৎ failure predict করবে।
+
+    </p>
+
+    <div class="click-hint">
+        EXPLORE 2050 →
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CARD 02
+====================================================== -->
+
+<div
+    class="future-card reveal"
+    onclick="openFuture(2)">
+
+    <div class="card-number">
+        02 / DIGITAL CONSTRUCTION
+    </div>
+
+    <div class="future-icon">
+        🤖
+    </div>
+
+    <h3>
+        Autonomous Construction
+    </h3>
+
+    <p class="short">
+
+        BIM + robotics + AI + digital twin
+        ব্যবহার করে construction process
+        কে semi-autonomous করার vision।
+
+    </p>
+
+    <div class="click-hint">
+        EXPLORE 2050 →
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CARD 03
+====================================================== -->
+
+<div
+    class="future-card reveal"
+    onclick="openFuture(3)">
+
+    <div class="card-number">
+        03 / CLIMATE INFRASTRUCTURE
+    </div>
+
+    <div class="future-icon">
+        🌍
+    </div>
+
+    <h3>
+        Climate-Adaptive Infrastructure
+    </h3>
+
+    <p class="short">
+
+        Flood, extreme heat, water pressure
+        এবং environmental change অনুযায়ী
+        infrastructure নিজেকে adapt করবে।
+
+    </p>
+
+    <div class="click-hint">
+        EXPLORE 2050 →
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CARD 04
+====================================================== -->
+
+<div
+    class="future-card reveal"
+    onclick="openFuture(4)">
+
+    <div class="card-number">
+        04 / HUMAN + AI ENGINEERING
+    </div>
+
+    <div class="future-icon">
+        🧠
+    </div>
+
+    <h3>
+        Cognitive Engineering Platform
+    </h3>
+
+    <p class="short">
+
+        Engineer, AI, BIM, simulation এবং
+        project management একত্র করে
+        intelligent engineering ecosystem।
+
+    </p>
+
+    <div class="click-hint">
+        EXPLORE 2050 →
+    </div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     VISION
+====================================================== -->
+
+<section id="vision">
+
+<div class="section-head reveal">
+
+    <div class="eyebrow">
+        Advanced Engineering Research
+    </div>
+
+    <h2>
+        My Engineering 2050 Framework
+    </h2>
+
+    <p>
+        এই concepts ভবিষ্যৎ-oriented engineering direction
+        হিসেবে তৈরি করা হয়েছে — research, development এবং
+        long-term professional vision হিসেবে।
+    </p>
+
+</div>
+
+
+<div class="vision-box reveal">
+
+<div class="vision-list">
+
+
+<div class="vision-item">
+
+    <h3>
+        Digital Twin Cities
     </h3>
 
     <p>
-      Investigated structural and non-structural cracking in RCC
-      structures and examined construction, material, environmental
-      and workmanship factors.
+        Real infrastructure-এর continuously
+        updated digital representation তৈরি করে
+        maintenance, planning এবং risk prediction।
     </p>
+
+</div>
+
+
+<div class="vision-item">
+
+    <h3>
+        Predictive Infrastructure
+    </h3>
 
     <p>
-      Reviewed preventive measures and repair approaches to improve
-      durability and structural performance.
+        Structural sensor, historical data এবং
+        computational models ব্যবহার করে
+        failure ঘটার আগেই warning তৈরি করা।
     </p>
+
+</div>
+
+
+<div class="vision-item">
+
+    <h3>
+        AI Construction Planner
+    </h3>
 
     <p>
-      Connected academic investigation with practical construction
-      and QA/QC observations.
+        Project schedule, resources, productivity,
+        risk এবং construction sequence
+        intelligently optimize করার framework।
     </p>
 
-  </div>
-
-</section>
+</div>
 
 
-<!-- =======================================================
-     SKILLS
-======================================================= -->
+<div class="vision-item">
 
-<section id="skills"
-         class="reveal">
+    <h3>
+        Self-Monitoring Structures
+    </h3>
 
-  <div class="section-label">
-    08 / TECHNICAL CAPABILITY
-  </div>
-
-  <h2 class="section-title">
-    Tools • Testing • Execution.
-  </h2>
-
-  <div class="skills">
-
-    <span class="skill">Site Supervision</span>
-    <span class="skill">RCC Construction</span>
-    <span class="skill">Concrete Casting</span>
-    <span class="skill">Reinforcement Inspection</span>
-    <span class="skill">Cover Block Inspection</span>
-    <span class="skill">BBS Review</span>
-    <span class="skill">Quantity Verification</span>
-    <span class="skill">Contractor Billing</span>
-    <span class="skill">Material Reconciliation</span>
-    <span class="skill">Slump Testing</span>
-    <span class="skill">Concrete Cube Sampling</span>
-    <span class="skill">Bentonite Slurry Testing</span>
-    <span class="skill">Sand Field-Density Testing</span>
-    <span class="skill">Brick Testing</span>
-    <span class="skill">AutoCAD 2D</span>
-    <span class="skill">AutoCAD 3D</span>
-    <span class="skill">ETABS</span>
-    <span class="skill">Primavera P6</span>
-    <span class="skill">Revit</span>
-    <span class="skill">MS Excel</span>
-    <span class="skill">MS Word</span>
-    <span class="skill">PowerPoint</span>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     FUTURE 2050
-======================================================= -->
-
-<section id="future"
-         class="reveal">
-
-  <div class="future">
-
-    <div class="section-label">
-      09 / FUTURE ENGINEERING VISION
-    </div>
-
-    <div class="future-title">
-      Engineering 2050.
-    </div>
-
-    <p class="section-desc">
-
-      Four independent future-engineering research directions.
-      These are presented as proposed personal concepts and long-term
-      engineering research visions — not as claims that a university
-      or institution has already implemented them.
-
+    <p>
+        Structural health monitoring system
+        future infrastructure-এর continuous
+        condition assessment করবে।
     </p>
 
-
-    <div class="future-grid">
-
-
-      <!-- FUTURE 01 -->
-
-      <div class="future-item"
-           onclick="openFuture('construction')">
-
-        <div>
-
-          <small>
-            01 — AUTONOMOUS CONSTRUCTION
-          </small>
-
-          <h3>
-            🏗️ Autonomous Construction Intelligence
-          </h3>
-
-          <p>
-            A 2050 construction ecosystem where BIM,
-            AI, robotics, sensors and digital twins continuously
-            coordinate project delivery.
-          </p>
-
-        </div>
-
-        <div class="future-click">
-          EXPLORE 2050 CONCEPT →
-        </div>
-
-      </div>
+</div>
 
 
-      <!-- FUTURE 02 -->
+<div class="vision-item">
 
-      <div class="future-item"
-           onclick="openFuture('environment')">
+    <h3>
+        Robotic Construction
+    </h3>
 
-        <div>
+    <p>
+        Repetitive construction activity-তে
+        robotics ও automation ব্যবহার করে
+        productivity ও safety বাড়ানোর direction।
+    </p>
 
-          <small>
-            02 — REGENERATIVE INFRASTRUCTURE
-          </small>
-
-          <h3>
-            🌿 Self-Healing & Regenerative Infrastructure
-          </h3>
-
-          <p>
-            Infrastructure designed to sense deterioration,
-            adapt to environmental stress and support
-            long-term ecological resilience.
-          </p>
-
-        </div>
-
-        <div class="future-click">
-          EXPLORE 2050 CONCEPT →
-        </div>
-
-      </div>
+</div>
 
 
-      <!-- FUTURE 03 -->
+<div class="vision-item">
 
-      <div class="future-item"
-           onclick="openFuture('transport')">
+    <h3>
+        Zero-Delay Project Intelligence
+    </h3>
 
-        <div>
+    <p>
+        Real-time project data থেকে delay,
+        resource conflict এবং risk আগে detect
+        করার integrated management system।
+    </p>
 
-          <small>
-            03 — ADAPTIVE MOBILITY
-          </small>
-
-          <h3>
-            🛣️ Autonomous Adaptive Mobility Grid
-          </h3>
-
-          <p>
-            Roads and transportation networks functioning as
-            intelligent, connected infrastructure systems.
-          </p>
-
-        </div>
-
-        <div class="future-click">
-          EXPLORE 2050 CONCEPT →
-        </div>
-
-      </div>
+</div>
 
 
-      <!-- FUTURE 04 -->
+</div>
 
-      <div class="future-item"
-           onclick="openFuture('global')">
-
-        <div>
-
-          <small>
-            04 — CIVILIZATION INFRASTRUCTURE
-          </small>
-
-          <h3>
-            🌍 Infrastructure Brain 2050
-          </h3>
-
-          <p>
-            A long-term vision for interconnected infrastructure
-            systems that can sense, predict, coordinate and respond.
-          </p>
-
-        </div>
-
-        <div class="future-click">
-          EXPLORE 2050 CONCEPT →
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      AUTOCAD PORTFOLIO
-======================================================= -->
+====================================================== -->
 
-<section id="autocad"
-         class="reveal">
+<section id="autocad">
 
-  <div class="section-label">
-    10 / AUTOCAD PROJECT LAB
-  </div>
+<div class="section-head reveal">
 
-  <h2 class="section-title">
-    AutoCAD Practice & Project Portfolio.
-  </h2>
-
-  <p class="section-desc">
-
-    A dedicated workspace for my AutoCAD drawings, practice files,
-    design exercises, drafting experiments and engineering project files.
-
-  </p>
-
-
-  <div class="autocad-zone">
-
-    <div class="autocad-header">
-
-      <div>
-
-        <div class="autocad-title">
-          📐 AutoCAD File Vault
-        </div>
-
-        <div class="autocad-sub">
-
-          Upload and organize your AutoCAD practice/project files.
-          DWG, DXF, PDF and image-based drawing files can be stored
-          inside this browser-based portfolio vault.
-
-        </div>
-
-      </div>
-
+    <div class="eyebrow">
+        AutoCAD Portfolio
     </div>
 
+    <h2>
+        My AutoCAD Practice Files
+    </h2>
 
-    <div class="upload-box">
+    <p>
+        এখানে তোমার AutoCAD practice এবং project files
+        select করে portfolio workspace-এ রাখতে পারবে।
+        DWG, DXF, PDF, ZIP এবং image files support করা হয়েছে।
+    </p>
 
-      <div class="upload-icon">
-        📁
-      </div>
+</div>
 
-      <h3>
-        Upload AutoCAD Project Files
-      </h3>
 
-      <p>
+<div
+    class="upload-zone reveal"
+    id="uploadZone">
 
-        Select your drawings, practice files, plans, sections,
-        details, PDFs or screenshots.
-
-      </p>
-
-      <label class="upload-button"
-             for="cadInput">
-
-        + SELECT FILES
-
-      </label>
-
-      <input
-        id="cadInput"
-        class="file-input"
-        type="file"
-        multiple
-        accept=".dwg,.dxf,.pdf,.png,.jpg,.jpeg,.webp,.svg">
-
-      <div class="file-types">
-
-        Supported:
-        DWG • DXF • PDF • PNG • JPG • JPEG • WEBP • SVG
-
-      </div>
-
+    <div class="upload-icon">
+        📐
     </div>
 
+    <h3>
+        Upload AutoCAD Projects
+    </h3>
 
-    <div class="cad-list"
-         id="cadList">
+    <p>
 
-      <div class="cad-empty"
-           id="cadEmpty">
-
-        No AutoCAD files uploaded yet.
+        Drag & Drop files here অথবা নিচের button ব্যবহার করো।
 
         <br>
 
-        Start by selecting your first project/practice file.
-
-      </div>
-
-    </div>
-
-
-    <div class="upload-warning">
-
-      ⚠️ <b>Important:</b>
-      Because this website is running on GitHub Pages as a static site,
-      this upload vault stores files locally inside this browser.
-      It does <b>not</b> automatically upload files to GitHub or a public server.
-      For permanent public portfolio files, place them inside your repository
-      (for example <b>/autocad/</b>) and link them from the website.
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     CONTACT
-======================================================= -->
-
-<section id="contact"
-         class="reveal">
-
-  <div class="section-label">
-    11 / CONTACT
-  </div>
-
-  <h2 class="section-title">
-    Let's Build a Better Tomorrow.
-  </h2>
-
-  <div class="contact-box">
-
-    <p class="section-desc">
-
-      Sirajganj, Bangladesh
-      • +880 1570-279183
-      • naimurrahmansaad0@gmail.com
+        DWG • DXF • PDF • ZIP • RAR • PNG • JPG
 
     </p>
 
-    <div class="actions">
 
-      <a class="btn primary"
-         href="mailto:naimurrahmansaad0@gmail.com">
-        Email Me
-      </a>
+    <label
+        class="upload-button"
+        for="fileInput">
 
-      <a class="btn"
-         href="https://linkedin.com/in/md-naimur-rahman-saad-4240ba431"
-         target="_blank">
-        LinkedIn ↗
-      </a>
+        + SELECT AUTO CAD FILES
 
-      <a class="btn"
-         href="https://github.com/nrsaad"
-         target="_blank">
-        GitHub ↗
-      </a>
+    </label>
 
-      <a class="btn"
-         href="CV.pdf"
-         download>
-        Download CV ↓
-      </a>
 
-    </div>
+    <input
+        type="file"
+        id="fileInput"
+        class="file-input"
+        multiple
+        accept=".dwg,.dxf,.pdf,.zip,.rar,.png,.jpg,.jpeg">
 
-  </div>
+
+</div>
+
+
+<div
+    class="file-list"
+    id="fileList">
+
+</div>
 
 </section>
 
 
-<!-- =======================================================
-     MOOD STATUS
-======================================================= -->
+<!-- =====================================================
+     ABOUT
+====================================================== -->
 
-<div id="moodStatus">
-  DEFAULT • ENGINEERING
-</div>
+<section id="about">
 
+<div class="section-head reveal">
 
-<div class="moodbar">
+    <div class="eyebrow">
+        Engineering Profile
+    </div>
 
-  <button class="mood-btn"
-          onclick="setMood('default')">
-    ✦ Default
-  </button>
-
-  <button class="mood-btn"
-          onclick="setMood('construction')">
-    🏗️ Construction
-  </button>
-
-  <button class="mood-btn"
-          onclick="setMood('roads')">
-    🛣️ Roads
-  </button>
-
-  <button class="mood-btn"
-          onclick="setMood('transportation')">
-    🚆 Transportation
-  </button>
-
-  <button class="mood-btn"
-          onclick="setMood('environmental')">
-    🌿 Environmental
-  </button>
+    <h2>
+        Naimur Rahman Saad
+    </h2>
 
 </div>
 
 
-<!-- =======================================================
-     FUTURE MODAL
-======================================================= -->
+<div class="profile-grid">
 
-<div class="modal"
-     id="futureModal"
-     aria-hidden="true">
 
-  <div class="modal-box">
+<div class="profile-card reveal">
 
-    <div class="modal-top">
-
-      <div>
-
-        <div class="modal-kicker"
-             id="futureKicker">
-        </div>
-
-        <h2 id="futureTitle">
-        </h2>
-
-        <div class="modal-sub"
-             id="futureSubtitle">
-        </div>
-
-      </div>
-
-      <button class="close-btn"
-              onclick="closeFuture()">
-        ×
-      </button>
-
+    <div class="profile-avatar">
+        NR
     </div>
 
+    <h3>
+        Naimur Rahman Saad
+    </h3>
 
-    <div class="future-detail-grid">
-
-      <div class="future-detail-card full">
-
-        <h4>
-          2050 Vision
-        </h4>
-
-        <p id="futureVision"></p>
-
-      </div>
-
-
-      <div class="future-detail-card">
-
-        <h4>
-          The Problem
-        </h4>
-
-        <p id="futureProblem"></p>
-
-      </div>
-
-
-      <div class="future-detail-card">
-
-        <h4>
-          My Proposed Concept
-        </h4>
-
-        <p id="futureConcept"></p>
-
-      </div>
-
-
-      <div class="future-detail-card">
-
-        <h4>
-          How The System Works
-        </h4>
-
-        <ul id="futureHow"></ul>
-
-      </div>
-
-
-      <div class="future-detail-card">
-
-        <h4>
-          Advanced Technology
-        </h4>
-
-        <div class="future-tags"
-             id="futureTech">
-        </div>
-
-      </div>
-
-
-      <div class="future-detail-card full">
-
-        <h4>
-          Engineering Architecture
-        </h4>
-
-        <p id="futureArchitecture"></p>
-
-      </div>
-
-
-      <div class="future-detail-card">
-
-        <h4>
-          Research Questions
-        </h4>
-
-        <ul id="futureResearch"></ul>
-
-      </div>
-
-
-      <div class="future-detail-card">
-
-        <h4>
-          Bangladesh Application
-        </h4>
-
-        <p id="futureBangladesh"></p>
-
-      </div>
-
-
-      <div class="future-detail-card">
-
-        <h4>
-          Global Application
-        </h4>
-
-        <p id="futureGlobal"></p>
-
-      </div>
-
-
-      <div class="future-detail-card">
-
-        <h4>
-          2050 Target Metrics
-        </h4>
-
-        <ul id="futureMetrics"></ul>
-
-      </div>
-
-
-      <div class="future-detail-card full">
-
-        <h4>
-          Personal Research Direction
-        </h4>
-
-        <p id="futurePersonal"></p>
-
-      </div>
-
-
-      <div class="future-detail-card full">
-
-        <h4>
-          2026 → 2050 Roadmap
-        </h4>
-
-        <div class="timeline"
-             id="futureTimeline">
-        </div>
-
-      </div>
-
+    <div class="profile-role">
+        Civil Engineer
     </div>
 
+    <p>
 
-    <div class="vision-note">
+        Construction & Project Management
+        oriented Civil Engineer with interest
+        in digital engineering, BIM,
+        structural analysis, CAD,
+        construction planning and
+        future infrastructure.
 
-      <b>Research-positioning note:</b>
-      This section represents a proposed long-term engineering vision.
-      The concepts are intentionally presented as future research directions,
-      not as claims that these systems currently exist at scale or that a
-      particular university has already implemented them.
-
-    </div>
-
-  </div>
+    </p>
 
 </div>
 
 
-<!-- =======================================================
-     PROJECT MODAL
-======================================================= -->
+<div class="profile-card reveal">
 
-<div class="modal"
-     id="projectModal"
-     aria-hidden="true">
+    <div class="info-list">
 
-  <div class="modal-box">
+        <div class="info-row">
 
-    <div class="modal-top">
+            <span>
+                Degree
+            </span>
 
-      <div>
+            <span>
+                BSc in Civil Engineering
+            </span>
 
-        <div class="modal-kicker"
-             id="modalAgency">
         </div>
 
-        <h2 id="modalTitle">
-        </h2>
 
-        <div class="modal-sub"
-             id="modalMeta">
+        <div class="info-row">
+
+            <span>
+                University
+            </span>
+
+            <span>
+                Daffodil International University
+            </span>
+
         </div>
 
-      </div>
 
-      <button class="close-btn"
-              onclick="closeProject()">
-        ×
-      </button>
+        <div class="info-row">
 
-    </div>
+            <span>
+                Focus
+            </span>
 
+            <span>
+                Construction & Project Management
+            </span>
 
-    <div class="detail-grid">
-
-      <div class="detail-card">
-
-        <h4>
-          My Role
-        </h4>
-
-        <p id="modalRole"></p>
-
-      </div>
+        </div>
 
 
-      <div class="detail-card">
+        <div class="info-row">
 
-        <h4>
-          Site & Construction Activities
-        </h4>
+            <span>
+                Engineering
+            </span>
 
-        <ul id="modalActivities"></ul>
+            <span>
+                Civil / Structural / Digital
+            </span>
 
-      </div>
-
-
-      <div class="detail-card">
-
-        <h4>
-          QA / QC Exposure
-        </h4>
-
-        <ul id="modalQA"></ul>
-
-      </div>
+        </div>
 
 
-      <div class="detail-card">
+        <div class="info-row">
 
-        <h4>
-          Measurement & Documentation
-        </h4>
+            <span>
+                Software
+            </span>
 
-        <ul id="modalDocs"></ul>
+            <span>
+                AutoCAD • ETABS • Revit • Tekla
+            </span>
 
-      </div>
-
-
-      <div class="detail-card">
-
-        <h4>
-          Coordination & Material Management
-        </h4>
-
-        <ul id="modalCoord"></ul>
-
-      </div>
+        </div>
 
 
-      <div class="detail-card">
+        <div class="info-row">
 
-        <h4>
-          Project-Specific Focus
-        </h4>
+            <span>
+                Planning
+            </span>
 
-        <p id="modalFocus"></p>
+            <span>
+                Primavera P6
+            </span>
 
-      </div>
+        </div>
+
+
+        <div class="info-row">
+
+            <span>
+                Future Target
+            </span>
+
+            <span>
+                Engineering 2050
+            </span>
+
+        </div>
 
     </div>
-
-
-    <div class="project-note">
-
-      The activity summary reflects contractor-side duties and
-      QA/QC, measurement, coordination and documentation responsibilities
-      described in this portfolio. It does not claim that every listed
-      activity occurred on every project.
-
-    </div>
-
-  </div>
 
 </div>
 
 
-<!-- =======================================================
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
      FOOTER
-======================================================= -->
+====================================================== -->
 
 <footer>
 
-  <div>
+    <h3>
+        Engineering Beyond The Present.
+    </h3>
 
-    🇧🇩
-    <strong>
-      MD. Naimur Rahman Saad
-    </strong>
+    <p>
+        Designed as a personal engineering portfolio
+        and future research vision platform.
+    </p>
 
-    <br>
-
-    Civil Engineer • Construction • Transportation • Environment
-
-    <br>
-
-    © 2026 All Rights Reserved.
-
-  </div>
-
-
-  <div>
-
-    Better Infrastructure
-    • A Greener Planet
-    • A Smarter Future
-
-  </div>
+    <div class="footer-future">
+        2050 • BUILD • SIMULATE • PREDICT • ADAPT
+    </div>
 
 </footer>
+
+
+<!-- =====================================================
+     FUTURE MODAL
+====================================================== -->
+
+<div
+    class="modal"
+    id="futureModal"
+    onclick="closeFuture(event)">
+
+<div
+    class="modal-box"
+    onclick="event.stopPropagation()">
+
+<button
+    class="modal-close"
+    onclick="closeFuture()">
+    ×
+</button>
+
+<div
+    class="modal-label"
+    id="modalLabel">
+</div>
+
+<h2
+    id="modalTitle">
+</h2>
+
+<p
+    class="modal-intro"
+    id="modalIntro">
+</p>
+
+<div
+    class="plan-grid"
+    id="modalPlans">
+</div>
+
+</div>
+
+</div>
 
 
 <script>
 
 /* =========================================================
-   STAR FIELD
-========================================================= */
-
-const starLayer =
-  document.getElementById("starLayer");
-
-for(let i=0;i<160;i++){
-
-  const s =
-    document.createElement("i");
-
-  s.className="star";
-
-  s.style.left =
-    Math.random()*100+"%";
-
-  s.style.top =
-    Math.random()*100+"%";
-
-  s.style.animationDelay =
-    Math.random()*4+"s";
-
-  starLayer.appendChild(s);
-}
-
-
-/* =========================================================
-   REVEAL ANIMATION
-========================================================= */
-
-const observer =
-  new IntersectionObserver(
-    entries=>{
-
-      entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-          entry.target
-            .classList
-            .add("show");
-
-        }
-
-      });
-
-    },
-    {
-      threshold:.1
-    }
-  );
-
-
-document
-  .querySelectorAll(".reveal")
-  .forEach(el=>observer.observe(el));
-
-
-/* =========================================================
-   HERO MOUSE
-========================================================= */
-
-const heroVisual =
-  document.getElementById("heroVisual");
-
-document.addEventListener(
-  "mousemove",
-  e=>{
-
-    if(!heroVisual) return;
-
-    const x =
-      (e.clientX/innerWidth-.5)*10;
-
-    const y =
-      (e.clientY/innerHeight-.5)*10;
-
-    heroVisual.style.transform =
-      `translate(${x*.6}px,${y*.6}px)`;
-
-  }
-);
-
-
-/* =========================================================
-   CANVAS ENGINE
-========================================================= */
-
-const canvas =
-  document.getElementById("worldCanvas");
-
-const ctx =
-  canvas.getContext("2d");
-
-const moodStatus =
-  document.getElementById("moodStatus");
-
-let mood="default";
-
-let t=0;
-
-let particles=[];
-
-
-function resize(){
-
-  const dpr =
-    Math.min(
-      window.devicePixelRatio || 1,
-      2
-    );
-
-  canvas.width =
-    innerWidth*dpr;
-
-  canvas.height =
-    innerHeight*dpr;
-
-  canvas.style.width =
-    innerWidth+"px";
-
-  canvas.style.height =
-    innerHeight+"px";
-
-  ctx.setTransform(
-    dpr,
-    0,
-    0,
-    dpr,
-    0,
-    0
-  );
-
-}
-
-resize();
-
-addEventListener(
-  "resize",
-  resize
-);
-
-
-function seed(count=220){
-
-  particles=[];
-
-  for(let i=0;i<count;i++){
-
-    particles.push({
-
-      x:Math.random()*innerWidth,
-
-      y:Math.random()*innerHeight,
-
-      size:.5+Math.random()*3,
-
-      speed:.3+Math.random()*2.2,
-
-      alpha:.18+Math.random()*.72,
-
-      phase:Math.random()*12
-
-    });
-
-  }
-
-}
-
-
-/* =========================================================
-   MOOD SWITCH
-========================================================= */
-
-function setMood(next){
-
-  mood=next;
-
-  document.body.classList.remove(
-    "mood-construction",
-    "mood-roads",
-    "mood-transportation",
-    "mood-environmental"
-  );
-
-  if(next!=="default"){
-
-    document.body.classList.add(
-      "mood-"+next
-    );
-
-  }
-
-  const labels={
-
-    default:
-      "DEFAULT • ENGINEERING",
-
-    construction:
-      "CONSTRUCTION • PROJECT MANAGEMENT",
-
-    roads:
-      "ROADS • PAVEMENT • INFRASTRUCTURE",
-
-    transportation:
-      "TRANSPORTATION • MOBILITY",
-
-    environmental:
-      "ENVIRONMENTAL • SUSTAINABILITY"
-
-  };
-
-  moodStatus.textContent =
-    labels[next];
-
-  seed(260);
-
-  localStorage.setItem(
-    "siteMood",
-    next
-  );
-
-}
-
-
-/* =========================================================
-   CONSTRUCTION
-========================================================= */
-
-function drawConstruction(){
-
-  const w=innerWidth;
-
-  const h=innerHeight;
-
-  const bg =
-    ctx.createLinearGradient(
-      0,0,0,h
-    );
-
-  bg.addColorStop(
-    0,
-    "rgba(37,49,58,.34)"
-  );
-
-  bg.addColorStop(
-    .55,
-    "rgba(20,28,32,.18)"
-  );
-
-  bg.addColorStop(
-    1,
-    "rgba(5,8,10,.28)"
-  );
-
-  ctx.fillStyle=bg;
-
-  ctx.fillRect(
-    0,0,w,h
-  );
-
-
-  ctx.strokeStyle =
-    "rgba(115,167,205,.10)";
-
-  ctx.lineWidth=1;
-
-
-  for(
-    let x=0;
-    x<w;
-    x+=64
-  ){
-
-    ctx.beginPath();
-
-    ctx.moveTo(x,0);
-
-    ctx.lineTo(x,h);
-
-    ctx.stroke();
-
-  }
-
-
-  for(
-    let y=0;
-    y<h;
-    y+=64
-  ){
-
-    ctx.beginPath();
-
-    ctx.moveTo(0,y);
-
-    ctx.lineTo(w,y);
-
-    ctx.stroke();
-
-  }
-
-
-  const bx=w*.58;
-
-  const top=h*.18;
-
-  const base=h*.83;
-
-
-  ctx.strokeStyle =
-    "rgba(255,194,80,.42)";
-
-  ctx.lineWidth=2.2;
-
-
-  for(let i=0;i<6;i++){
-
-    const x=
-      bx-180+i*72;
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-      x,
-      base
-    );
-
-    ctx.lineTo(
-      x,
-      top+40
-    );
-
-    ctx.stroke();
-
-  }
-
-
-  for(let r=0;r<7;r++){
-
-    const y=
-      top+40+r*56;
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-      bx-180,
-      y
-    );
-
-    ctx.lineTo(
-      bx+180,
-      y
-    );
-
-    ctx.stroke();
-
-  }
-
-
-  ctx.strokeStyle =
-    "rgba(84,220,255,.36)";
-
-  ctx.lineWidth=1.8;
-
-
-  for(let i=0;i<5;i++){
-
-    const x=
-      bx-180+i*72;
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-      x,
-      top+40
-    );
-
-    ctx.lineTo(
-      x+72,
-      top+96
-    );
-
-    ctx.stroke();
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-      x+72,
-      top+40
-    );
-
-    ctx.lineTo(
-      x,
-      top+96
-    );
-
-    ctx.stroke();
-
-  }
-
-
-  particles.forEach(p=>{
-
-    p.y-=p.speed*.3;
-
-    p.x+=
-      Math.sin(t+p.phase)*.15;
-
-    if(p.y<0)
-      p.y=h;
-
-    ctx.fillStyle=
-      `rgba(255,209,110,${p.alpha*.42})`;
-
-    ctx.beginPath();
-
-    ctx.arc(
-      p.x,
-      p.y,
-      p.size*.6,
-      0,
-      Math.PI*2
-    );
-
-    ctx.fill();
-
-  });
-
-}
-
-
-/* =========================================================
-   ROAD
-========================================================= */
-
-function drawRoads(){
-
-  const w=innerWidth;
-
-  const h=innerHeight;
-
-  const sky=
-    ctx.createLinearGradient(
-      0,0,0,h
-    );
-
-  sky.addColorStop(
-    0,
-    "rgba(22,67,84,.35)"
-  );
-
-  sky.addColorStop(
-    1,
-    "rgba(0,8,10,.18)"
-  );
-
-  ctx.fillStyle=sky;
-
-  ctx.fillRect(
-    0,0,w,h
-  );
-
-
-  ctx.fillStyle=
-    "rgba(15,18,19,.50)";
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    w*.40,
-    h
-  );
-
-  ctx.lineTo(
-    w*.46,
-    h*.48
-  );
-
-  ctx.lineTo(
-    w*.54,
-    h*.48
-  );
-
-  ctx.lineTo(
-    w*.60,
-    h
-  );
-
-  ctx.closePath();
-
-  ctx.fill();
-
-
-  ctx.strokeStyle=
-    "rgba(255,255,255,.18)";
-
-  ctx.lineWidth=2;
-
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    w*.40,
-    h
-  );
-
-  ctx.lineTo(
-    w*.46,
-    h*.48
-  );
-
-  ctx.stroke();
-
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    w*.60,
-    h
-  );
-
-  ctx.lineTo(
-    w*.54,
-    h*.48
-  );
-
-  ctx.stroke();
-
-
-  for(let i=0;i<10;i++){
-
-    const progress=
-      (i*.16+(t*.10))%1;
-
-    const y=
-      h*.52+
-      progress*h*.47;
-
-    const width=
-      2+
-      progress*8;
-
-    ctx.fillStyle=
-      "rgba(255,224,135,.85)";
-
-    ctx.fillRect(
-      w*.5-width/2,
-      y,
-      width,
-      20+progress*28
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   TRANSPORT
-========================================================= */
-
-function drawTransportation(){
-
-  const w=innerWidth;
-
-  const h=innerHeight;
-
-
-  ctx.strokeStyle=
-    "rgba(82,220,255,.08)";
-
-  ctx.lineWidth=1;
-
-
-  for(
-    let y=h*.25;
-    y<h*.80;
-    y+=45
-  ){
-
-    ctx.beginPath();
-
-    ctx.moveTo(0,y);
-
-    ctx.lineTo(w,y);
-
-    ctx.stroke();
-
-  }
-
-
-  for(let i=0;i<12;i++){
-
-    const y=
-      h*.18+i*45;
-
-    const speed=
-      .3+i*.02;
-
-    const x=
-      (
-        t*80*speed+
-        i*170
-      )%(w+300)-150;
-
-
-    ctx.strokeStyle=
-      `rgba(82,220,255,${.08+(i%3)*.03})`;
-
-    ctx.lineWidth=2;
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-      x,
-      y
-    );
-
-    ctx.lineTo(
-      x+240,
-      y
-    );
-
-    ctx.stroke();
-
-  }
-
-
-  particles.forEach(
-    (p,i)=>{
-
-      const x=
-        (
-          p.x+
-          t*(20+(i%4)*8)
-        )%(w+80);
-
-      const y=
-        h*.30+
-        (i%8)*55;
-
-
-      ctx.fillStyle=
-        `rgba(82,220,255,${p.alpha*.4})`;
-
-      ctx.beginPath();
-
-      ctx.arc(
-        x,
-        y,
-        2.2,
-        0,
-        Math.PI*2
-      );
-
-      ctx.fill();
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   ENVIRONMENT
-========================================================= */
-
-function drawEnvironmental(){
-
-  const w=innerWidth;
-
-  const h=innerHeight;
-
-
-  const sky=
-    ctx.createLinearGradient(
-      0,0,0,h
-    );
-
-  sky.addColorStop(
-    0,
-    "rgba(24,88,59,.32)"
-  );
-
-  sky.addColorStop(
-    .48,
-    "rgba(20,117,72,.18)"
-  );
-
-  sky.addColorStop(
-    1,
-    "rgba(3,36,20,.34)"
-  );
-
-  ctx.fillStyle=sky;
-
-  ctx.fillRect(
-    0,0,w,h
-  );
-
-
-  ctx.fillStyle=
-    "rgba(34,112,67,.22)";
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    0,
-    h*.72
-  );
-
-  ctx.quadraticCurveTo(
-    w*.18,
-    h*.54,
-    w*.34,
-    h*.72
-  );
-
-  ctx.quadraticCurveTo(
-    w*.55,
-    h*.50,
-    w*.73,
-    h*.72
-  );
-
-  ctx.quadraticCurveTo(
-    w*.86,
-    h*.55,
-    w,
-    h*.70
-  );
-
-  ctx.lineTo(
-    w,
-    h
-  );
-
-  ctx.lineTo(
-    0,
-    h
-  );
-
-  ctx.closePath();
-
-  ctx.fill();
-
-
-  particles.forEach(p=>{
-
-    p.x+=
-      p.speed*.25;
-
-    p.y+=
-      Math.sin(t+p.phase)*.18;
-
-    if(p.x>w)
-      p.x=0;
-
-    ctx.fillStyle=
-      `rgba(180,255,145,${p.alpha*.45})`;
-
-    ctx.beginPath();
-
-    ctx.ellipse(
-      p.x,
-      p.y,
-      p.size*1.5,
-      p.size*.8,
-      Math.sin(t+p.phase),
-      0,
-      Math.PI*2
-    );
-
-    ctx.fill();
-
-  });
-
-}
-
-
-/* =========================================================
-   DEFAULT
-========================================================= */
-
-function drawDefault(){
-
-  particles.forEach(p=>{
-
-    p.x+=
-      Math.sin(t+p.phase)*.03;
-
-    p.y+=
-      Math.cos(t+p.phase)*.03;
-
-    ctx.fillStyle=
-      `rgba(255,255,255,${p.alpha*.25})`;
-
-    ctx.beginPath();
-
-    ctx.arc(
-      p.x,
-      p.y,
-      p.size*.5,
-      0,
-      Math.PI*2
-    );
-
-    ctx.fill();
-
-  });
-
-}
-
-
-/* =========================================================
-   ANIMATION
-========================================================= */
-
-function animate(){
-
-  t+=.016;
-
-  ctx.clearRect(
-    0,
-    0,
-    innerWidth,
-    innerHeight
-  );
-
-
-  if(mood==="construction"){
-
-    drawConstruction();
-
-  }
-
-  else if(mood==="roads"){
-
-    drawRoads();
-
-  }
-
-  else if(mood==="transportation"){
-
-    drawTransportation();
-
-  }
-
-  else if(mood==="environmental"){
-
-    drawEnvironmental();
-
-  }
-
-  else{
-
-    drawDefault();
-
-  }
-
-
-  requestAnimationFrame(
-    animate
-  );
-
-}
-
-
-seed(260);
-
-setMood(
-  localStorage.getItem("siteMood")
-  || "default"
-);
-
-animate();
-
-
-/* =========================================================
    FUTURE 2050 DATA
 ========================================================= */
 
-const futureData={
+const futureData = {
 
+1:{
 
-/* =====================================================
-   CONSTRUCTION
-===================================================== */
+label:"01 / STRUCTURAL INTELLIGENCE",
 
-construction:{
+title:"Autonomous Structural Systems",
 
-  kicker:
-    "2050 • AUTONOMOUS CONSTRUCTION INTELLIGENCE",
+intro:
+"আমার 2050 vision-এর একটি direction হলো এমন infrastructure তৈরি করা যেখানে structure শুধু load বহন করবে না — বরং নিজের structural condition সম্পর্কে continuously information generate করবে।",
 
-  title:
-    "Autonomous Construction Intelligence",
+plans:[
 
-  subtitle:
-    "A proposed construction ecosystem where the project continuously senses, predicts, plans and adapts.",
+{
+title:"2050 Structural Nervous System",
+text:
+"Building-এর ভিতরে distributed sensors এবং monitoring nodes-এর মাধ্যমে structure-এর stress, vibration, deformation এবং environmental condition continuously observe করার concept।"
+},
 
-  vision:
-    "By 2050, I envision construction projects evolving from passive collections of drawings, schedules and machines into intelligent cyber-physical systems. The project itself would maintain a continuously updated digital representation of the physical site, detect deviations, predict risks and dynamically recommend or execute corrective actions.",
+{
+title:"Failure Before Failure",
+text:
+"Traditional inspection-এর বদলে predictive models ব্যবহার করে সম্ভাব্য structural problem ঘটার আগেই engineering warning তৈরি করার framework।"
+},
 
-  problem:
-    "Construction projects still depend heavily on fragmented information, delayed reporting, manual measurement, disconnected schedules and reactive decision-making. Small deviations in quantity, quality, time or material availability can become major project risks.",
+{
+title:"Living Digital Twin",
+text:
+"Physical structure-এর সাথে continuously synchronized digital twin তৈরি করা — যেখানে design, construction history, inspection এবং operational data একসাথে থাকবে।"
+},
 
-  concept:
-    "My proposed concept is an Autonomous Construction Intelligence Layer connecting BIM, Digital Twin, sensors, computer vision, robotics, scheduling engines and project-control systems into one continuously learning project environment.",
+{
+title:"My Role",
+text:
+"আমার target হবে Civil Engineering + BIM + structural analysis + project management knowledge একত্র করে intelligent infrastructure workflow develop করা।"
+},
 
-  how:[
+{
+title:"Rare Research Direction",
+text:
+"Structural health data, construction history এবং environmental data একত্র করে long-term infrastructure behaviour prediction model তৈরি করা।"
+},
 
-    "Reality capture continuously compares the physical site with the digital model.",
+{
+title:"2050 Outcome",
+text:
+"একটি infrastructure ecosystem যেখানে engineer শুধুমাত্র damage হওয়ার পরে response না দিয়ে damage হওয়ার সম্ভাবনা আগে থেকেই understand করতে পারবে।"
+}
 
-    "AI detects schedule, quantity, quality and safety deviations.",
-
-    "The system predicts downstream effects before they become critical.",
-
-    "The project schedule dynamically tests alternative recovery scenarios.",
-
-    "Robotic and human work packages are coordinated through a common project intelligence layer."
-
-  ],
-
-  tech:[
-
-    "AI Construction Planning",
-
-    "4D / 5D / 6D BIM",
-
-    "Digital Twins",
-
-    "Computer Vision",
-
-    "IoT Sensors",
-
-    "Robotics",
-
-    "Drone Reality Capture",
-
-    "Predictive Analytics",
-
-    "Autonomous QA/QC",
-
-    "Generative Scheduling"
-
-  ],
-
-  architecture:
-    "Physical Site → Sensors / Cameras / Drones → Reality Capture → Digital Twin → AI Reasoning Layer → Risk Prediction → Schedule & Resource Optimizer → Human/Robot Execution → Feedback → Updated Digital Twin.",
-
-  research:[
-
-    "Can a construction Digital Twin predict schedule disruption before it becomes visible in traditional progress reports?",
-
-    "How can AI distinguish acceptable construction variation from genuine quality risk?",
-
-    "Can automated quantity verification reduce contractor-side measurement errors?",
-
-    "How should humans and autonomous construction robots divide responsibility?",
-
-    "Can project schedules become adaptive rather than fixed?"
-
-  ],
-
-  bangladesh:
-    "The concept could be particularly valuable for Bangladesh where large infrastructure projects face monsoon conditions, material logistics challenges, congestion, land constraints and rapidly changing site conditions. A localized system could integrate weather, material availability, site progress and infrastructure risk into one decision environment.",
-
-  global:
-    "The same architecture could scale to megaprojects, high-rise construction, transportation infrastructure, disaster reconstruction and remote construction sites.",
-
-  metrics:[
-
-    "Predict major schedule risks before critical-path impact",
-
-    "Continuous digital verification of physical progress",
-
-    "Near-real-time quantity intelligence",
-
-    "Reduced unplanned downtime",
-
-    "Lower material waste",
-
-    "Improved construction safety",
-
-    "Higher transparency in project control"
-
-  ],
-
-  personal:
-    "My long-term research direction would connect my practical site-engineering experience with BIM, construction analytics, AI-assisted project control and Digital Twin systems. I want to investigate how practical field observations can become structured engineering data that improves future project decisions.",
-
-  timeline:[
-
-    ["2026","Build strong foundations in BIM, programming, project controls and data analysis."],
-
-    ["2030","Develop research prototypes combining BIM, sensors and construction analytics."],
-
-    ["2040","Advance autonomous project-control and Digital Twin systems."],
-
-    ["2050","Contribute to intelligent construction ecosystems where projects continuously sense and adapt."]
-
-  ]
+]
 
 },
 
 
-/* =====================================================
-   ENVIRONMENT
-===================================================== */
+2:{
 
-environment:{
+label:"02 / DIGITAL CONSTRUCTION",
 
-  kicker:
-    "2050 • REGENERATIVE INFRASTRUCTURE",
+title:"Autonomous Construction",
 
-  title:
-    "Self-Healing & Regenerative Infrastructure",
+intro:
+"Construction industry-কে শুধু digitize নয়, progressively intelligent ও semi-autonomous করার আমার 2050 direction। BIM, AI, robotics এবং simulation একসাথে কাজ করবে।",
 
-  subtitle:
-    "Infrastructure designed not only to resist environmental damage but to continuously sense, adapt and regenerate.",
+plans:[
 
-  vision:
-    "My 2050 vision is infrastructure that behaves more like a monitored living system. Structures, drainage networks, water systems and public infrastructure could continuously sense deterioration and environmental stress, while maintenance decisions are triggered by predicted condition rather than fixed inspection cycles.",
+{
+title:"AI Construction Sequence",
+text:
+"Project-এর design, resources এবং constraints বিশ্লেষণ করে optimized construction sequence generate করার intelligent planning concept।"
+},
 
-  problem:
-    "Infrastructure is often maintained after visible deterioration. Climate change, flooding, corrosion, heat, groundwater changes and increasing loads can accelerate damage and shorten service life.",
+{
+title:"Robotic Site Operations",
+text:
+"Repetitive measurement, inspection, material movement এবং selected construction activities-এ robotics ব্যবহার করার framework।"
+},
 
-  concept:
-    "I propose a regenerative infrastructure framework combining embedded sensing, predictive maintenance, adaptive materials, ecological design and Digital Twins. The goal is to move from repair-after-failure toward continuous infrastructure health management.",
+{
+title:"4D + 5D + AI",
+text:
+"Time এবং cost information-এর সাথে AI-based risk prediction যুক্ত করে project planning system তৈরি করা।"
+},
 
-  how:[
+{
+title:"Virtual Construction Before Site",
+text:
+"Actual construction শুরু হওয়ার আগে digital environment-এ sequence, clash, logistics এবং potential problems simulate করা।"
+},
 
-    "Embedded sensors monitor strain, moisture, temperature, corrosion and environmental conditions.",
+{
+title:"My Role",
+text:
+"AutoCAD, Revit, BIM, Primavera P6 এবং project management knowledge-কে একটি integrated digital construction workflow-এ নিয়ে যাওয়া।"
+},
 
-    "AI models identify abnormal patterns and estimate remaining service life.",
+{
+title:"2050 Outcome",
+text:
+"Construction site হবে এমন একটি environment যেখানে human engineer decision-maker থাকবে, আর digital systems continuously optimization ও prediction করবে।"
+}
 
-    "Digital Twins simulate future deterioration scenarios.",
-
-    "Maintenance systems prioritize intervention before critical failure.",
-
-    "Ecological infrastructure components reduce environmental pressure around engineered systems."
-
-  ],
-
-  tech:[
-
-    "Structural Health Monitoring",
-
-    "Self-Healing Materials",
-
-    "Smart Concrete",
-
-    "AI Predictive Maintenance",
-
-    "Digital Twins",
-
-    "Hydrological Sensors",
-
-    "Climate Analytics",
-
-    "Circular Materials",
-
-    "Nature-Based Infrastructure",
-
-    "Water Intelligence"
-
-  ],
-
-  architecture:
-    "Infrastructure → Embedded Sensors → Environmental Data → Digital Twin → Deterioration Model → AI Prediction → Intervention Strategy → Maintenance / Material Response → Continuous Monitoring.",
-
-  research:[
-
-    "Can infrastructure health models predict failure decades before visible deterioration?",
-
-    "How can self-healing materials be combined with conventional maintenance?",
-
-    "Can environmental data be integrated directly into infrastructure life-cycle models?",
-
-    "How can circular materials be designed for repeated infrastructure use?",
-
-    "Can flood and climate risk become part of continuous infrastructure health intelligence?"
-
-  ],
-
-  bangladesh:
-    "Bangladesh offers a major natural laboratory for this research because of flooding, riverbank erosion, salinity, extreme rainfall, groundwater variation and dense settlement. Future roads, bridges, drainage and water systems could use continuous environmental intelligence rather than periodic inspection alone.",
-
-  global:
-    "The framework could support coastal cities, flood-prone regions, desert infrastructure, cold climates and aging urban infrastructure systems.",
-
-  metrics:[
-
-    "Longer infrastructure service life",
-
-    "Earlier deterioration detection",
-
-    "Reduced emergency repair",
-
-    "Lower life-cycle carbon",
-
-    "Lower material waste",
-
-    "Improved climate resilience",
-
-    "Higher maintenance efficiency"
-
-  ],
-
-  personal:
-    "My undergraduate interest in RCC cracking provides a natural starting point for a future research pathway toward structural durability, smart materials, structural health monitoring and predictive infrastructure maintenance.",
-
-  timeline:[
-
-    ["2026","Strengthen knowledge of durability, materials, environmental engineering and structural monitoring."],
-
-    ["2030","Research smart sensing and deterioration prediction."],
-
-    ["2040","Integrate Digital Twins with adaptive infrastructure maintenance."],
-
-    ["2050","Develop infrastructure systems capable of continuous health intelligence and regeneration."]
-
-  ]
+]
 
 },
 
 
-/* =====================================================
-   TRANSPORT
-===================================================== */
+3:{
 
-transport:{
+label:"03 / CLIMATE INFRASTRUCTURE",
 
-  kicker:
-    "2050 • ADAPTIVE MOBILITY",
+title:"Climate-Adaptive Infrastructure",
 
-  title:
-    "Autonomous Adaptive Mobility Grid",
+intro:
+"Future infrastructure-কে static design হিসেবে না দেখে changing climate এবং environmental condition-এর সাথে adapt করতে পারে এমন system হিসেবে চিন্তা করা।",
 
-  subtitle:
-    "A transportation network where roads, vehicles, sensors and infrastructure communicate continuously.",
+plans:[
 
-  vision:
-    "By 2050, I envision roads becoming more than static pavement. Transportation infrastructure could become an intelligent network that continuously understands traffic demand, pavement condition, weather, incidents, energy use and emergency requirements.",
+{
+title:"Adaptive Flood Infrastructure",
+text:
+"Flood intensity, water level এবং drainage condition অনুযায়ী infrastructure response planning-এর digital framework।"
+},
 
-  problem:
-    "Traditional transportation systems often separate pavement management, traffic management, public transport, emergency response and environmental monitoring. This fragmentation reduces the ability of the entire network to respond dynamically.",
+{
+title:"Heat-Resilient Cities",
+text:
+"Future extreme heat condition বিবেচনায় pavement, building envelope, public infrastructure এবং urban planning-এর adaptive strategies।"
+},
 
-  concept:
-    "My proposed Adaptive Mobility Grid connects pavement intelligence, traffic sensing, autonomous mobility, public transportation, emergency routing and infrastructure Digital Twins into one network-level system.",
+{
+title:"Water Intelligence",
+text:
+"Water level, rainfall এবং drainage network data ব্যবহার করে urban flood risk prediction এবং early-response planning।"
+},
 
-  how:[
+{
+title:"Climate Digital Twin",
+text:
+"City বা infrastructure system-এর digital twin-এর সাথে environmental data connect করে future climate scenario simulate করা।"
+},
 
-    "Roadside sensors continuously monitor traffic, pavement and environmental conditions.",
+{
+title:"My Role",
+text:
+"Civil engineering এবং project management knowledge ব্যবহার করে resilient infrastructure planning ও implementation framework develop করা।"
+},
 
-    "Vehicles communicate with intersections and infrastructure.",
+{
+title:"2050 Outcome",
+text:
+"Future infrastructure শুধু climate-এর impact সহ্য করবে না — changing environmental conditions অনুযায়ী planning এবং operation strategy পরিবর্তন করতে পারবে।"
+}
 
-    "AI predicts congestion before network breakdown.",
-
-    "Road capacity and signal strategies adapt to demand.",
-
-    "Emergency routes can automatically receive network priority."
-
-  ],
-
-  tech:[
-
-    "Connected Infrastructure",
-
-    "AI Traffic Prediction",
-
-    "Smart Pavement",
-
-    "V2X Communication",
-
-    "Autonomous Vehicles",
-
-    "Digital Twins",
-
-    "Edge Computing",
-
-    "Adaptive Signals",
-
-    "Emergency Routing",
-
-    "Mobility Analytics"
-
-  ],
-
-  architecture:
-    "Road Network → Sensors / Vehicles → Edge Intelligence → Transportation Digital Twin → AI Prediction → Network Optimization → Adaptive Infrastructure → Continuous Feedback.",
-
-  research:[
-
-    "Can traffic networks predict congestion before physical queues form?",
-
-    "Can pavement condition become a live input to route optimization?",
-
-    "How should autonomous vehicles communicate with civil infrastructure?",
-
-    "Can emergency routing become dynamically self-organizing?",
-
-    "Can transportation networks optimize mobility and environmental impact simultaneously?"
-
-  ],
-
-  bangladesh:
-    "For Bangladesh, the system could support dense urban traffic, highway corridors, flood disruption, emergency response, public transport coordination and rural connectivity. Localized models could account for mixed traffic, pedestrians, motorcycles, buses, trucks and seasonal conditions.",
-
-  global:
-    "The system could support smart cities, autonomous mobility corridors, logistics networks, emergency transportation and resilient national highway systems.",
-
-  metrics:[
-
-    "Reduced congestion",
-
-    "Lower travel-time variability",
-
-    "Predictive pavement maintenance",
-
-    "Faster emergency routing",
-
-    "Reduced transport emissions",
-
-    "Higher network resilience",
-
-    "Improved road safety"
-
-  ],
-
-  personal:
-    "My road and pavement exposure motivates a research direction where transportation engineering is connected with data, intelligent infrastructure and predictive maintenance rather than being treated only as physical road construction.",
-
-  timeline:[
-
-    ["2026","Strengthen transportation engineering, pavement and data-analysis knowledge."],
-
-    ["2030","Research smart pavement and traffic sensing."],
-
-    ["2040","Integrate infrastructure Digital Twins with autonomous mobility."],
-
-    ["2050","Develop adaptive transportation networks capable of real-time network intelligence."]
-
-  ]
+]
 
 },
 
 
-/* =====================================================
-   GLOBAL
-===================================================== */
+4:{
 
-global:{
+label:"04 / HUMAN + AI ENGINEERING",
 
-  kicker:
-    "2050 • CIVILIZATION INFRASTRUCTURE",
+title:"Cognitive Engineering Platform",
 
-  title:
-    "Infrastructure Brain 2050",
+intro:
+"এটি আমার সবচেয়ে ambitious direction: Engineer, AI, BIM, simulation, project management এবং real-time data-কে একটি integrated engineering intelligence platform-এ যুক্ত করা।",
 
-  subtitle:
-    "A long-term vision for interconnected infrastructure systems that can sense, predict, coordinate and respond.",
+plans:[
 
-  vision:
-    "My most ambitious 2050 concept is an Infrastructure Brain: a digital intelligence layer connecting buildings, roads, water systems, drainage, transportation, environmental monitoring and emergency infrastructure. The goal is not to replace engineers or governments, but to give infrastructure systems a shared understanding of their condition and interdependence.",
+{
+title:"AI Engineering Assistant",
+text:
+"Design information, project data, specifications এবং schedules analyse করে engineer-কে decision support দেওয়ার concept।"
+},
 
-  problem:
-    "Modern infrastructure systems are deeply interconnected, yet many are planned and managed in separate institutional and technical silos. A flood can affect roads, electricity, buildings, transportation and public health simultaneously, but infrastructure systems may not share information quickly enough.",
+{
+title:"Engineering Memory",
+text:
+"Project-এর design decisions, changes, risks, lessons learned এবং construction data structured knowledge হিসেবে সংরক্ষণ করা।"
+},
 
-  concept:
-    "The Infrastructure Brain would operate as a city-scale or regional Digital Twin with specialized engineering models communicating through a common intelligence layer. It would identify cascading risks, simulate scenarios and coordinate response priorities.",
+{
+title:"AI + BIM Brain",
+text:
+"BIM model-কে শুধু 3D visualization না রেখে project intelligence-এর central information environment হিসেবে ব্যবহার করা।"
+},
 
-  how:[
+{
+title:"Predictive Project Management",
+text:
+"Schedule, resources, productivity এবং project risks-এর historical এবং real-time data ব্যবহার করে potential delay আগে identify করা।"
+},
 
-    "Each infrastructure system maintains its own engineering Digital Twin.",
+{
+title:"My Role",
+text:
+"Construction & Project Management + Civil Engineering + BIM + CAD + planning software-এর combination দিয়ে future digital engineering workflow develop করা।"
+},
 
-    "A shared intelligence layer connects road, water, building, environmental and mobility data.",
+{
+title:"2050 Outcome",
+text:
+"Engineer এবং AI একে অপরের replacement নয় — engineer থাকবে strategic decision-maker, আর AI হবে continuously operating engineering intelligence layer।"
+}
 
-    "AI identifies interactions and cascading infrastructure risks.",
-
-    "Scenario engines simulate disasters, climate events and infrastructure failures.",
-
-    "Engineers and decision-makers receive ranked intervention strategies."
-
-  ],
-
-  tech:[
-
-    "City Digital Twins",
-
-    "Multi-Agent AI",
-
-    "Infrastructure Knowledge Graphs",
-
-    "IoT",
-
-    "Satellite Monitoring",
-
-    "Geospatial AI",
-
-    "Climate Models",
-
-    "Scenario Simulation",
-
-    "Robotics",
-
-    "Decision Intelligence"
-
-  ],
-
-  architecture:
-    "Physical Infrastructure → Sensors / Satellites / BIM / GIS → Infrastructure Knowledge Graph → Regional Digital Twin → Multi-Agent AI → Scenario Engine → Engineering Decision Layer → Human Governance → Physical Response.",
-
-  research:[
-
-    "Can independent infrastructure Digital Twins safely communicate across disciplines?",
-
-    "How can cascading infrastructure failure be predicted?",
-
-    "Can cities simulate multiple climate and infrastructure scenarios before making major investments?",
-
-    "How should human engineering judgment interact with multi-agent AI?",
-
-    "Can infrastructure planning optimize safety, resilience, cost and environmental impact simultaneously?"
-
-  ],
-
-  bangladesh:
-    "Bangladesh could benefit from a regional infrastructure intelligence framework connecting flood forecasting, river systems, roads, drainage, urban growth and emergency logistics. The long-term objective would be a resilient national infrastructure information architecture.",
-
-  global:
-    "The concept could eventually support metropolitan regions, national infrastructure systems, climate-resilient cities and cross-border infrastructure corridors.",
-
-  metrics:[
-
-    "Earlier detection of cascading risks",
-
-    "Faster emergency coordination",
-
-    "Improved infrastructure investment decisions",
-
-    "Higher climate resilience",
-
-    "Reduced system-level downtime",
-
-    "Better resource allocation",
-
-    "Integrated infrastructure planning"
-
-  ],
-
-  personal:
-    "This represents my long-term interdisciplinary ambition: combining civil engineering fundamentals with construction management, transportation, environmental engineering, BIM, Digital Twins, AI and infrastructure systems thinking.",
-
-  timeline:[
-
-    ["2026","Build interdisciplinary foundations in civil engineering, BIM, data and systems thinking."],
-
-    ["2030","Research infrastructure Digital Twins and cross-domain data models."],
-
-    ["2040","Develop regional infrastructure intelligence prototypes."],
-
-    ["2050","Contribute to intelligent infrastructure systems that coordinate across engineering domains."]
-
-  ]
+]
 
 }
 
@@ -5042,1176 +2032,358 @@ global:{
 
 
 /* =========================================================
-   FUTURE MODAL FUNCTIONS
+   OPEN FUTURE MODAL
 ========================================================= */
 
-const futureModal =
-  document.getElementById(
-    "futureModal"
-  );
+function openFuture(id){
 
+    const data = futureData[id];
 
-function openFuture(type){
+    document.getElementById("modalLabel").textContent =
+        data.label;
 
-  const d =
-    futureData[type];
+    document.getElementById("modalTitle").textContent =
+        data.title;
 
-  if(!d) return;
+    document.getElementById("modalIntro").textContent =
+        data.intro;
 
 
-  document.body.classList.remove(
-    "future-construction",
-    "future-environment",
-    "future-transport",
-    "future-global"
-  );
+    const plans =
+        document.getElementById("modalPlans");
 
+    plans.innerHTML = "";
 
-  if(type==="construction"){
 
-    document.body.classList.add(
-      "future-construction"
-    );
+    data.plans.forEach(plan => {
 
-  }
+        const div =
+            document.createElement("div");
 
-  if(type==="environment"){
+        div.className = "plan";
 
-    document.body.classList.add(
-      "future-environment"
-    );
+        div.innerHTML = `
+            <h4>${plan.title}</h4>
+            <p>${plan.text}</p>
+        `;
 
-  }
+        plans.appendChild(div);
 
-  if(type==="transport"){
+    });
 
-    document.body.classList.add(
-      "future-transport"
-    );
 
-  }
+    document
+        .getElementById("futureModal")
+        .classList.add("active");
 
-  if(type==="global"){
 
-    document.body.classList.add(
-      "future-global"
-    );
-
-  }
-
-
-  document.getElementById(
-    "futureKicker"
-  ).textContent=d.kicker;
-
-
-  document.getElementById(
-    "futureTitle"
-  ).textContent=d.title;
-
-
-  document.getElementById(
-    "futureSubtitle"
-  ).textContent=d.subtitle;
-
-
-  document.getElementById(
-    "futureVision"
-  ).textContent=d.vision;
-
-
-  document.getElementById(
-    "futureProblem"
-  ).textContent=d.problem;
-
-
-  document.getElementById(
-    "futureConcept"
-  ).textContent=d.concept;
-
-
-  fillList(
-    document.getElementById("futureHow"),
-    d.how
-  );
-
-
-  fillList(
-    document.getElementById("futureResearch"),
-    d.research
-  );
-
-
-  fillList(
-    document.getElementById("futureMetrics"),
-    d.metrics
-  );
-
-
-  document.getElementById(
-    "futureArchitecture"
-  ).textContent=d.architecture;
-
-
-  document.getElementById(
-    "futureBangladesh"
-  ).textContent=d.bangladesh;
-
-
-  document.getElementById(
-    "futureGlobal"
-  ).textContent=d.global;
-
-
-  document.getElementById(
-    "futurePersonal"
-  ).textContent=d.personal;
-
-
-  const tech =
-    document.getElementById(
-      "futureTech"
-    );
-
-  tech.innerHTML="";
-
-
-  d.tech.forEach(item=>{
-
-    const span =
-      document.createElement("span");
-
-    span.className="future-tag";
-
-    span.textContent=item;
-
-    tech.appendChild(span);
-
-  });
-
-
-  const timeline =
-    document.getElementById(
-      "futureTimeline"
-    );
-
-  timeline.innerHTML="";
-
-
-  d.timeline.forEach(item=>{
-
-    const div =
-      document.createElement("div");
-
-    div.className=
-      "timeline-item";
-
-    div.innerHTML=
-      `
-        <strong>${item[0]}</strong>
-        <span>${item[1]}</span>
-      `;
-
-    timeline.appendChild(div);
-
-  });
-
-
-  futureModal.classList.add("open");
-
-  futureModal.setAttribute(
-    "aria-hidden",
-    "false"
-  );
-
-  document.body.classList.add(
-    "modal-open"
-  );
-
-}
-
-
-function closeFuture(){
-
-  futureModal.classList.remove(
-    "open"
-  );
-
-  futureModal.setAttribute(
-    "aria-hidden",
-    "true"
-  );
-
-  document.body.classList.remove(
-    "modal-open"
-  );
-
-}
-
-
-function fillList(el,items){
-
-  el.innerHTML=
-    items
-      .map(
-        item=>`<li>${item}</li>`
-      )
-      .join("");
+    document.body.style.overflow = "hidden";
 
 }
 
 
 /* =========================================================
-   PROJECT DATA
+   CLOSE MODAL
 ========================================================= */
 
-const projectDetails=[
-
-{
-
-role:
-"Site Engineer — contractor-side construction supervision and project coordination.",
-
-activities:[
-"Monitor civil works and construction progress in line with drawings and specifications.",
-"Support execution checks for earthwork, filling, compaction and associated site activities where applicable.",
-"Verify dimensions, levels, quantities and workmanship observations."
-],
-
-qa:[
-"Material inspection and site quality checks.",
-"Support concrete/RCC-related quality control where applicable.",
-"Record inspection observations and follow-up with site personnel."
-],
-
-docs:[
-"Site measurements and quantity records.",
-"Progress documentation and site reporting.",
-"Quantity verification and contractor-side documentation."
-],
-
-coord:[
-"Coordinate workers, suppliers and contractor-side site personnel.",
-"Monitor material availability and usage against site requirements.",
-"Support material reconciliation and work-progress communication."
-],
-
-focus:
-"Rural market/local infrastructure delivery under LGED, with emphasis on practical site supervision, measurement, quality observation and construction progress."
-
-},
-
-{
-
-role:
-"Site Engineer — RCC road construction supervision.",
-
-activities:[
-"Supervise RCC road construction activities and site execution.",
-"Check reinforcement, cover blocks, formwork, dimensions, levels and casting readiness.",
-"Monitor concrete casting, finishing and curing activities."
-],
-
-qa:[
-"Slump testing and concrete cube sampling/QA-QC support.",
-"Reinforcement and cover inspection before casting.",
-"Material inspection and workmanship checks."
-],
-
-docs:[
-"Site measurements and quantity verification.",
-"BBS review/support and reinforcement records.",
-"Progress reports, inspection records and contractor billing inputs."
-],
-
-coord:[
-"Coordinate workforce, concrete/material supply and site activities.",
-"Track material usage and reconcile quantities.",
-"Communicate site progress and quality observations."
-],
-
-focus:
-"RCC road delivery — especially reinforcement, concrete quality control, formwork/casting coordination, measurement and curing."
-
-},
-
-{
-
-role:
-"Site Engineer — building-related civil works and repair/construction supervision.",
-
-activities:[
-"Supervise building-related civil and RCC/concrete activities.",
-"Monitor excavation, masonry/structural civil activities and finishing-related site progress as applicable.",
-"Verify dimensions, levels, workmanship and construction sequence."
-],
-
-qa:[
-"Concrete/material quality checks where applicable.",
-"Reinforcement, formwork and dimensional inspection.",
-"Workmanship and construction-stage inspection."
-],
-
-docs:[
-"Measurement records and quantity verification.",
-"Progress documentation and site reports.",
-"Contractor billing support and material records."
-],
-
-coord:[
-"Coordinate workers and material supply.",
-"Monitor material availability and usage.",
-"Coordinate day-to-day construction sequence."
-],
-
-focus:
-"Building and sanitation-related civil works, emphasizing practical site supervision, RCC/concrete exposure, measurement and material inspection."
-
-},
-
-{
-
-role:
-"Site Engineer — RCC road execution and quality/measurement support.",
-
-activities:[
-"Supervise RCC road execution and construction sequence.",
-"Inspect reinforcement, formwork, cover blocks, levels and dimensions.",
-"Monitor casting, finishing and curing activities."
-],
-
-qa:[
-"Concrete slump and cube-sampling support.",
-"Reinforcement and pre-casting inspection.",
-"Material and workmanship checks."
-],
-
-docs:[
-"Measurement and quantity verification.",
-"BBS/reinforcement records.",
-"Progress and inspection documentation."
-],
-
-coord:[
-"Coordinate labour, materials and concrete-related site activities.",
-"Track material consumption and reconcile quantities.",
-"Support contractor-side progress communication."
-],
-
-focus:
-"RCC road development with direct relevance to reinforcement inspection, concrete quality control, formwork, curing and quantity verification."
-
-},
-
-{
-
-role:
-"Trainee Site Engineer — road improvement and pavement-related construction support.",
-
-activities:[
-"Assist with earthwork, filling and compaction activities.",
-"Monitor subgrade, sub-base, base-course and pavement-related work.",
-"Support site measurements and construction progress monitoring."
-],
-
-qa:[
-"Material and layer-quality observations.",
-"Compaction/site-density related checks where applicable.",
-"Workmanship and pavement-stage inspection."
-],
-
-docs:[
-"Field measurements and quantity records.",
-"Progress monitoring and site documentation.",
-"Material and work-quantity records."
-],
-
-coord:[
-"Coordinate workforce and material movement.",
-"Support site logistics and construction sequencing.",
-"Communicate progress observations to senior engineers."
-],
-
-focus:
-"Road improvement — earthwork, compaction, pavement layers, measurement and progress monitoring."
-
-},
-
-{
-
-role:
-"Trainee Site Engineer — building and structural/civil construction support.",
-
-activities:[
-"Assist senior engineers with building construction and structural/civil works.",
-"Support site measurements and quantity verification.",
-"Observe variation works and construction progress."
-],
-
-qa:[
-"Construction material and workmanship checks.",
-"Reinforcement/formwork/concrete-related inspection support where applicable.",
-"Dimensional and site-quality observations."
-],
-
-docs:[
-"Measurement records and quantity calculations.",
-"Variation-work documentation support.",
-"Progress records and contractor-side documentation."
-],
-
-coord:[
-"Support coordination of workers and site activities.",
-"Assist with material requirements and site readiness.",
-"Coordinate information between field activities and senior staff."
-],
-
-focus:
-"Building construction and structural/civil works, with exposure to variation, quantity measurement and site coordination."
-
-},
-
-{
-
-role:
-"Trainee Site Engineer — road improvement and link-road construction support.",
-
-activities:[
-"Assist with road improvement earthwork and pavement-related activities.",
-"Support site measurements, quantity verification and progress tracking.",
-"Monitor construction sequence and material movement."
-],
-
-qa:[
-"Material inspection and layer/workmanship observations.",
-"Compaction and pavement-related quality checks where applicable.",
-"Support site inspection records."
-],
-
-docs:[
-"Field measurements and quantities.",
-"Progress monitoring records.",
-"Material and contractor-side documentation."
-],
-
-coord:[
-"Coordinate workforce and materials with site needs.",
-"Support logistics and construction sequencing.",
-"Assist senior engineers in communicating site progress."
-],
-
-focus:
-"Road improvement and link-road delivery, emphasizing practical field execution, measurement, material management and progress monitoring."
-
-},
-
-{
-
-role:
-"Trainee Site Engineer — road rehabilitation and pavement-related site support.",
-
-activities:[
-"Assist with road rehabilitation activities and site execution.",
-"Monitor pavement-related work, construction progress and measurements.",
-"Support quantity verification and material inspection."
-],
-
-qa:[
-"Pavement/material workmanship observations.",
-"Compaction and field-density related checks where applicable.",
-"Routine site-quality inspection support."
-],
-
-docs:[
-"Road measurements and quantity records.",
-"Progress monitoring documentation.",
-"Material and billing-support records."
-],
-
-coord:[
-"Coordinate labour and material movement.",
-"Support site logistics and work sequencing.",
-"Assist with material usage monitoring."
-],
-
-focus:
-"Road rehabilitation over 1,240 m, with emphasis on pavement works, field measurement, material inspection and progress monitoring."
-
-},
-
-{
-
-role:
-"Trainee Site Engineer — emergency repair and riverbank protection work support.",
-
-activities:[
-"Support emergency protection and repair-site execution.",
-"Assist with site measurements, material coordination and progress monitoring.",
-"Monitor work progress under time-sensitive field conditions."
-],
-
-qa:[
-"Material inspection and workmanship checks.",
-"Quantity/measurement verification for protection works.",
-"Site-condition and construction-progress observations."
-],
-
-docs:[
-"Emergency work measurements.",
-"Progress documentation and site records.",
-"Contractor-side quantity and material records."
-],
-
-coord:[
-"Coordinate materials, workers and site logistics.",
-"Support rapid material deployment.",
-"Coordinate contractor-side field activities."
-],
-
-focus:
-"Emergency riverbank/protection work, emphasizing rapid field coordination, measurement, material handling and progress monitoring."
-
-},
-
-{
-
-role:
-"Trainee Site Engineer — temporary emergency protection work support.",
-
-activities:[
-"Assist with emergency protection site execution.",
-"Support measurement, material handling and construction progress monitoring.",
-"Observe work sequence and site conditions during emergency activities."
-],
-
-qa:[
-"Material inspection and workmanship observation.",
-"Quantity verification and measurement checks.",
-"Progress and field-quality documentation support."
-],
-
-docs:[
-"Emergency-work measurement records.",
-"Progress/site reports.",
-"Material and quantity documentation."
-],
-
-coord:[
-"Coordinate workers and suppliers at the site.",
-"Assist with material handling and deployment.",
-"Support contractor-side field coordination."
-],
-
-focus:
-"Temporary emergency protection activities, emphasizing field coordination, measurement, material handling and documentation."
-
-},
-
-{
-
-role:
-"Trainee Site Engineer — HBB pavement repair and road maintenance support.",
-
-activities:[
-"Assist with damaged-pavement repair and HBB-related site execution.",
-"Support measurements, quantity verification and construction progress monitoring.",
-"Observe pavement repair workmanship and site sequence."
-],
-
-qa:[
-"Pavement/material inspection.",
-"Workmanship and layer/repair-stage observations.",
-"Quantity and field-measurement checks."
-],
-
-docs:[
-"Repair measurements and quantity records.",
-"Progress documentation.",
-"Material and contractor-side billing-support records."
-],
-
-coord:[
-"Coordinate workers and materials for repair activities.",
-"Support material movement and site readiness.",
-"Assist with progress communication."
-],
-
-focus:
-"HBB pavement repair on an RHD road, linking practical road-maintenance, measurement, material inspection and construction monitoring experience."
-
-}
-
-];
-
-
-/* =========================================================
-   PROJECT MODAL
-========================================================= */
-
-const projectModal =
-  document.getElementById(
-    "projectModal"
-  );
-
-const modalAgency =
-  document.getElementById(
-    "modalAgency"
-  );
-
-const modalTitle =
-  document.getElementById(
-    "modalTitle"
-  );
-
-const modalMeta =
-  document.getElementById(
-    "modalMeta"
-  );
-
-const modalRole =
-  document.getElementById(
-    "modalRole"
-  );
-
-const modalFocus =
-  document.getElementById(
-    "modalFocus"
-  );
-
-const modalActivities =
-  document.getElementById(
-    "modalActivities"
-  );
-
-const modalQA =
-  document.getElementById(
-    "modalQA"
-  );
-
-const modalDocs =
-  document.getElementById(
-    "modalDocs"
-  );
-
-const modalCoord =
-  document.getElementById(
-    "modalCoord"
-  );
-
-
-function openProject(index){
-
-  const p =
-    projectDetails[index];
-
-  if(!p) return;
-
-
-  const cards =
-    document.querySelectorAll(
-      "#projects .project"
-    );
-
-  const card =
-    cards[index];
-
-
-  modalAgency.textContent =
-    card
-      .querySelector(
-        ".project-agency"
-      )
-      .textContent
-      .trim();
-
-
-  modalTitle.textContent =
-    card
-      .querySelector("h3")
-      .textContent
-      .trim();
-
-
-  modalMeta.textContent =
-    card
-      .querySelector("p")
-      .textContent
-      .trim();
-
-
-  modalRole.textContent =
-    p.role;
-
-
-  modalFocus.textContent =
-    p.focus;
-
-
-  fillList(
-    modalActivities,
-    p.activities
-  );
-
-
-  fillList(
-    modalQA,
-    p.qa
-  );
-
-
-  fillList(
-    modalDocs,
-    p.docs
-  );
-
-
-  fillList(
-    modalCoord,
-    p.coord
-  );
-
-
-  projectModal.classList.add(
-    "open"
-  );
-
-  projectModal.setAttribute(
-    "aria-hidden",
-    "false"
-  );
-
-  document.body.classList.add(
-    "modal-open"
-  );
-
-}
-
-
-function closeProject(){
-
-  projectModal.classList.remove(
-    "open"
-  );
-
-  projectModal.setAttribute(
-    "aria-hidden",
-    "true"
-  );
-
-  document.body.classList.remove(
-    "modal-open"
-  );
-
-}
-
-
-/* =========================================================
-   CLOSE MODALS ON BACKDROP
-========================================================= */
-
-futureModal.addEventListener(
-  "click",
-  e=>{
-
-    if(e.target===futureModal){
-
-      closeFuture();
-
+function closeFuture(event){
+
+    if(
+        event &&
+        event.target !==
+        document.getElementById("futureModal")
+    ){
+        return;
     }
 
-  }
-);
+    document
+        .getElementById("futureModal")
+        .classList.remove("active");
+
+    document.body.style.overflow = "";
+
+}
 
 
-projectModal.addEventListener(
-  "click",
-  e=>{
-
-    if(e.target===projectModal){
-
-      closeProject();
-
-    }
-
-  }
-);
-
+/* =========================================================
+   ESC KEY
+========================================================= */
 
 document.addEventListener(
-  "keydown",
-  e=>{
+    "keydown",
+    function(e){
 
-    if(e.key==="Escape"){
-
-      closeFuture();
-
-      closeProject();
+        if(e.key === "Escape"){
+            closeFuture();
+        }
 
     }
-
-  }
 );
 
 
 /* =========================================================
-   LANGUAGE
+   MILK MODE
 ========================================================= */
 
-function setLang(lang){
+function toggleMilkMode(){
 
-  const enBtn =
-    document.getElementById(
-      "enBtn"
-    );
+    document.body.classList.toggle("milk-mode");
 
-  const bnBtn =
-    document.getElementById(
-      "bnBtn"
-    );
+    const button =
+        document.getElementById("milkToggle");
+
+    const active =
+        document.body.classList.contains("milk-mode");
 
 
-  if(lang==="en"){
+    if(active){
 
-    enBtn.classList.add(
-      "active"
-    );
+        button.innerHTML =
+            "🥛 MILK MODE ON";
 
-    bnBtn.classList.remove(
-      "active"
-    );
+        localStorage.setItem(
+            "milkMode",
+            "on"
+        );
 
-  }
+    }else{
 
-  else{
+        button.innerHTML =
+            "🥛 MILK MODE";
 
-    bnBtn.classList.add(
-      "active"
-    );
+        localStorage.setItem(
+            "milkMode",
+            "off"
+        );
 
-    enBtn.classList.remove(
-      "active"
-    );
-
-    alert(
-      "বাংলা version is prepared for the interface. Detailed research content is currently maintained in English for academic/portfolio presentation."
-    );
-
-  }
+    }
 
 }
 
 
 /* =========================================================
-   AUTOCAD INDEXEDDB
+   REMEMBER MILK MODE
 ========================================================= */
 
-const CAD_DB_NAME =
-  "NaimurAutoCADPortfolio";
+if(
+    localStorage.getItem("milkMode")
+    ===
+    "on"
+){
 
-const CAD_DB_VERSION=1;
+    document.body.classList.add("milk-mode");
 
-const CAD_STORE=
-  "autocadFiles";
+    document.getElementById("milkToggle")
+        .innerHTML =
+        "🥛 MILK MODE ON";
 
-let cadDB=null;
+}
 
 
-/* OPEN DATABASE */
+/* =========================================================
+   AUTOCAD FILE UPLOAD
+========================================================= */
 
-function openCADDatabase(){
+const fileInput =
+    document.getElementById("fileInput");
 
-  return new Promise(
-    (resolve,reject)=>{
+const uploadZone =
+    document.getElementById("uploadZone");
 
-      const request =
-        indexedDB.open(
-          CAD_DB_NAME,
-          CAD_DB_VERSION
+const fileList =
+    document.getElementById("fileList");
+
+
+let uploadedFiles = [];
+
+
+/* SELECT FILE */
+
+fileInput.addEventListener(
+    "change",
+    function(){
+
+        addFiles(
+            Array.from(this.files)
         );
 
+    }
+);
 
-      request.onupgradeneeded =
-        function(event){
 
-          const db =
-            event.target.result;
+/* =========================================================
+   DRAG EVENTS
+========================================================= */
 
-          if(
-            !db.objectStoreNames.contains(
-              CAD_STORE
-            )
-          ){
+[
+    "dragenter",
+    "dragover"
+].forEach(eventName => {
 
-            db.createObjectStore(
-              CAD_STORE,
-              {
-                keyPath:"id",
-                autoIncrement:true
-              }
+    uploadZone.addEventListener(
+        eventName,
+        function(e){
+
+            e.preventDefault();
+
+            uploadZone.classList.add(
+                "dragover"
             );
 
-          }
+        }
+    );
 
-        };
-
-
-      request.onsuccess =
-        function(event){
-
-          cadDB =
-            event.target.result;
-
-          resolve(cadDB);
-
-        };
+});
 
 
-      request.onerror =
-        function(){
+[
+    "dragleave",
+    "drop"
+].forEach(eventName => {
 
-          reject(
-            request.error
-          );
+    uploadZone.addEventListener(
+        eventName,
+        function(e){
 
-        };
+            e.preventDefault();
 
-    }
-  );
+            uploadZone.classList.remove(
+                "dragover"
+            );
 
-}
+        }
+    );
 
-
-/* ADD FILE */
-
-function saveCADFile(file){
-
-  return new Promise(
-    (resolve,reject)=>{
-
-      const tx =
-        cadDB.transaction(
-          CAD_STORE,
-          "readwrite"
-        );
-
-      const store =
-        tx.objectStore(
-          CAD_STORE
-        );
+});
 
 
-      const data={
+/* DROP FILE */
 
-        name:file.name,
+uploadZone.addEventListener(
+    "drop",
+    function(e){
 
-        type:file.type || "application/octet-stream",
-
-        size:file.size,
-
-        lastModified:file.lastModified,
-
-        createdAt:
-          new Date().toISOString(),
-
-        blob:file
-
-      };
-
-
-      const request =
-        store.add(data);
-
-
-      request.onsuccess =
-        ()=>resolve();
-
-
-      request.onerror =
-        ()=>reject(
-          request.error
+        addFiles(
+            Array.from(
+                e.dataTransfer.files
+            )
         );
 
     }
-  );
-
-}
-
-
-/* GET ALL */
-
-function getCADFiles(){
-
-  return new Promise(
-    (resolve,reject)=>{
-
-      const tx =
-        cadDB.transaction(
-          CAD_STORE,
-          "readonly"
-        );
-
-      const store =
-        tx.objectStore(
-          CAD_STORE
-        );
-
-
-      const request =
-        store.getAll();
-
-
-      request.onsuccess =
-        ()=>resolve(
-          request.result
-        );
-
-
-      request.onerror =
-        ()=>reject(
-          request.error
-        );
-
-    }
-  );
-
-}
-
-
-/* DELETE */
-
-function deleteCADFile(id){
-
-  return new Promise(
-    (resolve,reject)=>{
-
-      const tx =
-        cadDB.transaction(
-          CAD_STORE,
-          "readwrite"
-        );
-
-      const store =
-        tx.objectStore(
-          CAD_STORE
-        );
-
-
-      const request =
-        store.delete(id);
-
-
-      request.onsuccess =
-        ()=>resolve();
-
-
-      request.onerror =
-        ()=>reject(
-          request.error
-        );
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   FILE INPUT
-========================================================= */
-
-const cadInput =
-  document.getElementById(
-    "cadInput"
-  );
-
-
-cadInput.addEventListener(
-  "change",
-  async function(){
-
-    if(!cadDB){
-
-      await openCADDatabase();
-
-    }
-
-
-    const files =
-      Array.from(
-        this.files
-      );
-
-
-    for(
-      const file of files
-    ){
-
-      try{
-
-        await saveCADFile(
-          file
-        );
-
-      }
-
-      catch(error){
-
-        console.error(
-          "Upload error:",
-          error
-        );
-
-      }
-
-    }
-
-
-    await renderCADFiles();
-
-    this.value="";
-
-  }
 );
 
 
 /* =========================================================
-   FORMAT FILE SIZE
+   ADD FILES
 ========================================================= */
 
-function formatBytes(bytes){
+function addFiles(files){
 
-  if(bytes===0)
-    return "0 Bytes";
+    files.forEach(file => {
+
+        const exists =
+            uploadedFiles.some(
+                f =>
+                f.name === file.name &&
+                f.size === file.size
+            );
+
+        if(!exists){
+
+            uploadedFiles.push(file);
+
+        }
+
+    });
 
 
-  const units=[
-    "Bytes",
-    "KB",
-    "MB",
-    "GB"
-  ];
+    renderFiles();
+
+}
 
 
-  const i=
-    Math.floor(
-      Math.log(bytes)/
-      Math.log(1024)
+/* =========================================================
+   RENDER FILES
+========================================================= */
+
+function renderFiles(){
+
+    fileList.innerHTML = "";
+
+
+    if(uploadedFiles.length === 0){
+
+        return;
+
+    }
+
+
+    uploadedFiles.forEach(
+        (file,index) => {
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "file-item";
+
+
+        const icon =
+            getFileIcon(file.name);
+
+
+        item.innerHTML = `
+
+            <div class="file-info">
+
+                <div class="file-icon">
+                    ${icon}
+                </div>
+
+                <div>
+
+                    <div class="file-name">
+                        ${escapeHTML(file.name)}
+                    </div>
+
+                    <div class="file-size">
+                        ${formatBytes(file.size)}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button
+                class="remove-file"
+                onclick="removeFile(${index})">
+
+                REMOVE
+
+            </button>
+
+        `;
+
+
+        fileList.appendChild(item);
+
+    });
+
+}
+
+
+/* =========================================================
+   REMOVE FILE
+========================================================= */
+
+function removeFile(index){
+
+    uploadedFiles.splice(
+        index,
+        1
     );
 
-
-  return (
-    parseFloat(
-      (
-        bytes/
-        Math.pow(
-          1024,
-          i
-        )
-      ).toFixed(2)
-    )
-    +" "+
-    units[i]
-  );
+    renderFiles();
 
 }
 
@@ -6220,280 +2392,85 @@ function formatBytes(bytes){
    FILE ICON
 ========================================================= */
 
-function fileIcon(name){
+function getFileIcon(name){
 
-  const ext =
-    name
-      .split(".")
-      .pop()
-      .toLowerCase();
-
-
-  if(ext==="dwg")
-    return "📐";
-
-  if(ext==="dxf")
-    return "📏";
-
-  if(ext==="pdf")
-    return "📄";
-
-  if(
-    ["png","jpg","jpeg","webp","svg"]
-      .includes(ext)
-  )
-    return "🖼️";
+    const ext =
+        name
+        .split(".")
+        .pop()
+        .toLowerCase();
 
 
-  return "📁";
+    if(ext === "dwg"){
+        return "📐";
+    }
+
+    if(ext === "dxf"){
+        return "📏";
+    }
+
+    if(ext === "pdf"){
+        return "📄";
+    }
+
+    if(
+        ext === "png" ||
+        ext === "jpg" ||
+        ext === "jpeg"
+    ){
+        return "🖼️";
+    }
+
+    if(
+        ext === "zip" ||
+        ext === "rar"
+    ){
+        return "🗜️";
+    }
+
+    return "📁";
 
 }
 
 
 /* =========================================================
-   RENDER CAD FILES
+   FILE SIZE
 ========================================================= */
 
-async function renderCADFiles(){
+function formatBytes(bytes){
 
-  const list =
-    document.getElementById(
-      "cadList"
-    );
-
-
-  const files =
-    await getCADFiles();
+    if(bytes === 0){
+        return "0 Bytes";
+    }
 
 
-  list.innerHTML="";
+    const units = [
+        "Bytes",
+        "KB",
+        "MB",
+        "GB"
+    ];
 
 
-  if(!files.length){
-
-    list.innerHTML=
-      `
-      <div class="cad-empty">
-
-        No AutoCAD files uploaded yet.
-
-        <br>
-
-        Start by selecting your first project/practice file.
-
-      </div>
-      `;
-
-    return;
-
-  }
-
-
-  files
-    .sort(
-      (a,b)=>
-        b.id-a.id
-    )
-    .forEach(
-      file=>{
-
-        const card =
-          document.createElement(
-            "div"
-          );
-
-        card.className=
-          "cad-file";
-
-
-        const date =
-          new Date(
-            file.createdAt
-          ).toLocaleDateString();
-
-
-        card.innerHTML=
-          `
-
-          <div class="cad-file-top">
-
-            <div class="cad-file-icon">
-              ${fileIcon(file.name)}
-            </div>
-
-            <div>
-
-              <div class="cad-file-name">
-                ${escapeHTML(file.name)}
-              </div>
-
-              <div class="cad-file-meta">
-
-                ${formatBytes(file.size)}
-                •
-                ${date}
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="cad-actions">
-
-            <button
-              class="small-btn"
-              onclick="openCADFile(${file.id})">
-
-              OPEN / VIEW
-
-            </button>
-
-
-            <button
-              class="small-btn"
-              onclick="downloadCADFile(${file.id})">
-
-              DOWNLOAD
-
-            </button>
-
-
-            <button
-              class="small-btn delete"
-              onclick="removeCADFile(${file.id})">
-
-              DELETE
-
-            </button>
-
-          </div>
-
-          `;
-
-
-        list.appendChild(
-          card
+    const i =
+        Math.floor(
+            Math.log(bytes) /
+            Math.log(1024)
         );
 
-      }
+
+    return (
+        parseFloat(
+            (
+                bytes /
+                Math.pow(1024,i)
+            ).toFixed(2)
+        )
+        +
+        " "
+        +
+        units[i]
     );
-
-}
-
-
-/* =========================================================
-   OPEN FILE
-========================================================= */
-
-async function openCADFile(id){
-
-  const files =
-    await getCADFiles();
-
-
-  const file =
-    files.find(
-      f=>f.id===id
-    );
-
-
-  if(!file) return;
-
-
-  const url =
-    URL.createObjectURL(
-      file.blob
-    );
-
-
-  window.open(
-    url,
-    "_blank"
-  );
-
-}
-
-
-/* =========================================================
-   DOWNLOAD
-========================================================= */
-
-async function downloadCADFile(id){
-
-  const files =
-    await getCADFiles();
-
-
-  const file =
-    files.find(
-      f=>f.id===id
-    );
-
-
-  if(!file) return;
-
-
-  const url =
-    URL.createObjectURL(
-      file.blob
-    );
-
-
-  const a =
-    document.createElement(
-      "a"
-    );
-
-
-  a.href=url;
-
-  a.download=
-    file.name;
-
-  document.body.appendChild(
-    a
-  );
-
-  a.click();
-
-  a.remove();
-
-
-  setTimeout(
-    ()=>{
-      URL.revokeObjectURL(
-        url
-      );
-    },
-    1000
-  );
-
-}
-
-
-/* =========================================================
-   DELETE FILE
-========================================================= */
-
-async function removeCADFile(id){
-
-  const ok =
-    confirm(
-      "Delete this AutoCAD file from your browser vault?"
-    );
-
-
-  if(!ok) return;
-
-
-  await deleteCADFile(
-    id
-  );
-
-
-  await renderCADFiles();
 
 }
 
@@ -6504,48 +2481,94 @@ async function removeCADFile(id){
 
 function escapeHTML(str){
 
-  return str.replace(
-    /[&<>"']/g,
-    function(match){
+    return str
+        .replace(
+            /[&<>"']/g,
+            function(match){
 
-      const map={
+                const map = {
 
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#039;"
+                    "&":"&amp;",
+                    "<":"&lt;",
+                    ">":"&gt;",
+                    '"':"&quot;",
+                    "'":"&#039;"
 
-      };
+                };
 
-      return map[match];
+                return map[match];
 
-    }
-  );
+            }
+        );
 
 }
 
 
 /* =========================================================
-   START DATABASE
+   SCROLL REVEAL
 ========================================================= */
 
-openCADDatabase()
-  .then(
-    ()=>{
-      renderCADFiles();
-    }
-  )
-  .catch(
-    error=>{
+const observer =
+    new IntersectionObserver(
+        entries => {
 
-      console.error(
-        "IndexedDB unavailable:",
-        error
-      );
+            entries.forEach(entry => {
+
+                if(
+                    entry.isIntersecting
+                ){
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(
+        element =>
+        observer.observe(element)
+    );
+
+
+/* =========================================================
+   NAVBAR SCROLL EFFECT
+========================================================= */
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        const navbar =
+            document.querySelector(
+                ".navbar"
+            );
+
+
+        if(window.scrollY > 40){
+
+            navbar.style.boxShadow =
+                "0 10px 40px rgba(0,0,0,.12)";
+
+        }else{
+
+            navbar.style.boxShadow =
+                "none";
+
+        }
 
     }
-  );
+);
 
 </script>
 
