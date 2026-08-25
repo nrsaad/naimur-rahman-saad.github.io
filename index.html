@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -388,6 +388,124 @@ footer{
 .future2050-launcher{position:fixed;left:50%;bottom:72px;transform:translateX(-50%);z-index:650;width:min(1100px,94%);display:flex;justify-content:center;flex-wrap:wrap;gap:7px}.future2050-launcher button{padding:9px 12px;border:1px solid rgba(85,220,255,.22);border-radius:13px;background:rgba(2,7,4,.88);color:#fff;backdrop-filter:blur(15px);cursor:pointer;font:800 10px var(--heading);transition:.25s}.future2050-launcher button:hover{transform:translateY(-3px);border-color:var(--green);box-shadow:0 10px 30px rgba(57,243,158,.12)}
 .future2050-modal{position:fixed;inset:0;z-index:5000;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.78);backdrop-filter:blur(12px)}.future2050-modal.open{display:flex}.future2050-box{width:min(1080px,96vw);max-height:90vh;overflow:auto;padding:34px;border:1px solid rgba(85,220,255,.25);border-radius:28px;background:linear-gradient(145deg,rgba(7,22,17,.98),rgba(5,12,25,.98));box-shadow:0 40px 140px rgba(0,0,0,.7);position:relative}.future2050-close{position:absolute;right:18px;top:18px;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:rgba(255,255,255,.05);color:#fff;font-size:21px;cursor:pointer}.future2050-box h2{font:800 clamp(30px,5vw,58px)/1.05 var(--heading);margin:10px 45px 16px 0;color:#f4f8ff}.future2050-box>p{max-width:900px;color:#b7c9c2;font-size:13px;line-height:1.85}.future2050-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}.future2050-point{padding:18px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.035)}.future2050-point h4{color:#7fe7ff;font:800 12px var(--heading);margin-bottom:7px}.future2050-point p{color:#b7c8c1;font-size:12px;line-height:1.75}.future2050-note{margin-top:18px;padding:14px;border-left:3px solid var(--green);background:rgba(57,243,158,.05);color:#aebfb8;font-size:11px;line-height:1.7}
 @media(max-width:650px){.future2050-launcher{bottom:62px}.future2050-grid{grid-template-columns:1fr}.future2050-box{padding:23px}.future2050-box h2{font-size:32px}.cad-drop{padding:22px}}
+
+/* =========================================================
+   FINAL VISUAL SYSTEM — LIGHT / EYE-COMFORT + THE-FRONT STYLE
+   No external image is used. The atmosphere is drawn by CSS/canvas.
+========================================================= */
+:root{
+  --heading:"Rajdhani",sans-serif;
+  --body:"Inter",sans-serif;
+  --bg:#eef7f1;
+  --bg2:#e4f0ea;
+  --text:#17352b;
+  --muted:#60766c;
+  --green:#168653;
+  --red:#e32f43;
+  --cyan:#4aa8b5;
+  --line:rgba(25,72,55,.13);
+  --glass:rgba(255,255,255,.66);
+}
+body{
+  color:var(--text);
+  background:
+    radial-gradient(circle at 10% 10%,rgba(255,255,255,.98),transparent 34%),
+    radial-gradient(circle at 88% 20%,rgba(196,232,218,.65),transparent 30%),
+    linear-gradient(145deg,#f5faf7,#e6f2eb 55%,#dcece4);
+}
+#starLayer{opacity:.04}
+.star{background:#497d69;opacity:.25}
+.header{
+  border-color:rgba(28,83,62,.13);
+  background:rgba(250,253,250,.72);
+  box-shadow:0 12px 40px rgba(44,86,68,.10);
+}
+.brand-flag{font-size:0;filter:none;width:38px;height:25px;border-radius:7px;display:grid;place-items:center;background:#006a4e;box-shadow:0 4px 14px rgba(0,105,78,.16)}
+.bd-flag span{width:13px;height:13px;border-radius:50%;background:#f42a41;display:block}
+.brand-name strong{font-family:var(--heading);font-weight:700;letter-spacing:1px}
+.brand-name small{font-family:var(--heading);color:#71877d;letter-spacing:1.8px}
+.nav a{font-family:var(--heading);color:#4f675e;letter-spacing:.4px}
+.nav a:hover{color:#168653}
+.lang{border-color:rgba(28,83,62,.13);background:rgba(255,255,255,.35)}
+.lang button{font-family:var(--heading);color:#61776d}
+.lang button.active{color:#fff;background:linear-gradient(100deg,#168653,#4aa8b5)}
+.kicker{font-family:var(--heading);color:#28745a;border-color:rgba(40,116,90,.22);background:rgba(255,255,255,.55)}
+.hero h1{font-family:var(--heading);font-weight:700;letter-spacing:-1.5px;text-shadow:0 2px 18px rgba(36,91,67,.06)}
+.hero-sub,.mission{font-family:var(--heading)}
+.hero-sub{color:#49665b}
+.mission{color:#244b3c}
+.mission b{color:#168653}
+.hero-desc{color:#647a70}
+.btn{font-family:var(--heading);color:#24463a;border-color:rgba(22,134,83,.22);background:rgba(255,255,255,.62)}
+.btn.primary{color:#fff;background:linear-gradient(100deg,#168653,#42a99a);box-shadow:0 9px 28px rgba(22,134,83,.16)}
+.hero-visual .orbit{border-color:rgba(73,157,132,.18)}
+.hero-visual .orbit.two{border-color:rgba(71,163,182,.18)}
+.hero-visual .core{background:radial-gradient(circle,#ffffff 0 10%,#e1f4ea 24%,#80c9a7 45%,#3a9b72 68%,#dfeee6 69% 72%,transparent 73%);box-shadow:0 0 100px rgba(91,180,145,.20)}
+.float{background:rgba(255,255,255,.68);border-color:rgba(28,83,62,.12);color:#306451;box-shadow:0 12px 35px rgba(48,91,72,.08)}
+.float.one{color:#1d7c54}.float.two{color:#348a9a}.float.three{color:#9a7a3d}
+section{position:relative}
+.section-label{font-family:var(--heading);color:#39806a;letter-spacing:3px}
+.section-title{font-family:var(--heading);font-weight:700;letter-spacing:-.5px;background:linear-gradient(90deg,#204f3e,#2e8b67 52%,#5a9fa0);-webkit-background-clip:text;background-clip:text}
+.section-desc{color:#657970}
+.stat,.card,.agency,.project,.thesis,.cad-upload-card{background:rgba(255,255,255,.68);border-color:rgba(28,83,62,.12);box-shadow:0 12px 40px rgba(43,85,67,.065)}
+.stat strong{font-family:var(--heading);color:#168653}
+.stat span,.card p,.card li,.agency p,.project p,.thesis p{color:#64776e}
+.card h3,.agency h3,.project h3,.thesis h3,.future-item h3{font-family:var(--heading);color:#275c48}
+.card:hover,.agency:hover,.project:hover{border-color:rgba(22,134,83,.28);box-shadow:0 18px 45px rgba(43,105,78,.10)}
+.tag,.skill{font-family:var(--heading);color:#4c675d;background:rgba(255,255,255,.55);border-color:rgba(28,83,62,.11)}
+.project-agency,.agency a,.project a{font-family:var(--heading);color:#2e8c6a}
+.future{background:linear-gradient(145deg,rgba(255,255,255,.76),rgba(230,244,237,.82));border-color:rgba(28,83,62,.12);box-shadow:0 16px 55px rgba(48,92,72,.07)}
+.future-title{font-family:var(--heading);background:linear-gradient(90deg,#27785b,#45a98c,#6b9d8c);-webkit-background-clip:text;background-clip:text}
+.future-item{background:rgba(255,255,255,.52);border-color:rgba(28,83,62,.11)}
+.future-item small{font-family:var(--heading);color:#25845f}
+#moodStatus{color:#4c7060;background:rgba(250,253,250,.82);border-color:rgba(28,83,62,.12)}
+.mood-btn,.future2050-launcher button{font-family:var(--heading);color:#31574a;background:rgba(250,253,250,.86);border-color:rgba(28,83,62,.13)}
+.mood-btn:hover,.future2050-launcher button:hover{border-color:#168653;box-shadow:0 10px 28px rgba(22,134,83,.10)}
+footer{color:#6c8077}
+/* Existing project/experience dialogs also become light and comfortable. */
+.project-modal,.experience-modal,.future2050-modal{background:rgba(220,235,227,.74)}
+.project-modal-box,.experience-modal-box,.future2050-box{background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(235,245,239,.98));border-color:rgba(28,83,62,.14);box-shadow:0 30px 100px rgba(42,77,61,.20)}
+.project-modal h2,.experience-modal-box h2,.future2050-box h2{font-family:var(--heading);color:#244d3d}
+.project-modal-meta,.detail-card p,.detail-card li,.project-modal-note,.experience-modal-box .exp-sub,.exp-detail ul,.future2050-box>p,.future2050-point p,.future2050-note{color:#687b72}
+.detail-card,.exp-detail,.future2050-point{background:rgba(255,255,255,.55);border-color:rgba(28,83,62,.11)}
+.detail-card h4,.exp-detail h4,.future2050-point h4{font-family:var(--heading);color:#2d8866}
+.project-close,.exp-close,.future2050-close{color:#35574b;background:rgba(255,255,255,.68);border-color:rgba(28,83,62,.13)}
+.cad-drop{border-color:rgba(42,139,103,.22);background:rgba(255,255,255,.45)}
+.cad-drop h3{font-family:var(--heading);color:#2a5e4b}.cad-drop p{color:#687b72}.cad-select{font-family:var(--heading);background:linear-gradient(100deg,#168653,#42a99a);color:#fff}.cad-file{background:rgba(255,255,255,.48);border-color:rgba(28,83,62,.11)}
+/* ===== Every non-milk mood gets a light, eye-comfort base ===== */
+body.mood-construction{
+  --bg1:#f0eadc;--bg2:#e3dccd;color:#3d382f;
+  background:linear-gradient(145deg,#f7f2e8,#e7dfcf);
+}
+body.mood-construction .header,body.mood-roads .header,body.mood-transportation .header,body.mood-environmental .header{background:rgba(248,252,249,.76);border-color:rgba(35,82,61,.13)}
+body.mood-roads{
+  --bg1:#e8f1f5;--bg2:#dce8ed;color:#29424b;
+  background:linear-gradient(145deg,#f5fafc,#dfeaf0);
+}
+body.mood-transportation{
+  --bg1:#e8f4f7;--bg2:#dbecef;color:#29434a;
+  background:linear-gradient(145deg,#f5fbfc,#dceff3);
+}
+body.mood-environmental{
+  --bg1:#dff3e5;--bg2:#c7e7d0;color:#183d2c;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(255,255,255,.9),transparent 28%),
+    radial-gradient(circle at 88% 18%,rgba(154,220,177,.55),transparent 30%),
+    linear-gradient(145deg,#f1fbf3,#d8efdf 52%,#c5e4ce);
+}
+body.mood-environmental #worldCanvas{opacity:.85}
+body.mood-environmental #starLayer{opacity:.015}
+body.mood-environmental .section-title{background:linear-gradient(90deg,#145c39,#1f9a61 52%,#6cae68);-webkit-background-clip:text;background-clip:text}
+body.mood-environmental .section-label,body.mood-environmental .project-agency,body.mood-environmental .agency a,body.mood-environmental .project a{color:#218054}
+body.mood-environmental .card,body.mood-environmental .agency,body.mood-environmental .project,body.mood-environmental .stat,body.mood-environmental .thesis{background:rgba(248,255,250,.70);border-color:rgba(33,128,84,.16)}
+body.mood-environmental .card h3,body.mood-environmental .agency h3,body.mood-environmental .project h3,body.mood-environmental .thesis h3{color:#20583d}
+body.mood-environmental .future{background:linear-gradient(145deg,rgba(250,255,251,.78),rgba(211,239,219,.86))}
+body.mood-environmental .future-title{background:linear-gradient(90deg,#165a3b,#239b60,#6aa85f);-webkit-background-clip:text;background-clip:text}
+body.mood-environmental .btn.primary{background:linear-gradient(100deg,#15834e,#5ab56f)}
+body.mood-environmental .core{background:radial-gradient(circle,#fff 0 10%,#d9f5e0 25%,#79c98d 45%,#31915f 68%,#d9f0df 69% 72%,transparent 73%);box-shadow:0 0 110px rgba(62,164,99,.24)}
+/* Milk remains the dedicated warm-white mood. */
+body.mood-milk .hero h1,body.mood-milk .section-title,body.mood-milk .future-title{font-family:var(--heading)}
+@media(max-width:980px){.nav{display:none}}
 </style>
 </head>
 
@@ -398,7 +516,7 @@ footer{
 
 <header class="header">
   <a class="brand" href="#home">
-    <span class="brand-flag">🇧🇩</span>
+    <span class="brand-flag bd-flag" aria-label="Bangladesh flag"><span></span></span>
     <span class="brand-name">
       <strong>
         <span class="green">MD.</span>
