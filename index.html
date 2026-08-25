@@ -1,2412 +1,3677 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MD. Naimur Rahman Saad | Civil Engineer</title>
-<meta name="description" content="MD. Naimur Rahman Saad — Civil Engineer | Construction Engineering & Project Management">
+
+<meta name="description"
+content="MD. Naimur Rahman Saad — Civil Engineer | Construction Engineering & Project Management">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<!-- ASUS-like geometric heading + clean serif body -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
-  --bg:#03100b;
-  --ink:#effff7;
-  --muted:#a8c1b7;
-  --line:#ffffff18;
-  --green:#36f29b;
-  --red:#ff4f69;
-  --cyan:#52ddff;
-  --gold:#ffd36b;
-  --glass:rgba(4,14,10,.58);
-  --shadow:0 25px 90px rgba(0,0,0,.45)
+    --bg:#040806;
+    --panel:rgba(7,17,12,.68);
+    --text:#f2fff8;
+    --muted:#a7beb3;
+    --green:#28ef98;
+    --red:#ff4e68;
+    --cyan:#52ddff;
+    --gold:#ffd36b;
+    --line:rgba(255,255,255,.11);
+
+    --display:"Space Grotesk",Arial,sans-serif;
+    --body:"Times New Roman",Times,serif;
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
-  box-sizing:border-box;
-  scroll-behavior:smooth
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html,body{
-  margin:0;
-  padding:0;
-  background:#020604;
-  color:var(--ink);
-  font-family:Inter,Arial,sans-serif;
-  overflow-x:hidden
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#020504;
+    color:var(--text);
+    font-family:var(--body);
+    overflow-x:hidden;
+    line-height:1.75;
 }
 
 a{
-  text-decoration:none;
-  color:inherit
+    color:inherit;
+    text-decoration:none;
 }
 
 button{
-  font:inherit
+    font-family:var(--display);
 }
 
-#ambient{
-  position:fixed;
-  inset:0;
-  z-index:-10;
-  background:#020604;
-  overflow:hidden
-}
 
-#ambient .photo{
-  position:absolute;
-  inset:-3%;
-  background-size:cover;
-  background-position:center;
-  opacity:0;
-  transform:scale(1.04);
-  transition:opacity 1s,transform 8s
-}
+/* =========================================================
+   BACKGROUND
+========================================================= */
 
-#ambient .photo.active{
-  opacity:.48;
-  transform:scale(1.12)
-}
+#mainBackground{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+    overflow:hidden;
+    background:
+        radial-gradient(
+            circle at 70% 20%,
+            rgba(30,110,75,.28),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 20% 70%,
+            rgba(0,120,100,.12),
+            transparent 30%
+        ),
+        #020504;
 
-#ambient .veil{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(1,7,4,.35),
-      rgba(1,6,4,.88) 72%
-    ),
-    radial-gradient(
-      circle at 70% 25%,
-      rgba(74,220,255,.09),
-      transparent 28%
-    )
+    transition:1s;
 }
 
 #ambientCanvas{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
 }
 
-#vignette{
-  position:absolute;
-  inset:0;
-  box-shadow:inset 0 0 180px rgba(0,0,0,.65);
-  pointer-events:none
+#ambientImage{
+    position:absolute;
+    inset:-5%;
+
+    width:110%;
+    height:110%;
+
+    object-fit:cover;
+
+    opacity:0;
+
+    transform:scale(1.04);
+
+    transition:
+        opacity 1.2s ease,
+        transform 12s ease;
 }
+
+#ambientImage.show{
+    opacity:.42;
+    transform:scale(1.12);
+}
+
+.background-overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.32),
+            rgba(0,0,0,.88)
+        );
+}
+
+.vignette{
+    position:absolute;
+    inset:0;
+
+    box-shadow:
+        inset 0 0 180px rgba(0,0,0,.78);
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+#stars{
+    position:fixed;
+    inset:0;
+    z-index:-7;
+    pointer-events:none;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+
+    background:white;
+    border-radius:50%;
+
+    opacity:.55;
+
+    animation:
+        twinkle 3.5s infinite;
+}
+
+@keyframes twinkle{
+
+    0%,100%{
+        opacity:.15;
+        transform:scale(.7);
+    }
+
+    50%{
+        opacity:.95;
+        transform:scale(1.6);
+    }
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 header{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:50;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 4vw;
-  background:rgba(1,7,5,.62);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--line)
+    position:fixed;
+    left:0;
+    right:0;
+    top:0;
+
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:15px 4vw;
+
+    background:
+        rgba(2,7,5,.72);
+
+    backdrop-filter:blur(20px);
+
+    border-bottom:
+        1px solid var(--line);
 }
 
 .brand{
-  display:flex;
-  align-items:center;
-  gap:10px
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.brand strong{
-  display:block;
-  font:700 15px "Space Grotesk"
+.brand-flag{
+    font-size:27px;
+
+    filter:
+        drop-shadow(
+            0 0 12px rgba(0,230,118,.5)
+        );
 }
 
-.brand small{
-  display:block;
-  color:var(--muted);
-  font-size:9px;
-  letter-spacing:1.5px
+.brand-name{
+    font-family:var(--display);
 }
 
-.flag{
-  font-size:23px
+.brand-name strong{
+    display:block;
+    font-size:15px;
+    letter-spacing:.5px;
+}
+
+.brand-name small{
+    display:block;
+
+    color:#8fa99d;
+
+    font-family:var(--body);
+
+    font-size:10px;
+
+    letter-spacing:1px;
+}
+
+.name-green{
+    color:var(--green);
+}
+
+.name-red{
+    color:var(--red);
 }
 
 nav{
-  display:flex;
-  gap:22px;
-  color:#cfe3da;
-  font-size:12px
+    display:flex;
+    gap:22px;
+}
+
+nav a{
+    color:#c9ddd4;
+    font-family:var(--display);
+    font-size:12px;
+
+    transition:.3s;
 }
 
 nav a:hover{
-  color:var(--green)
+    color:var(--green);
 }
+
+
+/* =========================================================
+   LANGUAGE BUTTON
+========================================================= */
+
+.language-box{
+    display:flex;
+    align-items:center;
+    gap:4px;
+
+    padding:4px;
+
+    border-radius:999px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid var(--line);
+}
+
+.language-btn{
+    border:0;
+    background:transparent;
+
+    color:#aabdb5;
+
+    padding:7px 10px;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    font-size:11px;
+}
+
+.language-btn.active{
+    color:#021009;
+
+    background:
+        linear-gradient(
+            110deg,
+            var(--green),
+            var(--cyan)
+        );
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
-  min-height:100vh;
-  padding:126px 6vw 80px;
-  display:grid;
-  grid-template-columns:1.08fr .92fr;
-  gap:30px;
-  align-items:center
+    min-height:100vh;
+
+    padding:
+        135px 6vw 80px;
+
+    display:grid;
+
+    grid-template-columns:
+        1.08fr .92fr;
+
+    gap:40px;
+
+    align-items:center;
 }
 
-.ey{
-  font-size:10px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:var(--cyan);
-  font-weight:800
+.hero-kicker{
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:
+        8px 15px;
+
+    border-radius:999px;
+
+    border:
+        1px solid rgba(82,221,255,.22);
+
+    background:
+        rgba(82,221,255,.05);
+
+    color:
+        #8de8ff;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        3px;
+
+    text-transform:
+        uppercase;
 }
 
-h1{
-  font:700 clamp(44px,6.2vw,88px)/.93 "Space Grotesk";
-  letter-spacing:-4px;
-  margin:18px 0
+.hero h1{
+    margin:
+        20px 0;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        clamp(45px,6.3vw,88px);
+
+    line-height:
+        .92;
+
+    letter-spacing:
+        -4px;
 }
 
-.md,
-.saad{
-  color:var(--green)
+.hero-subtitle{
+    color:#d5e8df;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        18px;
+
+    line-height:
+        1.7;
 }
 
-.rahman{
-  color:var(--red)
+.mission-line{
+    margin:
+        28px 0;
+
+    max-width:
+        730px;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        clamp(25px,3vw,42px);
+
+    line-height:
+        1.1;
+
+    letter-spacing:
+        -.5px;
 }
 
-.hero h2{
-  font-size:18px;
-  line-height:1.75;
-  font-weight:500;
-  color:#d7e8e1;
-  max-width:720px
+.mission-line strong{
+    color:
+        var(--green);
 }
 
-.mission{
-  font:600 clamp(24px,3.3vw,42px)/1.1 "Space Grotesk";
-  margin:26px 0;
-  max-width:720px
+.hero-description{
+    max-width:700px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        16px;
+
+    line-height:
+        1.85;
 }
 
-.mission b{
-  color:var(--green)
-}
+.hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
 
-.actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap
+    margin-top:30px;
 }
 
 .btn{
-  padding:12px 17px;
-  border:1px solid #36f29b55;
-  background:#ffffff08;
-  border-radius:999px;
-  color:#effff8;
-  cursor:pointer;
-  transition:.25s
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:
+        11px 17px;
+
+    border-radius:
+        999px;
+
+    border:
+        1px solid rgba(40,239,152,.32);
+
+    color:
+        #edfff7;
+
+    background:
+        rgba(255,255,255,.05);
+
+    font-family:
+        var(--display);
+
+    font-size:
+        11px;
+
+    cursor:
+        pointer;
+
+    transition:.3s;
 }
 
 .btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 12px 35px #36f29b1f
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 40px rgba(40,239,152,.14);
 }
 
-.primary{
-  background:linear-gradient(
-    100deg,
-    var(--green),
-    var(--cyan)
-  );
-  color:#03110b;
-  border:0;
-  font-weight:800
+.btn-primary{
+    color:
+        #03100a;
+
+    background:
+        linear-gradient(
+            110deg,
+            var(--green),
+            var(--cyan)
+        );
+
+    border:
+        none;
+
+    font-weight:
+        800;
 }
 
-.hero-visual{
-  height:470px;
-  position:relative;
-  display:grid;
-  place-items:center
+
+/* =========================================================
+   ENGINEERING WORLD
+========================================================= */
+
+.engineering-world{
+    position:relative;
+
+    min-height:470px;
+
+    display:grid;
+    place-items:center;
 }
 
-.orbit{
-  position:absolute;
-  width:86%;
-  height:60%;
-  border:1px solid #52ddff55;
-  border-radius:50%;
-  transform:rotate(-10deg);
-  animation:spin 17s linear infinite
+.engineering-core{
+    width:190px;
+    height:190px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #eafff6 0 3%,
+            var(--green) 8%,
+            #0a4b31 28%,
+            #020604 67%
+        );
+
+    box-shadow:
+        0 0 100px rgba(40,239,152,.3);
+
+    animation:
+        corePulse 4s ease-in-out infinite;
 }
 
-.orbit2{
-  width:65%;
-  height:44%;
-  border-color:#36f29b55;
-  animation-duration:11s;
-  animation-direction:reverse
+@keyframes corePulse{
+
+    50%{
+        transform:scale(1.08);
+
+        box-shadow:
+            0 0 150px rgba(82,221,255,.25);
+    }
+
 }
 
-.core{
-  width:190px;
-  height:190px;
-  border-radius:50%;
-  background:
-    radial-gradient(
-      circle,
-      #effff8 0 3%,
-      #36f29b 8%,
-      #0c4b31 30%,
-      #020604 66%
-    );
-  box-shadow:0 0 120px #36f29b33;
-  animation:pulse 4s ease-in-out infinite
+.world-orbit{
+    position:absolute;
+
+    width:88%;
+    height:61%;
+
+    border:
+        1px solid rgba(82,221,255,.28);
+
+    border-radius:50%;
+
+    transform:
+        rotate(-10deg);
+
+    animation:
+        orbitSpin 18s linear infinite;
 }
 
-@keyframes pulse{
-  50%{
-    transform:scale(1.07);
-    box-shadow:0 0 150px #52ddff2b
-  }
+.world-orbit.two{
+    width:66%;
+    height:45%;
+
+    border-color:
+        rgba(40,239,152,.25);
+
+    animation-duration:
+        11s;
+
+    animation-direction:
+        reverse;
 }
 
-@keyframes spin{
-  to{transform:rotate(350deg)}
+@keyframes orbitSpin{
+    to{
+        transform:
+            rotate(350deg);
+    }
 }
 
-.pill{
-  position:absolute;
-  padding:11px 14px;
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:rgba(4,12,9,.7);
-  backdrop-filter:blur(16px);
-  font-size:12px;
-  box-shadow:var(--shadow)
+.world-label{
+    position:absolute;
+
+    padding:
+        12px 16px;
+
+    background:
+        rgba(3,11,8,.72);
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        17px;
+
+    backdrop-filter:
+        blur(16px);
+
+    font-family:
+        var(--display);
+
+    font-size:
+        11px;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.3);
 }
 
-.p1{
-  top:5%;
-  left:4%;
-  color:#79f5b5
+.environment-label{
+    left:0;
+    top:3%;
+    color:#71f5ad;
 }
 
-.p2{
-  top:42%;
-  right:0;
-  color:#61e0ff
+.transport-label{
+    right:0;
+    top:40%;
+    color:#62ddff;
 }
 
-.p3{
-  bottom:6%;
-  left:8%;
-  color:#ffd36b
+.building-label{
+    left:5%;
+    bottom:6%;
+    color:#ffd36b;
 }
+
+
+/* =========================================================
+   SECTION
+========================================================= */
 
 section{
-  padding:90px 6vw
+    max-width:
+        1250px;
+
+    margin:
+        0 auto;
+
+    padding:
+        90px 6vw;
 }
 
-.head{
-  max-width:850px;
-  margin-bottom:30px
+.section-label{
+    color:
+        var(--green);
+
+    font-family:
+        var(--display);
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        3px;
+
+    text-transform:
+        uppercase;
 }
 
-.head span{
-  font-size:10px;
-  color:var(--green);
-  letter-spacing:3px
+.section-title{
+    margin:
+        10px 0;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        clamp(32px,4vw,54px);
+
+    line-height:
+        1.05;
+
+    letter-spacing:
+        -2px;
 }
 
-.head h2{
-  font:700 clamp(30px,4vw,52px) "Space Grotesk";
-  margin:9px 0
+.section-description{
+    color:
+        var(--muted);
+
+    font-size:
+        15px;
+
+    max-width:
+        820px;
 }
 
-.head p{
-  color:var(--muted);
-  line-height:1.8
-}
 
-.glass{
-  background:var(--glass);
-  border:1px solid var(--line);
-  backdrop-filter:blur(18px);
-  border-radius:25px;
-  box-shadow:var(--shadow)
-}
+/* =========================================================
+   STATS
+========================================================= */
 
 .stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:14px;
 }
 
 .stat{
-  padding:24px
+    padding:
+        24px;
+
+    background:
+        var(--panel);
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        22px;
+
+    backdrop-filter:
+        blur(17px);
+
+    text-align:
+        center;
 }
 
-.stat b{
-  font:700 34px "Space Grotesk";
-  color:var(--green)
+.stat strong{
+    display:block;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        34px;
+
+    color:
+        var(--green);
 }
 
-.stat small{
-  display:block;
-  color:var(--muted);
-  margin-top:6px
+.stat span{
+    color:
+        var(--muted);
+
+    font-family:
+        var(--body);
+
+    font-size:
+        13px;
 }
 
-.grid,
-.projects{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:16px
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:16px;
+
+    margin-top:
+        30px;
 }
 
-.card,
-.project{
-  padding:24px;
-  transition:.35s
+.card{
+    padding:
+        25px;
+
+    background:
+        var(--panel);
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        24px;
+
+    backdrop-filter:
+        blur(17px);
+
+    transition:
+        .35s;
 }
 
-.card:hover,
-.project:hover{
-  transform:translateY(-6px);
-  border-color:#36f29b4d
+.card:hover{
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(40,239,152,.32);
 }
 
-.card h3,
-.project h3{
-  font-family:"Space Grotesk";
-  margin:0 0 10px
+.card h3{
+    margin:
+        0 0 10px;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        21px;
 }
 
 .card p,
-.project p,
 .card li{
-  color:#b7ccc3;
-  font-size:13px;
-  line-height:1.75
+    color:
+        #b4c9c0;
+
+    font-size:
+        14px;
+
+    line-height:
+        1.85;
 }
 
 .card ul{
-  padding-left:18px
+    padding-left:
+        19px;
 }
 
+
+/* =========================================================
+   AGENCIES
+========================================================= */
+
 .agencies{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:14px;
+
+    margin-top:
+        30px;
 }
 
 .agency{
-  padding:23px;
-  min-height:230px;
-  display:flex;
-  flex-direction:column
+    padding:
+        24px;
+
+    min-height:
+        235px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    background:
+        var(--panel);
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        23px;
+
+    backdrop-filter:
+        blur(17px);
+}
+
+.agency-icon{
+    font-size:
+        30px;
 }
 
 .agency h3{
-  font:700 25px "Space Grotesk";
-  margin:8px 0
+    font-family:
+        var(--display);
+
+    font-size:
+        24px;
+
+    margin:
+        10px 0;
 }
 
 .agency p{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.65;
-  flex:1
+    flex:
+        1;
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
 }
 
 .agency a{
-  color:var(--green);
-  font-size:11px;
-  font-weight:800
+    color:
+        var(--green);
+
+    font-family:
+        var(--display);
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
 }
 
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:16px;
+
+    margin-top:
+        30px;
+}
+
+.project{
+    padding:
+        24px;
+
+    background:
+        var(--panel);
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        24px;
+
+    backdrop-filter:
+        blur(17px);
+
+    transition:
+        .35s;
+}
+
+.project:hover{
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(40,239,152,.32);
+}
+
+.project-agency{
+    color:
+        var(--cyan);
+
+    font-family:
+        var(--display);
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        2px;
+
+    text-transform:
+        uppercase;
+}
+
+.project h3{
+    margin:
+        10px 0;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        20px;
+
+    line-height:
+        1.4;
+}
+
+.project p{
+    color:
+        #adbfba;
+
+    font-size:
+        13px;
+}
+
+.project a{
+    display:
+        inline-block;
+
+    margin-top:
+        15px;
+
+    color:
+        var(--green);
+
+    font-family:
+        var(--display);
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
 .skills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+
+    margin-top:
+        30px;
 }
 
 .skill{
-  padding:9px 12px;
-  border:1px solid var(--line);
-  border-radius:11px;
-  background:#ffffff07;
-  color:#d9eee6;
-  font-size:11px
+    padding:
+        9px 12px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        10px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:
+        #d5e9e0;
+
+    font-size:
+        12px;
 }
+
+
+/* =========================================================
+   FUTURE
+========================================================= */
 
 .future{
-  padding:45px;
-  border-radius:30px;
-  background:
-    radial-gradient(
-      circle at 80% 20%,
-      #5c43ff1c,
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 20% 30%,
-      #36f29b15,
-      transparent 30%
-    ),
-    rgba(5,15,11,.72);
-  border:1px solid var(--line)
+    padding:
+        45px;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(40,239,152,.11),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(150,90,255,.12),
+            transparent 28%
+        ),
+        rgba(5,15,10,.74);
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        30px;
+
+    backdrop-filter:
+        blur(18px);
 }
 
-.future h2{
-  font:700 clamp(34px,5vw,70px) "Space Grotesk";
-  margin:12px 0;
-  background:
-    linear-gradient(
-      90deg,
-      #74ffd0,
-      #fff,
-      #6dc7ff,
-      #a888ff
-    );
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent
+.future-title{
+    margin-top:
+        10px;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        clamp(35px,5vw,70px);
+
+    background:
+        linear-gradient(
+            90deg,
+            #6dffd0,
+            #fff,
+            #63c9ff,
+            #a888ff
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
 }
 
 .future-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin-top:30px
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:12px;
+
+    margin-top:
+        30px;
 }
 
 .future-item{
-  padding:20px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:#ffffff06
+    padding:
+        20px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        19px;
+
+    background:
+        rgba(255,255,255,.035);
 }
 
 .future-item small{
-  color:var(--green);
-  letter-spacing:2px
+    color:
+        var(--green);
+
+    font-family:
+        var(--display);
+
+    letter-spacing:
+        2px;
 }
 
 .future-item h3{
-  font:600 17px "Space Grotesk";
-  margin:10px 0
+    font-family:
+        var(--display);
+
+    font-size:
+        18px;
 }
 
 .future-item p{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.7
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
 }
 
+
+/* =========================================================
+   MOOD BAR
+========================================================= */
+
 .moodbar{
-  position:fixed;
-  z-index:60;
-  bottom:15px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  justify-content:center;
-  width:min(1000px,94%)
+    position:fixed;
+
+    left:50%;
+    bottom:15px;
+
+    transform:
+        translateX(-50%);
+
+    z-index:
+        80;
+
+    width:
+        min(1060px,94%);
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:7px;
 }
 
 .mood{
-  padding:9px 12px;
-  border-radius:13px;
-  border:1px solid #ffffff1f;
-  background:#020705d9;
-  color:#effff8;
-  backdrop-filter:blur(15px);
-  cursor:pointer;
-  font-size:11px
+    padding:
+        9px 12px;
+
+    background:
+        rgba(2,6,4,.82);
+
+    border:
+        1px solid rgba(255,255,255,.17);
+
+    color:
+        #edfff7;
+
+    border-radius:
+        13px;
+
+    backdrop-filter:
+        blur(16px);
+
+    cursor:
+        pointer;
+
+    font-family:
+        var(--display);
+
+    font-size:
+        11px;
+
+    transition:
+        .25s;
 }
 
 .mood:hover{
-  border-color:var(--green);
-  transform:translateY(-2px)
-}
+    border-color:
+        var(--green);
 
-.scene{
-  position:fixed;
-  inset:0;
-  z-index:90;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  background:#000a;
-  backdrop-filter:blur(4px)
-}
-
-.scene.open{
-  display:flex
-}
-
-.scene-bg{
-  position:absolute;
-  inset:0;
-  background:center/cover no-repeat;
-  transform:scale(1.02);
-  animation:sceneZoom 14s ease-in-out infinite alternate
-}
-
-.scene-shade{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    180deg,
-    #0002,
-    #000b
-  )
-}
-
-@keyframes sceneZoom{
-  to{
     transform:
-      scale(1.1)
-      translate3d(1%,-1%,0)
-  }
+        translateY(-2px);
 }
 
-.scene-content{
-  position:relative;
-  text-align:center;
-  z-index:2;
-  max-width:900px;
-  padding:30px
+
+/* =========================================================
+   LIVE MOOD SCREEN
+========================================================= */
+
+.live-screen{
+    position:fixed;
+
+    inset:0;
+
+    z-index:
+        2000;
+
+    display:none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        rgba(0,0,0,.48);
+
+    backdrop-filter:
+        blur(7px);
 }
 
-.scene-content .icon{
-  font-size:58px
+.live-screen.active{
+    display:flex;
 }
 
-.scene-content h2{
-  font:700 clamp(42px,7vw,92px) "Space Grotesk";
-  margin:8px 0;
-  text-shadow:0 10px 50px #000
+.live-image{
+    position:absolute;
+    inset:0;
+
+    background:
+        center/cover
+        no-repeat;
+
+    transform:
+        scale(1.04);
+
+    animation:
+        liveZoom 16s ease-in-out
+        infinite alternate;
 }
 
-.scene-content p{
-  color:#e2eee8;
-  font-size:15px
+@keyframes liveZoom{
+
+    to{
+        transform:
+            scale(1.12)
+            translate3d(1%,-1%,0);
+    }
+
 }
+
+.live-shade{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.08),
+            rgba(0,0,0,.82)
+        );
+}
+
+.live-content{
+    position:relative;
+    z-index:3;
+
+    text-align:center;
+
+    max-width:
+        850px;
+
+    padding:
+        30px;
+}
+
+.live-icon{
+    font-size:
+        65px;
+
+    filter:
+        drop-shadow(
+            0 0 25px rgba(255,255,255,.4)
+        );
+}
+
+.live-content h2{
+    font-family:
+        var(--display);
+
+    font-size:
+        clamp(44px,7vw,92px);
+
+    line-height:
+        1;
+
+    margin:
+        10px 0;
+
+    text-shadow:
+        0 10px 50px #000;
+}
+
+.live-content p{
+    color:
+        #e8f3ef;
+
+    font-size:
+        16px;
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================================================
+   CANVAS FX
+========================================================= */
+
+#sceneCanvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:2;
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
-  padding:40px 6vw;
-  border-top:1px solid var(--line);
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  color:#91aaa0;
-  font-size:11px
+    padding:
+        40px 6vw;
+
+    border-top:
+        1px solid var(--line);
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    color:
+        #8ea69b;
+
+    font-size:
+        12px;
 }
 
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
 .reveal{
-  opacity:0;
-  transform:translateY(25px);
-  transition:1s
+    opacity:0;
+    transform:
+        translateY(30px);
+
+    transition:
+        1s ease;
 }
 
 .reveal.show{
-  opacity:1;
-  transform:none
+    opacity:1;
+    transform:
+        none;
 }
 
-@media(max-width:900px){
 
-  nav{
-    display:none
-  }
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-  .hero{
-    grid-template-columns:1fr
-  }
+@media(max-width:950px){
 
-  .hero-visual{
-    height:320px
-  }
+    nav{
+        display:none;
+    }
 
-  .stats,
-  .agencies,
-  .future-grid{
-    grid-template-columns:repeat(2,1fr)
-  }
+    .hero{
+        grid-template-columns:
+            1fr;
+    }
 
-  .projects,
-  .grid{
-    grid-template-columns:1fr
-  }
+    .hero-visual{
+        height:
+            340px;
+    }
+
+    .stats,
+    .agencies,
+    .future-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .grid,
+    .projects{
+        grid-template-columns:
+            1fr;
+    }
 
 }
 
 @media(max-width:600px){
 
-  section{
-    padding:70px 5vw
-  }
+    section{
+        padding:
+            70px 5vw;
+    }
 
-  .stats,
-  .agencies,
-  .future-grid{
-    grid-template-columns:1fr
-  }
+    .hero{
+        padding:
+            105px 5vw 60px;
+    }
 
-  .hero{
-    padding:110px 5vw 60px
-  }
+    .hero h1{
+        letter-spacing:
+            -2px;
+    }
 
-  .hero h1{
-    letter-spacing:-2px
-  }
+    .stats,
+    .agencies,
+    .future-grid{
+        grid-template-columns:
+            1fr;
+    }
 
-  .hero-visual{
-    transform:scale(.85)
-  }
+    .hero-visual{
+        transform:
+            scale(.83);
+    }
 
-  .moodbar{
-    bottom:8px
-  }
+    .moodbar{
+        bottom:
+            7px;
+    }
 
-  .mood{
-    padding:8px
-  }
+    .mood{
+        font-size:
+            9px;
 
-  .future{
-    padding:30px 20px
-  }
+        padding:
+            8px;
+    }
 
-  footer{
-    display:block
-  }
+    .future{
+        padding:
+            30px 20px;
+    }
 
-  footer div+div{
-    margin-top:12px
-  }
+    footer{
+        display:block;
+    }
+
+    footer div+div{
+        margin-top:
+            15px;
+    }
 
 }
+
 </style>
+
 </head>
+
 
 <body>
 
-<div id="ambient">
 
-  <div class="photo" id="photo"></div>
+<!-- =========================================================
+     BACKGROUND
+========================================================= -->
 
-  <canvas id="ambientCanvas"></canvas>
+<div id="mainBackground">
 
-  <div class="veil"></div>
+    <img id="ambientImage"
+         alt="Live environment">
 
-  <div id="vignette"></div>
+    <canvas id="ambientCanvas"></canvas>
+
+    <div class="background-overlay"></div>
+
+    <div class="vignette"></div>
 
 </div>
+
 
 <div id="stars"></div>
 
 
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
 <header>
 
-  <a class="brand" href="#home">
+    <a class="brand" href="#home">
 
-    <span class="flag">🇧🇩</span>
+        <span class="brand-flag">
+            🇧🇩
+        </span>
 
-    <span>
+        <span class="brand-name">
 
-      <strong>MD. NAIMUR RAHMAN SAAD</strong>
+            <strong>
 
-      <small>
-        CIVIL ENGINEER • CONSTRUCTION • SUSTAINABLE FUTURE
-      </small>
+                <span class="name-green">MD.</span>
 
-    </span>
+                <span class="name-red">
+                    NAIMUR RAHMAN
+                </span>
 
-  </a>
+                <span class="name-green">
+                    SAAD
+                </span>
+
+            </strong>
+
+            <small>
+                CIVIL ENGINEER • CONSTRUCTION • SUSTAINABLE FUTURE
+            </small>
+
+        </span>
+
+    </a>
 
 
-  <nav>
+    <nav>
 
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#engineering">Engineering</a>
-    <a href="#future">Future</a>
-    <a href="#contact">Contact</a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#engineering">Engineering</a>
+        <a href="#future">Future</a>
+        <a href="#contact">Contact</a>
 
-  </nav>
+    </nav>
+
+
+    <!-- LANGUAGE -->
+
+    <div class="language-box">
+
+        <button class="language-btn active"
+                id="enBtn"
+                onclick="switchLanguage('en')">
+            EN
+        </button>
+
+        <button class="language-btn"
+                id="bnBtn"
+                onclick="switchLanguage('bn')">
+            বাংলা
+        </button>
+
+    </div>
 
 </header>
 
 
+<!-- =========================================================
+     HERO
+========================================================= -->
+
 <section class="hero" id="home">
 
-  <div>
+    <div>
 
-    <div class="ey">
-      Civil Engineering • Construction • Infrastructure
-    </div>
+        <div class="hero-kicker"
+             data-en="Civil Engineering • Construction • Infrastructure"
+             data-bn="সিভিল ইঞ্জিনিয়ারিং • নির্মাণ • অবকাঠামো">
 
+            Civil Engineering • Construction • Infrastructure
 
-    <h1>
-
-      <span class="md">MD. NAIMUR</span>
-
-      <br>
-
-      <span class="rahman">RAHMAN</span>
-
-      <span class="saad">SAAD</span>
-
-    </h1>
+        </div>
 
 
-    <h2>
+        <h1>
 
-      Civil Engineer |
-      Construction Engineering & Project Management
+            <span class="name-green">
+                MD. NAIMUR
+            </span>
 
-      <br>
+            <br>
 
-      Transportation Engineering |
-      Environmental Engineering
+            <span class="name-red">
+                RAHMAN
+            </span>
 
-    </h2>
+            <span class="name-green">
+                SAAD
+            </span>
 
-
-    <div class="mission">
-
-      A <b>Dream</b> Becomes <b>Reality</b>
-
-      <br>
-
-      When <b>Vision</b> Becomes <b>Mission.</b>
-
-    </div>
+        </h1>
 
 
-    <div class="actions">
+        <div class="hero-subtitle"
+             data-en="Civil Engineer | Construction Engineering & Project Management | Transportation Engineering | Environmental Engineering"
+             data-bn="সিভিল ইঞ্জিনিয়ার | কনস্ট্রাকশন ইঞ্জিনিয়ারিং ও প্রজেক্ট ম্যানেজমেন্ট | ট্রান্সপোর্টেশন ইঞ্জিনিয়ারিং | এনভায়রনমেন্টাল ইঞ্জিনিয়ারিং">
 
-      <a class="btn primary"
-         href="#projects">
-         Explore My Journey →
-      </a>
+            Civil Engineer |
+            Construction Engineering & Project Management |
+            Transportation Engineering |
+            Environmental Engineering
 
-      <a class="btn"
-         href="#experience">
-         View Experience
-      </a>
-
-      <a class="btn"
-         href="mailto:naimurrahmansaad0@gmail.com">
-         Contact Me
-      </a>
-
-    </div>
-
-  </div>
+        </div>
 
 
-  <div class="hero-visual">
+        <div class="mission-line">
 
-    <div class="orbit"></div>
+            A <strong>Dream</strong> Becomes
+            <strong>Reality</strong>
 
-    <div class="orbit orbit2"></div>
+            <br>
 
-    <div class="core"></div>
+            When <strong>Vision</strong> Becomes
+            <strong>Mission.</strong>
 
-
-    <div class="pill p1">
-
-      🌿 Environment
-
-      <br>
-
-      <small>
-        Sustainable Infrastructure
-      </small>
-
-    </div>
+        </div>
 
 
-    <div class="pill p2">
+        <p class="hero-description"
+           data-en="Building practical experience today while preparing for a smarter, safer and more sustainable infrastructure future."
+           data-bn="আজকের বাস্তব অভিজ্ঞতাকে ভিত্তি করে আরও স্মার্ট, নিরাপদ ও টেকসই অবকাঠামোর ভবিষ্যতের জন্য প্রস্তুতি নেওয়া।">
 
-      🚆 Transportation
+            Building practical experience today while preparing
+            for a smarter, safer and more sustainable infrastructure future.
 
-      <br>
+        </p>
 
-      <small>
-        Smart Mobility
-      </small>
+
+        <div class="hero-actions">
+
+            <a class="btn btn-primary"
+               href="#projects"
+               data-en="Explore My Journey →"
+               data-bn="আমার যাত্রা দেখুন →">
+
+                Explore My Journey →
+
+            </a>
+
+            <a class="btn"
+               href="#experience"
+               data-en="View Experience"
+               data-bn="অভিজ্ঞতা দেখুন">
+
+                View Experience
+
+            </a>
+
+            <a class="btn"
+               href="mailto:naimurrahmansaad0@gmail.com"
+               data-en="Contact Me"
+               data-bn="যোগাযোগ করুন">
+
+                Contact Me
+
+            </a>
+
+        </div>
 
     </div>
 
 
-    <div class="pill p3">
+    <!-- ENGINEERING WORLD -->
 
-      🏗️ Building
+    <div class="engineering-world">
 
-      <br>
+        <div class="world-orbit"></div>
 
-      <small>
-        Construction Management
-      </small>
+        <div class="world-orbit two"></div>
+
+        <div class="engineering-core"></div>
+
+
+        <div class="world-label environment-label">
+
+            🌿 Environment
+
+            <br>
+
+            <small>
+                Sustainable Infrastructure
+            </small>
+
+        </div>
+
+
+        <div class="world-label transport-label">
+
+            🚆 Transportation
+
+            <br>
+
+            <small>
+                Smart Mobility
+            </small>
+
+        </div>
+
+
+        <div class="world-label building-label">
+
+            🏗️ Building
+
+            <br>
+
+            <small>
+                Construction Management
+            </small>
+
+        </div>
 
     </div>
-
-  </div>
 
 </section>
 
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
 
 <section id="about" class="reveal">
 
-  <div class="head">
+    <div class="section-label">
+        01 / PROFILE
+    </div>
 
-    <span>01 / PROFILE</span>
+    <h2 class="section-title"
+        data-en="Engineering with Purpose."
+        data-bn="উদ্দেশ্যনির্ভর ইঞ্জিনিয়ারিং।">
 
-    <h2>
-      Engineering with Purpose.
+        Engineering with Purpose.
+
     </h2>
 
-    <p>
+    <p class="section-description"
+       data-en="Civil Engineering graduate with 6+ years of practical construction experience through M/S. Mahima Steel & Cong., progressing from Trainee Site Engineer to Site Engineer."
+       data-bn="M/S. Mahima Steel & Cong.-এর মাধ্যমে ৬+ বছরের বাস্তব নির্মাণ অভিজ্ঞতাসম্পন্ন সিভিল ইঞ্জিনিয়ারিং গ্র্যাজুয়েট; Trainee Site Engineer থেকে Site Engineer হিসেবে অগ্রসর হয়েছেন।">
 
-      Civil Engineering graduate with
-      <b>6+ years of practical construction experience</b>
-      through M/S. Mahima Steel & Cong.,
-      progressing from Trainee Site Engineer to Site Engineer.
-
-      Experienced in site supervision, QA/QC,
-      construction material testing, reinforcement inspection,
-      BBS review, quantity verification, contractor billing,
-      material reconciliation, project coordination
-      and construction documentation.
+        Civil Engineering graduate with 6+ years of practical
+        construction experience through M/S. Mahima Steel & Cong.,
+        progressing from Trainee Site Engineer to Site Engineer.
 
     </p>
 
-  </div>
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <strong>6+</strong>
+
+            <span>
+                Years Experience
+            </span>
+
+        </div>
 
 
-  <div class="stats">
+        <div class="stat">
 
-    <div class="stat glass">
-      <b>6+</b>
-      <small>Years Experience</small>
+            <strong>11+</strong>
+
+            <span>
+                Civil Projects
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>25.7 Cr</strong>
+
+            <span>
+                BDT Project Exposure
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>4</strong>
+
+            <span>
+                Government Agencies
+            </span>
+
+        </div>
+
     </div>
-
-    <div class="stat glass">
-      <b>11+</b>
-      <small>Civil Projects</small>
-    </div>
-
-    <div class="stat glass">
-      <b>25.7 Cr</b>
-      <small>BDT Project Exposure</small>
-    </div>
-
-    <div class="stat glass">
-      <b>4</b>
-      <small>Government Agencies</small>
-    </div>
-
-  </div>
 
 </section>
 
 
-<section id="engineering" class="reveal">
-
-  <div class="head">
-
-    <span>02 / ENGINEERING FOCUS</span>
-
-    <h2>
-      Build • Sustain • Connect
-    </h2>
-
-    <p>
-
-      Construction Management,
-      Environmental Engineering and
-      Transportation Engineering —
-      connected through a sustainable
-      infrastructure mindset.
-
-    </p>
-
-  </div>
-
-
-  <div class="grid">
-
-    <div class="card glass">
-
-      <h3>
-        🏗️ Construction Management
-      </h3>
-
-      <p>
-
-        Construction planning & scheduling,
-        QA/QC, quantity verification,
-        material management,
-        risk, coordination and project delivery.
-
-      </p>
-
-      <div class="skills">
-
-        <span class="skill">Planning</span>
-        <span class="skill">QA/QC</span>
-        <span class="skill">P6</span>
-
-      </div>
-
-    </div>
-
-
-    <div class="card glass">
-
-      <h3>
-        🌱 Environmental Engineering
-      </h3>
-
-      <p>
-
-        Sustainable infrastructure,
-        environmental management,
-        water & wastewater systems,
-        pollution control and resilience.
-
-      </p>
-
-      <div class="skills">
-
-        <span class="skill">Sustainability</span>
-        <span class="skill">Water</span>
-        <span class="skill">Green Infrastructure</span>
-
-      </div>
-
-    </div>
-
-
-    <div class="card glass">
-
-      <h3>
-        🚆 Transportation Engineering
-      </h3>
-
-      <p>
-
-        Roads, pavement rehabilitation,
-        transportation planning,
-        traffic engineering and
-        sustainable mobility.
-
-      </p>
-
-      <div class="skills">
-
-        <span class="skill">Pavement</span>
-        <span class="skill">Traffic</span>
-        <span class="skill">Mobility</span>
-
-      </div>
-
-    </div>
-
-
-    <div class="card glass">
-
-      <h3>
-        🌍 One Future
-      </h3>
-
-      <p>
-
-        Bring construction,
-        transportation and environmental
-        thinking together to create safer,
-        smarter and more sustainable
-        infrastructure.
-
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section id="experience" class="reveal">
-
-  <div class="head">
-
-    <span>03 / EXPERIENCE</span>
-
-    <h2>
-      M/S. MAHIMA STEEL & CONG.
-    </h2>
-
-    <p>
-      Civil Works Contractor • Sirajganj, Bangladesh
-    </p>
-
-  </div>
-
-
-  <div class="grid">
-
-    <div class="card glass">
-
-      <h3>
-        Site Engineer | 2024 – Present
-      </h3>
-
-      <p>
-
-        Supervision of road and civil infrastructure construction,
-        earthwork, pavement, RCC, reinforcement, formwork,
-        casting, curing, QA/QC, measurement,
-        billing and coordination.
-
-      </p>
-
-    </div>
-
-
-    <div class="card glass">
-
-      <h3>
-        Trainee Site Engineer | 2020 – 2023
-      </h3>
-
-      <p>
-
-        Assisted senior engineers with execution,
-        quality control, materials testing,
-        progress monitoring and project documentation.
-
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section id="projects" class="reveal">
-
-  <div class="head">
-
-    <span>04 / PROJECT PORTFOLIO</span>
-
-    <h2>
-      11+ Government Projects.
-    </h2>
-
-    <p>
-      Selected civil infrastructure experience
-      through M/S. Mahima Steel & Cong.
-    </p>
-
-  </div>
-
-
-  <div class="projects">
-
-
-    <article class="project glass">
-
-      <div class="ey">
-        LGED • KURIGRAM
-      </div>
-
-      <h3>
-        Naykerhat Rural Market Development (NOBIDEP)
-      </h3>
-
-      <p>
-        Tender 107138 • WNOBI-Kur-RM-147 (C)
-      </p>
-
-      <a href="https://www.lged.gov.bd/"
-         target="_blank">
-         LGED ↗
-      </a>
-
-    </article>
-
-
-    <article class="project glass">
-
-      <div class="ey">
-        LGED • SIRAJGANJ
-      </div>
-
-      <h3>
-        Bagbati–Kazipur C&B Ghorachora Monsur Ali Road
-        to Sarkar Bari Jame Mosque RCC Road
-      </h3>
-
-      <p>
-        Tender 810008 •
-        ADP/SAD/SER/2022-23/06
-      </p>
-
-      <a href="https://www.lged.gov.bd/"
-         target="_blank">
-         LGED ↗
-      </a>
-
-    </article>
-
-
-    <article class="project glass">
-
-      <div class="ey">
-        LGED • SIRAJGANJ
-      </div>
-
-      <h3>
-        Char Someshpur Central Mosque
-        Washblock & Ojukhana
-      </h3>
-
-      <p>
-        Tender 757953 • GSID-2/SRJ/DW-04
-      </p>
-
-      <a href="https://www.lged.gov.bd/"
-         target="_blank">
-         LGED ↗
-      </a>
-
-    </article>
-
-
-    <article class="project glass">
-
-      <div class="ey">
-        LGED • SIRAJGANJ
-      </div>
-
-      <h3>
-        Kaelgati Mosque to Kalumondol Bari
-        RCC Road Development
-      </h3>
-
-      <p>
-        Tender 810013 • UDF/SAD/SER/2022-23
-      </p>
-
-      <a href="https://www.lged.gov.bd/"
-         target="_blank">
-         LGED ↗
-      </a>
-
-    </article>
-
-
-    <article class="project glass">
-
-      <div class="ey">
-        LGED • SIRAJGANJ
-      </div>
-
-      <h3>
-        Tamai RHD (Bashtola) to Char Tengrail
-        Road Improvement
-      </h3>
-
-      <p>
-        700 m • ~BDT 8.11 Crore •
-        LGED/XEN/Siraj/2017/1214
-      </p>
-
-      <a href="https://www.lged.gov.bd/"
-         target="_blank">
-         LGED ↗
-      </a>
-
-    </article>
-
-
-    <article class="project glass">
-
-      <div class="ey">
-        PWD • SIRAJGANJ
-      </div>
-
-      <h3>
-        07 RAB Complex Project (RAB-12),
-        Hatikumrul
-      </h3>
-
-      <p>
-        Package 02(U)(OTM)/2015-2016
-      </p>
-
-      <a href="https://pwd.gov.bd/"
-         target="_blank">
-         PWD ↗
-      </a>
-
-    </article>
-
-
-    <article class="project glass">
-
-      <div class="ey">
-        LGED
-      </div>
-
-      <h3>
-        Kuthi Satbaria UZR to Khas Satbaria
-        Utterpara Road Improvement & Link Road
-      </h3>
-
-      <p>
-        805 m • ~BDT 1.68 Crore •
-        Tender 599746 • IRIDP-3/SRJ/DW-35
-      </p>
-
-      <a href="https://www.lged.gov.bd/"
-         target="_blank">
-         LGED ↗
-      </a>
-
-    </article>
-
-
-    <article class="project glass">
-
-      <div class="ey">
-        LGED • PABNA
-      </div>
-
-      <h3>
-        Masumdia UP Office to Dear Bramndi
-        Hat Road Rehabilitation
-      </h3>
-
-      <p>
-        1,240 m • ID 615468 • GOBM/2021-22/W-33
-      </p>
-
-      <a href="https://www.lged.gov.bd/"
-         target="_blank">
-         LGED ↗
-      </a>
-
-    </article>
-
-
-    <article class="project glass">
-
-      <div class="ey">
-        BWDB • SIRAJGANJ
-      </div>
-
-      <h3>
-        Emergency Repair & Protection Work
-        at Betil Spur-1, Belkuchi
-      </h3>
-
-      <p>
-        Tender 535754 • L/NDR/08/2020-2021
-      </p>
-
-      <a href="https://www.bwdb.gov.bd/"
-         target="_blank">
-         BWDB ↗
-      </a>
-
-    </article>
-
-
-    <article class="project glass">
-
-      <div class="ey">
-        BWDB • SIRAJGANJ
-      </div>
-
-      <h3>
-        Temporary Emergency Protection Work
-      </h3>
-
-      <p>
-        Package I-NDR-05/2021 •
-        Sirajganj O&M Division
-      </p>
-
-      <a href="https://www.bwdb.gov.bd/"
-         target="_blank">
-         BWDB ↗
-      </a>
-
-    </article>
-
-
-    <article class="project glass">
-
-      <div class="ey">
-        RHD • SIRAJGANJ
-      </div>
-
-      <h3>
-        Repair of Damaged Pavement by HBB Work
-        at 9th Km of Tarash–Hamkuria (Z-6032) Road
-      </h3>
-
-      <p>
-        Tender 621337 LTM •
-        12/e-GP/eeshid/2021-2022
-      </p>
-
-      <a href="https://rhd.gov.bd/"
-         target="_blank">
-         RHD ↗
-      </a>
-
-    </article>
-
-
-  </div>
-
-</section>
-
+<!-- =========================================================
+     GOVERNMENT AGENCIES
+========================================================= -->
 
 <section class="reveal">
 
-  <div class="head">
+    <div class="section-label">
+        02 / GOVERNMENT EXPERIENCE
+    </div>
 
-    <span>05 / EDUCATION</span>
+    <h2 class="section-title"
+        data-en="Government Engineering Agencies."
+        data-bn="সরকারি প্রকৌশল সংস্থা।">
 
-    <h2>
-      Academic Foundation.
+        Government Engineering Agencies.
+
     </h2>
 
-  </div>
+
+    <div class="agencies">
 
 
-  <div class="grid">
+        <article class="agency">
+
+            <div class="agency-icon">
+                🏗️
+            </div>
+
+            <h3>LGED</h3>
+
+            <p>
+                Local Government Engineering Department —
+                rural roads, RCC roads, market development,
+                rehabilitation and local infrastructure.
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                Official Website ↗
+            </a>
+
+        </article>
 
 
-    <div class="card glass">
+        <article class="agency">
 
-      <h3>
-        Daffodil International University
-      </h3>
+            <div class="agency-icon">
+                🏢
+            </div>
 
-      <p>
+            <h3>PWD</h3>
 
-        BSc in Civil Engineering •
-        January 2019 – May 2026
+            <p>
+                Public Works Department —
+                building construction, structural/civil works,
+                measurement and site coordination.
+            </p>
 
-        <br>
+            <a href="https://pwd.gov.bd/"
+               target="_blank">
+                Official Website ↗
+            </a>
 
-        CGPA 2.57/4.00
+        </article>
 
-        <br>
 
-        Medium of Instruction: English
+        <article class="agency">
 
-      </p>
+            <div class="agency-icon">
+                🌊
+            </div>
 
-      <p>
+            <h3>BWDB</h3>
 
-        Thesis:
-        Investigation on the Causes of Cracks in RCC Structures
-        and Possible Preventive Measures
+            <p>
+                Bangladesh Water Development Board —
+                emergency protection, riverbank protection
+                and water-resource related works.
+            </p>
 
-      </p>
+            <a href="https://www.bwdb.gov.bd/"
+               target="_blank">
+                Official Website ↗
+            </a>
 
-      <a href="https://daffodilvarsity.edu.bd/"
-         target="_blank"
-         style="color:var(--green)">
-         University Website ↗
-      </a>
+        </article>
 
-      <br><br>
 
-      <a href="https://faculty.daffodilvarsity.edu.bd/teachers/ce"
-         target="_blank"
-         style="color:var(--green)">
-         Civil Engineering Department ↗
-      </a>
+        <article class="agency">
+
+            <div class="agency-icon">
+                🛣️
+            </div>
+
+            <h3>RHD</h3>
+
+            <p>
+                Roads and Highways Department —
+                road rehabilitation, pavement repair
+                and transportation infrastructure.
+            </p>
+
+            <a href="https://rhd.gov.bd/"
+               target="_blank">
+                Official Website ↗
+            </a>
+
+        </article>
+
 
     </div>
-
-
-    <div class="card glass">
-
-      <h3>
-        Sirajganj Collectorate School & College
-      </h3>
-
-      <p>
-
-        HSC, Science • 2018
-
-        <br>
-
-        GPA 3.17/5.00
-
-      </p>
-
-    </div>
-
-  </div>
 
 </section>
 
+
+<!-- =========================================================
+     EXPERIENCE
+========================================================= -->
+
+<section id="experience" class="reveal">
+
+    <div class="section-label">
+        03 / EXPERIENCE
+    </div>
+
+    <h2 class="section-title">
+        M/S. MAHIMA STEEL & CONG.
+    </h2>
+
+    <p class="section-description">
+        Civil Works Contractor • Sirajganj, Bangladesh
+    </p>
+
+
+    <div class="grid">
+
+
+        <article class="card">
+
+            <h3>
+                Site Engineer | 2024 – Present
+            </h3>
+
+            <p>
+
+                Supervision of road and civil infrastructure construction,
+                earthwork, pavement, RCC, reinforcement, formwork,
+                casting, curing, QA/QC, measurement, billing and coordination.
+
+            </p>
+
+        </article>
+
+
+        <article class="card">
+
+            <h3>
+                Trainee Site Engineer | 2020 – 2023
+            </h3>
+
+            <p>
+
+                Assisted senior engineers with execution,
+                quality control, materials testing,
+                progress monitoring and project documentation.
+
+            </p>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
+
+<section id="projects" class="reveal">
+
+    <div class="section-label">
+        04 / PROJECT PORTFOLIO
+    </div>
+
+    <h2 class="section-title"
+        data-en="11+ Government Projects."
+        data-bn="১১+ সরকারি প্রকল্প।">
+
+        11+ Government Projects.
+
+    </h2>
+
+
+    <div class="projects">
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                LGED • KURIGRAM
+            </div>
+
+            <h3>
+                Naykerhat Rural Market Development (NOBIDEP)
+            </h3>
+
+            <p>
+                Tender 107138 • WNOBI-Kur-RM-147 (C)
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                LGED ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                LGED • SIRAJGANJ
+            </div>
+
+            <h3>
+                Bagbati–Kazipur C&B Ghorachora Monsur Ali
+                Road to Sarkar Bari Jame Mosque RCC Road
+            </h3>
+
+            <p>
+                Tender 810008 •
+                ADP/SAD/SER/2022-23/06
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                LGED ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                LGED • SIRAJGANJ
+            </div>
+
+            <h3>
+                Char Someshpur Central Mosque
+                Washblock & Ojukhana
+            </h3>
+
+            <p>
+                Tender 757953 • GSID-2/SRJ/DW-04
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                LGED ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                LGED • SIRAJGANJ
+            </div>
+
+            <h3>
+                Kaelgati Mosque to Kalumondol Bari
+                RCC Road Development
+            </h3>
+
+            <p>
+                Tender 810013 • UDF/SAD/SER/2022-23
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                LGED ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                LGED • SIRAJGANJ
+            </div>
+
+            <h3>
+                Tamai RHD (Bashtola) to Char Tengrail
+                Road Improvement
+            </h3>
+
+            <p>
+                700 m • ~BDT 8.11 Crore •
+                LGED/XEN/Siraj/2017/1214
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                LGED ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                PWD • SIRAJGANJ
+            </div>
+
+            <h3>
+                07 RAB Complex Project (RAB-12),
+                Hatikumrul
+            </h3>
+
+            <p>
+                Package 02(U)(OTM)/2015-2016
+            </p>
+
+            <a href="https://pwd.gov.bd/"
+               target="_blank">
+                PWD ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                LGED
+            </div>
+
+            <h3>
+                Kuthi Satbaria UZR to Khas Satbaria
+                Utterpara Road Improvement & Link Road
+            </h3>
+
+            <p>
+                805 m • ~BDT 1.68 Crore • Tender 599746
+                • IRIDP-3/SRJ/DW-35
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                LGED ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                LGED • PABNA
+            </div>
+
+            <h3>
+                Masumdia UP Office to Dear Bramndi
+                Hat Road Rehabilitation
+            </h3>
+
+            <p>
+                1,240 m • ID 615468 • GOBM/2021-22/W-33
+            </p>
+
+            <a href="https://www.lged.gov.bd/"
+               target="_blank">
+                LGED ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                BWDB • SIRAJGANJ
+            </div>
+
+            <h3>
+                Emergency Repair & Protection Work
+                at Betil Spur-1, Belkuchi
+            </h3>
+
+            <p>
+                Tender 535754 • L/NDR/08/2020-2021
+            </p>
+
+            <a href="https://www.bwdb.gov.bd/"
+               target="_blank">
+                BWDB ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                BWDB • SIRAJGANJ
+            </div>
+
+            <h3>
+                Temporary Emergency Protection Work
+            </h3>
+
+            <p>
+                Package I-NDR-05/2021 •
+                Sirajganj O&M Division
+            </p>
+
+            <a href="https://www.bwdb.gov.bd/"
+               target="_blank">
+                BWDB ↗
+            </a>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-agency">
+                RHD • SIRAJGANJ
+            </div>
+
+            <h3>
+                Repair of Damaged Pavement by HBB Work
+                at 9th Km of Tarash–Hamkuria (Z-6032) Road
+            </h3>
+
+            <p>
+                Tender 621337 LTM •
+                12/e-GP/eeshid/2021-2022
+            </p>
+
+            <a href="https://rhd.gov.bd/"
+               target="_blank">
+                RHD ↗
+            </a>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EDUCATION
+========================================================= -->
+
+<section class="reveal">
+
+    <div class="section-label">
+        05 / EDUCATION
+    </div>
+
+    <h2 class="section-title"
+        data-en="Academic Foundation."
+        data-bn="শিক্ষাগত ভিত্তি।">
+
+        Academic Foundation.
+
+    </h2>
+
+
+    <div class="grid">
+
+
+        <article class="card">
+
+            <h3>
+                Daffodil International University
+            </h3>
+
+            <p>
+
+                BSc in Civil Engineering •
+                January 2019 – May 2026
+
+                <br>
+
+                CGPA: 2.57 / 4.00
+
+                <br>
+
+                Medium of Instruction: English
+
+            </p>
+
+
+            <p>
+
+                Thesis:
+                Investigation on the Causes of Cracks
+                in RCC Structures and Possible Preventive Measures
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a class="btn"
+                   href="https://daffodilvarsity.edu.bd/"
+                   target="_blank">
+
+                    University Website ↗
+
+                </a>
+
+
+                <a class="btn"
+                   href="https://faculty.daffodilvarsity.edu.bd/teachers/ce"
+                   target="_blank">
+
+                    Civil Engineering ↗
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <h3>
+                Sirajganj Collectorate School & College
+            </h3>
+
+            <p>
+
+                Higher Secondary Certificate (HSC),
+                Science • 2018
+
+                <br>
+
+                GPA: 3.17 / 5.00
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a class="btn"
+                   href="https://scsc.edu.bd/"
+                   target="_blank">
+
+                    Official Website ↗
+
+                </a>
+
+
+                <a class="btn"
+                   href="https://english.scsc.edu.bd/"
+                   target="_blank">
+
+                    English Version ↗
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SKILLS
+========================================================= -->
 
 <section id="skills" class="reveal">
 
-  <div class="head">
+    <div class="section-label">
+        06 / TECHNICAL CAPABILITY
+    </div>
 
-    <span>
-      06 / TECHNICAL CAPABILITY
-    </span>
-
-    <h2>
-      Tools, Testing & Execution.
+    <h2 class="section-title">
+        Tools, Testing & Execution.
     </h2>
 
-  </div>
 
+    <div class="skills">
 
-  <div class="skills">
+        <span class="skill">Site Supervision</span>
+        <span class="skill">RCC Construction</span>
+        <span class="skill">Concrete Casting</span>
+        <span class="skill">Reinforcement Inspection</span>
+        <span class="skill">Cover Block Inspection</span>
+        <span class="skill">BBS Review</span>
+        <span class="skill">Quantity Verification</span>
+        <span class="skill">Contractor Billing</span>
+        <span class="skill">Material Reconciliation</span>
+        <span class="skill">Slump Testing</span>
+        <span class="skill">Concrete Cube Sampling</span>
+        <span class="skill">Sand Field-Density</span>
+        <span class="skill">Bentonite Slurry</span>
+        <span class="skill">Brick Testing</span>
+        <span class="skill">AutoCAD 2D</span>
+        <span class="skill">ETABS</span>
+        <span class="skill">Primavera P6</span>
+        <span class="skill">Revit</span>
+        <span class="skill">MS Excel</span>
+        <span class="skill">MS Word</span>
+        <span class="skill">PowerPoint</span>
 
-    <span class="skill">Site Supervision</span>
-    <span class="skill">RCC Construction</span>
-    <span class="skill">Concrete Casting</span>
-    <span class="skill">Reinforcement Inspection</span>
-    <span class="skill">Cover Block Inspection</span>
-    <span class="skill">BBS Review</span>
-    <span class="skill">Quantity Verification</span>
-    <span class="skill">Contractor Billing</span>
-    <span class="skill">Material Reconciliation</span>
-    <span class="skill">Slump Testing</span>
-    <span class="skill">Concrete Cube Sampling</span>
-    <span class="skill">Sand Field-Density</span>
-    <span class="skill">Bentonite Slurry</span>
-    <span class="skill">Brick Testing</span>
-    <span class="skill">AutoCAD 2D</span>
-    <span class="skill">ETABS</span>
-    <span class="skill">Primavera P6</span>
-    <span class="skill">Revit</span>
-    <span class="skill">MS Excel</span>
-    <span class="skill">MS Word</span>
-    <span class="skill">PowerPoint</span>
-
-  </div>
+    </div>
 
 </section>
 
+
+<!-- =========================================================
+     FUTURE
+========================================================= -->
 
 <section id="future" class="reveal">
 
-  <div class="future">
+    <div class="future">
 
-    <span class="ey">
-      07 / FUTURE VISION
-    </span>
+        <div class="section-label">
+            07 / FUTURE VISION
+        </div>
 
-    <h2>
-      Engineering the Future.
-    </h2>
+        <div class="future-title">
+            Engineering the Future.
+        </div>
 
-    <p>
+        <p class="section-description">
 
-      From practical construction experience
-      to advanced engineering knowledge —
-      building a future focused on sustainable
-      infrastructure, intelligent project delivery,
-      resilient transportation and environmental
-      responsibility.
+            From practical construction experience to advanced
+            engineering knowledge — building a future focused on
+            sustainable infrastructure, intelligent project delivery,
+            resilient transportation and environmental responsibility.
 
-    </p>
-
-
-    <div class="future-grid">
-
-
-      <div class="future-item">
-
-        <small>
-          01 — FOUNDATION
-        </small>
-
-        <h3>
-          🏗️ Construction Leadership
-        </h3>
-
-        <p>
-          Planning, scheduling, quality,
-          risk and project delivery.
         </p>
 
-      </div>
+
+        <div class="future-grid">
 
 
-      <div class="future-item">
+            <div class="future-item">
 
-        <small>
-          02 — SUSTAINABILITY
-        </small>
+                <small>
+                    01 — FOUNDATION
+                </small>
 
-        <h3>
-          🌱 Environmental Innovation
-        </h3>
+                <h3>
+                    🏗️ Construction Leadership
+                </h3>
 
-        <p>
-          Sustainable infrastructure,
-          water systems and resilience.
-        </p>
+                <p>
+                    Planning, scheduling, quality,
+                    risk and project delivery.
+                </p>
 
-      </div>
-
-
-      <div class="future-item">
-
-        <small>
-          03 — CONNECTIVITY
-        </small>
-
-        <h3>
-          🚆 Smarter Transportation
-        </h3>
-
-        <p>
-          Planning, pavement, traffic
-          and sustainable mobility.
-        </p>
-
-      </div>
+            </div>
 
 
-      <div class="future-item">
+            <div class="future-item">
 
-        <small>
-          04 — GLOBAL IMPACT
-        </small>
+                <small>
+                    02 — SUSTAINABILITY
+                </small>
 
-        <h3>
-          🌍 Better Infrastructure
-        </h3>
+                <h3>
+                    🌱 Environmental Innovation
+                </h3>
 
-        <p>
-          Safer, smarter and more sustainable
-          infrastructure systems.
-        </p>
+                <p>
+                    Sustainable infrastructure,
+                    water systems and resilience.
+                </p>
 
-      </div>
+            </div>
 
+
+            <div class="future-item">
+
+                <small>
+                    03 — CONNECTIVITY
+                </small>
+
+                <h3>
+                    🚆 Smarter Transportation
+                </h3>
+
+                <p>
+                    Planning, pavement, traffic
+                    and sustainable mobility.
+                </p>
+
+            </div>
+
+
+            <div class="future-item">
+
+                <small>
+                    04 — GLOBAL IMPACT
+                </small>
+
+                <h3>
+                    🌍 Better Infrastructure
+                </h3>
+
+                <p>
+                    Safer, smarter and more sustainable
+                    infrastructure systems.
+                </p>
+
+            </div>
+
+
+        </div>
 
     </div>
 
-  </div>
-
 </section>
 
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
 
 <section id="contact" class="reveal">
 
-  <div class="head">
+    <div class="section-label">
+        08 / CONTACT
+    </div>
 
-    <span>
-      08 / CONTACT
-    </span>
+    <h2 class="section-title"
+        data-en="Let's Build a Better Tomorrow."
+        data-bn="চলুন আরও ভালো আগামীকাল গড়ি।">
 
-    <h2>
-      Let's Build a Better Tomorrow.
+        Let's Build a Better Tomorrow.
+
     </h2>
 
-    <p>
 
-      Sirajganj, Bangladesh •
+    <p class="section-description">
 
-      +880 1570-279183 •
-
-      naimurrahmansaad0@gmail.com
+        Sirajganj, Bangladesh •
+        +880 1570-279183 •
+        naimurrahmansaad0@gmail.com
 
     </p>
 
-  </div>
 
+    <div class="hero-actions">
 
-  <a class="btn primary"
-     href="mailto:naimurrahmansaad0@gmail.com">
-     Email Me
-  </a>
+        <a class="btn btn-primary"
+           href="mailto:naimurrahmansaad0@gmail.com">
+            Email Me
+        </a>
 
-  <a class="btn"
-     href="https://linkedin.com/in/md-naimur-rahman-saad-4240ba431"
-     target="_blank">
-     LinkedIn ↗
-  </a>
+        <a class="btn"
+           href="https://linkedin.com/in/md-naimur-rahman-saad-4240ba431"
+           target="_blank">
+            LinkedIn ↗
+        </a>
 
-  <a class="btn"
-     href="https://github.com/nrsaad"
-     target="_blank">
-     GitHub ↗
-  </a>
+        <a class="btn"
+           href="https://github.com/nrsaad"
+           target="_blank">
+            GitHub ↗
+        </a>
 
-  <a class="btn"
-     href="CV.pdf"
-     download>
-     Download CV ↓
-  </a>
+        <a class="btn"
+           href="CV.pdf"
+           download>
+            Download CV ↓
+        </a>
+
+    </div>
 
 </section>
 
 
+<!-- =========================================================
+     MOOD BAR
+========================================================= -->
+
 <div class="moodbar">
 
-  <button class="mood"
-          onclick="liveMood('ocean')">
-    🌊 Ocean
-  </button>
-
-  <button class="mood"
-          onclick="liveMood('forest')">
-    🌲 Amazon Forest
-  </button>
-
-  <button class="mood"
-          onclick="liveMood('dragon')">
-    🐉 Dragon
-  </button>
-
-  <button class="mood"
-          onclick="liveMood('galaxy')">
-    🌌 Galaxy
-  </button>
-
-  <button class="mood"
-          onclick="liveMood('moon')">
-    🌙 Moonlight
-  </button>
-
-  <button class="mood"
-          onclick="liveMood('night')">
-    🌃 Night
-  </button>
-
-  <button class="mood"
-          onclick="liveMood('day')">
-    ☀️ Day
-  </button>
-
-  <button class="mood"
-          onclick="liveMood('snow')">
-    ❄️ Bangladesh Snow
-  </button>
-
-  <button class="mood"
-          onclick="liveMood('wall')">
-    🎨 Color Wall
-  </button>
-
-</div>
-
-
-<div class="scene" id="scene">
-
-  <div class="scene-bg"
-       id="sceneBg">
-  </div>
-
-  <div class="scene-shade"></div>
-
-  <div class="scene-content">
-
-    <div class="icon"
-         id="sceneIcon">
-    </div>
-
-    <h2 id="sceneTitle"></h2>
-
-    <p id="sceneText"></p>
-
-    <button class="btn primary"
-            onclick="closeMood()">
-      ← Return to Portfolio
+    <button class="mood"
+            onclick="openLiveMood('ocean')">
+        🌊 Ocean
     </button>
 
-  </div>
+    <button class="mood"
+            onclick="openLiveMood('forest')">
+        🌲 Amazon Forest
+    </button>
+
+    <button class="mood"
+            onclick="openLiveMood('dragon')">
+        🐉 Dragon
+    </button>
+
+    <button class="mood"
+            onclick="openLiveMood('galaxy')">
+        🌌 Galaxy
+    </button>
+
+    <button class="mood"
+            onclick="openLiveMood('moon')">
+        🌙 Moonlight
+    </button>
+
+    <button class="mood"
+            onclick="openLiveMood('night')">
+        🌃 Night
+    </button>
+
+    <button class="mood"
+            onclick="openLiveMood('day')">
+        ☀️ Day
+    </button>
+
+    <button class="mood"
+            onclick="openLiveMood('snow')">
+        ❄️ Bangladesh Snow
+    </button>
+
+    <button class="mood"
+            onclick="openLiveMood('wall')">
+        🎨 Color Wall
+    </button>
 
 </div>
 
+
+<!-- =========================================================
+     LIVE WORLD SCREEN
+========================================================= -->
+
+<div class="live-screen"
+     id="liveScreen">
+
+    <img id="liveImage"
+         class="live-image"
+         alt="Live mood scene">
+
+    <canvas id="sceneCanvas"></canvas>
+
+    <div class="live-shade"></div>
+
+
+    <div class="live-content">
+
+        <div class="live-icon"
+             id="liveIcon">
+        </div>
+
+        <h2 id="liveTitle"></h2>
+
+        <p id="liveDescription"></p>
+
+        <button class="btn btn-primary"
+                onclick="closeLiveMood()">
+
+            ← Return to Portfolio
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
-  <div>
+    <div>
 
-    🇧🇩
+        🇧🇩
 
-    <b>
-      MD. Naimur Rahman Saad
-    </b>
+        <strong>
+            MD. Naimur Rahman Saad
+        </strong>
 
-    <br>
+        <br>
 
-    Civil Engineer • Construction •
-    Environment • Transportation
+        Civil Engineer •
+        Construction •
+        Environment •
+        Transportation
 
-    <br>
+        <br>
 
-    © 2026 All Rights Reserved.
+        © 2026 All Rights Reserved.
 
-  </div>
+    </div>
 
 
-  <div>
+    <div>
 
-    Better Infrastructure •
+        Better Infrastructure
 
-    A Greener Planet •
+        <br>
 
-    A Brighter Future
+        A Greener Planet
 
-  </div>
+        <br>
+
+        A Brighter Future
+
+    </div>
 
 </footer>
 
 
 <script>
 
-/* =========================
-   STAR FIELD
-========================= */
+/* =========================================================
+   CREATE STARS
+========================================================= */
 
-for(let i=0;i<140;i++){
+for(let i=0;i<170;i++){
 
-  let s=document.createElement('i');
+    const star =
+        document.createElement("i");
 
-  s.className='star';
+    star.className =
+        "star";
 
-  s.style.left=
-    Math.random()*100+'%';
+    star.style.left =
+        Math.random()*100+"%";
 
-  s.style.top=
-    Math.random()*100+'%';
+    star.style.top =
+        Math.random()*100+"%";
 
-  s.style.animationDelay=
-    Math.random()*4+'s';
+    star.style.animationDelay =
+        Math.random()*4+"s";
 
-  document
-    .getElementById('stars')
-    .appendChild(s);
+    document
+        .getElementById("stars")
+        .appendChild(star);
 
 }
 
 
-/* =========================
+/* =========================================================
+   LANGUAGE SYSTEM
+========================================================= */
+
+function switchLanguage(language){
+
+    const elements =
+        document.querySelectorAll(
+            "[data-en][data-bn]"
+        );
+
+
+    elements.forEach(el=>{
+
+        el.textContent =
+            language==="bn"
+            ? el.dataset.bn
+            : el.dataset.en;
+
+    });
+
+
+    document
+        .getElementById("enBtn")
+        .classList
+        .toggle(
+            "active",
+            language==="en"
+        );
+
+
+    document
+        .getElementById("bnBtn")
+        .classList
+        .toggle(
+            "active",
+            language==="bn"
+        );
+
+
+    localStorage.setItem(
+        "portfolioLanguage",
+        language
+    );
+
+}
+
+
+/* restore language */
+
+const savedLanguage =
+    localStorage.getItem(
+        "portfolioLanguage"
+    );
+
+if(savedLanguage){
+    switchLanguage(savedLanguage);
+}
+
+
+/* =========================================================
    MOOD DATA
-========================= */
+========================================================= */
 
-const moodData={
+const moods = {
 
-  ocean:{
-    i:"🌊",
-    t:"Ocean World",
-    p:"A live ocean atmosphere with rolling visual depth, sea-light and wave motion.",
-    bg:"url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=90')",
-    fx:"water"
-  },
+    ocean:{
+        icon:"🌊",
+        title:"Ocean World",
+        description:
+            "Real ocean imagery with animated waves and sea-light movement.",
+        image:
+            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=90",
+        effect:"ocean"
+    },
 
-  forest:{
-    i:"🌲",
-    t:"Amazon Forest",
-    p:"A live jungle atmosphere with slow camera movement, drifting mist and floating particles.",
-    bg:"url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=2400&q=90')",
-    fx:"forest"
-  },
 
-  dragon:{
-    i:"🐉",
-    t:"Dragon Realm",
-    p:"A cinematic fantasy world with fire sparks, smoke and deep-red atmospheric motion.",
-    bg:"linear-gradient(120deg,#250200,#500b02,#030000)",
-    fx:"fire"
-  },
+    forest:{
+        icon:"🌲",
+        title:"Amazon Forest",
+        description:
+            "Real forest imagery with drifting mist and living atmospheric particles.",
+        image:
+            "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=2400&q=90",
+        effect:"forest"
+    },
 
-  galaxy:{
-    i:"🌌",
-    t:"Galaxy • Black Hole",
-    p:"A deep-space atmosphere with stars, nebula motion, gravitational glow and light bursts.",
-    bg:
-      "radial-gradient(circle at 50% 50%,#000 0 7%,#7a32ff66 9%,transparent 23%),radial-gradient(circle at 20% 25%,#1bd8ff44,transparent 24%),linear-gradient(135deg,#01000b,#130043,#000)",
-    fx:"galaxy"
-  },
 
-  moon:{
-    i:"🌙",
-    t:"Moonlight",
-    p:"Soft silver light, quiet night air and a calm cinematic atmosphere.",
-    bg:
-      "radial-gradient(circle at 72% 23%,#ffffff66 0 4%,transparent 12%),linear-gradient(150deg,#07143d,#02050f)",
-    fx:"moon"
-  },
+    dragon:{
+        icon:"🐉",
+        title:"Dragon Realm",
+        description:
+            "A cinematic fantasy environment with fire, sparks and atmospheric motion.",
+        image:"",
+        effect:"dragon"
+    },
 
-  night:{
-    i:"🌃",
-    t:"Night City",
-    p:"A calm modern-night atmosphere with subtle moving city-light streaks.",
-    bg:
-      "linear-gradient(180deg,#08113b,#02040a)",
-    fx:"city"
-  },
 
-  day:{
-    i:"☀️",
-    t:"Daylight",
-    p:"A bright atmosphere with moving light, cloud-like particles and fresh color.",
-    bg:
-      "linear-gradient(180deg,#67c9ff,#e6fbff 55%,#4a9f6f)",
-    fx:"day"
-  },
+    galaxy:{
+        icon:"🌌",
+        title:"Galaxy • Black Hole",
+        description:
+            "Live cosmic particles, nebula motion and a black-hole core.",
+        image:"",
+        effect:"galaxy"
+    },
 
-  snow:{
-    i:"❄️🇧🇩",
-    t:"Winter World • Bangladesh",
-    p:"A snow-inspired Bangladesh dreamscape with falling flakes and soft winter light.",
-    bg:
-      "linear-gradient(180deg,#a9e4ff,#ffffff 58%,#a9cfdf)",
-    fx:"snow"
-  },
 
-  wall:{
-    i:"🎨",
-    t:"Color Wall",
-    p:"A premium architectural wall palette with slow moving color gradients.",
-    bg:
-      "linear-gradient(120deg,#ff4f81,#ffb86b,#ffe66d,#54e38e,#4bdcff,#8c6cff,#ff4fca)",
-    fx:"wall"
-  }
+    moon:{
+        icon:"🌙",
+        title:"Moonlight",
+        description:
+            "A soft lunar atmosphere designed for a calm visual experience.",
+        image:"",
+        effect:"moon"
+    },
+
+
+    night:{
+        icon:"🌃",
+        title:"Night City",
+        description:
+            "A cinematic modern-night environment with moving city lights.",
+        image:"",
+        effect:"night"
+    },
+
+
+    day:{
+        icon:"☀️",
+        title:"Daylight",
+        description:
+            "Bright daylight atmosphere with moving clouds and soft light.",
+        image:"",
+        effect:"day"
+    },
+
+
+    snow:{
+        icon:"❄️🇧🇩",
+        title:"Winter World • Bangladesh",
+        description:
+            "A snow-inspired Bangladesh scene with live snowfall and winter light.",
+        image:"",
+        effect:"snow"
+    },
+
+
+    wall:{
+        icon:"🎨",
+        title:"Architectural Color Wall",
+        description:
+            "A premium moving architectural palette inspired by modern magazine interiors.",
+        image:"",
+        effect:"wall"
+    }
 
 };
 
 
-/* =========================
+/* =========================================================
    LIVE SCENE ENGINE
-========================= */
+========================================================= */
 
-const scene =
-  document.getElementById('scene');
+const liveScreen =
+    document.getElementById(
+        "liveScreen"
+    );
 
-const bg =
-  document.getElementById('sceneBg');
+const liveImage =
+    document.getElementById(
+        "liveImage"
+    );
 
-const canvas =
-  document.getElementById('ambientCanvas');
+const liveIcon =
+    document.getElementById(
+        "liveIcon"
+    );
 
-const ctx =
-  canvas.getContext('2d');
+const liveTitle =
+    document.getElementById(
+        "liveTitle"
+    );
 
-let fx="";
+const liveDescription =
+    document.getElementById(
+        "liveDescription"
+    );
 
-let drops=[];
+const sceneCanvas =
+    document.getElementById(
+        "sceneCanvas"
+    );
+
+const sceneCtx =
+    sceneCanvas.getContext("2d");
 
 
-function resize(){
+let currentEffect =
+    "";
 
-  canvas.width=
-    innerWidth*
-    devicePixelRatio;
+let particles=[];
 
-  canvas.height=
-    innerHeight*
-    devicePixelRatio;
 
-  canvas.style.width=
-    innerWidth+"px";
+function resizeScene(){
 
-  canvas.style.height=
-    innerHeight+"px";
+    sceneCanvas.width =
+        window.innerWidth;
 
-  ctx.setTransform(
-    devicePixelRatio,
-    0,
-    0,
-    devicePixelRatio,
-    0,
-    0
-  );
+    sceneCanvas.height =
+        window.innerHeight;
 
 }
 
-resize();
+resizeScene();
 
-addEventListener(
-  'resize',
-  resize
+window.addEventListener(
+    "resize",
+    resizeScene
 );
 
 
-function seed(n=120){
+/* particle seed */
 
-  drops=[];
+function createParticles(
+    amount=220
+){
 
-  for(
-    let i=0;
-    i<n;
-    i++
-  ){
+    particles=[];
 
-    drops.push({
+    for(
+        let i=0;
+        i<amount;
+        i++
+    ){
 
-      x:Math.random()*innerWidth,
+        particles.push({
 
-      y:Math.random()*innerHeight,
+            x:
+                Math.random()
+                *window.innerWidth,
 
-      r:Math.random()*2+.5,
+            y:
+                Math.random()
+                *window.innerHeight,
 
-      s:Math.random()*1.5+.3,
+            vx:
+                (Math.random()-.5)
+                *1.2,
 
-      a:Math.random()*.7
+            vy:
+                Math.random()
+                *1.5+.2,
 
-    });
+            size:
+                Math.random()*3+.4,
 
-  }
+            alpha:
+                Math.random()*.75+.15,
+
+            life:
+                Math.random()*100
+
+        });
+
+    }
 
 }
 
-seed();
 
+/* draw effects */
 
-function animate(){
+function animateScene(){
 
-  ctx.clearRect(
-    0,
-    0,
-    innerWidth,
-    innerHeight
-  );
-
-
-  /* SNOW */
-
-  if(fx==="snow"){
-
-    drops.forEach(d=>{
-
-      d.y+=d.s*2.2;
-
-      d.x+=
-        Math.sin(d.y*.01)*.35;
-
-      if(d.y>innerHeight)
-        d.y=-5;
-
-      ctx.fillStyle=
-        `rgba(255,255,255,${d.a})`;
-
-      ctx.beginPath();
-
-      ctx.arc(
-        d.x,
-        d.y,
-        d.r,
+    sceneCtx.clearRect(
         0,
-        Math.PI*2
-      );
-
-      ctx.fill();
-
-    });
-
-  }
-
-
-  /* FIRE */
-
-  else if(fx==="fire"){
-
-    drops.forEach(d=>{
-
-      d.y-=d.s*1.8;
-
-      d.x+=
-        Math.sin(d.y*.02)*.7;
-
-      if(d.y<0)
-        d.y=innerHeight;
-
-      ctx.fillStyle=
-        `rgba(255,120,40,${d.a})`;
-
-      ctx.beginPath();
-
-      ctx.arc(
-        d.x,
-        d.y,
-        d.r+1,
         0,
-        Math.PI*2
-      );
-
-      ctx.fill();
-
-    });
-
-  }
+        sceneCanvas.width,
+        sceneCanvas.height
+    );
 
 
-  /* GALAXY */
+    /* SNOW */
 
-  else if(fx==="galaxy"){
+    if(currentEffect==="snow"){
 
-    drops.forEach(d=>{
+        particles.forEach(p=>{
 
-      d.x+=
-        (d.x-innerWidth/2)
-        *.00025;
+            p.y +=
+                p.vy*1.8;
 
-      d.y+=
-        (d.y-innerHeight/2)
-        *.00025;
+            p.x +=
+                Math.sin(
+                    p.y*.012
+                )*.35;
 
-      ctx.fillStyle=
-        `rgba(180,220,255,${d.a})`;
+            if(
+                p.y >
+                window.innerHeight
+            ){
+                p.y=-10;
+            }
 
-      ctx.beginPath();
+            sceneCtx.fillStyle =
+                `rgba(255,255,255,${p.alpha})`;
 
-      ctx.arc(
-        d.x,
-        d.y,
-        d.r,
-        0,
-        Math.PI*2
-      );
+            sceneCtx.beginPath();
 
-      ctx.fill();
+            sceneCtx.arc(
+                p.x,
+                p.y,
+                p.size,
+                0,
+                Math.PI*2
+            );
 
-    });
+            sceneCtx.fill();
 
-  }
+        });
+
+    }
 
 
-  /* OCEAN */
+    /* FIRE */
 
-  else if(fx==="water"){
-
-    for(
-      let y=0;
-      y<innerHeight;
-      y+=38
+    else if(
+        currentEffect==="dragon"
     ){
 
-      ctx.beginPath();
+        particles.forEach(p=>{
 
-      for(
-        let x=0;
-        x<innerWidth;
-        x+=16
-      ){
+            p.y -=
+                p.vy*2;
 
-        let yy=
-          y+
-          Math.sin(
-            x*.015+
-            performance.now()*.0015+
-            y
-          )*4;
+            p.x +=
+                Math.sin(
+                    p.y*.03
+                )*1.2;
 
-        ctx.lineTo(
-          x,
-          yy
+            if(p.y<0){
+                p.y =
+                    window.innerHeight;
+
+                p.x =
+                    Math.random()
+                    *window.innerWidth;
+            }
+
+            sceneCtx.fillStyle =
+                `rgba(255,${80+Math.random()*90},30,${p.alpha})`;
+
+            sceneCtx.beginPath();
+
+            sceneCtx.arc(
+                p.x,
+                p.y,
+                p.size+1,
+                0,
+                Math.PI*2
+            );
+
+            sceneCtx.fill();
+
+        });
+
+    }
+
+
+    /* GALAXY */
+
+    else if(
+        currentEffect==="galaxy"
+    ){
+
+        const cx =
+            window.innerWidth/2;
+
+        const cy =
+            window.innerHeight/2;
+
+        particles.forEach(p=>{
+
+            const dx =
+                p.x-cx;
+
+            const dy =
+                p.y-cy;
+
+            p.x +=
+                dx*.00035;
+
+            p.y +=
+                dy*.00035;
+
+            sceneCtx.fillStyle =
+                `rgba(170,225,255,${p.alpha})`;
+
+            sceneCtx.beginPath();
+
+            sceneCtx.arc(
+                p.x,
+                p.y,
+                p.size,
+                0,
+                Math.PI*2
+            );
+
+            sceneCtx.fill();
+
+        });
+
+
+        /* black hole */
+
+        const glow =
+            sceneCtx.createRadialGradient(
+                cx,
+                cy,
+                0,
+                cx,
+                cy,
+                240
+            );
+
+        glow.addColorStop(
+            0,
+            "rgba(0,0,0,1)"
         );
 
-      }
+        glow.addColorStop(
+            .23,
+            "rgba(0,0,0,1)"
+        );
 
-      ctx.strokeStyle=
-        "rgba(130,230,255,.055)";
+        glow.addColorStop(
+            .45,
+            "rgba(160,70,255,.3)"
+        );
 
-      ctx.stroke();
+        glow.addColorStop(
+            .65,
+            "rgba(255,110,40,.12)"
+        );
+
+        glow.addColorStop(
+            1,
+            "transparent"
+        );
+
+        sceneCtx.fillStyle =
+            glow;
+
+        sceneCtx.beginPath();
+
+        sceneCtx.arc(
+            cx,
+            cy,
+            240,
+            0,
+            Math.PI*2
+        );
+
+        sceneCtx.fill();
+
+        sceneCtx.fillStyle="#000";
+
+        sceneCtx.beginPath();
+
+        sceneCtx.arc(
+            cx,
+            cy,
+            90,
+            0,
+            Math.PI*2
+        );
+
+        sceneCtx.fill();
 
     }
 
-  }
 
+    /* OCEAN */
 
-  /* FOREST */
-
-  else if(fx==="forest"){
-
-    drops.forEach(d=>{
-
-      d.y-=d.s*.2;
-
-      d.x+=
-        Math.sin(
-          performance.now()*.0005+
-          d.y
-        )*.15;
-
-      if(d.y<0)
-        d.y=innerHeight;
-
-      ctx.fillStyle=
-        `rgba(210,255,220,${d.a*.45})`;
-
-      ctx.beginPath();
-
-      ctx.arc(
-        d.x,
-        d.y,
-        d.r,
-        0,
-        Math.PI*2
-      );
-
-      ctx.fill();
-
-    });
-
-  }
-
-
-  /* NIGHT CITY */
-
-  else if(fx==="city"){
-
-    for(
-      let i=0;
-      i<35;
-      i++
+    else if(
+        currentEffect==="ocean"
     ){
 
-      let x=
-        (i*91+
-        performance.now()*.03)
-        %innerWidth;
-
-      let y=
-        (i*47)
-        %innerHeight;
-
-      ctx.fillStyle=
-        'rgba(255,220,120,.18)';
-
-      ctx.fillRect(
-        x,
-        y,
-        2,
-        2
-      );
-
-    }
-
-  }
-
-
-  /* DAY */
-
-  else if(fx==="day"){
-
-    for(
-      let i=0;
-      i<20;
-      i++
-    ){
-
-      let x=
-        (i*130+
-        performance.now()*.02)
-        %innerWidth;
-
-      ctx.fillStyle=
-        'rgba(255,255,255,.08)';
-
-      ctx.beginPath();
-
-      ctx.arc(
-        x,
-        80+i*22,
-        25,
-        0,
-        Math.PI*2
-      );
-
-      ctx.fill();
-
-    }
-
-  }
-
-
-  /* COLOR WALL */
-
-  else if(fx==="wall"){
-
-    let g=
-      ctx.createLinearGradient(
-        0,
-        0,
-        innerWidth,
-        innerHeight
-      );
-
-    g.addColorStop(
-      0,
-      'rgba(255,100,150,.07)'
-    );
-
-    g.addColorStop(
-      .5,
-      'rgba(100,255,210,.06)'
-    );
-
-    g.addColorStop(
-      1,
-      'rgba(130,100,255,.08)'
-    );
-
-    ctx.fillStyle=g;
-
-    ctx.fillRect(
-      0,
-      0,
-      innerWidth,
-      innerHeight
-    );
-
-  }
-
-
-  requestAnimationFrame(
-    animate
-  );
-
-}
-
-animate();
-
-
-/* =========================
-   OPEN MOOD
-========================= */
-
-function liveMood(key){
-
-  let m=
-    moodData[key];
-
-  fx=
-    m.fx;
-
-  seed(
-    m.fx==="snow" ||
-    m.fx==="galaxy"
-      ?220
-      :120
-  );
-
-
-  bg.style.backgroundImage=
-    m.bg;
-
-
-  document
-    .getElementById('sceneIcon')
-    .textContent=
-    m.i;
-
-
-  document
-    .getElementById('sceneTitle')
-    .textContent=
-    m.t;
-
-
-  document
-    .getElementById('sceneText')
-    .textContent=
-    m.p;
-
-
-  scene.classList.add(
-    'open'
-  );
-
-
-  document.body.style.overflow=
-    'hidden';
-
-}
-
-
-/* =========================
-   CLOSE MOOD
-========================= */
-
-function closeMood(){
-
-  scene.classList.remove(
-    'open'
-  );
-
-  document.body.style.overflow=
-    '';
-
-  fx="";
-
-}
-
-
-/* =========================
-   REVEAL ANIMATION
-========================= */
-
-const io=
-  new IntersectionObserver(
-    es=>{
-
-      es.forEach(e=>{
-
-        if(
-          e.isIntersecting
+        for(
+            let y=0;
+            y<window.innerHeight;
+            y+=35
         ){
 
-          e.target
-            .classList
-            .add('show');
+            sceneCtx.beginPath();
+
+            for(
+                let x=0;
+                x<window.innerWidth;
+                x+=14
+            ){
+
+                const yy =
+                    y+
+                    Math.sin(
+                        x*.014+
+                        performance.now()*.0015+
+                        y*.01
+                    )*5;
+
+                sceneCtx.lineTo(
+                    x,
+                    yy
+                );
+
+            }
+
+            sceneCtx.strokeStyle =
+                "rgba(150,240,255,.08)";
+
+            sceneCtx.lineWidth=1;
+
+            sceneCtx.stroke();
 
         }
 
-      });
-
-    },
-    {
-      threshold:.1
     }
-  );
+
+
+    /* FOREST MIST */
+
+    else if(
+        currentEffect==="forest"
+    ){
+
+        const gradient =
+            sceneCtx.createRadialGradient(
+                window.innerWidth*.45,
+                window.innerHeight*.45,
+                20,
+                window.innerWidth*.45,
+                window.innerHeight*.45,
+                450
+            );
+
+        gradient.addColorStop(
+            0,
+            "rgba(210,255,230,.07)"
+        );
+
+        gradient.addColorStop(
+            1,
+            "transparent"
+        );
+
+        sceneCtx.fillStyle =
+            gradient;
+
+        sceneCtx.fillRect(
+            0,
+            0,
+            window.innerWidth,
+            window.innerHeight
+        );
+
+    }
+
+
+    /* NIGHT */
+
+    else if(
+        currentEffect==="night"
+    ){
+
+        for(
+            let i=0;
+            i<45;
+            i++
+        ){
+
+            const x =
+                (
+                    i*113+
+                    performance.now()*.035
+                )
+                %window.innerWidth;
+
+            const y =
+                (i*49)
+                %window.innerHeight;
+
+            sceneCtx.fillStyle =
+                "rgba(255,220,120,.22)";
+
+            sceneCtx.fillRect(
+                x,
+                y,
+                2,
+                2
+            );
+
+        }
+
+    }
+
+
+    /* DAY */
+
+    else if(
+        currentEffect==="day"
+    ){
+
+        for(
+            let i=0;
+            i<16;
+            i++
+        ){
+
+            const x =
+                (
+                    i*150+
+                    performance.now()*.015
+                )
+                %window.innerWidth;
+
+            const y =
+                80+
+                i*28;
+
+            sceneCtx.fillStyle =
+                "rgba(255,255,255,.08)";
+
+            sceneCtx.beginPath();
+
+            sceneCtx.arc(
+                x,
+                y,
+                35,
+                0,
+                Math.PI*2
+            );
+
+            sceneCtx.fill();
+
+        }
+
+    }
+
+
+    /* COLOR WALL */
+
+    else if(
+        currentEffect==="wall"
+    ){
+
+        const g =
+            sceneCtx.createLinearGradient(
+                0,
+                0,
+                window.innerWidth,
+                window.innerHeight
+            );
+
+        const time =
+            performance.now()*.00005;
+
+        g.addColorStop(
+            0,
+            `hsla(${(time*360)%360},
+            80%,60%,.08)`
+        );
+
+        g.addColorStop(
+            .5,
+            `hsla(${((time*360)+120)%360},
+            80%,60%,.08)`
+        );
+
+        g.addColorStop(
+            1,
+            `hsla(${((time*360)+240)%360},
+            80%,60%,.08)`
+        );
+
+        sceneCtx.fillStyle=
+            g;
+
+        sceneCtx.fillRect(
+            0,
+            0,
+            window.innerWidth,
+            window.innerHeight
+        );
+
+    }
+
+
+    requestAnimationFrame(
+        animateScene
+    );
+
+}
+
+animateScene();
+
+
+/* =========================================================
+   OPEN LIVE MOOD
+========================================================= */
+
+function openLiveMood(
+    moodName
+){
+
+    const mood =
+        moods[moodName];
+
+    currentEffect =
+        mood.effect;
+
+
+    createParticles(
+        mood.effect==="galaxy" ||
+        mood.effect==="snow"
+        ?300
+        :180
+    );
+
+
+    if(mood.image){
+
+        liveImage.src =
+            mood.image;
+
+        liveImage.style.display =
+            "block";
+
+    }
+    else{
+
+        liveImage.style.display =
+            "none";
+
+    }
+
+
+    liveIcon.textContent =
+        mood.icon;
+
+    liveTitle.textContent =
+        mood.title;
+
+    liveDescription.textContent =
+        mood.description;
+
+
+    liveScreen.classList.add(
+        "active"
+    );
+
+    document.body.style.overflow=
+        "hidden";
+
+}
+
+
+/* =========================================================
+   CLOSE
+========================================================= */
+
+function closeLiveMood(){
+
+    liveScreen.classList.remove(
+        "active"
+    );
+
+    document.body.style.overflow=
+        "";
+
+    currentEffect="";
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+        entries=>{
+
+            entries.forEach(
+                entry=>{
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target.classList.add(
+                            "show"
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.1
+        }
+    );
 
 
 document
-  .querySelectorAll('.reveal')
-  .forEach(
-    x=>io.observe(x)
-  );
+    .querySelectorAll(".reveal")
+    .forEach(
+        item=>
+            observer.observe(item)
+    );
+
+
+/* =========================================================
+   HERO MOUSE PARALLAX
+========================================================= */
+
+const world =
+    document.querySelector(
+        ".engineering-world"
+    );
+
+const heroVisual =
+    document.querySelector(
+        ".hero-visual"
+    );
+
+document.addEventListener(
+    "mousemove",
+    e=>{
+
+        const x =
+            (e.clientX/
+            window.innerWidth-
+            .5)*12;
+
+        const y =
+            (e.clientY/
+            window.innerHeight-
+            .5)*12;
+
+        if(heroVisual){
+
+            heroVisual.style.transform =
+                `translate(${x*.6}px,${y*.6}px)`;
+
+        }
+
+    }
+);
 
 </script>
 
