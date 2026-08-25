@@ -12,12 +12,17 @@
 
 <style>
 :root{
+  --navy:#071b49;
+  --royal:#1f56d8;
+  --navySoft:#123a7a;
   --bg:#06100c;
   --bg2:#0a1711;
   --text:#f6fff9;
   --muted:#a6bbb1;
   --green:#39f39e;
   --red:#ff4f68;
+  --headingBlue:#173e8f;
+  --headingBlue2:#2f62d4;
   --cyan:#55dcff;
   --gold:#ffd46a;
   --violet:#9c82ff;
@@ -118,8 +123,8 @@ button{font:inherit}
 .float.one{left:0;top:4%;color:#79f2ae}.float.two{right:0;top:42%;color:#67ddff}.float.three{left:5%;bottom:4%;color:#ffd46a}
 
 section{width:min(1200px,100%);margin:auto;padding:95px 6vw}
-.section-label{color:var(--green);font:800 10px var(--heading);letter-spacing:3px}
-.section-title{margin:10px 0;font:800 clamp(32px,4.3vw,56px)/1 var(--heading);letter-spacing:-2px}
+.section-label{color:#5c8ff2;font:800 10px var(--heading);letter-spacing:3px}
+.section-title{margin:10px 0;font:800 clamp(32px,4.3vw,56px)/1 var(--heading);letter-spacing:-2px;background:linear-gradient(90deg,#173e8f,#2f62d4 52%,#7aa5ff);-webkit-background-clip:text;background-clip:text;color:transparent}
 .section-desc{max-width:830px;color:var(--muted);font-size:14px;line-height:1.9}
 .stats{margin-top:30px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .stat{
@@ -135,7 +140,7 @@ section{width:min(1200px,100%);margin:auto;padding:95px 6vw}
   backdrop-filter:blur(18px);transition:.35s
 }
 .card:hover{transform:translateY(-6px);border-color:rgba(57,243,158,.32)}
-.card h3{margin-bottom:10px;font:700 20px var(--heading)}
+.card h3{margin-bottom:10px;font:700 20px var(--heading);color:#315fc3}
 .card p,.card li{color:#b5c9c0;font-size:13px;line-height:1.85}
 .card ul{padding-left:18px}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
@@ -147,9 +152,9 @@ section{width:min(1200px,100%);margin:auto;padding:95px 6vw}
   border-radius:23px;background:var(--glass);backdrop-filter:blur(18px);transition:.35s
 }
 .agency:hover{transform:translateY(-7px);border-color:rgba(57,243,158,.30)}
-.agency-icon{font-size:29px}.agency h3{margin:9px 0;font:800 25px var(--heading)}
+.agency-icon{font-size:29px}.agency h3{margin:9px 0;font:800 25px var(--heading);color:#315fc3}
 .agency p{flex:1;color:var(--muted);font-size:12px;line-height:1.7}
-.agency a{color:var(--green);font:700 11px var(--heading)}
+.agency a{color:#6fa6ff;font:700 11px var(--heading)}
 
 .projects{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
 .project{
@@ -157,13 +162,13 @@ section{width:min(1200px,100%);margin:auto;padding:95px 6vw}
   backdrop-filter:blur(18px);transition:.35s
 }
 .project:hover{transform:translateY(-6px);border-color:rgba(85,220,255,.30)}
-.project-agency{color:var(--cyan);font:800 10px var(--heading);letter-spacing:2px}
-.project h3{margin:9px 0;font:700 18px/1.45 var(--heading)}
+.project-agency{color:#78a9ff;font:800 10px var(--heading);letter-spacing:2px}
+.project h3{margin:9px 0;font:700 18px/1.45 var(--heading);color:#315fc3}
 .project p{color:#b1c7bd;font-size:13px;line-height:1.75}
-.project a{display:inline-block;margin-top:12px;color:var(--green);font:700 11px var(--heading)}
+.project a{display:inline-block;margin-top:12px;color:#6fa6ff;font:700 11px var(--heading)}
 
 .skills{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px}
-.skill{padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:#d8ebe3;font:700 11px var(--heading)}
+.skill{padding:9px 12px;border:1px solid rgba(74,115,198,.20);border-radius:10px;background:rgba(255,255,255,.035);color:#d8e7ff;font:700 11px var(--heading)}
 
 .future{
   padding:45px;border:1px solid var(--line);border-radius:30px;
@@ -181,11 +186,11 @@ section{width:min(1200px,100%);margin:auto;padding:95px 6vw}
 .future-grid{margin-top:30px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .future-item{padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.035)}
 .future-item small{color:var(--green);font:800 10px var(--heading);letter-spacing:2px}
-.future-item h3{margin:9px 0;font:700 17px var(--heading)}
+.future-item h3{margin:9px 0;font:700 17px var(--heading);color:#315fc3}
 .future-item p{color:var(--muted);font-size:12px;line-height:1.7}
 
 .thesis{margin-top:30px;padding:30px;border:1px solid var(--line);border-radius:24px;background:var(--glass);backdrop-filter:blur(18px)}
-.thesis h3{font:700 21px var(--heading);margin-bottom:12px}
+.thesis h3{font:700 21px var(--heading);margin-bottom:12px;color:#315fc3}
 .thesis p{color:#b7cbc2;font-size:13px;line-height:1.85;margin-bottom:12px}
 
 /* Mood controls */
@@ -193,7 +198,7 @@ section{width:min(1200px,100%);margin:auto;padding:95px 6vw}
   position:fixed;right:20px;top:91px;z-index:600;
   padding:8px 13px;border-radius:999px;border:1px solid var(--line);
   background:rgba(0,0,0,.28);backdrop-filter:blur(14px);
-  color:rgba(255,255,255,.78);font:700 10px var(--heading);letter-spacing:1.6px
+  color:#9dbdff;font:700 10px var(--heading);letter-spacing:1.6px
 }
 .moodbar{
   position:fixed;left:50%;bottom:13px;transform:translateX(-50%);z-index:700;
@@ -737,8 +742,8 @@ footer{
 
 <div class="moodbar">
   <button class="mood-btn" onclick="setMood('default')">✦ Default</button>
-  <button class="mood-btn" onclick="setMood('construction')">🏗️ Construction</button>
-  <button class="mood-btn" onclick="setMood('roads')">🛣️ Roads</button>
+  <button class="mood-btn" onclick="setMood('construction')">🏗️ Construction • PM</button>
+  <button class="mood-btn" onclick="setMood('roads')">🛣️ Roads • Pavement</button>
   <button class="mood-btn" onclick="setMood('transportation')">🚆 Transportation</button>
   <button class="mood-btn" onclick="setMood('environmental')">🌿 Environmental</button>
 </div>
@@ -865,52 +870,109 @@ function drawConstruction(){
   const w=innerWidth;
   const h=innerHeight;
 
+  /* dark steel / blueprint atmosphere */
+  const bg=ctx.createLinearGradient(0,0,0,h);
+  bg.addColorStop(0,"rgba(37,49,58,.34)");
+  bg.addColorStop(.55,"rgba(20,28,32,.18)");
+  bg.addColorStop(1,"rgba(5,8,10,.28)");
+  ctx.fillStyle=bg;
+  ctx.fillRect(0,0,w,h);
+
   /* blueprint grid */
-  ctx.strokeStyle="rgba(255,205,90,.075)";
+  ctx.strokeStyle="rgba(115,167,205,.10)";
   ctx.lineWidth=1;
 
-  for(let x=0;x<w;x+=70){
+  for(let x=0;x<w;x+=64){
     ctx.beginPath();
     ctx.moveTo(x,0);
     ctx.lineTo(x,h);
     ctx.stroke();
   }
 
-  for(let y=0;y<h;y+=70){
+  for(let y=0;y<h;y+=64){
     ctx.beginPath();
     ctx.moveTo(0,y);
     ctx.lineTo(w,y);
     ctx.stroke();
   }
 
-  /* floating dust */
-  particles.forEach(p=>{
-    p.y-=p.speed*.35;
-    p.x+=Math.sin(t+p.phase)*.12;
-    if(p.y<0)p.y=h;
+  /* central building structure */
+  const bx=w*.58;
+  const top=h*.18;
+  const base=h*.83;
 
-    ctx.fillStyle=`rgba(255,210,110,${p.alpha*.30})`;
+  ctx.strokeStyle="rgba(255,194,80,.42)";
+  ctx.lineWidth=2.2;
+
+  for(let i=0;i<6;i++){
+    const x=bx-180+i*72;
     ctx.beginPath();
-    ctx.arc(p.x,p.y,p.size*.55,0,Math.PI*2);
-    ctx.fill();
-  });
-
-  /* structural beams */
-  ctx.strokeStyle="rgba(255,200,90,.12)";
-  ctx.lineWidth=2;
-
-  for(let i=0;i<5;i++){
-    const bx=w*.15+i*w*.18;
-    ctx.beginPath();
-    ctx.moveTo(bx,h*.78);
-    ctx.lineTo(bx,h*.25);
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.moveTo(bx,h*.35);
-    ctx.lineTo(bx+w*.13,h*.35);
+    ctx.moveTo(x,base);
+    ctx.lineTo(x,top+40);
     ctx.stroke();
   }
+
+  for(let r=0;r<7;r++){
+    const y=top+40+r*56;
+    ctx.beginPath();
+    ctx.moveTo(bx-180,y);
+    ctx.lineTo(bx+180,y);
+    ctx.stroke();
+  }
+
+  /* diagonal braces */
+  ctx.strokeStyle="rgba(84,220,255,.36)";
+  ctx.lineWidth=1.8;
+
+  for(let i=0;i<5;i++){
+    const x=bx-180+i*72;
+    ctx.beginPath();
+    ctx.moveTo(x,top+40);
+    ctx.lineTo(x+72,top+96);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(x+72,top+40);
+    ctx.lineTo(x,top+96);
+    ctx.stroke();
+  }
+
+  /* crane */
+  ctx.strokeStyle="rgba(255,211,106,.64)";
+  ctx.lineWidth=3;
+  ctx.beginPath();
+  ctx.moveTo(w*.22,h*.82);
+  ctx.lineTo(w*.22,h*.22);
+  ctx.lineTo(w*.58,h*.22);
+  ctx.stroke();
+
+  ctx.lineWidth=1.5;
+  ctx.beginPath();
+  ctx.moveTo(w*.22,h*.27);
+  ctx.lineTo(w*.76,h*.27);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(w*.62,h*.27);
+  ctx.lineTo(w*.62,h*.50);
+  ctx.stroke();
+
+  /* hanging hook */
+  ctx.beginPath();
+  ctx.arc(w*.62,h*.54,18,0,Math.PI);
+  ctx.stroke();
+
+  /* small work lights / dust */
+  particles.forEach(p=>{
+    p.y-=p.speed*.3;
+    p.x+=Math.sin(t+p.phase)*.15;
+    if(p.y<0)p.y=h;
+
+    ctx.fillStyle=`rgba(255,209,110,${p.alpha*.42})`;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.size*.6,0,Math.PI*2);
+    ctx.fill();
+  });
 }
 
 /* =========================================================
@@ -1039,57 +1101,78 @@ function drawEnvironmental(){
   const w=innerWidth;
   const h=innerHeight;
 
-  /* soft green haze */
-  const haze=ctx.createRadialGradient(
-    w*.52,h*.48,20,
-    w*.52,h*.48,520
-  );
-  haze.addColorStop(0,"rgba(75,255,165,.11)");
-  haze.addColorStop(1,"transparent");
-  ctx.fillStyle=haze;
+  /* natural green atmosphere */
+  const sky=ctx.createLinearGradient(0,0,0,h);
+  sky.addColorStop(0,"rgba(24,88,59,.32)");
+  sky.addColorStop(.48,"rgba(20,117,72,.18)");
+  sky.addColorStop(1,"rgba(3,36,20,.34)");
+  ctx.fillStyle=sky;
   ctx.fillRect(0,0,w,h);
 
-  /* wind-like particles */
-  particles.forEach(p=>{
-    p.x+=p.speed*.35;
-    p.y+=Math.sin(t+p.phase)*.18;
+  /* distant hills */
+  ctx.fillStyle="rgba(34,112,67,.22)";
+  ctx.beginPath();
+  ctx.moveTo(0,h*.72);
+  ctx.quadraticCurveTo(w*.18,h*.54,w*.34,h*.72);
+  ctx.quadraticCurveTo(w*.55,h*.50,w*.73,h*.72);
+  ctx.quadraticCurveTo(w*.86,h*.55,w,h*.70);
+  ctx.lineTo(w,h);
+  ctx.lineTo(0,h);
+  ctx.closePath();
+  ctx.fill();
 
-    if(p.x>w)p.x=0;
+  /* tree silhouettes */
+  for(let i=0;i<18;i++){
+    const x=(i*93)%w;
+    const y=h*.72+(i%4)*8;
+    const s=55+(i%5)*16;
 
-    ctx.fillStyle=`rgba(160,255,200,${p.alpha*.32})`;
+    ctx.fillStyle="rgba(4,51,28,.42)";
+    ctx.fillRect(x-4,y-s*.25,8,s*.40);
+
     ctx.beginPath();
-    ctx.arc(p.x,p.y,p.size*.7,0,Math.PI*2);
+    ctx.arc(x,y-s*.45,s*.33,0,Math.PI*2);
     ctx.fill();
-  });
-
-  /* leaf curves */
-  ctx.strokeStyle="rgba(120,255,180,.08)";
-  ctx.lineWidth=1.5;
-
-  for(let i=0;i<16;i++){
-    const x=(i*120+t*10)%w;
 
     ctx.beginPath();
-    ctx.moveTo(x,h);
-    ctx.quadraticCurveTo(
-      x+50,h*.55,
-      x+110,h*.35
-    );
-    ctx.stroke();
+    ctx.arc(x-s*.22,y-s*.28,s*.24,0,Math.PI*2);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(x+s*.22,y-s*.28,s*.24,0,Math.PI*2);
+    ctx.fill();
   }
 
-  /* eco ring */
-  ctx.strokeStyle="rgba(80,255,160,.10)";
-  ctx.lineWidth=2;
-  ctx.beginPath();
-  ctx.arc(
-    w*.75,
-    h*.25,
-    110+Math.sin(t)*8,
-    0,
-    Math.PI*2
+  /* floating leaves / pollen */
+  particles.forEach(p=>{
+    p.x+=p.speed*.25;
+    p.y+=Math.sin(t+p.phase)*.18;
+    if(p.x>w)p.x=0;
+
+    ctx.fillStyle=`rgba(180,255,145,${p.alpha*.45})`;
+    ctx.shadowBlur=8;
+    ctx.shadowColor="#8cff72";
+
+    ctx.beginPath();
+    ctx.ellipse(
+      p.x,p.y,
+      p.size*1.5,p.size*.8,
+      Math.sin(t+p.phase),
+      0,Math.PI*2
+    );
+    ctx.fill();
+    ctx.shadowBlur=0;
+  });
+
+  /* soft sunlight */
+  const glow=ctx.createRadialGradient(
+    w*.72,h*.18,10,
+    w*.72,h*.18,280
   );
-  ctx.stroke();
+  glow.addColorStop(0,"rgba(220,255,180,.18)");
+  glow.addColorStop(1,"transparent");
+  ctx.fillStyle=glow;
+  ctx.fillRect(0,0,w,h);
 }
 
 /* =========================================================
