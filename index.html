@@ -799,6 +799,36 @@ body.mood-milk .hero h1,body.mood-milk .section-title,body.mood-milk .future-tit
   .video-modal-box{padding:14px;border-radius:20px}
 }
 
+
+/* ===== 10X PROJECT COST COMMAND CENTER ===== */
+.cost-command{
+  margin-top:24px;
+  padding:22px;
+  border:1px solid rgba(80,100,85,.16);
+  border-radius:24px;
+  background:linear-gradient(145deg,rgba(255,255,255,.72),rgba(241,246,238,.66));
+  box-shadow:0 18px 55px rgba(65,80,58,.08);
+}
+.cost-command h3{margin:0 0 7px;color:#3f5545;font-size:20px}
+.cost-command .cc-intro{margin:0 0 18px;color:#68736a;line-height:1.75}
+.cc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.cc-box{padding:15px;border-radius:17px;border:1px solid rgba(75,95,78,.13);background:rgba(255,255,255,.56)}
+.cc-box h4{margin:0 0 8px;color:#56705b;font-size:13px;letter-spacing:.04em}
+.cc-box p,.cc-box li{color:#667067;line-height:1.65;font-size:13px}
+.cc-box ul{margin:0;padding-left:18px}
+.cc-wide{grid-column:1/-1}
+.ledger-wrap{overflow:auto;margin-top:16px;border-radius:16px;border:1px solid rgba(75,95,78,.13)}
+.cost-ledger{width:100%;border-collapse:collapse;min-width:720px;background:rgba(255,255,255,.5)}
+.cost-ledger th,.cost-ledger td{padding:11px 12px;text-align:left;border-bottom:1px solid rgba(75,95,78,.10);font-size:12px;color:#626b64}
+.cost-ledger th{color:#4f6754;background:rgba(225,235,222,.48);font-weight:700}
+.cost-ledger td:first-child{font-weight:700;color:#4d5e50}
+.cost-ledger input{width:100%;box-sizing:border-box;border:1px solid rgba(75,95,78,.15);border-radius:9px;padding:8px;background:rgba(255,255,255,.8);color:#39443c}
+.ledger-total{font-weight:800;color:#3f5845!important}
+.cc-formula{margin-top:14px;padding:14px;border-radius:14px;background:rgba(228,238,225,.58);color:#4d6251;line-height:1.8;font-size:13px}
+.cc-warning{margin-top:14px;padding:13px 15px;border-radius:13px;background:rgba(255,248,225,.72);border:1px solid rgba(150,125,60,.14);color:#756b51;font-size:12px;line-height:1.65}
+@media(max-width:900px){.cc-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.cc-grid{grid-template-columns:1fr}.cost-command{padding:16px}}
+
 </style>
 </head>
 
@@ -1469,6 +1499,74 @@ body.mood-milk .hero h1,body.mood-milk .section-title,body.mood-milk .future-tit
       unless a verified project cost record is entered.
     </div>
 
+    <section class="cost-command">
+      <h3>📊 Project Cost Command Center — A to Z</h3>
+      <p class="cc-intro">
+        This is the project-level financial-control view: how I would monitor the money from
+        BOQ and procurement through daily execution, measurement, billing, forecast and final margin.
+        Enter verified figures when available; the website never invents an actual saving or profit.
+      </p>
+
+      <div class="cc-grid">
+        <div class="cc-box">
+          <h4>01 / COST CONTROL</h4>
+          <ul id="ccCostControl"></ul>
+        </div>
+        <div class="cc-box">
+          <h4>02 / CONTRACTOR PROFIT</h4>
+          <ul id="ccProfit"></ul>
+        </div>
+        <div class="cc-box">
+          <h4>03 / QUALITY AT LOW COST</h4>
+          <ul id="ccQuality"></ul>
+        </div>
+        <div class="cc-box">
+          <h4>04 / WHERE MONEY CAN LEAK</h4>
+          <ul id="ccLeakage"></ul>
+        </div>
+        <div class="cc-box">
+          <h4>05 / WHAT WAS MISSING</h4>
+          <ul id="ccMissing"></ul>
+        </div>
+        <div class="cc-box">
+          <h4>06 / FUTURE PROFIT IMPROVEMENT</h4>
+          <ul id="ccFuture"></ul>
+        </div>
+
+        <div class="cc-box cc-wide">
+          <h4>07 / DAILY A–Z COST ROUTINE</h4>
+          <p id="ccRoutine"></p>
+        </div>
+
+        <div class="cc-box cc-wide">
+          <h4>08 / REGULAR COST LEDGER</h4>
+          <p>Record the actual daily/weekly project cost by category. These are user-entered figures, not fabricated portfolio claims.</p>
+          <div class="ledger-wrap">
+            <table class="cost-ledger">
+              <thead>
+                <tr><th>Cost Head</th><th>What I monitor</th><th>Actual BDT</th><th>Control Point</th></tr>
+              </thead>
+              <tbody id="ccLedger"></tbody>
+            </table>
+          </div>
+          <div class="cc-formula">
+            <b>A–Z control chain:</b>
+            BOQ → approved quantity → planned procurement → received quantity → issued quantity →
+            balance stock → labour hours → equipment hours → transport/trips → executed quantity →
+            QA/QC/rework → measured quantity → certified billing → cost-to-date → committed cost →
+            balance-to-complete → forecast final cost → expected margin.
+          </div>
+        </div>
+      </div>
+
+      <div class="cc-warning">
+        <b>Professional-credit note:</b> The narrative describes contractor-side engineering
+        cost-control methods supported by the portfolio responsibilities. It does not claim that
+        a specific amount of profit was personally generated unless the corresponding project
+        accounts, bills, BOQ, purchase records and cost ledger verify it.
+      </div>
+    </section>
+
     <div class="project-modal-actions">
       <a class="btn primary" id="modalAgencyLink" href="#" target="_blank">Open Official Agency ↗</a>
       <button class="btn" onclick="closeProject()">Close Details</button>
@@ -2036,6 +2134,14 @@ const modalQualityCredit=document.getElementById("modalQualityCredit");
 const modalGapCredit=document.getElementById("modalGapCredit");
 const modalFutureCredit=document.getElementById("modalFutureCredit");
 const modalRoutineCredit=document.getElementById("modalRoutineCredit");
+const ccCostControl=document.getElementById("ccCostControl");
+const ccProfit=document.getElementById("ccProfit");
+const ccQuality=document.getElementById("ccQuality");
+const ccLeakage=document.getElementById("ccLeakage");
+const ccMissing=document.getElementById("ccMissing");
+const ccFuture=document.getElementById("ccFuture");
+const ccRoutine=document.getElementById("ccRoutine");
+const ccLedger=document.getElementById("ccLedger");
 const modalTargetValue=document.getElementById("modalTargetValue");
 const modalProfitResult=document.getElementById("modalProfitResult");
 const modalCostCredit=document.getElementById("modalCostCredit");
@@ -2050,6 +2156,57 @@ function projectAgencyUrl(agency){
   if(agency.indexOf("BWDB")===0) return "https://www.bwdb.gov.bd/";
   if(agency.indexOf("RHD")===0) return "https://rhd.gov.bd/";
   return "#";
+}
+
+
+function fillCCList(el,items){
+  if(!el) return;
+  el.innerHTML=(items||[]).map(function(x){return "<li>"+x+"</li>";}).join("");
+}
+function buildCostLedger(p,f){
+  if(!ccLedger) return;
+  const rows=[
+    ["Materials","cement/steel/aggregate/brick/HBB/other material received, issued and balance","Procurement vs BOQ; wastage; reconciliation"],
+    ["Labour","worker count, hours, productivity and idle time","Output per labour-day; overtime; idle labour"],
+    ["Equipment / Plant","excavator, roller, mixer, truck, generator etc. hours","Utilisation; idle hours; fuel/maintenance"],
+    ["Transport / Haulage","trip count, distance, payload and delivery timing","Cost per trip / unit; duplicate trips"],
+    ["Subcontract / Other Direct","specialist or direct site expenditure","Approval and quantity verification"],
+    ["Site Overhead","site office, temporary works, utilities and supervision","Committed vs actual"],
+    ["Rework / Waste","rejected work, breakage, excess cutting, spillage","Root cause; prevent recurrence"],
+    ["Billing / Measurement","executed and certified quantities","BOQ vs actual vs certified quantity"],
+    ["Variation / Claim","approved or pending change items","Scope and approval before execution"],
+    ["Cost-to-Complete","remaining quantity × realistic unit cost","Weekly forecast and early warning"]
+  ];
+  ccLedger.innerHTML=rows.map(function(r,i){
+    return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td><input class="cc-ledger-input" data-row="'+i+'" type="number" min="0" step="0.01" placeholder="BDT"></td><td>'+r[2]+'</td></tr>';
+  }).join("");
+}
+
+function populateCostCommand(index){
+  const f=projectFinanceData[index]||{};
+  const genericLeak=[
+    "Unverified quantity or over-execution",
+    "Material loss, over-ordering or unexplained stock variance",
+    "Idle labour, plant or trucks",
+    "Poor sequencing that creates rework or remobilisation",
+    "Unplanned transport/haulage and duplicate trips",
+    "Late procurement causing premium purchases or downtime"
+  ];
+  const missing=[
+    "Project-wise audited actual expenditure",
+    "Purchase ledger and material issue/return records",
+    "Labour/equipment daily cost sheets",
+    "Verified contractor profit and overhead allocation",
+    "Quantified saving attributable specifically to my work"
+  ];
+  fillCCList(ccCostControl,f.method);
+  fillCCList(ccProfit,f.profit);
+  fillCCList(ccQuality,f.quality);
+  fillCCList(ccLeakage,genericLeak);
+  fillCCList(ccMissing,f.gaps&&f.gaps.length?f.gaps:missing);
+  fillCCList(ccFuture,f.future);
+  if(ccRoutine) ccRoutine.textContent=f.routine||"Daily plan → quantity → material → labour → equipment → transport → QA/QC → rework → measurement → billing → cost-to-date → forecast → margin.";
+  buildCostLedger(null,f);
 }
 
 function openProject(index){
@@ -2087,6 +2244,7 @@ function openProject(index){
   fillDetailList(modalCoord,p.coord);
 
   modalAgencyLink.href=projectAgencyUrl(modalAgency.textContent);
+  populateCostCommand(index);
 
   projectModal.classList.add("open");
   projectModal.setAttribute("aria-hidden","false");
