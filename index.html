@@ -223,6 +223,63 @@ body.mood-transportation .project:hover,
 body.mood-environmental .project:hover,
 body.mood-construction .project:hover{border-color:var(--green)}
 
+
+/* ===== PROJECT DETAIL MODAL ===== */
+.project{cursor:pointer}
+.project .project-open{
+  display:inline-block;margin-top:8px;color:#8fb5ff;
+  font:700 10px var(--heading);letter-spacing:.5px
+}
+.project-modal{
+  position:fixed;inset:0;z-index:3000;display:none;
+  align-items:center;justify-content:center;padding:28px;
+  background:rgba(0,0,0,.70);backdrop-filter:blur(10px)
+}
+.project-modal.open{display:flex}
+.project-modal-box{
+  width:min(940px,96vw);max-height:88vh;overflow:auto;padding:30px;
+  border:1px solid rgba(105,157,255,.24);border-radius:28px;
+  background:linear-gradient(145deg,rgba(9,24,47,.97),rgba(5,13,26,.97));
+  box-shadow:0 35px 120px rgba(0,0,0,.55)
+}
+.project-modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.project-modal-agency{
+  color:#82aaff;font:800 10px var(--heading);letter-spacing:2px;text-transform:uppercase
+}
+.project-modal h2{
+  margin:8px 0 12px;color:#f4f8ff;
+  font:800 clamp(25px,3.2vw,40px)/1.15 var(--heading)
+}
+.project-modal-meta{color:#aebfda;font-size:12px;line-height:1.75}
+.project-close{
+  width:38px;height:38px;flex:0 0 38px;border:1px solid rgba(255,255,255,.16);
+  border-radius:50%;background:rgba(255,255,255,.06);color:#fff;
+  cursor:pointer;font-size:20px
+}
+.project-close:hover{border-color:#5e91ff;background:rgba(94,145,255,.12)}
+.detail-grid{margin-top:24px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.detail-card{
+  padding:18px;border:1px solid rgba(255,255,255,.09);border-radius:18px;
+  background:rgba(255,255,255,.04)
+}
+.detail-card h4{
+  margin-bottom:8px;color:#7eaaff;font:800 12px var(--heading);
+  letter-spacing:1px;text-transform:uppercase
+}
+.detail-card p,.detail-card li{color:#c2d0df;font-size:13px;line-height:1.8}
+.detail-card ul{padding-left:18px}
+.project-modal-note{
+  margin-top:18px;padding:13px 15px;border-left:3px solid #5d91ff;
+  border-radius:10px;background:rgba(74,123,255,.07);color:#afc1d8;
+  font-size:11px;line-height:1.7
+}
+.project-modal-actions{margin-top:22px;display:flex;gap:9px;flex-wrap:wrap}
+@media(max-width:650px){
+  .project-modal{padding:12px}
+  .project-modal-box{padding:20px;border-radius:22px}
+  .detail-grid{grid-template-columns:1fr}
+}
+
 footer{
   padding:40px 6vw;border-top:1px solid var(--line);display:flex;justify-content:space-between;
   gap:20px;color:#8fa79d;font:600 11px var(--heading)
@@ -431,7 +488,7 @@ footer{
         rural roads, RCC roads, market development,
         rehabilitation and local infrastructure.
       </p>
-      <a href="https://www.lged.gov.bd/" target="_blank">Official Website ↗</a>
+      <a href="https://lged.gov.bd/" target="_blank">Official Website ↗</a>
     </article>
 
     <article class="agency">
@@ -441,7 +498,7 @@ footer{
         Public Works Department — building construction,
         structural/civil works, quantity measurement and coordination.
       </p>
-      <a href="https://pwd.gov.bd/" target="_blank">Official Website ↗</a>
+      <a href="https://ss.pwd.gov.bd/home/" target="_blank">Official Website ↗</a>
     </article>
 
     <article class="agency">
@@ -514,84 +571,97 @@ footer{
 <section id="projects" class="reveal">
   <div class="section-label">05 / PROJECT PORTFOLIO</div>
   <h2 class="section-title">11+ Government Projects.</h2>
-  <p class="section-desc">Selected project experience through M/S. Mahima Steel & Cong.</p>
-
+  <p class="section-desc">
+    Click any project card to open a complete project-level view of your role,
+    site activities, QA/QC exposure, measurement, coordination and documentation.
+  </p>
   <div class="projects">
-    <article class="project">
+    <article class="project" onclick="openProject(0)" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openProject(0)">
       <div class="project-agency">LGED • KURIGRAM</div>
       <h3>Naykerhat Rural Market Development (NOBIDEP)</h3>
       <p>Tender ID: 107138 • Package: WNOBI-Kur-RM-147 (C)</p>
-      <a href="https://www.lged.gov.bd/" target="_blank">LGED ↗</a>
+      <span class="project-open">CLICK TO VIEW MY WORK DETAILS →</span>
+      <a href="https://lged.gov.bd/" target="_blank" onclick="event.stopPropagation()">Official Agency ↗</a>
     </article>
 
-    <article class="project">
+    <article class="project" onclick="openProject(1)" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openProject(1)">
       <div class="project-agency">LGED • SIRAJGANJ</div>
       <h3>Bagbati–Kazipur C&B Ghorachora Monsur Ali Road to Sarkar Bari Jame Mosque RCC Road</h3>
       <p>Tender ID: 810008 • Package: ADP/SAD/SER/2022-23/06</p>
-      <a href="https://www.lged.gov.bd/" target="_blank">LGED ↗</a>
+      <span class="project-open">CLICK TO VIEW MY WORK DETAILS →</span>
+      <a href="https://lged.gov.bd/" target="_blank" onclick="event.stopPropagation()">Official Agency ↗</a>
     </article>
 
-    <article class="project">
+    <article class="project" onclick="openProject(2)" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openProject(2)">
       <div class="project-agency">LGED • SIRAJGANJ</div>
       <h3>Char Someshpur Central Mosque Washblock & Ojukhana</h3>
       <p>Tender ID: 757953 • Package: GSID-2/SRJ/DW-04</p>
-      <a href="https://www.lged.gov.bd/" target="_blank">LGED ↗</a>
+      <span class="project-open">CLICK TO VIEW MY WORK DETAILS →</span>
+      <a href="https://lged.gov.bd/" target="_blank" onclick="event.stopPropagation()">Official Agency ↗</a>
     </article>
 
-    <article class="project">
+    <article class="project" onclick="openProject(3)" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openProject(3)">
       <div class="project-agency">LGED • SIRAJGANJ</div>
       <h3>Kaelgati Mosque to Kalumondol Bari RCC Road Development</h3>
       <p>Tender ID: 810013 • Package: UDF/SAD/SER/2022-23</p>
-      <a href="https://www.lged.gov.bd/" target="_blank">LGED ↗</a>
+      <span class="project-open">CLICK TO VIEW MY WORK DETAILS →</span>
+      <a href="https://lged.gov.bd/" target="_blank" onclick="event.stopPropagation()">Official Agency ↗</a>
     </article>
 
-    <article class="project">
+    <article class="project" onclick="openProject(4)" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openProject(4)">
       <div class="project-agency">LGED • SIRAJGANJ</div>
       <h3>Tamai RHD (Bashtola) to Char Tengrail Road Improvement</h3>
-      <p>700 m • Project Value ≈ BDT 8.11 Crore • LGED/XEN/Siraj/2017/1214</p>
-      <a href="https://www.lged.gov.bd/" target="_blank">LGED ↗</a>
+      <p>700 m • Project Value ≈ BDT 8.11 Crore • Package: LGED/XEN/Siraj/2017/1214</p>
+      <span class="project-open">CLICK TO VIEW MY WORK DETAILS →</span>
+      <a href="https://lged.gov.bd/" target="_blank" onclick="event.stopPropagation()">Official Agency ↗</a>
     </article>
 
-    <article class="project">
+    <article class="project" onclick="openProject(5)" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openProject(5)">
       <div class="project-agency">PWD • SIRAJGANJ</div>
       <h3>07 RAB Complex Project (RAB-12), Hatikumrul</h3>
       <p>Package: 02(U)(OTM)/2015-2016</p>
-      <a href="https://pwd.gov.bd/" target="_blank">PWD ↗</a>
+      <span class="project-open">CLICK TO VIEW MY WORK DETAILS →</span>
+      <a href="https://ss.pwd.gov.bd/home/" target="_blank" onclick="event.stopPropagation()">Official Agency ↗</a>
     </article>
 
-    <article class="project">
+    <article class="project" onclick="openProject(6)" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openProject(6)">
       <div class="project-agency">LGED</div>
       <h3>Kuthi Satbaria UZR to Khas Satbaria Utterpara Road Improvement & Link Road</h3>
       <p>805 m • Project Value ≈ BDT 1.68 Crore • Tender ID: 599746 • IRIDP-3/SRJ/DW-35</p>
-      <a href="https://www.lged.gov.bd/" target="_blank">LGED ↗</a>
+      <span class="project-open">CLICK TO VIEW MY WORK DETAILS →</span>
+      <a href="https://lged.gov.bd/" target="_blank" onclick="event.stopPropagation()">Official Agency ↗</a>
     </article>
 
-    <article class="project">
+    <article class="project" onclick="openProject(7)" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openProject(7)">
       <div class="project-agency">LGED • PABNA</div>
       <h3>Masumdia UP Office to Dear Bramndi Hat Road Rehabilitation</h3>
       <p>1,240 m • ID No.: 615468 • Package: GOBM/2021-22/W-33</p>
-      <a href="https://www.lged.gov.bd/" target="_blank">LGED ↗</a>
+      <span class="project-open">CLICK TO VIEW MY WORK DETAILS →</span>
+      <a href="https://lged.gov.bd/" target="_blank" onclick="event.stopPropagation()">Official Agency ↗</a>
     </article>
 
-    <article class="project">
+    <article class="project" onclick="openProject(8)" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openProject(8)">
       <div class="project-agency">BWDB • SIRAJGANJ</div>
       <h3>Emergency Repair & Protection Work at Betil Spur-1, Belkuchi</h3>
       <p>Tender ID: 535754 • Package: L/NDR/08/2020-2021</p>
-      <a href="https://www.bwdb.gov.bd/" target="_blank">BWDB ↗</a>
+      <span class="project-open">CLICK TO VIEW MY WORK DETAILS →</span>
+      <a href="https://www.bwdb.gov.bd/" target="_blank" onclick="event.stopPropagation()">Official Agency ↗</a>
     </article>
 
-    <article class="project">
+    <article class="project" onclick="openProject(9)" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openProject(9)">
       <div class="project-agency">BWDB • SIRAJGANJ</div>
       <h3>Temporary Emergency Protection Work</h3>
       <p>Package: I-NDR-05/2021 • Sirajganj O&M Division</p>
-      <a href="https://www.bwdb.gov.bd/" target="_blank">BWDB ↗</a>
+      <span class="project-open">CLICK TO VIEW MY WORK DETAILS →</span>
+      <a href="https://www.bwdb.gov.bd/" target="_blank" onclick="event.stopPropagation()">Official Agency ↗</a>
     </article>
 
-    <article class="project">
+    <article class="project" onclick="openProject(10)" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openProject(10)">
       <div class="project-agency">RHD • SIRAJGANJ</div>
       <h3>Repair of Damaged Pavement by HBB Work at 9th Km of Tarash–Hamkuria (Z-6032) Road</h3>
       <p>Tender ID: 621337 LTM • Package: 12/e-GP/eeshid/2021-2022</p>
-      <a href="https://rhd.gov.bd/" target="_blank">RHD ↗</a>
+      <span class="project-open">CLICK TO VIEW MY WORK DETAILS →</span>
+      <a href="https://rhd.gov.bd/" target="_blank" onclick="event.stopPropagation()">Official Agency ↗</a>
     </article>
   </div>
 </section>
@@ -748,6 +818,41 @@ footer{
   <button class="mood-btn" onclick="setMood('environmental')">🌿 Environmental</button>
 </div>
 
+
+<!-- ===== PROJECT DETAIL MODAL ===== -->
+<div class="project-modal" id="projectModal" aria-hidden="true">
+  <div class="project-modal-box">
+    <div class="project-modal-top">
+      <div>
+        <div class="project-modal-agency" id="modalAgency"></div>
+        <h2 id="modalTitle"></h2>
+        <div class="project-modal-meta" id="modalMeta"></div>
+      </div>
+      <button class="project-close" onclick="closeProject()" aria-label="Close">×</button>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card"><h4>My Role</h4><p id="modalRole"></p></div>
+      <div class="detail-card"><h4>Site & Construction Activities</h4><ul id="modalActivities"></ul></div>
+      <div class="detail-card"><h4>QA / QC Exposure</h4><ul id="modalQA"></ul></div>
+      <div class="detail-card"><h4>Measurement & Documentation</h4><ul id="modalDocs"></ul></div>
+      <div class="detail-card"><h4>Coordination & Material Management</h4><ul id="modalCoord"></ul></div>
+      <div class="detail-card"><h4>Project-Specific Focus</h4><p id="modalFocus"></p></div>
+    </div>
+
+    <div class="project-modal-note">
+      The activity summary reflects the contractor-side duties and QA/QC,
+      measurement, coordination and documentation responsibilities described
+      in this portfolio. It does not claim that every listed activity occurred
+      on every project.
+    </div>
+
+    <div class="project-modal-actions">
+      <a class="btn primary" id="modalAgencyLink" href="#" target="_blank">Open Official Agency ↗</a>
+      <button class="btn" onclick="closeProject()">Close Details</button>
+    </div>
+  </div>
+</div>
 <footer>
   <div>
     🇧🇩 <strong>MD. Naimur Rahman Saad</strong><br>
@@ -1228,6 +1333,75 @@ function animate(){
 seed(260);
 setMood(localStorage.getItem("siteMood")||"default");
 animate();
+
+/* ===== PROJECT DETAIL DATA ===== */
+const projectDetails = [{"role": "Site Engineer — contractor-side construction supervision and project coordination.", "activities": ["Monitor civil works and construction progress in line with drawings and specifications.", "Support execution checks for earthwork, filling, compaction and associated site activities where applicable.", "Verify dimensions, levels, quantities and workmanship observations."], "qa": ["Material inspection and site quality checks.", "Support concrete/RCC-related quality control where applicable.", "Record inspection observations and follow-up with site personnel."], "docs": ["Site measurements and quantity records.", "Progress documentation and site reporting.", "Quantity verification and contractor-side documentation."], "coord": ["Coordinate workers, suppliers and contractor-side site personnel.", "Monitor material availability and usage against site requirements.", "Support material reconciliation and work-progress communication."], "focus": "Rural market/local infrastructure delivery under LGED, with emphasis on practical site supervision, measurement, quality observation and construction progress."}, {"role": "Site Engineer — RCC road construction supervision.", "activities": ["Supervise RCC road construction activities and site execution.", "Check reinforcement, cover blocks, formwork, dimensions, levels and casting readiness.", "Monitor concrete casting, finishing and curing activities."], "qa": ["Slump testing and concrete cube sampling/QA-QC support.", "Reinforcement and cover inspection before casting.", "Material inspection and workmanship checks."], "docs": ["Site measurements and quantity verification.", "BBS review/support and reinforcement records.", "Progress reports, inspection records and contractor billing inputs."], "coord": ["Coordinate workforce, concrete/material supply and site activities.", "Track material usage and reconcile quantities.", "Communicate site progress and quality observations."], "focus": "RCC road delivery — especially reinforcement, concrete quality control, formwork/casting coordination, measurement and curing."}, {"role": "Site Engineer — building-related civil works and repair/construction supervision.", "activities": ["Supervise building-related civil and RCC/concrete activities.", "Monitor excavation, masonry/structural civil activities and finishing-related site progress as applicable.", "Verify dimensions, levels, workmanship and construction sequence."], "qa": ["Concrete/material quality checks where applicable.", "Reinforcement, formwork and dimensional inspection.", "Workmanship and construction-stage inspection."], "docs": ["Measurement records and quantity verification.", "Progress documentation and site reports.", "Contractor billing support and material records."], "coord": ["Coordinate workers and material supply.", "Monitor material availability and usage.", "Coordinate day-to-day construction sequence."], "focus": "Building and sanitation-related civil works, emphasizing practical site supervision, RCC/concrete exposure, measurement and material inspection."}, {"role": "Site Engineer — RCC road execution and quality/measurement support.", "activities": ["Supervise RCC road execution and construction sequence.", "Inspect reinforcement, formwork, cover blocks, levels and dimensions.", "Monitor casting, finishing and curing activities."], "qa": ["Concrete slump and cube-sampling support.", "Reinforcement and pre-casting inspection.", "Material and workmanship checks."], "docs": ["Measurement and quantity verification.", "BBS/reinforcement records.", "Progress and inspection documentation."], "coord": ["Coordinate labour, materials and concrete-related site activities.", "Track material consumption and reconcile quantities.", "Support contractor-side progress communication."], "focus": "RCC road development with direct relevance to reinforcement inspection, concrete quality control, formwork, curing and quantity verification."}, {"role": "Trainee Site Engineer — road improvement and pavement-related construction support.", "activities": ["Assist with earthwork, filling and compaction activities.", "Monitor subgrade, sub-base, base-course and pavement-related work.", "Support site measurements and construction progress monitoring."], "qa": ["Material and layer-quality observations.", "Compaction/site-density related checks where applicable.", "Workmanship and pavement-stage inspection."], "docs": ["Field measurements and quantity records.", "Progress monitoring and site documentation.", "Material and work-quantity records."], "coord": ["Coordinate workforce and material movement.", "Support site logistics and construction sequencing.", "Communicate progress observations to senior engineers."], "focus": "Road improvement — earthwork, compaction, pavement layers, measurement and progress monitoring."}, {"role": "Trainee Site Engineer — building and structural/civil construction support.", "activities": ["Assist senior engineers with building construction and structural/civil works.", "Support site measurements and quantity verification.", "Observe variation works and construction progress."], "qa": ["Construction material and workmanship checks.", "Reinforcement/formwork/concrete-related inspection support where applicable.", "Dimensional and site-quality observations."], "docs": ["Measurement records and quantity calculations.", "Variation-work documentation support.", "Progress records and contractor-side documentation."], "coord": ["Support coordination of workers and site activities.", "Assist with material requirements and site readiness.", "Coordinate information between field activities and senior staff."], "focus": "Building construction and structural/civil works, with exposure to variation, quantity measurement and site coordination."}, {"role": "Trainee Site Engineer — road improvement and link-road construction support.", "activities": ["Assist with road improvement earthwork and pavement-related activities.", "Support site measurements, quantity verification and progress tracking.", "Monitor construction sequence and material movement."], "qa": ["Material inspection and layer/workmanship observations.", "Compaction and pavement-related quality checks where applicable.", "Support site inspection records."], "docs": ["Field measurements and quantities.", "Progress monitoring records.", "Material and contractor-side documentation."], "coord": ["Coordinate workforce and materials with site needs.", "Support logistics and construction sequencing.", "Assist senior engineers in communicating site progress."], "focus": "Road improvement and link-road delivery, emphasizing practical field execution, measurement, material management and progress monitoring."}, {"role": "Trainee Site Engineer — road rehabilitation and pavement-related site support.", "activities": ["Assist with road rehabilitation activities and site execution.", "Monitor pavement-related work, construction progress and measurements.", "Support quantity verification and material inspection."], "qa": ["Pavement/material workmanship observations.", "Compaction and field-density related checks where applicable.", "Routine site-quality inspection support."], "docs": ["Road measurements and quantity records.", "Progress monitoring documentation.", "Material and billing-support records."], "coord": ["Coordinate labour and material movement.", "Support site logistics and work sequencing.", "Assist with material usage monitoring."], "focus": "Road rehabilitation over 1,240 m, with emphasis on pavement works, field measurement, material inspection and progress monitoring."}, {"role": "Trainee Site Engineer — emergency repair and riverbank protection work support.", "activities": ["Support emergency protection and repair-site execution.", "Assist with site measurements, material coordination and progress monitoring.", "Monitor work progress under time-sensitive field conditions."], "qa": ["Material inspection and workmanship checks.", "Quantity/measurement verification for protection works.", "Site-condition and construction-progress observations."], "docs": ["Emergency work measurements.", "Progress documentation and site records.", "Contractor-side quantity and material records."], "coord": ["Coordinate materials, workers and site logistics.", "Support rapid material deployment.", "Coordinate contractor-side field activities."], "focus": "Emergency riverbank/protection work, emphasizing rapid field coordination, measurement, material handling and progress monitoring."}, {"role": "Trainee Site Engineer — temporary emergency protection work support.", "activities": ["Assist with emergency protection site execution.", "Support measurement, material handling and construction progress monitoring.", "Observe work sequence and site conditions during emergency activities."], "qa": ["Material inspection and workmanship observation.", "Quantity verification and measurement checks.", "Progress and field-quality documentation support."], "docs": ["Emergency-work measurement records.", "Progress/site reports.", "Material and quantity documentation."], "coord": ["Coordinate workers and suppliers at the site.", "Assist with material handling and deployment.", "Support contractor-side field coordination."], "focus": "Temporary emergency protection activities, emphasizing field coordination, measurement, material handling and documentation."}, {"role": "Trainee Site Engineer — HBB pavement repair and road maintenance support.", "activities": ["Assist with damaged-pavement repair and HBB-related site execution.", "Support measurements, quantity verification and construction progress monitoring.", "Observe pavement repair workmanship and site sequence."], "qa": ["Pavement/material inspection.", "Workmanship and layer/repair-stage observations.", "Quantity and field-measurement checks."], "docs": ["Repair measurements and quantity records.", "Progress documentation.", "Material and contractor-side billing-support records."], "coord": ["Coordinate workers and materials for repair activities.", "Support material movement and site readiness.", "Assist with progress communication."], "focus": "HBB pavement repair on an RHD road, linking practical road-maintenance, measurement, material inspection and construction monitoring experience."}];
+
+/* ===== PROJECT DETAIL MODAL ===== */
+const projectModal=document.getElementById("projectModal");
+const modalAgency=document.getElementById("modalAgency");
+const modalTitle=document.getElementById("modalTitle");
+const modalMeta=document.getElementById("modalMeta");
+const modalRole=document.getElementById("modalRole");
+const modalFocus=document.getElementById("modalFocus");
+const modalAgencyLink=document.getElementById("modalAgencyLink");
+const modalActivities=document.getElementById("modalActivities");
+const modalQA=document.getElementById("modalQA");
+const modalDocs=document.getElementById("modalDocs");
+const modalCoord=document.getElementById("modalCoord");
+
+function fillDetailList(el,items){
+  el.innerHTML=items.map(function(x){return "<li>"+x+"</li>";}).join("");
+}
+
+function projectAgencyUrl(agency){
+  if(agency.indexOf("LGED")===0) return "https://lged.gov.bd/";
+  if(agency.indexOf("PWD")===0) return "https://ss.pwd.gov.bd/home/";
+  if(agency.indexOf("BWDB")===0) return "https://www.bwdb.gov.bd/";
+  if(agency.indexOf("RHD")===0) return "https://rhd.gov.bd/";
+  return "#";
+}
+
+function openProject(index){
+  var p=projectDetails[index];
+  if(!p) return;
+
+  var cards=document.querySelectorAll("#projects .project");
+  var card=cards[index];
+
+  modalAgency.textContent=card.querySelector(".project-agency").textContent.trim();
+  modalTitle.textContent=card.querySelector("h3").textContent.trim();
+  modalMeta.textContent=card.querySelector("p").textContent.trim();
+
+  modalRole.textContent=p.role;
+  modalFocus.textContent=p.focus;
+
+  fillDetailList(modalActivities,p.activities);
+  fillDetailList(modalQA,p.qa);
+  fillDetailList(modalDocs,p.docs);
+  fillDetailList(modalCoord,p.coord);
+
+  modalAgencyLink.href=projectAgencyUrl(modalAgency.textContent);
+
+  projectModal.classList.add("open");
+  projectModal.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+}
+
+function closeProject(){
+  projectModal.classList.remove("open");
+  projectModal.setAttribute("aria-hidden","true");
+  document.body.style.overflow="";
+}
+
+projectModal.addEventListener("click",function(e){
+  if(e.target===projectModal) closeProject();
+});
+
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape") closeProject();
+});
+
 </script>
 
 </body>
