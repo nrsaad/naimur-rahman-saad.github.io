@@ -1,1187 +1,1151 @@
-<!-- =========================================================
-     FULL WEBSITE MOOD ENGINE
-========================================================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD. Naimur Rahman Saad | Civil Engineer</title>
+<meta name="description" content="MD. Naimur Rahman Saad — Civil Engineer | Construction Engineering & Project Management">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================================================
-   FULL PAGE MOOD VARIABLES
-========================================================= */
-
+:root{
+  --bg:#06100c;
+  --bg2:#0a1711;
+  --text:#f6fff9;
+  --muted:#a6bbb1;
+  --green:#39f39e;
+  --red:#ff4f68;
+  --cyan:#55dcff;
+  --gold:#ffd46a;
+  --violet:#9c82ff;
+  --glass:rgba(7,18,13,.69);
+  --line:rgba(255,255,255,.10);
+  --heading:"Manrope",sans-serif;
+  --body:"Inter",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{
-    --mood-bg:#020604;
-    --mood-card:rgba(5,15,10,.68);
-    --mood-glow:rgba(54,242,155,.12);
-
-    background:
-        radial-gradient(
-            circle at 75% 15%,
-            var(--mood-glow),
-            transparent 30%
-        ),
-        var(--mood-bg);
-
-    transition:
-        background 1.2s ease;
+  min-height:100vh;
+  color:var(--text);
+  font-family:var(--body);
+  background:
+    radial-gradient(circle at 75% 15%,rgba(57,243,158,.10),transparent 30%),
+    linear-gradient(145deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
+  transition:background 1s ease,color .6s ease;
 }
-
-
-/* FULL PAGE CANVAS */
-
-#fullMoodCanvas{
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100%;
-
-    z-index:-9;
-
-    pointer-events:none;
+body.light-mode{
+  color:#13221c;
 }
+a{text-decoration:none;color:inherit}
+button{font:inherit}
 
-
-/* ALL SITE CARDS FOLLOW MOOD */
-
-.card,
-.project,
-.agency,
-.stat,
-.future,
-.thesis{
-    background:
-        var(--mood-card);
-
-    transition:
-        background 1s ease,
-        border-color 1s ease,
-        box-shadow 1s ease;
+#worldCanvas{
+  position:fixed;inset:0;width:100%;height:100%;
+  z-index:-5;pointer-events:none;
 }
+#starLayer{
+  position:fixed;inset:0;z-index:-4;pointer-events:none;
+}
+.star{
+  position:absolute;width:2px;height:2px;border-radius:50%;
+  background:#fff;opacity:.45;animation:twinkle 3s ease-in-out infinite;
+}
+@keyframes twinkle{0%,100%{opacity:.12}50%{opacity:1}}
 
+.header{
+  position:fixed;z-index:1000;top:14px;left:50%;
+  transform:translateX(-50%);width:min(1180px,94%);
+  padding:12px 15px;display:flex;align-items:center;justify-content:space-between;gap:18px;
+  border:1px solid var(--line);border-radius:22px;
+  background:rgba(3,9,6,.72);backdrop-filter:blur(20px);
+}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-flag{font-size:26px;filter:drop-shadow(0 0 11px rgba(57,243,158,.45))}
+.brand-name strong{display:block;font:800 14px var(--heading);letter-spacing:.45px}
+.brand-name small{display:block;margin-top:2px;color:#8fa89d;font:600 9px var(--heading);letter-spacing:1.4px}
+.green{color:var(--green)} .red{color:var(--red)}
+.nav{display:flex;gap:18px}
+.nav a{font:700 11px var(--heading);color:#c9ddd5;transition:.25s}
+.nav a:hover{color:var(--green)}
+.lang{display:flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:99px}
+.lang button{border:0;background:transparent;color:#aabdb5;border-radius:99px;padding:6px 9px;font-size:10px;cursor:pointer}
+.lang button.active{color:#041108;background:linear-gradient(100deg,var(--green),var(--cyan));font-weight:800}
 
-/* =========================================================
-   MOOD BUTTONS
-========================================================= */
+.hero{
+  min-height:100vh;max-width:1280px;margin:auto;padding:140px 6vw 80px;
+  display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px;
+}
+.kicker{
+  display:inline-block;padding:8px 13px;border-radius:99px;
+  border:1px solid rgba(85,220,255,.22);background:rgba(85,220,255,.05);
+  color:#8ee9ff;font:700 10px var(--heading);letter-spacing:2.8px;
+}
+.hero h1{margin:20px 0;font:800 clamp(47px,7vw,92px)/.92 var(--heading);letter-spacing:-4.5px}
+.hero-sub{color:#d6e8e1;font:700 clamp(17px,2vw,22px)/1.5 var(--heading)}
+.mission{margin:28px 0;max-width:730px;font:700 clamp(25px,3.2vw,43px)/1.08 var(--heading)}
+.mission b{color:var(--green)}
+.hero-desc{max-width:760px;color:var(--muted);font-size:14px;line-height:1.9}
+.actions{margin-top:28px;display:flex;flex-wrap:wrap;gap:9px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;padding:11px 17px;
+  border-radius:999px;border:1px solid rgba(57,243,158,.30);
+  color:#effff8;background:rgba(255,255,255,.045);font:700 11px var(--heading);
+  cursor:pointer;transition:.3s
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 13px 36px rgba(57,243,158,.12)}
+.btn.primary{border:0;color:#031109;background:linear-gradient(100deg,var(--green),var(--cyan));font-weight:800}
 
+.hero-visual{height:470px;position:relative;display:grid;place-items:center;transition:.2s}
+.orbit{position:absolute;width:88%;height:60%;border:1px solid rgba(85,220,255,.26);border-radius:50%;transform:rotate(-10deg);animation:spin 17s linear infinite}
+.orbit.two{width:66%;height:45%;border-color:rgba(57,243,158,.25);animation-duration:11s;animation-direction:reverse}
+.core{
+  width:195px;height:195px;border-radius:50%;
+  background:radial-gradient(circle,#f3fff9 0 3%,#39f39e 8%,#0b4a2e 30%,#020604 67%);
+  box-shadow:0 0 120px rgba(57,243,158,.28);
+  animation:pulse 4s ease-in-out infinite;
+}
+@keyframes spin{to{transform:rotate(350deg)}}
+@keyframes pulse{50%{transform:scale(1.08);box-shadow:0 0 150px rgba(85,220,255,.20)}}
+.float{
+  position:absolute;padding:11px 14px;border:1px solid var(--line);border-radius:16px;
+  background:rgba(3,10,7,.74);backdrop-filter:blur(15px);font:700 11px var(--heading)
+}
+.float.one{left:0;top:4%;color:#79f2ae}.float.two{right:0;top:42%;color:#67ddff}.float.three{left:5%;bottom:4%;color:#ffd46a}
+
+section{width:min(1200px,100%);margin:auto;padding:95px 6vw}
+.section-label{color:var(--green);font:800 10px var(--heading);letter-spacing:3px}
+.section-title{margin:10px 0;font:800 clamp(32px,4.3vw,56px)/1 var(--heading);letter-spacing:-2px}
+.section-desc{max-width:830px;color:var(--muted);font-size:14px;line-height:1.9}
+.stats{margin-top:30px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{
+  padding:24px;text-align:center;border:1px solid var(--line);border-radius:22px;
+  background:var(--glass);backdrop-filter:blur(17px)
+}
+.stat strong{display:block;color:var(--green);font:800 35px var(--heading)}
+.stat span{display:block;margin-top:5px;color:var(--muted);font-size:12px}
+
+.grid{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{
+  padding:25px;border:1px solid var(--line);border-radius:24px;background:var(--glass);
+  backdrop-filter:blur(18px);transition:.35s
+}
+.card:hover{transform:translateY(-6px);border-color:rgba(57,243,158,.32)}
+.card h3{margin-bottom:10px;font:700 20px var(--heading)}
+.card p,.card li{color:#b5c9c0;font-size:13px;line-height:1.85}
+.card ul{padding-left:18px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.tag{padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);color:#d3e6de;font:700 10px var(--heading)}
+
+.agencies{margin-top:30px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.agency{
+  min-height:235px;padding:23px;display:flex;flex-direction:column;border:1px solid var(--line);
+  border-radius:23px;background:var(--glass);backdrop-filter:blur(18px);transition:.35s
+}
+.agency:hover{transform:translateY(-7px);border-color:rgba(57,243,158,.30)}
+.agency-icon{font-size:29px}.agency h3{margin:9px 0;font:800 25px var(--heading)}
+.agency p{flex:1;color:var(--muted);font-size:12px;line-height:1.7}
+.agency a{color:var(--green);font:700 11px var(--heading)}
+
+.projects{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.project{
+  padding:23px;border:1px solid var(--line);border-radius:23px;background:var(--glass);
+  backdrop-filter:blur(18px);transition:.35s
+}
+.project:hover{transform:translateY(-6px);border-color:rgba(85,220,255,.30)}
+.project-agency{color:var(--cyan);font:800 10px var(--heading);letter-spacing:2px}
+.project h3{margin:9px 0;font:700 18px/1.45 var(--heading)}
+.project p{color:#b1c7bd;font-size:13px;line-height:1.75}
+.project a{display:inline-block;margin-top:12px;color:var(--green);font:700 11px var(--heading)}
+
+.skills{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px}
+.skill{padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:#d8ebe3;font:700 11px var(--heading)}
+
+.future{
+  padding:45px;border:1px solid var(--line);border-radius:30px;
+  background:
+    radial-gradient(circle at 15% 30%,rgba(57,243,158,.10),transparent 28%),
+    radial-gradient(circle at 82% 20%,rgba(156,130,255,.10),transparent 28%),
+    rgba(5,15,10,.73);
+  backdrop-filter:blur(18px)
+}
+.future-title{
+  margin-top:10px;font:800 clamp(35px,5vw,72px) var(--heading);
+  background:linear-gradient(90deg,#75ffd1,#fff,#69caff,#ab8aff);
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.future-grid{margin-top:30px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.future-item{padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.035)}
+.future-item small{color:var(--green);font:800 10px var(--heading);letter-spacing:2px}
+.future-item h3{margin:9px 0;font:700 17px var(--heading)}
+.future-item p{color:var(--muted);font-size:12px;line-height:1.7}
+
+.thesis{margin-top:30px;padding:30px;border:1px solid var(--line);border-radius:24px;background:var(--glass);backdrop-filter:blur(18px)}
+.thesis h3{font:700 21px var(--heading);margin-bottom:12px}
+.thesis p{color:#b7cbc2;font-size:13px;line-height:1.85;margin-bottom:12px}
+
+/* Mood controls */
+#moodStatus{
+  position:fixed;right:20px;top:91px;z-index:600;
+  padding:8px 13px;border-radius:999px;border:1px solid var(--line);
+  background:rgba(0,0,0,.28);backdrop-filter:blur(14px);
+  color:rgba(255,255,255,.78);font:700 10px var(--heading);letter-spacing:1.6px
+}
 .moodbar{
-    position:fixed;
-    left:50%;
-    bottom:14px;
-
-    transform:translateX(-50%);
-
-    z-index:1000;
-
-    width:min(1100px,95%);
-
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-
-    gap:7px;
+  position:fixed;left:50%;bottom:13px;transform:translateX(-50%);z-index:700;
+  width:min(980px,95%);display:flex;justify-content:center;flex-wrap:wrap;gap:7px
 }
-
-.fullMoodBtn{
-    border:1px solid rgba(255,255,255,.18);
-
-    background:
-        rgba(2,7,4,.80);
-
-    color:white;
-
-    padding:
-        9px 12px;
-
-    border-radius:
-        13px;
-
-    cursor:pointer;
-
-    backdrop-filter:
-        blur(16px);
-
-    font-family:
-        "Rajdhani",
-        sans-serif;
-
-    font-size:
-        11px;
-
-    transition:.3s;
+.mood-btn{
+  padding:9px 12px;border:1px solid rgba(255,255,255,.18);border-radius:13px;
+  background:rgba(2,7,4,.84);color:#fff;backdrop-filter:blur(15px);
+  cursor:pointer;font:700 10px var(--heading);transition:.25s
 }
+.mood-btn:hover{transform:translateY(-3px);border-color:var(--green)}
 
-.fullMoodBtn:hover{
-    transform:
-        translateY(-3px);
+/* Light moods */
+body.mood-roads,
+body.mood-daylight{--bg1:#15313b;--bg2:#07131a}
+body.mood-transportation{--bg1:#061b2e;--bg2:#020711}
+body.mood-environmental{--bg1:#052117;--bg2:#020b06}
+body.mood-construction{--bg1:#201707;--bg2:#090603}
 
-    border-color:
-        var(--green);
+body.mood-roads .project:hover,
+body.mood-transportation .project:hover,
+body.mood-environmental .project:hover,
+body.mood-construction .project:hover{border-color:var(--green)}
 
-    box-shadow:
-        0 10px 30px
-        rgba(54,242,155,.15);
+footer{
+  padding:40px 6vw;border-top:1px solid var(--line);display:flex;justify-content:space-between;
+  gap:20px;color:#8fa79d;font:600 11px var(--heading)
 }
+.reveal{opacity:0;transform:translateY(28px);transition:1s}
+.reveal.show{opacity:1;transform:none}
 
-
-/* =========================================================
-   ACTIVE MOOD INDICATOR
-========================================================= */
-
-#moodName{
-
-    position:fixed;
-
-    top:92px;
-    right:20px;
-
-    z-index:999;
-
-    padding:
-        8px 13px;
-
-    border-radius:
-        999px;
-
-    background:
-        rgba(0,0,0,.28);
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    backdrop-filter:
-        blur(14px);
-
-    color:
-        rgba(255,255,255,.72);
-
-    font-family:
-        "Rajdhani",
-        sans-serif;
-
-    font-size:
-        11px;
-
-    letter-spacing:
-        2px;
-
-    text-transform:
-        uppercase;
+@media(max-width:980px){
+  nav{display:none}.hero{grid-template-columns:1fr}.hero-visual{height:340px}
+  .stats,.agencies,.future-grid{grid-template-columns:repeat(2,1fr)}
+  .grid,.projects{grid-template-columns:1fr}
 }
-
-
-/* =========================================================
-   MOOD-SPECIFIC PAGE LOOK
-========================================================= */
-
-
-/* OCEAN */
-
-body.mood-ocean{
-
-    --mood-bg:
-        linear-gradient(
-            180deg,
-            #062f46 0%,
-            #064c65 45%,
-            #02131d 100%
-        );
-
-    --mood-card:
-        rgba(2,38,52,.66);
-
-    --mood-glow:
-        rgba(70,215,255,.18);
-
+@media(max-width:650px){
+  section{padding:70px 5vw}.hero{padding:112px 5vw 60px}.hero h1{letter-spacing:-2px}
+  .stats,.agencies,.future-grid{grid-template-columns:1fr}.hero-visual{transform:scale(.85)}
+  .moodbar{bottom:7px}.mood-btn{padding:8px;font-size:9px}
+  footer{display:block}.future{padding:30px 20px}
 }
-
-
-/* FOREST */
-
-body.mood-forest{
-
-    --mood-bg:
-        linear-gradient(
-            180deg,
-            #061c12,
-            #0c4328 48%,
-            #03140c
-        );
-
-    --mood-card:
-        rgba(5,38,23,.67);
-
-    --mood-glow:
-        rgba(70,255,150,.14);
-
-}
-
-
-/* DRAGON */
-
-body.mood-dragon{
-
-    --mood-bg:
-        radial-gradient(
-            circle at 70% 20%,
-            #56150f,
-            transparent 25%
-        ),
-        linear-gradient(
-            145deg,
-            #190102,
-            #320708,
-            #050000
-        );
-
-    --mood-card:
-        rgba(46,5,7,.70);
-
-    --mood-glow:
-        rgba(255,75,30,.16);
-
-}
-
-
-/* GALAXY */
-
-body.mood-galaxy{
-
-    --mood-bg:
-        radial-gradient(
-            circle at 50% 50%,
-            #13003c,
-            #060012 45%,
-            #000 80%
-        );
-
-    --mood-card:
-        rgba(20,5,45,.68);
-
-    --mood-glow:
-        rgba(140,80,255,.16);
-
-}
-
-
-/* MOON */
-
-body.mood-moon{
-
-    --mood-bg:
-        linear-gradient(
-            160deg,
-            #07153d,
-            #020611 70%
-        );
-
-    --mood-card:
-        rgba(7,19,51,.67);
-
-    --mood-glow:
-        rgba(130,175,255,.14);
-
-}
-
-
-/* NIGHT */
-
-body.mood-night{
-
-    --mood-bg:
-        linear-gradient(
-            180deg,
-            #060c2c,
-            #010307
-        );
-
-    --mood-card:
-        rgba(6,12,36,.70);
-
-    --mood-glow:
-        rgba(80,130,255,.14);
-
-}
-
-
-/* DAY */
-
-body.mood-day{
-
-    --mood-bg:
-        linear-gradient(
-            180deg,
-            #55bfe9,
-            #dffaff 55%,
-            #4e996b
-        );
-
-    --mood-card:
-        rgba(220,245,248,.30);
-
-    --mood-glow:
-        rgba(255,240,160,.18);
-}
-
-
-/* SNOW */
-
-body.mood-snow{
-
-    --mood-bg:
-        linear-gradient(
-            180deg,
-            #83cce9,
-            #effaff 58%,
-            #a9cad9
-        );
-
-    --mood-card:
-        rgba(240,250,255,.30);
-
-    --mood-glow:
-        rgba(255,255,255,.22);
-}
-
-
-/* WALL */
-
-body.mood-wall{
-
-    --mood-bg:
-        linear-gradient(
-            120deg,
-            #d69a94,
-            #e9c6a5,
-            #ccd8c3,
-            #b6d9df,
-            #c5b9db
-        );
-
-    --mood-card:
-        rgba(255,255,255,.30);
-
-    --mood-glow:
-        rgba(255,210,150,.18);
-}
-
-
-/* =========================================================
-   DARK/LIGHT MOOD TEXT FIX
-========================================================= */
-
-body.mood-day .section-title,
-body.mood-wall .section-title,
-body.mood-snow .section-title,
-body.mood-day .card h3,
-body.mood-wall .card h3,
-body.mood-snow .card h3{
-    color:#10221c;
-}
-
-body.mood-day .section-desc,
-body.mood-wall .section-desc,
-body.mood-snow .section-desc,
-body.mood-day .card p,
-body.mood-wall .card p,
-body.mood-snow .card p{
-    color:#28453a;
-}
-
 </style>
+</head>
 
+<body>
 
-<canvas id="fullMoodCanvas"></canvas>
+<canvas id="worldCanvas"></canvas>
+<div id="starLayer"></div>
 
-<div id="moodName">
-    DEFAULT • ENGINEERING
-</div>
+<header class="header">
+  <a class="brand" href="#home">
+    <span class="brand-flag">🇧🇩</span>
+    <span class="brand-name">
+      <strong>
+        <span class="green">MD.</span>
+        <span class="red">NAIMUR RAHMAN</span>
+        <span class="green">SAAD</span>
+      </strong>
+      <small>CIVIL ENGINEER • CONSTRUCTION • SUSTAINABLE FUTURE</small>
+    </span>
+  </a>
 
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#engineering">Engineering</a>
+    <a href="#future">Future</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="lang">
+    <button id="enBtn" class="active" onclick="setLang('en')">EN</button>
+    <button id="bnBtn" onclick="setLang('bn')">বাংলা</button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div>
+    <div class="kicker">CIVIL ENGINEERING • CONSTRUCTION • INFRASTRUCTURE</div>
+
+    <h1>
+      <span class="green">MD. NAIMUR</span><br>
+      <span class="red">RAHMAN</span>
+      <span class="green">SAAD</span>
+    </h1>
+
+    <div class="hero-sub">
+      Civil Engineer |
+      Construction Engineering & Project Management
+      <br>
+      Transportation Engineering |
+      Environmental Engineering
+    </div>
+
+    <div class="mission">
+      A <b>Dream</b> Becomes <b>Reality</b><br>
+      When <b>Vision</b> Becomes <b>Mission.</b>
+    </div>
+
+    <p class="hero-desc">
+      Building practical experience today while preparing for a smarter,
+      safer and more sustainable infrastructure future.
+    </p>
+
+    <div class="actions">
+      <a class="btn primary" href="#projects">Explore My Journey →</a>
+      <a class="btn" href="#experience">View Experience</a>
+      <a class="btn" href="mailto:naimurrahmansaad0@gmail.com">Contact Me</a>
+      <a class="btn" href="CV.pdf" download>Download CV ↓</a>
+    </div>
+  </div>
+
+  <div class="hero-visual" id="heroVisual">
+    <div class="orbit"></div>
+    <div class="orbit two"></div>
+    <div class="core"></div>
+
+    <div class="float one">
+      🌿 Environment<br>
+      <small>Sustainable Infrastructure</small>
+    </div>
+
+    <div class="float two">
+      🚆 Transportation<br>
+      <small>Smart Mobility</small>
+    </div>
+
+    <div class="float three">
+      🏗️ Building<br>
+      <small>Construction Management</small>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="reveal">
+  <div class="section-label">01 / PROFILE</div>
+  <h2 class="section-title">Engineering with Purpose.</h2>
+
+  <p class="section-desc">
+    Civil Engineering graduate with 6+ years of practical construction
+    experience through M/S. Mahima Steel & Cong., progressing from
+    Trainee Site Engineer to Site Engineer. Experienced in site supervision,
+    QA/QC, construction material testing, reinforcement inspection,
+    BBS review, quantity verification, contractor billing,
+    material reconciliation, project coordination and construction documentation.
+  </p>
+
+  <div class="stats">
+    <div class="stat"><strong>6+</strong><span>Years Experience</span></div>
+    <div class="stat"><strong>11+</strong><span>Civil Projects</span></div>
+    <div class="stat"><strong>25.7 Cr</strong><span>BDT Project Exposure</span></div>
+    <div class="stat"><strong>~$2.1M</strong><span>Approx. USD Exposure</span></div>
+  </div>
+</section>
+
+<section id="engineering" class="reveal">
+  <div class="section-label">02 / ENGINEERING FOCUS</div>
+  <h2 class="section-title">Build • Sustain • Connect</h2>
+  <p class="section-desc">
+    Construction Management, Transportation Engineering and Environmental
+    Engineering connected through a practical infrastructure mindset.
+  </p>
+
+  <div class="grid">
+    <article class="card">
+      <h3>🏗️ Construction Engineering & Project Management</h3>
+      <p>
+        Construction planning, scheduling, site execution, QA/QC,
+        quantity verification, material management, coordination,
+        risk and project delivery.
+      </p>
+      <div class="tags">
+        <span class="tag">Planning</span>
+        <span class="tag">QA/QC</span>
+        <span class="tag">Primavera P6</span>
+        <span class="tag">Project Delivery</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3>🛣️ Roads & Transportation</h3>
+      <p>
+        Road construction and rehabilitation, pavement-related works,
+        transportation planning, traffic engineering and sustainable mobility.
+      </p>
+      <div class="tags">
+        <span class="tag">Pavement</span>
+        <span class="tag">Roads</span>
+        <span class="tag">Traffic</span>
+        <span class="tag">Mobility</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3>🌿 Environmental Engineering</h3>
+      <p>
+        Sustainable infrastructure, environmental management,
+        water and wastewater systems, pollution control and resilient development.
+      </p>
+      <div class="tags">
+        <span class="tag">Sustainability</span>
+        <span class="tag">Water</span>
+        <span class="tag">Resilience</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3>🌍 Integrated Future</h3>
+      <p>
+        Connecting construction, roads, transportation and environmental
+        thinking to create safer, smarter and more sustainable infrastructure.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="section-label">03 / GOVERNMENT EXPERIENCE</div>
+  <h2 class="section-title">LGED • PWD • BWDB • RHD</h2>
+
+  <div class="agencies">
+    <article class="agency">
+      <div class="agency-icon">🏗️</div>
+      <h3>LGED</h3>
+      <p>
+        Local Government Engineering Department —
+        rural roads, RCC roads, market development,
+        rehabilitation and local infrastructure.
+      </p>
+      <a href="https://www.lged.gov.bd/" target="_blank">Official Website ↗</a>
+    </article>
+
+    <article class="agency">
+      <div class="agency-icon">🏢</div>
+      <h3>PWD</h3>
+      <p>
+        Public Works Department — building construction,
+        structural/civil works, quantity measurement and coordination.
+      </p>
+      <a href="https://pwd.gov.bd/" target="_blank">Official Website ↗</a>
+    </article>
+
+    <article class="agency">
+      <div class="agency-icon">🌊</div>
+      <h3>BWDB</h3>
+      <p>
+        Bangladesh Water Development Board — emergency protection,
+        riverbank protection and water-resource related works.
+      </p>
+      <a href="https://www.bwdb.gov.bd/" target="_blank">Official Website ↗</a>
+    </article>
+
+    <article class="agency">
+      <div class="agency-icon">🛣️</div>
+      <h3>RHD</h3>
+      <p>
+        Roads and Highways Department — road rehabilitation,
+        pavement repair and transportation infrastructure.
+      </p>
+      <a href="https://rhd.gov.bd/" target="_blank">Official Website ↗</a>
+    </article>
+  </div>
+</section>
+
+<section id="experience" class="reveal">
+  <div class="section-label">04 / PROFESSIONAL EXPERIENCE</div>
+  <h2 class="section-title">M/S. MAHIMA STEEL & CONG.</h2>
+  <p class="section-desc">Civil Works Contractor • Sirajganj, Bangladesh</p>
+
+  <div class="grid">
+    <article class="card">
+      <h3>Site Engineer | 2024 – Present</h3>
+      <p>
+        Supervise road and civil infrastructure construction according
+        to approved drawings, specifications and project requirements.
+        Monitor earthwork, filling, compaction, pavement, RCC,
+        reinforcement, formwork, casting and curing.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Trainee Site Engineer | 2020 – 2023</h3>
+      <p>
+        Assisted senior engineers with construction execution,
+        quality control, measurements, material testing,
+        progress monitoring and construction documentation.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>QA/QC & Material Testing</h3>
+      <p>
+        Slump, concrete cube, sand field-density, brick and bentonite
+        slurry testing; reinforcement, cover-block, dimensions,
+        levels and BBS inspection.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Coordination & Documentation</h3>
+      <p>
+        Worker, supplier and contractor coordination; measurements,
+        inspection records, progress reports, billing verification
+        and material reconciliation.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <div class="section-label">05 / PROJECT PORTFOLIO</div>
+  <h2 class="section-title">11+ Government Projects.</h2>
+  <p class="section-desc">Selected project experience through M/S. Mahima Steel & Cong.</p>
+
+  <div class="projects">
+    <article class="project">
+      <div class="project-agency">LGED • KURIGRAM</div>
+      <h3>Naykerhat Rural Market Development (NOBIDEP)</h3>
+      <p>Tender ID: 107138 • Package: WNOBI-Kur-RM-147 (C)</p>
+      <a href="https://www.lged.gov.bd/" target="_blank">LGED ↗</a>
+    </article>
+
+    <article class="project">
+      <div class="project-agency">LGED • SIRAJGANJ</div>
+      <h3>Bagbati–Kazipur C&B Ghorachora Monsur Ali Road to Sarkar Bari Jame Mosque RCC Road</h3>
+      <p>Tender ID: 810008 • Package: ADP/SAD/SER/2022-23/06</p>
+      <a href="https://www.lged.gov.bd/" target="_blank">LGED ↗</a>
+    </article>
+
+    <article class="project">
+      <div class="project-agency">LGED • SIRAJGANJ</div>
+      <h3>Char Someshpur Central Mosque Washblock & Ojukhana</h3>
+      <p>Tender ID: 757953 • Package: GSID-2/SRJ/DW-04</p>
+      <a href="https://www.lged.gov.bd/" target="_blank">LGED ↗</a>
+    </article>
+
+    <article class="project">
+      <div class="project-agency">LGED • SIRAJGANJ</div>
+      <h3>Kaelgati Mosque to Kalumondol Bari RCC Road Development</h3>
+      <p>Tender ID: 810013 • Package: UDF/SAD/SER/2022-23</p>
+      <a href="https://www.lged.gov.bd/" target="_blank">LGED ↗</a>
+    </article>
+
+    <article class="project">
+      <div class="project-agency">LGED • SIRAJGANJ</div>
+      <h3>Tamai RHD (Bashtola) to Char Tengrail Road Improvement</h3>
+      <p>700 m • Project Value ≈ BDT 8.11 Crore • LGED/XEN/Siraj/2017/1214</p>
+      <a href="https://www.lged.gov.bd/" target="_blank">LGED ↗</a>
+    </article>
+
+    <article class="project">
+      <div class="project-agency">PWD • SIRAJGANJ</div>
+      <h3>07 RAB Complex Project (RAB-12), Hatikumrul</h3>
+      <p>Package: 02(U)(OTM)/2015-2016</p>
+      <a href="https://pwd.gov.bd/" target="_blank">PWD ↗</a>
+    </article>
+
+    <article class="project">
+      <div class="project-agency">LGED</div>
+      <h3>Kuthi Satbaria UZR to Khas Satbaria Utterpara Road Improvement & Link Road</h3>
+      <p>805 m • Project Value ≈ BDT 1.68 Crore • Tender ID: 599746 • IRIDP-3/SRJ/DW-35</p>
+      <a href="https://www.lged.gov.bd/" target="_blank">LGED ↗</a>
+    </article>
+
+    <article class="project">
+      <div class="project-agency">LGED • PABNA</div>
+      <h3>Masumdia UP Office to Dear Bramndi Hat Road Rehabilitation</h3>
+      <p>1,240 m • ID No.: 615468 • Package: GOBM/2021-22/W-33</p>
+      <a href="https://www.lged.gov.bd/" target="_blank">LGED ↗</a>
+    </article>
+
+    <article class="project">
+      <div class="project-agency">BWDB • SIRAJGANJ</div>
+      <h3>Emergency Repair & Protection Work at Betil Spur-1, Belkuchi</h3>
+      <p>Tender ID: 535754 • Package: L/NDR/08/2020-2021</p>
+      <a href="https://www.bwdb.gov.bd/" target="_blank">BWDB ↗</a>
+    </article>
+
+    <article class="project">
+      <div class="project-agency">BWDB • SIRAJGANJ</div>
+      <h3>Temporary Emergency Protection Work</h3>
+      <p>Package: I-NDR-05/2021 • Sirajganj O&M Division</p>
+      <a href="https://www.bwdb.gov.bd/" target="_blank">BWDB ↗</a>
+    </article>
+
+    <article class="project">
+      <div class="project-agency">RHD • SIRAJGANJ</div>
+      <h3>Repair of Damaged Pavement by HBB Work at 9th Km of Tarash–Hamkuria (Z-6032) Road</h3>
+      <p>Tender ID: 621337 LTM • Package: 12/e-GP/eeshid/2021-2022</p>
+      <a href="https://rhd.gov.bd/" target="_blank">RHD ↗</a>
+    </article>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="section-label">06 / EDUCATION</div>
+  <h2 class="section-title">Academic Foundation.</h2>
+
+  <div class="grid">
+    <article class="card">
+      <h3>Daffodil International University</h3>
+      <p>
+        Bachelor of Science in Civil Engineering |
+        January 2019 – May 2026
+      </p>
+      <p>CGPA: 2.57/4.00 • Medium of Instruction: English</p>
+      <p>
+        Undergraduate Thesis:
+        <b>Investigation on the Causes of Cracks in RCC Structures and Possible Preventive Measures</b>
+      </p>
+
+      <div class="actions">
+        <a class="btn" href="https://daffodilvarsity.edu.bd/" target="_blank">University Website ↗</a>
+        <a class="btn" href="https://faculty.daffodilvarsity.edu.bd/teachers/ce" target="_blank">Civil Engineering ↗</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3>Sirajganj Collectorate School & College</h3>
+      <p>Higher Secondary Certificate (HSC), Science | 2018</p>
+      <p>GPA: 3.17/5.00</p>
+
+      <div class="actions">
+        <a class="btn" href="https://scsc.edu.bd/" target="_blank">Official Website ↗</a>
+        <a class="btn" href="https://english.scsc.edu.bd/" target="_blank">English Version ↗</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="section-label">07 / UNDERGRADUATE THESIS</div>
+  <h2 class="section-title">RCC Crack Investigation.</h2>
+
+  <div class="thesis">
+    <h3>
+      Investigation on the Causes of Cracks in RCC Structures and Possible Preventive Measures
+    </h3>
+    <p>
+      Investigated structural and non-structural cracking in RCC structures
+      and examined construction, material, environmental and workmanship factors.
+    </p>
+    <p>
+      Reviewed preventive measures and repair approaches to improve durability
+      and structural performance.
+    </p>
+    <p>
+      Connected academic investigation with practical construction and QA/QC observations.
+    </p>
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <div class="section-label">08 / TECHNICAL CAPABILITY</div>
+  <h2 class="section-title">Tools • Testing • Execution.</h2>
+
+  <div class="skills">
+    <span class="skill">Site Supervision</span>
+    <span class="skill">RCC Construction</span>
+    <span class="skill">Concrete Casting</span>
+    <span class="skill">Reinforcement Inspection</span>
+    <span class="skill">Cover Block Inspection</span>
+    <span class="skill">BBS Review</span>
+    <span class="skill">Quantity Verification</span>
+    <span class="skill">Contractor Billing</span>
+    <span class="skill">Material Reconciliation</span>
+    <span class="skill">Slump Testing</span>
+    <span class="skill">Concrete Cube Sampling</span>
+    <span class="skill">Bentonite Slurry Testing</span>
+    <span class="skill">Sand Field-Density Testing</span>
+    <span class="skill">Brick Testing</span>
+    <span class="skill">AutoCAD 2D</span>
+    <span class="skill">AutoCAD 3D</span>
+    <span class="skill">ETABS</span>
+    <span class="skill">Primavera P6</span>
+    <span class="skill">Revit</span>
+    <span class="skill">MS Excel</span>
+    <span class="skill">MS Word</span>
+    <span class="skill">PowerPoint</span>
+  </div>
+</section>
+
+<section id="future" class="reveal">
+  <div class="future">
+    <div class="section-label">09 / FUTURE VISION</div>
+    <div class="future-title">Engineering the Future.</div>
+
+    <p class="section-desc">
+      From practical construction experience to advanced engineering knowledge —
+      building a future focused on sustainable infrastructure, intelligent project
+      delivery, resilient transportation and environmental responsibility.
+    </p>
+
+    <div class="future-grid">
+      <div class="future-item">
+        <small>01 — FOUNDATION</small>
+        <h3>🏗️ Construction Leadership</h3>
+        <p>Planning, scheduling, quality, risk and project delivery.</p>
+      </div>
+
+      <div class="future-item">
+        <small>02 — SUSTAINABILITY</small>
+        <h3>🌿 Environmental Innovation</h3>
+        <p>Sustainable infrastructure, environmental management, water systems and resilience.</p>
+      </div>
+
+      <div class="future-item">
+        <small>03 — CONNECTIVITY</small>
+        <h3>🛣️ Transportation Systems</h3>
+        <p>Roads, pavement, transportation planning, traffic engineering and sustainable mobility.</p>
+      </div>
+
+      <div class="future-item">
+        <small>04 — GLOBAL IMPACT</small>
+        <h3>🌍 Better Infrastructure</h3>
+        <p>Safer, smarter and more sustainable infrastructure systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <div class="section-label">10 / CONTACT</div>
+  <h2 class="section-title">Let's Build a Better Tomorrow.</h2>
+  <p class="section-desc">
+    Sirajganj, Bangladesh • +880 1570-279183 • naimurrahmansaad0@gmail.com
+  </p>
+
+  <div class="actions">
+    <a class="btn primary" href="mailto:naimurrahmansaad0@gmail.com">Email Me</a>
+    <a class="btn" href="https://linkedin.com/in/md-naimur-rahman-saad-4240ba431" target="_blank">LinkedIn ↗</a>
+    <a class="btn" href="https://github.com/nrsaad" target="_blank">GitHub ↗</a>
+    <a class="btn" href="CV.pdf" download>Download CV ↓</a>
+  </div>
+</section>
+
+<div id="moodStatus">DEFAULT • ENGINEERING</div>
 
 <div class="moodbar">
-
-    <button class="fullMoodBtn"
-            onclick="setFullMood('default')">
-        ✦ Default
-    </button>
-
-    <button class="fullMoodBtn"
-            onclick="setFullMood('ocean')">
-        🌊 Ocean
-    </button>
-
-    <button class="fullMoodBtn"
-            onclick="setFullMood('forest')">
-        🌲 Amazon Forest
-    </button>
-
-    <button class="fullMoodBtn"
-            onclick="setFullMood('dragon')">
-        🐉 Dragon
-    </button>
-
-    <button class="fullMoodBtn"
-            onclick="setFullMood('galaxy')">
-        🌌 Galaxy
-    </button>
-
-    <button class="fullMoodBtn"
-            onclick="setFullMood('moon')">
-        🌙 Moonlight
-    </button>
-
-    <button class="fullMoodBtn"
-            onclick="setFullMood('night')">
-        🌃 Night
-    </button>
-
-    <button class="fullMoodBtn"
-            onclick="setFullMood('day')">
-        ☀️ Day
-    </button>
-
-    <button class="fullMoodBtn"
-            onclick="setFullMood('snow')">
-        ❄️ Bangladesh Snow 🇧🇩
-    </button>
-
-    <button class="fullMoodBtn"
-            onclick="setFullMood('wall')">
-        🎨 Color Wall
-    </button>
-
+  <button class="mood-btn" onclick="setMood('default')">✦ Default</button>
+  <button class="mood-btn" onclick="setMood('construction')">🏗️ Construction</button>
+  <button class="mood-btn" onclick="setMood('roads')">🛣️ Roads</button>
+  <button class="mood-btn" onclick="setMood('transportation')">🚆 Transportation</button>
+  <button class="mood-btn" onclick="setMood('environmental')">🌿 Environmental</button>
 </div>
 
+<footer>
+  <div>
+    🇧🇩 <strong>MD. Naimur Rahman Saad</strong><br>
+    Civil Engineer • Construction • Transportation • Environment<br>
+    © 2026 All Rights Reserved.
+  </div>
+  <div>
+    Better Infrastructure • A Greener Planet • A Brighter Future
+  </div>
+</footer>
 
 <script>
+/* =========================================================
+   STAR FIELD
+========================================================= */
+const starLayer=document.getElementById("starLayer");
+for(let i=0;i<160;i++){
+  const s=document.createElement("i");
+  s.className="star";
+  s.style.left=Math.random()*100+"%";
+  s.style.top=Math.random()*100+"%";
+  s.style.animationDelay=Math.random()*4+"s";
+  starLayer.appendChild(s);
+}
 
 /* =========================================================
-   FULL WEBSITE MOOD
+   REVEAL
 ========================================================= */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add("show");
+  });
+},{threshold:.1});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 
-const moodCanvas =
-    document.getElementById(
-        "fullMoodCanvas"
-    );
+/* =========================================================
+   HERO MOUSE
+========================================================= */
+const heroVisual=document.getElementById("heroVisual");
+document.addEventListener("mousemove",e=>{
+  const x=(e.clientX/innerWidth-.5)*10;
+  const y=(e.clientY/innerHeight-.5)*10;
+  if(heroVisual) heroVisual.style.transform=`translate(${x*.6}px,${y*.6}px)`;
+});
 
-const moodCtx =
-    moodCanvas.getContext("2d");
+/* =========================================================
+   CANVAS MOOD ENGINE
+========================================================= */
+const canvas=document.getElementById("worldCanvas");
+const ctx=canvas.getContext("2d");
+const moodStatus=document.getElementById("moodStatus");
 
-const moodName =
-    document.getElementById(
-        "moodName"
-    );
-
-
-let currentFullMood =
-    "default";
-
+let mood="default";
+let t=0;
 let particles=[];
 
-let t=0;
-
-
-function resizeMood(){
-
-    moodCanvas.width =
-        innerWidth *
-        devicePixelRatio;
-
-    moodCanvas.height =
-        innerHeight *
-        devicePixelRatio;
-
-    moodCanvas.style.width =
-        innerWidth+"px";
-
-    moodCanvas.style.height =
-        innerHeight+"px";
-
-
-    moodCtx.setTransform(
-        devicePixelRatio,
-        0,0,
-        devicePixelRatio,
-        0,0
-    );
+function resize(){
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  canvas.width=innerWidth*dpr;
+  canvas.height=innerHeight*dpr;
+  canvas.style.width=innerWidth+"px";
+  canvas.style.height=innerHeight+"px";
+  ctx.setTransform(dpr,0,0,dpr,0,0);
 }
+resize();
+addEventListener("resize",resize);
 
-resizeMood();
-
-addEventListener(
-    "resize",
-    resizeMood
-);
-
+function seed(count=220){
+  particles=[];
+  for(let i=0;i<count;i++){
+    particles.push({
+      x:Math.random()*innerWidth,
+      y:Math.random()*innerHeight,
+      size:.5+Math.random()*3,
+      speed:.3+Math.random()*2.2,
+      alpha:.18+Math.random()*.72,
+      radius:20+Math.random()*Math.min(innerWidth,innerHeight)*.55,
+      angle:Math.random()*Math.PI*2,
+      phase:Math.random()*12
+    });
+  }
+}
 
 /* =========================================================
-   PARTICLES
+   MOOD SWITCH
 ========================================================= */
+function setMood(next){
 
-function createParticles(
-    amount
-){
+  mood=next;
 
-    particles=[];
+  document.body.classList.remove(
+    "mood-construction",
+    "mood-roads",
+    "mood-transportation",
+    "mood-environmental"
+  );
 
-    for(
-        let i=0;
-        i<amount;
-        i++
-    ){
+  if(next!=="default"){
+    document.body.classList.add("mood-"+next);
+  }
 
-        particles.push({
+  const labels={
+    default:"DEFAULT • ENGINEERING",
+    construction:"CONSTRUCTION • PROJECT MANAGEMENT",
+    roads:"ROADS • PAVEMENT • INFRASTRUCTURE",
+    transportation:"TRANSPORTATION • MOBILITY",
+    environmental:"ENVIRONMENTAL • SUSTAINABILITY"
+  };
 
-            x:
-                Math.random()
-                *innerWidth,
-
-            y:
-                Math.random()
-                *innerHeight,
-
-            size:
-                .5+
-                Math.random()*3,
-
-            speed:
-                .5+
-                Math.random()*2,
-
-            alpha:
-                .2+
-                Math.random()*.7
-
-        });
-
-    }
-
+  moodStatus.textContent=labels[next];
+  seed(260);
+  localStorage.setItem("siteMood",next);
 }
-
 
 /* =========================================================
-   SET MOOD
+   CONSTRUCTION MOOD
 ========================================================= */
+function drawConstruction(){
 
-function setFullMood(
-    mood
-){
+  const w=innerWidth;
+  const h=innerHeight;
 
-    currentFullMood =
-        mood;
+  /* blueprint grid */
+  ctx.strokeStyle="rgba(255,205,90,.075)";
+  ctx.lineWidth=1;
 
+  for(let x=0;x<w;x+=70){
+    ctx.beginPath();
+    ctx.moveTo(x,0);
+    ctx.lineTo(x,h);
+    ctx.stroke();
+  }
 
-    document.body.classList.remove(
-        "mood-ocean",
-        "mood-forest",
-        "mood-dragon",
-        "mood-galaxy",
-        "mood-moon",
-        "mood-night",
-        "mood-day",
-        "mood-snow",
-        "mood-wall"
-    );
+  for(let y=0;y<h;y+=70){
+    ctx.beginPath();
+    ctx.moveTo(0,y);
+    ctx.lineTo(w,y);
+    ctx.stroke();
+  }
 
+  /* floating dust */
+  particles.forEach(p=>{
+    p.y-=p.speed*.35;
+    p.x+=Math.sin(t+p.phase)*.12;
+    if(p.y<0)p.y=h;
 
-    if(
-        mood!=="default"
-    ){
+    ctx.fillStyle=`rgba(255,210,110,${p.alpha*.30})`;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.size*.55,0,Math.PI*2);
+    ctx.fill();
+  });
 
-        document.body.classList.add(
-            "mood-"+mood
-        );
+  /* structural beams */
+  ctx.strokeStyle="rgba(255,200,90,.12)";
+  ctx.lineWidth=2;
 
-    }
+  for(let i=0;i<5;i++){
+    const bx=w*.15+i*w*.18;
+    ctx.beginPath();
+    ctx.moveTo(bx,h*.78);
+    ctx.lineTo(bx,h*.25);
+    ctx.stroke();
 
-
-    const names={
-
-        default:
-            "DEFAULT • ENGINEERING",
-
-        ocean:
-            "LIVE OCEAN • ENGINEERING",
-
-        forest:
-            "LIVE AMAZON FOREST • ENGINEERING",
-
-        dragon:
-            "DRAGON REALM • ENGINEERING",
-
-        galaxy:
-            "GALAXY • BLACK HOLE • ENGINEERING",
-
-        moon:
-            "MOONLIGHT • ENGINEERING",
-
-        night:
-            "NIGHT CITY • ENGINEERING",
-
-        day:
-            "DAYLIGHT • ENGINEERING",
-
-        snow:
-            "WINTER BANGLADESH 🇧🇩",
-
-        wall:
-            "ARCHITECTURAL COLOR WALL"
-
-    };
-
-
-    moodName.textContent =
-        names[mood];
-
-
-    createParticles(
-        mood==="galaxy" ||
-        mood==="snow"
-        ?350
-        :180
-    );
-
-
-    localStorage.setItem(
-        "portfolioMood",
-        mood
-    );
-
+    ctx.beginPath();
+    ctx.moveTo(bx,h*.35);
+    ctx.lineTo(bx+w*.13,h*.35);
+    ctx.stroke();
+  }
 }
-
 
 /* =========================================================
-   LIVE BACKGROUND ENGINE
+   ROAD MOOD
 ========================================================= */
+function drawRoads(){
 
-function renderMood(){
+  const w=innerWidth;
+  const h=innerHeight;
 
-    t+=.016;
+  /* horizon */
+  const sky=ctx.createLinearGradient(0,0,0,h);
+  sky.addColorStop(0,"rgba(22,67,84,.35)");
+  sky.addColorStop(1,"rgba(0,8,10,.18)");
+  ctx.fillStyle=sky;
+  ctx.fillRect(0,0,w,h);
 
+  /* highway */
+  ctx.fillStyle="rgba(15,18,19,.50)";
+  ctx.beginPath();
+  ctx.moveTo(w*.40,h);
+  ctx.lineTo(w*.46,h*.48);
+  ctx.lineTo(w*.54,h*.48);
+  ctx.lineTo(w*.60,h);
+  ctx.closePath();
+  ctx.fill();
 
-    moodCtx.clearRect(
-        0,
-        0,
-        innerWidth,
-        innerHeight
+  /* road edges */
+  ctx.strokeStyle="rgba(255,255,255,.18)";
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.moveTo(w*.40,h);
+  ctx.lineTo(w*.46,h*.48);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(w*.60,h);
+  ctx.lineTo(w*.54,h*.48);
+  ctx.stroke();
+
+  /* moving center lane */
+  for(let i=0;i<10;i++){
+    const progress=(i*.16+(t*.10))%1;
+    const y=h*.52+progress*h*.47;
+    const width=2+progress*8;
+
+    ctx.fillStyle="rgba(255,224,135,.85)";
+    ctx.fillRect(
+      w*.5-width/2,
+      y,
+      width,
+      20+progress*28
     );
-
-
-    /* OCEAN */
-
-    if(
-        currentFullMood==="ocean"
-    ){
-
-        for(
-            let y=
-                innerHeight*.55;
-            y<
-                innerHeight;
-            y+=34
-        ){
-
-            moodCtx.beginPath();
-
-            for(
-                let x=0;
-                x<=innerWidth;
-                x+=15
-            ){
-
-                const wave=
-                    y+
-                    Math.sin(
-                        x*.014+
-                        t*1.8+
-                        y*.01
-                    )*5;
-
-
-                moodCtx.lineTo(
-                    x,
-                    wave
-                );
-
-            }
-
-            moodCtx.strokeStyle=
-                "rgba(160,245,255,.12)";
-
-            moodCtx.stroke();
-
-        }
-
-    }
-
-
-    /* FOREST */
-
-    else if(
-        currentFullMood==="forest"
-    ){
-
-        for(
-            let i=0;
-            i<55;
-            i++
-        ){
-
-            const x=
-                (
-                    i*137+
-                    t*8
-                )
-                %innerWidth;
-
-            const y=
-                innerHeight*.25+
-                (i%10)*
-                55;
-
-            const glow=
-                .25+
-                .25*
-                Math.sin(
-                    t*2+i
-                );
-
-
-            moodCtx.fillStyle=
-                `rgba(160,255,180,${glow})`;
-
-            moodCtx.shadowBlur=14;
-
-            moodCtx.shadowColor=
-                "#8cffab";
-
-            moodCtx.beginPath();
-
-            moodCtx.arc(
-                x,
-                y,
-                2,
-                0,
-                Math.PI*2
-            );
-
-            moodCtx.fill();
-
-            moodCtx.shadowBlur=0;
-
-        }
-
-    }
-
-
-    /* DRAGON */
-
-    else if(
-        currentFullMood==="dragon"
-    ){
-
-        particles.forEach(
-            p=>{
-
-                p.y-=p.speed*1.7;
-
-                p.x+=
-                    Math.sin(
-                        t+
-                        p.y*.02
-                    )*.6;
-
-
-                if(
-                    p.y<0
-                ){
-
-                    p.y=
-                        innerHeight;
-
-                }
-
-
-                moodCtx.fillStyle=
-                    `rgba(255,100,35,${p.alpha})`;
-
-                moodCtx.beginPath();
-
-                moodCtx.arc(
-                    p.x,
-                    p.y,
-                    p.size,
-                    0,
-                    Math.PI*2
-                );
-
-                moodCtx.fill();
-
-            }
-        );
-
-    }
-
-
-    /* GALAXY */
-
-    else if(
-        currentFullMood==="galaxy"
-    ){
-
-        const cx=
-            innerWidth/2;
-
-        const cy=
-            innerHeight/2;
-
-
-        particles.forEach(
-            p=>{
-
-                const dx=
-                    p.x-cx;
-
-                const dy=
-                    p.y-cy;
-
-
-                p.x+=dx*.0003;
-                p.y+=dy*.0003;
-
-
-                moodCtx.fillStyle=
-                    `rgba(190,225,255,${p.alpha})`;
-
-                moodCtx.beginPath();
-
-                moodCtx.arc(
-                    p.x,
-                    p.y,
-                    p.size,
-                    0,
-                    Math.PI*2
-                );
-
-                moodCtx.fill();
-
-            }
-        );
-
-
-        /* BLACK HOLE */
-
-        const ring=
-            moodCtx.createRadialGradient(
-                cx,
-                cy,
-                0,
-                cx,
-                cy,
-                230
-            );
-
-        ring.addColorStop(
-            0,
-            "rgba(0,0,0,1)"
-        );
-
-        ring.addColorStop(
-            .25,
-            "rgba(0,0,0,1)"
-        );
-
-        ring.addColorStop(
-            .50,
-            "rgba(160,70,255,.16)"
-        );
-
-        ring.addColorStop(
-            .70,
-            "rgba(255,130,40,.10)"
-        );
-
-        ring.addColorStop(
-            1,
-            "transparent"
-        );
-
-
-        moodCtx.fillStyle=
-            ring;
-
-        moodCtx.beginPath();
-
-        moodCtx.arc(
-            cx,
-            cy,
-            240,
-            0,
-            Math.PI*2
-        );
-
-        moodCtx.fill();
-
-    }
-
-
-    /* MOONLIGHT */
-
-    else if(
-        currentFullMood==="moon"
-    ){
-
-        const x=
-            innerWidth*.78;
-
-        const y=
-            innerHeight*.18;
-
-
-        moodCtx.shadowBlur=
-            50;
-
-        moodCtx.shadowColor=
-            "rgba(235,245,255,.5)";
-
-        moodCtx.fillStyle=
-            "rgba(245,248,255,.75)";
-
-
-        moodCtx.beginPath();
-
-        moodCtx.arc(
-            x,
-            y,
-            75,
-            0,
-            Math.PI*2
-        );
-
-        moodCtx.fill();
-
-        moodCtx.shadowBlur=0;
-
-    }
-
-
-    /* NIGHT */
-
-    else if(
-        currentFullMood==="night"
-    ){
-
-        particles.forEach(
-            p=>{
-
-                p.x+=
-                    p.speed;
-
-                if(
-                    p.x>
-                    innerWidth
-                ){
-
-                    p.x=0;
-
-                }
-
-
-                moodCtx.fillStyle=
-                    `rgba(255,220,110,${p.alpha})`;
-
-                moodCtx.fillRect(
-                    p.x,
-                    p.y,
-                    p.size+1,
-                    p.size+1
-                );
-
-            }
-        );
-
-    }
-
-
-    /* DAY */
-
-    else if(
-        currentFullMood==="day"
-    ){
-
-        for(
-            let i=0;
-            i<14;
-            i++
-        ){
-
-            const x=
-                (
-                    i*170+
-                    t*18
-                )
-                %(
-                    innerWidth+250
-                )-120;
-
-
-            const y=
-                100+
-                i*22;
-
-
-            moodCtx.fillStyle=
-                "rgba(255,255,255,.075)";
-
-            moodCtx.beginPath();
-
-            moodCtx.arc(
-                x,
-                y,
-                35,
-                0,
-                Math.PI*2
-            );
-
-            moodCtx.fill();
-
-        }
-
-    }
-
-
-    /* SNOW */
-
-    else if(
-        currentFullMood==="snow"
-    ){
-
-        particles.forEach(
-            p=>{
-
-                p.y+=
-                    p.speed*1.7;
-
-                p.x+=
-                    Math.sin(
-                        t+
-                        p.y*.01
-                    )*.35;
-
-
-                if(
-                    p.y>
-                    innerHeight
-                ){
-
-                    p.y=-5;
-
-                }
-
-
-                moodCtx.fillStyle=
-                    `rgba(255,255,255,${p.alpha})`;
-
-
-                moodCtx.beginPath();
-
-                moodCtx.arc(
-                    p.x,
-                    p.y,
-                    p.size,
-                    0,
-                    Math.PI*2
-                );
-
-                moodCtx.fill();
-
-            }
-        );
-
-    }
-
-
-    /* WALL */
-
-    else if(
-        currentFullMood==="wall"
-    ){
-
-        const g=
-            moodCtx.createLinearGradient(
-                0,
-                0,
-                innerWidth,
-                innerHeight
-            );
-
-
-        g.addColorStop(
-            0,
-            `hsla(${(
-                t*20
-            )%360},70%,65%,.10)`
-        );
-
-        g.addColorStop(
-            .5,
-            `hsla(${(
-                t*20+120
-            )%360},70%,65%,.10)`
-        );
-
-        g.addColorStop(
-            1,
-            `hsla(${(
-                t*20+240
-            )%360},70%,65%,.10)`
-        );
-
-
-        moodCtx.fillStyle=g;
-
-        moodCtx.fillRect(
-            0,
-            0,
-            innerWidth,
-            innerHeight
-        );
-
-    }
-
-
-    requestAnimationFrame(
-        renderMood
-    );
-
+  }
+
+  /* roadside lights */
+  for(let i=0;i<18;i++){
+    const y=h*.50+(i/18)*h*.43;
+    const xL=w*.46-(i*7);
+    const xR=w*.54+(i*7);
+
+    ctx.fillStyle="rgba(245,205,110,.20)";
+    ctx.shadowBlur=10;
+    ctx.shadowColor="#ffd56a";
+    ctx.fillRect(xL,y,3,3);
+    ctx.fillRect(xR,y,3,3);
+    ctx.shadowBlur=0;
+  }
 }
-
-renderMood();
-
 
 /* =========================================================
-   RESTORE LAST MOOD
+   TRANSPORTATION MOOD
 ========================================================= */
+function drawTransportation(){
 
-const savedMood=
-    localStorage.getItem(
-        "portfolioMood"
-    );
+  const w=innerWidth;
+  const h=innerHeight;
 
-if(
-    savedMood
-){
+  /* city line */
+  ctx.strokeStyle="rgba(82,220,255,.08)";
+  ctx.lineWidth=1;
 
-    setFullMood(
-        savedMood
-    );
+  for(let y=h*.25;y<h*.80;y+=45){
+    ctx.beginPath();
+    ctx.moveTo(0,y);
+    ctx.lineTo(w,y);
+    ctx.stroke();
+  }
 
+  /* moving transit lines */
+  for(let i=0;i<12;i++){
+    const y=h*.18+i*45;
+    const speed=.3+i*.02;
+    const x=((t*80*speed+i*170)%(w+300))-150;
+
+    ctx.strokeStyle=`rgba(82,220,255,${.08+(i%3)*.03})`;
+    ctx.lineWidth=2;
+
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    ctx.lineTo(x+240,y);
+    ctx.stroke();
+  }
+
+  /* glowing nodes */
+  particles.forEach((p,i)=>{
+    const x=(p.x+t*(20+(i%4)*8))%(w+80);
+    const y=h*.30+(i%8)*55;
+
+    ctx.fillStyle=`rgba(82,220,255,${p.alpha*.4})`;
+    ctx.shadowBlur=14;
+    ctx.shadowColor="#55dcff";
+
+    ctx.beginPath();
+    ctx.arc(x,y,2.2,0,Math.PI*2);
+    ctx.fill();
+
+    ctx.shadowBlur=0;
+  });
 }
-else{
 
-    setFullMood(
-        "default"
+/* =========================================================
+   ENVIRONMENTAL MOOD
+========================================================= */
+function drawEnvironmental(){
+
+  const w=innerWidth;
+  const h=innerHeight;
+
+  /* soft green haze */
+  const haze=ctx.createRadialGradient(
+    w*.52,h*.48,20,
+    w*.52,h*.48,520
+  );
+  haze.addColorStop(0,"rgba(75,255,165,.11)");
+  haze.addColorStop(1,"transparent");
+  ctx.fillStyle=haze;
+  ctx.fillRect(0,0,w,h);
+
+  /* wind-like particles */
+  particles.forEach(p=>{
+    p.x+=p.speed*.35;
+    p.y+=Math.sin(t+p.phase)*.18;
+
+    if(p.x>w)p.x=0;
+
+    ctx.fillStyle=`rgba(160,255,200,${p.alpha*.32})`;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.size*.7,0,Math.PI*2);
+    ctx.fill();
+  });
+
+  /* leaf curves */
+  ctx.strokeStyle="rgba(120,255,180,.08)";
+  ctx.lineWidth=1.5;
+
+  for(let i=0;i<16;i++){
+    const x=(i*120+t*10)%w;
+
+    ctx.beginPath();
+    ctx.moveTo(x,h);
+    ctx.quadraticCurveTo(
+      x+50,h*.55,
+      x+110,h*.35
     );
+    ctx.stroke();
+  }
 
+  /* eco ring */
+  ctx.strokeStyle="rgba(80,255,160,.10)";
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.arc(
+    w*.75,
+    h*.25,
+    110+Math.sin(t)*8,
+    0,
+    Math.PI*2
+  );
+  ctx.stroke();
 }
 
+/* =========================================================
+   DEFAULT
+========================================================= */
+function drawDefault(){
+
+  particles.forEach(p=>{
+    p.x+=Math.sin(t+p.phase)*.03;
+    p.y+=Math.cos(t+p.phase)*.03;
+
+    ctx.fillStyle=`rgba(255,255,255,${p.alpha*.25})`;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.size*.5,0,Math.PI*2);
+    ctx.fill();
+  });
+}
+
+/* =========================================================
+   MAIN ANIMATION
+========================================================= */
+function animate(){
+
+  t+=.016;
+
+  ctx.clearRect(
+    0,
+    0,
+    innerWidth,
+    innerHeight
+  );
+
+  if(mood==="construction"){
+    drawConstruction();
+  }
+  else if(mood==="roads"){
+    drawRoads();
+  }
+  else if(mood==="transportation"){
+    drawTransportation();
+  }
+  else if(mood==="environmental"){
+    drawEnvironmental();
+  }
+  else{
+    drawDefault();
+  }
+
+  requestAnimationFrame(animate);
+}
+
+/* restore last mood */
+seed(260);
+setMood(localStorage.getItem("siteMood")||"default");
+animate();
 </script>
+
+</body>
+</html>
