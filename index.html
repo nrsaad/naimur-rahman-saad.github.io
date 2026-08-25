@@ -4,40 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Naimur Rahman Saad | Civil Engineer | Future Engineering 2050</title>
+<title>Naimur Rahman Saad | Civil Engineer | Engineering 2050</title>
 
 <meta name="description"
-content="Naimur Rahman Saad — Civil Engineer, Construction & Project Management, Future Engineering 2050 Vision and AutoCAD Portfolio.">
+content="Naimur Rahman Saad — Civil Engineer, Construction & Project Management, Digital Engineering, BIM, AutoCAD and Future Engineering 2050 Research Vision.">
 
 <style>
 
 /* =========================================================
-   ROOT
+   CORE THEME
 ========================================================= */
 
 :root{
     --bg:#05070b;
-    --bg2:#0a0e15;
-    --card:#0d131d;
-    --card2:#111925;
-    --text:#f4f7fb;
-    --muted:#91a0b5;
+    --bg-soft:#090d14;
+    --surface:#0d131c;
+    --surface-2:#111a25;
+    --surface-3:#162130;
+
+    --text:#f5f8fc;
+    --muted:#8e9caf;
+
     --line:rgba(255,255,255,.09);
 
-    --accent:#7df9ff;
-    --accent2:#8b5cf6;
-    --accent3:#22d3ee;
+    --accent:#71f6ff;
+    --accent-2:#8b5cf6;
+    --accent-3:#35d0ff;
 
-    --shadow:0 25px 80px rgba(0,0,0,.45);
+    --danger:#ff667a;
+    --success:#5df2a2;
 
-    --milk:#fffdf5;
-    --milk2:#f8f3df;
-    --milk3:#eee6cc;
-    --milkText:#28251e;
+    --radius:24px;
+    --shadow:0 30px 100px rgba(0,0,0,.45);
+
+    --transition:.4s cubic-bezier(.2,.8,.2,1);
 }
 
+
 /* =========================================================
-   BASIC RESET
+   RESET
 ========================================================= */
 
 *{
@@ -53,6 +58,7 @@ html{
 body{
     font-family:
         Inter,
+        ui-sans-serif,
         system-ui,
         -apple-system,
         BlinkMacSystemFont,
@@ -60,17 +66,36 @@ body{
         sans-serif;
 
     background:
-        radial-gradient(circle at 10% 10%,rgba(125,249,255,.08),transparent 28%),
-        radial-gradient(circle at 90% 20%,rgba(139,92,246,.10),transparent 30%),
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(113,246,255,.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 25%,
+            rgba(139,92,246,.09),
+            transparent 30%
+        ),
         var(--bg);
 
     color:var(--text);
+
     overflow-x:hidden;
 
     transition:
-        background .7s ease,
-        color .7s ease;
+        background .8s ease,
+        color .8s ease;
 }
+
+a{
+    color:inherit;
+}
+
+button,
+input{
+    font:inherit;
+}
+
 
 /* =========================================================
    MILK MODE
@@ -78,187 +103,386 @@ body{
 
 body.milk-mode{
 
-    --bg:#fffdf5;
-    --bg2:#faf7eb;
-    --card:#fffefa;
-    --card2:#f7f2df;
+    --bg:#fffef8;
+    --bg-soft:#fbf8ed;
 
-    --text:#28251e;
-    --muted:#756f61;
+    --surface:#fffefa;
+    --surface-2:#faf6e9;
+    --surface-3:#f1ead5;
 
-    --line:rgba(65,58,42,.12);
+    --text:#29271f;
+    --muted:#777263;
 
-    --accent:#e4b95f;
-    --accent2:#c89a3d;
-    --accent3:#f0ce82;
+    --line:rgba(70,61,42,.12);
+
+    --accent:#d6a948;
+    --accent-2:#b9892f;
+    --accent-3:#e6c56d;
 
     background:
-        radial-gradient(circle at 10% 10%,rgba(255,255,255,.95),transparent 32%),
-        radial-gradient(circle at 90% 20%,rgba(238,230,204,.7),transparent 30%),
-        linear-gradient(135deg,#fffefa,#f8f3df);
-
-    color:var(--milkText);
-}
-
-body.milk-mode .glass{
-    background:rgba(255,255,255,.70);
-    border-color:rgba(80,70,45,.10);
-    box-shadow:0 25px 70px rgba(110,95,55,.10);
-}
-
-body.milk-mode .hero::before{
-    background:
-        radial-gradient(circle,#fff 0%,rgba(255,255,255,.4) 30%,transparent 70%);
-}
-
-body.milk-mode .grid-line{
-    opacity:.05;
-}
-
-body.milk-mode .future-card:hover{
-    box-shadow:
-        0 30px 80px rgba(120,100,50,.15),
-        0 0 0 1px rgba(200,154,61,.18);
-}
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-.grid-line{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:-2;
-
-    background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-
-    background-size:50px 50px;
-}
-
-.orb{
-    position:fixed;
-    width:400px;
-    height:400px;
-    border-radius:50%;
-    filter:blur(90px);
-    opacity:.12;
-    pointer-events:none;
-    z-index:-1;
-    animation:floatOrb 12s ease-in-out infinite alternate;
-}
-
-.orb.one{
-    background:var(--accent);
-    top:-150px;
-    left:-100px;
-}
-
-.orb.two{
-    background:var(--accent2);
-    bottom:-150px;
-    right:-100px;
-    animation-delay:-5s;
-}
-
-@keyframes floatOrb{
-    from{
-        transform:translate(0,0) scale(1);
-    }
-    to{
-        transform:translate(80px,50px) scale(1.2);
-    }
-}
-
-/* =========================================================
-   NAVBAR
-========================================================= */
-
-.navbar{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:1000;
-
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-
-    background:rgba(5,7,11,.65);
-    border-bottom:1px solid var(--line);
-
-    transition:.5s;
-}
-
-body.milk-mode .navbar{
-    background:rgba(255,253,245,.78);
-}
-
-.nav-inner{
-    max-width:1250px;
-    margin:auto;
-
-    min-height:78px;
-    padding:0 25px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-}
-
-.logo{
-    font-size:19px;
-    font-weight:900;
-    letter-spacing:-.5px;
+        radial-gradient(
+            circle at 10% 5%,
+            rgba(255,255,255,.98),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 15%,
+            rgba(235,224,193,.5),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #fffef9,
+            #f8f1dd
+        );
 
     color:var(--text);
 }
 
-.logo span{
+
+/* =========================================================
+   GRID BACKGROUND
+========================================================= */
+
+.background-grid{
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+    z-index:-5;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:55px 55px;
+
+    transition:opacity .5s;
+}
+
+body.milk-mode .background-grid{
+    opacity:.28;
+}
+
+
+/* =========================================================
+   ORBS
+========================================================= */
+
+.orb{
+    position:fixed;
+
+    width:420px;
+    height:420px;
+
+    border-radius:50%;
+
+    filter:blur(110px);
+
+    opacity:.12;
+
+    pointer-events:none;
+
+    z-index:-4;
+
+    animation:
+        orbFloat 14s ease-in-out infinite alternate;
+}
+
+.orb-1{
+    top:-200px;
+    left:-150px;
+    background:var(--accent);
+}
+
+.orb-2{
+    right:-180px;
+    bottom:-220px;
+    background:var(--accent-2);
+
+    animation-delay:-6s;
+}
+
+@keyframes orbFloat{
+
+    from{
+        transform:
+            translate3d(0,0,0)
+            scale(1);
+    }
+
+    to{
+        transform:
+            translate3d(80px,50px,0)
+            scale(1.2);
+    }
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar{
+    position:fixed;
+
+    top:0;
+    left:0;
+    right:0;
+
+    z-index:1000;
+
+    border-bottom:1px solid var(--line);
+
+    background:rgba(5,7,11,.66);
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    transition:
+        background .6s,
+        box-shadow .6s;
+}
+
+body.milk-mode .navbar{
+    background:rgba(255,254,248,.82);
+}
+
+.navbar.scrolled{
+    box-shadow:
+        0 15px 60px rgba(0,0,0,.16);
+}
+
+.nav-inner{
+    width:min(1280px,100%);
+
+    min-height:76px;
+
+    margin:auto;
+
+    padding:
+        0
+        25px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:25px;
+}
+
+.brand{
+    text-decoration:none;
+
+    font-weight:950;
+
+    letter-spacing:-.8px;
+
+    font-size:18px;
+
+    white-space:nowrap;
+}
+
+.brand span{
     color:var(--accent);
 }
 
 .nav-links{
     display:flex;
+
     align-items:center;
-    gap:25px;
+
+    gap:24px;
 }
 
 .nav-links a{
     text-decoration:none;
-    color:var(--muted);
-    font-size:14px;
-    font-weight:600;
 
-    transition:.3s;
+    color:var(--muted);
+
+    font-size:13px;
+
+    font-weight:750;
+
+    transition:var(--transition);
 }
 
 .nav-links a:hover{
     color:var(--accent);
+
+    transform:translateY(-1px);
 }
 
-.milk-toggle{
+
+/* =========================================================
+   MOOD SWITCHER
+========================================================= */
+
+.mood-wrapper{
+    position:relative;
+}
+
+.mood-button{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
     border:1px solid var(--line);
-    background:var(--card);
+
+    background:var(--surface);
+
     color:var(--text);
 
-    padding:10px 15px;
+    padding:
+        10px
+        14px;
+
     border-radius:999px;
 
     cursor:pointer;
-    font-weight:800;
+
+    font-size:12px;
+
+    font-weight:900;
+
+    transition:var(--transition);
+}
+
+.mood-button:hover{
+    transform:translateY(-2px);
+
+    border-color:
+        rgba(113,246,255,.35);
+}
+
+.mood-menu{
+    position:absolute;
+
+    right:0;
+
+    top:calc(100% + 12px);
+
+    width:235px;
+
+    padding:9px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:18px;
+
+    background:
+        rgba(13,19,28,.94);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.45);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:
+        translateY(-8px)
+        scale(.98);
+
+    transition:var(--transition);
+}
+
+body.milk-mode .mood-menu{
+    background:
+        rgba(255,254,248,.96);
+}
+
+.mood-menu.open{
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.mood-option{
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:13px;
+
+    background:transparent;
+
+    color:var(--text);
+
+    text-align:left;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.mood-option:hover{
+    background:
+        rgba(125,255,255,.07);
+}
+
+.mood-option.active{
+    background:
+        rgba(125,255,255,.1);
+}
+
+.mood-symbol{
+    width:35px;
+    height:35px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:var(--surface-2);
+
+    font-size:18px;
+}
+
+.mood-text strong{
+    display:block;
+
     font-size:13px;
 
-    transition:.35s;
+    margin-bottom:3px;
 }
 
-.milk-toggle:hover{
-    transform:translateY(-2px);
-    box-shadow:0 10px 30px rgba(0,0,0,.15);
+.mood-text small{
+    color:var(--muted);
+
+    font-size:10px;
 }
+
 
 /* =========================================================
    HERO
@@ -266,310 +490,966 @@ body.milk-mode .navbar{
 
 .hero{
     min-height:100vh;
-    position:relative;
+
+    width:min(1280px,100%);
+
+    margin:auto;
+
+    padding:
+        145px
+        25px
+        95px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
-    padding:130px 25px 80px;
-
     text-align:center;
-}
 
-.hero::before{
-    content:"";
-    position:absolute;
-
-    width:700px;
-    height:700px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(125,249,255,.12),
-            transparent 65%
-        );
-
-    filter:blur(10px);
-    pointer-events:none;
+    position:relative;
 }
 
 .hero-content{
-    max-width:1000px;
+    width:min(1000px,100%);
+
     position:relative;
+
     z-index:2;
 }
 
-.future-label{
+.eyebrow-pill{
     display:inline-flex;
+
     align-items:center;
-    gap:9px;
 
-    padding:9px 16px;
+    gap:10px;
 
-    border:1px solid var(--line);
-    background:rgba(255,255,255,.025);
+    padding:
+        9px
+        15px;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        rgba(255,255,255,.025);
 
     border-radius:999px;
 
     color:var(--accent);
-    font-size:12px;
-    font-weight:900;
 
-    letter-spacing:2px;
+    font-size:11px;
+
+    font-weight:950;
+
+    letter-spacing:2.5px;
+
     text-transform:uppercase;
 
-    margin-bottom:25px;
+    margin-bottom:28px;
 
     animation:fadeUp .8s ease both;
 }
 
-.future-dot{
+.live-dot{
     width:7px;
     height:7px;
+
     border-radius:50%;
+
     background:var(--accent);
-    box-shadow:0 0 20px var(--accent);
+
+    box-shadow:
+        0 0 18px var(--accent);
+
     animation:pulse 1.5s infinite;
 }
 
 @keyframes pulse{
+
     0%,100%{
         transform:scale(1);
         opacity:1;
     }
+
     50%{
-        transform:scale(1.6);
-        opacity:.5;
+        transform:scale(1.7);
+        opacity:.45;
     }
 }
 
 .hero h1{
-    font-size:clamp(45px,8vw,92px);
-    line-height:.95;
-    letter-spacing:-5px;
+    font-size:
+        clamp(
+            48px,
+            8vw,
+            100px
+        );
 
-    margin-bottom:25px;
+    line-height:.93;
 
-    animation:fadeUp .9s .1s ease both;
+    letter-spacing:-6px;
+
+    margin-bottom:28px;
+
+    animation:
+        fadeUp
+        .9s
+        .08s
+        ease
+        both;
 }
 
-.gradient-text{
+.gradient{
     background:
         linear-gradient(
             100deg,
             var(--text),
             var(--accent),
-            var(--accent2)
+            var(--accent-2)
         );
 
     -webkit-background-clip:text;
     background-clip:text;
+
     color:transparent;
 }
 
-.hero p{
-    max-width:800px;
-    margin:0 auto;
+.hero-description{
+    max-width:820px;
+
+    margin:auto;
 
     color:var(--muted);
 
     font-size:18px;
-    line-height:1.8;
 
-    animation:fadeUp .9s .2s ease both;
+    line-height:1.85;
+
+    animation:
+        fadeUp
+        .9s
+        .18s
+        ease
+        both;
 }
 
-.hero-buttons{
-    margin-top:35px;
-
+.hero-actions{
     display:flex;
+
     justify-content:center;
-    gap:14px;
+
     flex-wrap:wrap;
 
-    animation:fadeUp .9s .3s ease both;
+    gap:13px;
+
+    margin-top:36px;
+
+    animation:
+        fadeUp
+        .9s
+        .28s
+        ease
+        both;
 }
 
 .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
+    min-height:48px;
 
-    text-decoration:none;
+    padding:
+        0
+        20px;
 
-    padding:14px 22px;
-
-    border-radius:12px;
-
-    font-weight:800;
-    font-size:14px;
-
-    cursor:pointer;
+    border-radius:13px;
 
     border:1px solid var(--line);
 
-    transition:.35s;
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:9px;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:var(--transition);
 }
 
 .btn-primary{
     background:var(--accent);
-    color:#061014;
+
+    color:#061015;
+
     border-color:transparent;
 }
 
 .btn-secondary{
-    background:var(--card);
+    background:var(--surface);
+
     color:var(--text);
 }
 
 .btn:hover{
     transform:translateY(-4px);
-    box-shadow:0 15px 40px rgba(0,0,0,.2);
+
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.2);
 }
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.hero-stats{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    max-width:850px;
+
+    margin:
+        65px
+        auto
+        0;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:
+        rgba(255,255,255,.018);
+
+    animation:
+        fadeUp
+        .9s
+        .38s
+        ease
+        both;
+}
+
+.hero-stat{
+    padding:20px 12px;
+
+    border-right:
+        1px solid
+        var(--line);
+}
+
+.hero-stat:last-child{
+    border-right:none;
+}
+
+.hero-stat strong{
+    display:block;
+
+    color:var(--accent);
+
+    font-size:21px;
+
+    margin-bottom:5px;
+}
+
+.hero-stat span{
+    color:var(--muted);
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.3px;
+
+    font-weight:800;
+}
+
 
 /* =========================================================
    SECTIONS
 ========================================================= */
 
-section{
-    max-width:1250px;
+.section{
+    width:min(1280px,100%);
+
     margin:auto;
-    padding:100px 25px;
+
+    padding:
+        105px
+        25px;
 }
 
-.section-head{
-    margin-bottom:45px;
+.section-header{
+    margin-bottom:48px;
 }
 
-.eyebrow{
+.section-kicker{
     color:var(--accent);
-    font-size:12px;
-    font-weight:900;
+
+    font-size:11px;
+
+    font-weight:950;
+
     letter-spacing:3px;
+
     text-transform:uppercase;
-    margin-bottom:12px;
+
+    margin-bottom:13px;
 }
 
-.section-head h2{
-    font-size:clamp(32px,5vw,55px);
-    letter-spacing:-2px;
-    margin-bottom:15px;
+.section-header h2{
+    font-size:
+        clamp(
+            34px,
+            5vw,
+            58px
+        );
+
+    line-height:1;
+
+    letter-spacing:-3px;
+
+    margin-bottom:17px;
 }
 
-.section-head p{
-    max-width:800px;
+.section-header p{
+    max-width:820px;
+
     color:var(--muted);
+
     line-height:1.8;
+
+    font-size:15px;
 }
+
 
 /* =========================================================
-   FUTURE 2050
+   FUTURE MOOD CARDS
 ========================================================= */
 
 .future-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:
+        repeat(2,1fr);
+
     gap:22px;
 }
 
 .future-card{
+    min-height:365px;
+
     position:relative;
 
-    min-height:330px;
+    overflow:hidden;
 
     padding:32px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        var(--radius);
 
     background:
         linear-gradient(
             145deg,
             rgba(255,255,255,.045),
-            rgba(255,255,255,.015)
+            rgba(255,255,255,.012)
         );
-
-    border:1px solid var(--line);
-    border-radius:25px;
-
-    overflow:hidden;
 
     cursor:pointer;
 
-    transition:
-        transform .4s ease,
-        box-shadow .4s ease,
-        border-color .4s ease;
+    transition:var(--transition);
 }
 
 .future-card::before{
     content:"";
-    position:absolute;
-    width:220px;
-    height:220px;
 
-    right:-90px;
-    top:-90px;
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    right:-100px;
+    top:-100px;
 
     border-radius:50%;
 
-    background:var(--accent);
-    opacity:.07;
+    background:
+        var(--card-color);
 
-    filter:blur(30px);
+    opacity:.08;
 
-    transition:.5s;
+    filter:blur(35px);
+
+    transition:
+        transform .7s,
+        opacity .7s;
 }
 
 .future-card:hover{
-    transform:translateY(-8px);
+    transform:
+        translateY(-9px);
 
-    border-color:rgba(125,249,255,.25);
+    border-color:
+        var(--card-color);
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,.35),
-        0 0 50px rgba(125,249,255,.04);
+        0 35px 100px rgba(0,0,0,.28),
+        0 0 55px
+        color-mix(
+            in srgb,
+            var(--card-color) 9%,
+            transparent
+        );
 }
 
 .future-card:hover::before{
-    transform:scale(2);
-    opacity:.12;
+    transform:scale(1.7);
+
+    opacity:.16;
 }
 
-.card-number{
-    font-size:12px;
-    font-weight:900;
-    color:var(--accent);
+.card-roads{
+    --card-color:#55dfff;
+}
+
+.card-environment{
+    --card-color:#64f49b;
+}
+
+.card-building{
+    --card-color:#c792ff;
+}
+
+.card-research{
+    --card-color:#ffd166;
+}
+
+.card-top{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:30px;
+}
+
+.card-index{
+    color:var(--card-color);
+
+    font-size:11px;
+
+    font-weight:950;
+
     letter-spacing:2px;
-    margin-bottom:25px;
 }
 
-.future-icon{
-    font-size:42px;
-    margin-bottom:20px;
+.card-icon{
+    width:48px;
+    height:48px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        var(--line);
+
+    font-size:24px;
 }
 
 .future-card h3{
-    font-size:25px;
-    margin-bottom:13px;
+    max-width:560px;
+
+    font-size:29px;
+
+    line-height:1.05;
+
+    letter-spacing:-1.2px;
+
+    margin-bottom:15px;
 }
 
-.future-card .short{
+.future-card p{
+    max-width:580px;
+
     color:var(--muted);
-    line-height:1.7;
+
+    font-size:14px;
+
+    line-height:1.8;
 }
 
-.click-hint{
+.card-footer{
     position:absolute;
-    bottom:25px;
-    right:28px;
 
-    color:var(--accent);
-    font-size:12px;
-    font-weight:800;
+    left:32px;
+    right:32px;
+    bottom:28px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    color:var(--card-color);
+
+    font-size:11px;
+
+    font-weight:950;
+
+    letter-spacing:1.5px;
 }
+
+
+/* =========================================================
+   RESEARCH ARCHITECTURE
+========================================================= */
+
+.architecture{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+.arch-card{
+    padding:27px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:20px;
+
+    background:
+        var(--surface);
+
+    transition:var(--transition);
+}
+
+.arch-card:hover{
+    transform:translateY(-6px);
+
+    border-color:
+        rgba(113,246,255,.22);
+}
+
+.arch-number{
+    color:var(--accent);
+
+    font-size:11px;
+
+    font-weight:950;
+
+    margin-bottom:18px;
+}
+
+.arch-card h3{
+    font-size:20px;
+
+    margin-bottom:10px;
+}
+
+.arch-card p{
+    color:var(--muted);
+
+    font-size:13px;
+
+    line-height:1.75;
+}
+
+
+/* =========================================================
+   AUTOCAD PORTFOLIO
+========================================================= */
+
+.upload-container{
+    padding:35px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.01)
+        );
+}
+
+.upload-zone{
+    min-height:280px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    border:
+        2px dashed
+        var(--line);
+
+    border-radius:20px;
+
+    transition:var(--transition);
+}
+
+.upload-zone.dragging{
+    border-color:var(--accent);
+
+    background:
+        rgba(113,246,255,.05);
+
+    transform:scale(1.01);
+}
+
+.upload-icon{
+    font-size:58px;
+
+    margin-bottom:18px;
+}
+
+.upload-zone h3{
+    font-size:25px;
+
+    margin-bottom:10px;
+}
+
+.upload-zone p{
+    color:var(--muted);
+
+    line-height:1.7;
+
+    max-width:650px;
+
+    font-size:13px;
+
+    margin-bottom:25px;
+}
+
+.file-label{
+    padding:
+        13px
+        20px;
+
+    border-radius:12px;
+
+    background:var(--accent);
+
+    color:#061015;
+
+    font-size:12px;
+
+    font-weight:950;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+}
+
+.file-label:hover{
+    transform:translateY(-3px);
+}
+
+#fileInput{
+    display:none;
+}
+
+.file-list{
+    display:grid;
+
+    gap:11px;
+
+    margin-top:22px;
+}
+
+.file-item{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:
+        15px
+        17px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:15px;
+
+    background:var(--surface);
+}
+
+.file-left{
+    min-width:0;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+}
+
+.file-type{
+    width:42px;
+    height:42px;
+
+    flex:none;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:11px;
+
+    background:var(--surface-2);
+
+    font-size:20px;
+}
+
+.file-name{
+    font-size:13px;
+
+    font-weight:800;
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    text-overflow:ellipsis;
+}
+
+.file-size{
+    color:var(--muted);
+
+    font-size:10px;
+
+    margin-top:4px;
+}
+
+.remove-file{
+    border:none;
+
+    background:transparent;
+
+    color:var(--danger);
+
+    font-size:10px;
+
+    font-weight:950;
+
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-grid{
+    display:grid;
+
+    grid-template-columns:
+        .9fr
+        1.5fr;
+
+    gap:22px;
+}
+
+.about-card{
+    padding:32px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        var(--surface);
+}
+
+.avatar{
+    width:115px;
+    height:115px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-2)
+        );
+
+    color:#061015;
+
+    font-size:35px;
+
+    font-weight:1000;
+
+    margin-bottom:23px;
+}
+
+.about-card h3{
+    font-size:27px;
+
+    margin-bottom:7px;
+}
+
+.about-role{
+    color:var(--accent);
+
+    font-weight:850;
+
+    font-size:13px;
+
+    margin-bottom:17px;
+}
+
+.about-card p{
+    color:var(--muted);
+
+    line-height:1.85;
+
+    font-size:13px;
+}
+
+.profile-data{
+    display:grid;
+
+    gap:0;
+}
+
+.profile-row{
+    display:grid;
+
+    grid-template-columns:
+        150px
+        1fr;
+
+    gap:20px;
+
+    padding:
+        15px
+        0;
+
+    border-bottom:
+        1px solid
+        var(--line);
+}
+
+.profile-row:last-child{
+    border-bottom:none;
+}
+
+.profile-row span:first-child{
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+.profile-row span:last-child{
+    font-size:13px;
+
+    font-weight:750;
+}
+
+
+/* =========================================================
+   CV AREA
+========================================================= */
+
+.cv-box{
+    margin-top:22px;
+
+    padding:25px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(113,246,255,.045),
+            rgba(139,92,246,.045)
+        );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+}
+
+.cv-box h3{
+    font-size:18px;
+
+    margin-bottom:5px;
+}
+
+.cv-box p{
+    color:var(--muted);
+
+    font-size:12px;
+}
+
 
 /* =========================================================
    MODAL
@@ -577,436 +1457,270 @@ section{
 
 .modal{
     position:fixed;
-    inset:0;
-    z-index:2000;
 
-    display:none;
-    align-items:center;
-    justify-content:center;
+    inset:0;
+
+    z-index:5000;
 
     padding:25px;
 
-    background:rgba(0,0,0,.72);
+    display:none;
 
-    backdrop-filter:blur(15px);
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        rgba(0,0,0,.76);
+
+    backdrop-filter:blur(16px);
 }
 
 .modal.active{
     display:flex;
-    animation:modalIn .35s ease;
+
+    animation:
+        modalFade
+        .3s
+        ease;
 }
 
-@keyframes modalIn{
+@keyframes modalFade{
+
     from{
         opacity:0;
     }
+
     to{
         opacity:1;
     }
 }
 
-.modal-box{
-    width:min(950px,100%);
+.modal-content{
+    width:min(1050px,100%);
 
     max-height:90vh;
-    overflow:auto;
 
-    padding:40px;
-
-    background:var(--card);
-    border:1px solid var(--line);
-
-    border-radius:28px;
-
-    box-shadow:
-        0 50px 150px rgba(0,0,0,.6);
+    overflow-y:auto;
 
     position:relative;
 
-    animation:modalBox .4s ease;
+    padding:42px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:28px;
+
+    background:
+        var(--surface);
+
+    box-shadow:
+        0 50px 150px rgba(0,0,0,.65);
+
+    animation:
+        modalUp
+        .4s
+        ease;
 }
 
-@keyframes modalBox{
+@keyframes modalUp{
+
     from{
-        transform:translateY(30px) scale(.97);
+        transform:
+            translateY(30px)
+            scale(.97);
+
         opacity:0;
     }
+
     to{
         transform:none;
+
         opacity:1;
     }
 }
 
 .modal-close{
     position:absolute;
-    right:20px;
-    top:20px;
+
+    top:18px;
+    right:18px;
 
     width:40px;
     height:40px;
 
+    border:
+        1px solid
+        var(--line);
+
     border-radius:50%;
 
-    border:1px solid var(--line);
-    background:var(--card2);
+    background:var(--surface-2);
 
     color:var(--text);
 
     cursor:pointer;
-    font-size:20px;
+
+    font-size:21px;
 }
 
-.modal-label{
+.modal-kicker{
     color:var(--accent);
-    font-size:12px;
-    font-weight:900;
+
+    font-size:11px;
+
+    font-weight:950;
+
     letter-spacing:2px;
-    margin-bottom:12px;
+
+    margin-bottom:13px;
 }
 
-.modal-box h2{
-    font-size:clamp(30px,5vw,52px);
-    letter-spacing:-2px;
+.modal-title{
+    max-width:800px;
+
+    font-size:
+        clamp(
+            32px,
+            5vw,
+            58px
+        );
+
+    line-height:1;
+
+    letter-spacing:-3px;
+
     margin-bottom:20px;
 }
 
 .modal-intro{
+    max-width:850px;
+
     color:var(--muted);
-    line-height:1.8;
-    margin-bottom:30px;
+
+    font-size:14px;
+
+    line-height:1.85;
+
+    margin-bottom:32px;
 }
 
-.plan-grid{
+.modal-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:16px;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:14px;
 }
 
-.plan{
-    padding:22px;
+.research-point{
+    padding:23px;
 
-    background:var(--card2);
-    border:1px solid var(--line);
+    border:
+        1px solid
+        var(--line);
+
     border-radius:17px;
+
+    background:var(--surface-2);
 }
 
-.plan h4{
+.research-point h4{
     color:var(--accent);
-    margin-bottom:10px;
-}
 
-.plan p{
-    color:var(--muted);
-    line-height:1.7;
     font-size:14px;
+
+    margin-bottom:9px;
 }
 
-/* =========================================================
-   ADVANCED VISION
-========================================================= */
-
-.vision-box{
-    padding:40px;
-
-    border:1px solid var(--line);
-    border-radius:28px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(125,249,255,.05),
-            rgba(139,92,246,.04)
-        );
-}
-
-.vision-list{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.vision-item{
-    padding:25px;
-
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:18px;
-
-    transition:.35s;
-}
-
-.vision-item:hover{
-    transform:translateY(-5px);
-}
-
-.vision-item h3{
-    margin-bottom:10px;
-}
-
-.vision-item p{
+.research-point p{
     color:var(--muted);
-    line-height:1.7;
-    font-size:14px;
-}
 
-/* =========================================================
-   AUTOCAD UPLOAD
-========================================================= */
-
-.upload-zone{
-
-    position:relative;
-
-    border:2px dashed var(--line);
-
-    border-radius:28px;
-
-    padding:55px 25px;
-
-    text-align:center;
-
-    background:var(--card);
-
-    transition:.35s;
-}
-
-.upload-zone.dragover{
-    border-color:var(--accent);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(125,249,255,.07),
-            transparent
-        );
-
-    transform:scale(1.01);
-}
-
-.upload-icon{
-    font-size:55px;
-    margin-bottom:15px;
-}
-
-.upload-zone h3{
-    font-size:25px;
-    margin-bottom:10px;
-}
-
-.upload-zone p{
-    color:var(--muted);
-    margin-bottom:25px;
-    line-height:1.7;
-}
-
-.file-input{
-    display:none;
-}
-
-.upload-button{
-    display:inline-flex;
-
-    padding:13px 22px;
-
-    background:var(--accent);
-    color:#071015;
-
-    border-radius:12px;
-
-    font-weight:900;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.upload-button:hover{
-    transform:translateY(-3px);
-}
-
-.file-list{
-    margin-top:30px;
-
-    display:grid;
-    gap:12px;
-}
-
-.file-item{
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-
-    padding:16px 18px;
-
-    background:var(--card);
-    border:1px solid var(--line);
-
-    border-radius:15px;
-}
-
-.file-info{
-    display:flex;
-    align-items:center;
-    gap:13px;
-
-    min-width:0;
-}
-
-.file-icon{
-    font-size:25px;
-}
-
-.file-name{
-    font-weight:700;
-
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-}
-
-.file-size{
-    color:var(--muted);
     font-size:12px;
-    margin-top:4px;
+
+    line-height:1.75;
 }
 
-.remove-file{
-    border:none;
-    background:transparent;
+.modal-note{
+    margin-top:24px;
 
-    color:#ff7272;
+    padding:18px;
 
-    cursor:pointer;
-    font-weight:800;
-}
-
-/* =========================================================
-   PROFILE
-========================================================= */
-
-.profile-grid{
-    display:grid;
-    grid-template-columns:1fr 1.5fr;
-    gap:25px;
-}
-
-.profile-card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:25px;
-    padding:30px;
-}
-
-.profile-avatar{
-    width:120px;
-    height:120px;
-
-    border-radius:50%;
-
-    margin-bottom:20px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    border-left:
+        3px solid
+        var(--accent);
 
     background:
-        linear-gradient(
-            135deg,
-            var(--accent),
-            var(--accent2)
-        );
+        rgba(113,246,255,.035);
 
-    color:#061014;
-
-    font-size:35px;
-    font-weight:1000;
-}
-
-.profile-card h3{
-    font-size:25px;
-    margin-bottom:8px;
-}
-
-.profile-role{
-    color:var(--accent);
-    font-weight:800;
-    margin-bottom:15px;
-}
-
-.profile-card p{
     color:var(--muted);
-    line-height:1.8;
+
+    font-size:12px;
+
+    line-height:1.75;
 }
 
-.info-list{
-    display:grid;
-    gap:13px;
-}
-
-.info-row{
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-
-    padding:14px 0;
-
-    border-bottom:1px solid var(--line);
-}
-
-.info-row span:first-child{
-    color:var(--muted);
-}
-
-.info-row span:last-child{
-    font-weight:700;
-    text-align:right;
-}
 
 /* =========================================================
    FOOTER
 ========================================================= */
 
-footer{
-    max-width:1250px;
+.footer{
+    width:min(1280px,100%);
+
     margin:auto;
 
-    padding:50px 25px 80px;
+    padding:
+        55px
+        25px
+        80px;
 
-    border-top:1px solid var(--line);
+    border-top:
+        1px solid
+        var(--line);
 
     text-align:center;
 }
 
-footer h3{
+.footer h3{
     font-size:25px;
+
     margin-bottom:10px;
 }
 
-footer p{
+.footer p{
     color:var(--muted);
+
+    font-size:12px;
+
     line-height:1.7;
 }
 
-.footer-future{
-    margin-top:25px;
+.footer-mark{
+    margin-top:22px;
 
     color:var(--accent);
 
-    font-size:12px;
-    font-weight:900;
+    font-size:10px;
+
+    font-weight:950;
 
     letter-spacing:3px;
 }
 
+
 /* =========================================================
-   SCROLL ANIMATION
+   REVEAL
 ========================================================= */
 
 .reveal{
     opacity:0;
-    transform:translateY(35px);
+
+    transform:
+        translateY(35px);
 
     transition:
         opacity .8s ease,
@@ -1015,25 +1729,37 @@ footer p{
 
 .reveal.visible{
     opacity:1;
+
     transform:none;
 }
 
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
 @keyframes fadeUp{
+
     from{
         opacity:0;
-        transform:translateY(25px);
+
+        transform:
+            translateY(25px);
     }
+
     to{
         opacity:1;
+
         transform:none;
     }
 }
 
+
 /* =========================================================
-   RESPONSIVE
+   MOBILE
 ========================================================= */
 
-@media(max-width:850px){
+@media(max-width:900px){
 
     .nav-links{
         display:none;
@@ -1043,50 +1769,147 @@ footer p{
         grid-template-columns:1fr;
     }
 
-    .vision-list{
+    .architecture{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .about-grid{
         grid-template-columns:1fr;
     }
 
-    .profile-grid{
-        grid-template-columns:1fr;
+    .hero-stats{
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
-    .plan-grid{
-        grid-template-columns:1fr;
+    .hero-stat:nth-child(2){
+        border-right:none;
+    }
+
+    .hero-stat:nth-child(-n+2){
+        border-bottom:
+            1px solid
+            var(--line);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .nav-inner{
+        padding:
+            0
+            17px;
+    }
+
+    .brand{
+        font-size:14px;
+    }
+
+    .mood-button{
+        padding:
+            9px
+            11px;
+    }
+
+    .section{
+        padding:
+            80px
+            18px;
+    }
+
+    .hero{
+        padding:
+            130px
+            18px
+            80px;
     }
 
     .hero h1{
         letter-spacing:-3px;
     }
-}
 
-@media(max-width:550px){
-
-    section{
-        padding:75px 18px;
+    .hero-description{
+        font-size:15px;
     }
 
-    .hero{
-        padding-left:18px;
-        padding-right:18px;
+    .hero-stats{
+        margin-top:45px;
     }
 
-    .modal-box{
-        padding:28px 20px;
+    .hero-stat{
+        padding:17px 8px;
+    }
+
+    .hero-stat strong{
+        font-size:18px;
     }
 
     .future-card{
-        min-height:300px;
-        padding:25px;
+        min-height:350px;
+
+        padding:26px;
     }
 
-    .vision-box{
-        padding:25px 18px;
+    .card-footer{
+        left:26px;
+        right:26px;
     }
 
-    .file-item{
+    .architecture{
+        grid-template-columns:1fr;
+    }
+
+    .upload-container{
+        padding:18px;
+    }
+
+    .modal{
+        padding:12px;
+    }
+
+    .modal-content{
+        padding:30px 20px;
+    }
+
+    .modal-grid{
+        grid-template-columns:1fr;
+    }
+
+    .profile-row{
+        grid-template-columns:1fr;
+
+        gap:5px;
+    }
+
+    .cv-box{
+        flex-direction:column;
+
         align-items:flex-start;
     }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+
+        animation-iteration-count:1 !important;
+
+        scroll-behavior:auto !important;
+
+        transition-duration:.01ms !important;
+    }
+
 }
 
 </style>
@@ -1095,145 +1918,278 @@ footer p{
 
 <body>
 
-<!-- =====================================================
-     BACKGROUND
+<div class="background-grid"></div>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+
+<!-- ======================================================
+     NAVIGATION
 ====================================================== -->
 
-<div class="grid-line"></div>
-
-<div class="orb one"></div>
-<div class="orb two"></div>
-
-
-<!-- =====================================================
-     NAVBAR
-====================================================== -->
-
-<header class="navbar">
+<header class="navbar" id="navbar">
 
 <div class="nav-inner">
 
-    <div class="logo">
-        NAIMUR <span>RAHMAN SAAD</span>
-    </div>
+<a
+    href="#home"
+    class="brand">
 
-    <nav class="nav-links">
+    NAIMUR <span>RAHMAN SAAD</span>
 
-        <a href="#home">Home</a>
+</a>
 
-        <a href="#future">Future 2050</a>
 
-        <a href="#vision">Vision</a>
+<nav class="nav-links">
 
-        <a href="#autocad">AutoCAD</a>
+    <a href="#home">Home</a>
 
-        <a href="#about">About</a>
+    <a href="#future">Future 2050</a>
 
-    </nav>
+    <a href="#architecture">Research</a>
 
-    <button
-        class="milk-toggle"
-        id="milkToggle"
-        onclick="toggleMilkMode()">
+    <a href="#autocad">AutoCAD</a>
 
-        🥛 MILK MODE
+    <a href="#about">Profile</a>
 
-    </button>
+</nav>
+
+
+<div class="mood-wrapper">
+
+<button
+    class="mood-button"
+    id="moodButton"
+    onclick="toggleMoodMenu()">
+
+    <span id="currentMoodIcon">🛣️</span>
+
+    <span id="currentMoodName">
+        ROADS
+    </span>
+
+    <span>⌄</span>
+
+</button>
+
+
+<div
+    class="mood-menu"
+    id="moodMenu">
+
+
+<button
+    class="mood-option active"
+    data-mood="roads"
+    onclick="setMood('roads')">
+
+    <span class="mood-symbol">🛣️</span>
+
+    <span class="mood-text">
+        <strong>Roads Mode</strong>
+        <small>Intelligent mobility infrastructure</small>
+    </span>
+
+</button>
+
+
+<button
+    class="mood-option"
+    data-mood="environment"
+    onclick="setMood('environment')">
+
+    <span class="mood-symbol">🌱</span>
+
+    <span class="mood-text">
+        <strong>Environmental Mode</strong>
+        <small>Climate & ecological infrastructure</small>
+    </span>
+
+</button>
+
+
+<button
+    class="mood-option"
+    data-mood="building"
+    onclick="setMood('building')">
+
+    <span class="mood-symbol">🌉</span>
+
+    <span class="mood-text">
+        <strong>Building + Bridge Mode</strong>
+        <small>Structural intelligence</small>
+    </span>
+
+</button>
+
+
+<button
+    class="mood-option"
+    data-mood="milk"
+    onclick="setMood('milk')">
+
+    <span class="mood-symbol">🥛</span>
+
+    <span class="mood-text">
+        <strong>Milk Mode</strong>
+        <small>Pure milk-white interface</small>
+    </span>
+
+</button>
+
+
+</div>
+
+</div>
 
 </div>
 
 </header>
 
 
-<!-- =====================================================
+<!-- ======================================================
      HERO
 ====================================================== -->
 
-<main>
+<main id="home">
 
-<section
-    class="hero"
-    id="home">
+<section class="hero">
 
 <div class="hero-content">
 
-    <div class="future-label">
 
-        <span class="future-dot"></span>
+<div class="eyebrow-pill">
 
-        ENGINEERING BEYOND 2050
+    <span class="live-dot"></span>
 
-    </div>
+    ENGINEERING 2050 • PERSONAL RESEARCH VISION
 
-
-    <h1>
-
-        Building The
-        <span class="gradient-text">
-            Unbuilt Future.
-        </span>
-
-    </h1>
+</div>
 
 
-    <p>
+<h1>
 
-        Naimur Rahman Saad —
-        Civil Engineer focused on Construction,
-        Project Management, Digital Engineering,
-        BIM, Automation and the next generation
-        of infrastructure.
+    Engineering Beyond
+    <span class="gradient">
+        The Present.
+    </span>
 
-    </p>
-
-
-    <div class="hero-buttons">
-
-        <a
-            href="#future"
-            class="btn btn-primary">
-
-            Explore Future 2050 →
-
-        </a>
+</h1>
 
 
-        <a
-            href="#autocad"
-            class="btn btn-secondary">
+<p class="hero-description">
 
-            AutoCAD Portfolio
+    Naimur Rahman Saad is a Civil Engineer focused on
+    Construction & Project Management, digital engineering,
+    BIM, CAD, planning systems and long-term infrastructure
+    innovation.
 
-        </a>
+    This portfolio presents a personal 2050 research vision
+    for roads, environmental infrastructure, buildings,
+    bridges and intelligent construction systems.
 
-    </div>
+</p>
+
+
+<div class="hero-actions">
+
+<a
+    href="#future"
+    class="btn btn-primary">
+
+    Explore 2050 Vision →
+
+</a>
+
+
+<a
+    href="#autocad"
+    class="btn btn-secondary">
+
+    Open AutoCAD Portfolio
+
+</a>
+
+</div>
+
+
+<div class="hero-stats">
+
+<div class="hero-stat">
+
+    <strong>2050</strong>
+
+    <span>
+        Vision Horizon
+    </span>
+
+</div>
+
+
+<div class="hero-stat">
+
+    <strong>04</strong>
+
+    <span>
+        Engineering Domains
+    </span>
+
+</div>
+
+
+<div class="hero-stat">
+
+    <strong>BIM</strong>
+
+    <span>
+        Digital Foundation
+    </span>
+
+</div>
+
+
+<div class="hero-stat">
+
+    <strong>AI</strong>
+
+    <span>
+        Intelligence Layer
+    </span>
+
+</div>
+
+</div>
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     FUTURE ENGINEERING 2050
+<!-- ======================================================
+     FUTURE 2050
 ====================================================== -->
 
-<section id="future">
+<section
+    class="section"
+    id="future">
 
-<div class="section-head reveal">
+<div class="section-header reveal">
 
-    <div class="eyebrow">
-        Future Engineering
+    <div class="section-kicker">
+        Future Engineering 2050
     </div>
 
     <h2>
-        Four Directions.
-        One 2050 Vision.
+        Four Engineering Futures.
     </h2>
 
     <p>
-        প্রতিটি section আলাদা engineering direction।
-        Card-এ click করলে পুরো concept, long-term plan,
-        research direction এবং তোমার সম্ভাব্য role দেখা যাবে।
+        Each direction represents a long-term personal
+        research vision. Open a domain to explore its
+        proposed architecture, technical problems,
+        implementation pathway and potential role for
+        a future Civil Engineer.
     </p>
 
 </div>
@@ -1242,143 +2198,348 @@ footer p{
 <div class="future-grid">
 
 
-<!-- =====================================================
-     CARD 01
-====================================================== -->
+<!-- ROADS -->
 
-<div
-    class="future-card reveal"
-    onclick="openFuture(1)">
+<article
+    class="future-card card-roads reveal"
+    onclick="openFuture('roads')">
 
-    <div class="card-number">
-        01 / STRUCTURAL INTELLIGENCE
-    </div>
+<div class="card-top">
 
-    <div class="future-icon">
-        🏗️
-    </div>
+    <span class="card-index">
+        01 / ROADS
+    </span>
 
-    <h3>
-        Autonomous Structural Systems
-    </h3>
-
-    <p class="short">
-
-        এমন structural infrastructure
-        যা নিজের condition বুঝবে,
-        damage detect করবে এবং
-        ভবিষ্যৎ failure predict করবে।
-
-    </p>
-
-    <div class="click-hint">
-        EXPLORE 2050 →
-    </div>
+    <span class="card-icon">
+        🛣️
+    </span>
 
 </div>
 
 
-<!-- =====================================================
-     CARD 02
-====================================================== -->
+<h3>
+    Intelligent Roads & Autonomous Infrastructure
+</h3>
 
-<div
-    class="future-card reveal"
-    onclick="openFuture(2)">
 
-    <div class="card-number">
-        02 / DIGITAL CONSTRUCTION
-    </div>
+<p>
 
-    <div class="future-icon">
-        🤖
-    </div>
+    A future road system that continuously understands
+    pavement condition, traffic behaviour, weather,
+    drainage, structural deterioration and maintenance
+    requirements through a connected digital infrastructure.
 
-    <h3>
-        Autonomous Construction
-    </h3>
+</p>
 
-    <p class="short">
 
-        BIM + robotics + AI + digital twin
-        ব্যবহার করে construction process
-        কে semi-autonomous করার vision।
+<div class="card-footer">
 
-    </p>
+    <span>
+        ROAD GENOME
+    </span>
 
-    <div class="click-hint">
-        EXPLORE 2050 →
-    </div>
+    <span>
+        OPEN →
+    </span>
+
+</div>
+
+</article>
+
+
+<!-- ENVIRONMENT -->
+
+<article
+    class="future-card card-environment reveal"
+    onclick="openFuture('environment')">
+
+<div class="card-top">
+
+    <span class="card-index">
+        02 / ENVIRONMENT
+    </span>
+
+    <span class="card-icon">
+        🌱
+    </span>
 
 </div>
 
 
-<!-- =====================================================
-     CARD 03
-====================================================== -->
+<h3>
+    Climate-Adaptive Environmental Infrastructure
+</h3>
 
-<div
-    class="future-card reveal"
-    onclick="openFuture(3)">
 
-    <div class="card-number">
-        03 / CLIMATE INFRASTRUCTURE
-    </div>
+<p>
 
-    <div class="future-icon">
-        🌍
-    </div>
+    A future infrastructure layer that connects
+    water, climate, carbon, soil, drainage, heat,
+    flood behaviour and construction decisions
+    into a continuously updated environmental model.
 
-    <h3>
-        Climate-Adaptive Infrastructure
-    </h3>
+</p>
 
-    <p class="short">
 
-        Flood, extreme heat, water pressure
-        এবং environmental change অনুযায়ী
-        infrastructure নিজেকে adapt করবে।
+<div class="card-footer">
 
-    </p>
+    <span>
+        LIVING ENVIRONMENT
+    </span>
 
-    <div class="click-hint">
-        EXPLORE 2050 →
-    </div>
+    <span>
+        OPEN →
+    </span>
+
+</div>
+
+</article>
+
+
+<!-- BUILDING / BRIDGE -->
+
+<article
+    class="future-card card-building reveal"
+    onclick="openFuture('building')">
+
+<div class="card-top">
+
+    <span class="card-index">
+        03 / BUILDINGS + BRIDGES
+    </span>
+
+    <span class="card-icon">
+        🌉
+    </span>
 
 </div>
 
 
-<!-- =====================================================
-     CARD 04
-====================================================== -->
+<h3>
+    Self-Monitoring Buildings & Bridges
+</h3>
 
-<div
-    class="future-card reveal"
-    onclick="openFuture(4)">
 
-    <div class="card-number">
-        04 / HUMAN + AI ENGINEERING
-    </div>
+<p>
 
-    <div class="future-icon">
+    Structural systems designed around digital twins,
+    sensor networks, BIM data and predictive models
+    so that buildings and bridges can continuously
+    communicate their changing condition.
+
+</p>
+
+
+<div class="card-footer">
+
+    <span>
+        STRUCTURAL NERVOUS SYSTEM
+    </span>
+
+    <span>
+        OPEN →
+    </span>
+
+</div>
+
+</article>
+
+
+<!-- CONSTRUCTION -->
+
+<article
+    class="future-card card-research reveal"
+    onclick="openFuture('construction')">
+
+<div class="card-top">
+
+    <span class="card-index">
+        04 / CONSTRUCTION
+    </span>
+
+    <span class="card-icon">
         🧠
+    </span>
+
+</div>
+
+
+<h3>
+    Cognitive Construction & Project Intelligence
+</h3>
+
+
+<p>
+
+    A project management architecture where BIM,
+    schedule, cost, resources, risk, site information
+    and engineering knowledge operate as one intelligent
+    decision-support system.
+
+</p>
+
+
+<div class="card-footer">
+
+    <span>
+        PROJECT BRAIN
+    </span>
+
+    <span>
+        OPEN →
+    </span>
+
+</div>
+
+</article>
+
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     RESEARCH ARCHITECTURE
+====================================================== -->
+
+<section
+    class="section"
+    id="architecture">
+
+<div class="section-header reveal">
+
+    <div class="section-kicker">
+        Advanced Research Architecture
+    </div>
+
+    <h2>
+        The Engineering Intelligence Stack.
+    </h2>
+
+    <p>
+        The 2050 vision is not based on a single technology.
+        It combines physical infrastructure with sensing,
+        BIM, simulation, artificial intelligence, digital twins
+        and human engineering judgement.
+    </p>
+
+</div>
+
+
+<div class="architecture">
+
+
+<div class="arch-card reveal">
+
+    <div class="arch-number">
+        LAYER 01
     </div>
 
     <h3>
-        Cognitive Engineering Platform
+        Physical Infrastructure
     </h3>
 
-    <p class="short">
-
-        Engineer, AI, BIM, simulation এবং
-        project management একত্র করে
-        intelligent engineering ecosystem।
-
+    <p>
+        Roads, bridges, buildings, drainage systems,
+        pavements, structural elements and construction
+        environments form the physical layer.
     </p>
 
-    <div class="click-hint">
-        EXPLORE 2050 →
+</div>
+
+
+<div class="arch-card reveal">
+
+    <div class="arch-number">
+        LAYER 02
     </div>
+
+    <h3>
+        Sensor & Observation Layer
+    </h3>
+
+    <p>
+        Sensors and field observations collect condition,
+        environmental, movement, vibration, temperature,
+        moisture and operational information.
+    </p>
+
+</div>
+
+
+<div class="arch-card reveal">
+
+    <div class="arch-number">
+        LAYER 03
+    </div>
+
+    <h3>
+        BIM + Digital Twin
+    </h3>
+
+    <p>
+        Engineering information is connected to digital
+        representations of physical assets across design,
+        construction, operation and maintenance.
+    </p>
+
+</div>
+
+
+<div class="arch-card reveal">
+
+    <div class="arch-number">
+        LAYER 04
+    </div>
+
+    <h3>
+        Simulation Engine
+    </h3>
+
+    <p>
+        Structural, environmental, traffic, schedule and
+        construction scenarios can be tested digitally
+        before decisions are implemented in the field.
+    </p>
+
+</div>
+
+
+<div class="arch-card reveal">
+
+    <div class="arch-number">
+        LAYER 05
+    </div>
+
+    <h3>
+        AI Intelligence Layer
+    </h3>
+
+    <p>
+        Pattern detection, anomaly detection, prediction,
+        optimisation and decision support operate above
+        the engineering data layer.
+    </p>
+
+</div>
+
+
+<div class="arch-card reveal">
+
+    <div class="arch-number">
+        LAYER 06
+    </div>
+
+    <h3>
+        Human Engineering Command
+    </h3>
+
+    <p>
+        Engineers remain responsible for judgement,
+        safety, ethics, design validation, construction
+        decisions and final professional accountability.
+    </p>
 
 </div>
 
@@ -1388,197 +2549,88 @@ footer p{
 </section>
 
 
-<!-- =====================================================
-     VISION
+<!-- ======================================================
+     AUTOCAD
 ====================================================== -->
 
-<section id="vision">
+<section
+    class="section"
+    id="autocad">
 
-<div class="section-head reveal">
+<div class="section-header reveal">
 
-    <div class="eyebrow">
-        Advanced Engineering Research
+    <div class="section-kicker">
+        AutoCAD Engineering Portfolio
     </div>
 
     <h2>
-        My Engineering 2050 Framework
+        Practice. Design. Document.
     </h2>
 
     <p>
-        এই concepts ভবিষ্যৎ-oriented engineering direction
-        হিসেবে তৈরি করা হয়েছে — research, development এবং
-        long-term professional vision হিসেবে।
+        Upload your AutoCAD practice drawings and project
+        files here. The interface supports common engineering
+        file formats and keeps a local portfolio list inside
+        the browser.
     </p>
 
 </div>
 
 
-<div class="vision-box reveal">
-
-<div class="vision-list">
-
-
-<div class="vision-item">
-
-    <h3>
-        Digital Twin Cities
-    </h3>
-
-    <p>
-        Real infrastructure-এর continuously
-        updated digital representation তৈরি করে
-        maintenance, planning এবং risk prediction।
-    </p>
-
-</div>
-
-
-<div class="vision-item">
-
-    <h3>
-        Predictive Infrastructure
-    </h3>
-
-    <p>
-        Structural sensor, historical data এবং
-        computational models ব্যবহার করে
-        failure ঘটার আগেই warning তৈরি করা।
-    </p>
-
-</div>
-
-
-<div class="vision-item">
-
-    <h3>
-        AI Construction Planner
-    </h3>
-
-    <p>
-        Project schedule, resources, productivity,
-        risk এবং construction sequence
-        intelligently optimize করার framework।
-    </p>
-
-</div>
-
-
-<div class="vision-item">
-
-    <h3>
-        Self-Monitoring Structures
-    </h3>
-
-    <p>
-        Structural health monitoring system
-        future infrastructure-এর continuous
-        condition assessment করবে।
-    </p>
-
-</div>
-
-
-<div class="vision-item">
-
-    <h3>
-        Robotic Construction
-    </h3>
-
-    <p>
-        Repetitive construction activity-তে
-        robotics ও automation ব্যবহার করে
-        productivity ও safety বাড়ানোর direction।
-    </p>
-
-</div>
-
-
-<div class="vision-item">
-
-    <h3>
-        Zero-Delay Project Intelligence
-    </h3>
-
-    <p>
-        Real-time project data থেকে delay,
-        resource conflict এবং risk আগে detect
-        করার integrated management system।
-    </p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     AUTOCAD PORTFOLIO
-====================================================== -->
-
-<section id="autocad">
-
-<div class="section-head reveal">
-
-    <div class="eyebrow">
-        AutoCAD Portfolio
-    </div>
-
-    <h2>
-        My AutoCAD Practice Files
-    </h2>
-
-    <p>
-        এখানে তোমার AutoCAD practice এবং project files
-        select করে portfolio workspace-এ রাখতে পারবে।
-        DWG, DXF, PDF, ZIP এবং image files support করা হয়েছে।
-    </p>
-
-</div>
+<div class="upload-container reveal">
 
 
 <div
-    class="upload-zone reveal"
+    class="upload-zone"
     id="uploadZone">
 
-    <div class="upload-icon">
-        📐
-    </div>
 
-    <h3>
-        Upload AutoCAD Projects
-    </h3>
-
-    <p>
-
-        Drag & Drop files here অথবা নিচের button ব্যবহার করো।
-
-        <br>
-
-        DWG • DXF • PDF • ZIP • RAR • PNG • JPG
-
-    </p>
+<div class="upload-icon">
+    📐
+</div>
 
 
-    <label
-        class="upload-button"
-        for="fileInput">
-
-        + SELECT AUTO CAD FILES
-
-    </label>
+<h3>
+    AutoCAD Project Upload
+</h3>
 
 
-    <input
-        type="file"
-        id="fileInput"
-        class="file-input"
-        multiple
-        accept=".dwg,.dxf,.pdf,.zip,.rar,.png,.jpg,.jpeg">
+<p>
 
+    Drag and drop your engineering files here,
+    or select files from your computer.
+
+    <br>
+
+    Supported:
+    DWG • DXF • PDF • ZIP • RAR • PNG • JPG • JPEG
+
+</p>
+
+
+<label
+    for="fileInput"
+    class="file-label">
+
+    + SELECT ENGINEERING FILES
+
+</label>
+
+
+<input
+    type="file"
+    id="fileInput"
+    multiple
+    accept="
+        .dwg,
+        .dxf,
+        .pdf,
+        .zip,
+        .rar,
+        .png,
+        .jpg,
+        .jpeg
+    ">
 
 </div>
 
@@ -1586,157 +2638,227 @@ footer p{
 <div
     class="file-list"
     id="fileList">
+</div>
+
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     ABOUT
+<!-- ======================================================
+     PROFILE
 ====================================================== -->
 
-<section id="about">
+<section
+    class="section"
+    id="about">
 
-<div class="section-head reveal">
+<div class="section-header reveal">
 
-    <div class="eyebrow">
-        Engineering Profile
+    <div class="section-kicker">
+        Professional Profile
     </div>
 
     <h2>
         Naimur Rahman Saad
     </h2>
 
-</div>
-
-
-<div class="profile-grid">
-
-
-<div class="profile-card reveal">
-
-    <div class="profile-avatar">
-        NR
-    </div>
-
-    <h3>
-        Naimur Rahman Saad
-    </h3>
-
-    <div class="profile-role">
-        Civil Engineer
-    </div>
-
     <p>
-
-        Construction & Project Management
-        oriented Civil Engineer with interest
-        in digital engineering, BIM,
-        structural analysis, CAD,
-        construction planning and
-        future infrastructure.
-
+        Civil Engineering with a long-term interest in
+        construction management, digital engineering,
+        BIM, CAD, planning and future infrastructure.
     </p>
 
 </div>
 
 
-<div class="profile-card reveal">
-
-    <div class="info-list">
-
-        <div class="info-row">
-
-            <span>
-                Degree
-            </span>
-
-            <span>
-                BSc in Civil Engineering
-            </span>
-
-        </div>
+<div class="about-grid">
 
 
-        <div class="info-row">
+<div class="about-card reveal">
 
-            <span>
-                University
-            </span>
+<div class="avatar">
+    NR
+</div>
 
-            <span>
-                Daffodil International University
-            </span>
+<h3>
+    Naimur Rahman Saad
+</h3>
 
-        </div>
+<div class="about-role">
+    Civil Engineer
+</div>
 
+<p>
 
-        <div class="info-row">
+    Construction & Project Management focused
+    Civil Engineer interested in combining
+    engineering fundamentals with digital tools,
+    BIM, CAD, planning systems and future-oriented
+    infrastructure research.
 
-            <span>
-                Focus
-            </span>
-
-            <span>
-                Construction & Project Management
-            </span>
-
-        </div>
-
-
-        <div class="info-row">
-
-            <span>
-                Engineering
-            </span>
-
-            <span>
-                Civil / Structural / Digital
-            </span>
-
-        </div>
+</p>
 
 
-        <div class="info-row">
+<div class="cv-box">
 
-            <span>
-                Software
-            </span>
+<div>
 
-            <span>
-                AutoCAD • ETABS • Revit • Tekla
-            </span>
+<h3>
+    Engineering CV
+</h3>
 
-        </div>
+<p>
+    Add your final CV PDF here.
+</p>
 
-
-        <div class="info-row">
-
-            <span>
-                Planning
-            </span>
-
-            <span>
-                Primavera P6
-            </span>
-
-        </div>
+</div>
 
 
-        <div class="info-row">
+<label
+    class="file-label"
+    for="cvInput">
 
-            <span>
-                Future Target
-            </span>
+    SELECT CV
 
-            <span>
-                Engineering 2050
-            </span>
+</label>
 
-        </div>
 
-    </div>
+<input
+    type="file"
+    id="cvInput"
+    accept=".pdf">
+
+</div>
+
+
+</div>
+
+
+<div class="about-card reveal">
+
+<div class="profile-data">
+
+
+<div class="profile-row">
+
+<span>
+    Degree
+</span>
+
+<span>
+    BSc in Civil Engineering
+</span>
+
+</div>
+
+
+<div class="profile-row">
+
+<span>
+    University
+</span>
+
+<span>
+    Daffodil International University
+</span>
+
+</div>
+
+
+<div class="profile-row">
+
+<span>
+    Professional Focus
+</span>
+
+<span>
+    Construction & Project Management
+</span>
+
+</div>
+
+
+<div class="profile-row">
+
+<span>
+    Engineering Areas
+</span>
+
+<span>
+    Civil • Structural • Digital Engineering
+</span>
+
+</div>
+
+
+<div class="profile-row">
+
+<span>
+    CAD / BIM
+</span>
+
+<span>
+    AutoCAD • Revit • Tekla
+</span>
+
+</div>
+
+
+<div class="profile-row">
+
+<span>
+    Structural Analysis
+</span>
+
+<span>
+    ETABS
+</span>
+
+</div>
+
+
+<div class="profile-row">
+
+<span>
+    Planning
+</span>
+
+<span>
+    Primavera P6
+</span>
+
+</div>
+
+
+<div class="profile-row">
+
+<span>
+    Productivity
+</span>
+
+<span>
+    MS Word • MS Excel
+</span>
+
+</div>
+
+
+<div class="profile-row">
+
+<span>
+    Long-Term Vision
+</span>
+
+<span>
+    Intelligent Infrastructure 2050
+</span>
+
+</div>
+
+
+</div>
 
 </div>
 
@@ -1748,65 +2870,81 @@ footer p{
 </main>
 
 
-<!-- =====================================================
+<!-- ======================================================
      FOOTER
 ====================================================== -->
 
-<footer>
+<footer class="footer">
 
-    <h3>
-        Engineering Beyond The Present.
-    </h3>
+<h3>
+    Build What Does Not Exist Yet.
+</h3>
 
-    <p>
-        Designed as a personal engineering portfolio
-        and future research vision platform.
-    </p>
+<p>
+    Naimur Rahman Saad — Civil Engineering,
+    Construction & Project Management,
+    Digital Engineering and Future Infrastructure.
+</p>
 
-    <div class="footer-future">
-        2050 • BUILD • SIMULATE • PREDICT • ADAPT
-    </div>
+<div class="footer-mark">
+    DESIGN • SIMULATE • PREDICT • ADAPT • 2050
+</div>
 
 </footer>
 
 
-<!-- =====================================================
+<!-- ======================================================
      FUTURE MODAL
 ====================================================== -->
 
 <div
     class="modal"
     id="futureModal"
-    onclick="closeFuture(event)">
+    onclick="closeModal(event)">
 
 <div
-    class="modal-box"
+    class="modal-content"
     onclick="event.stopPropagation()">
+
 
 <button
     class="modal-close"
-    onclick="closeFuture()">
+    onclick="closeModal()">
+
     ×
+
 </button>
 
+
 <div
-    class="modal-label"
-    id="modalLabel">
+    class="modal-kicker"
+    id="modalKicker">
 </div>
 
+
 <h2
+    class="modal-title"
     id="modalTitle">
 </h2>
+
 
 <p
     class="modal-intro"
     id="modalIntro">
 </p>
 
+
 <div
-    class="plan-grid"
-    id="modalPlans">
+    class="modal-grid"
+    id="modalGrid">
 </div>
+
+
+<div
+    class="modal-note"
+    id="modalNote">
+</div>
+
 
 </div>
 
@@ -1816,215 +2954,327 @@ footer p{
 <script>
 
 /* =========================================================
-   FUTURE 2050 DATA
+   FUTURE RESEARCH DATA
 ========================================================= */
 
 const futureData = {
 
-1:{
+roads:{
 
-label:"01 / STRUCTURAL INTELLIGENCE",
+kicker:"01 / ROADS / 2050 RESEARCH VISION",
 
-title:"Autonomous Structural Systems",
+title:
+"Road Genome & Self-Aware Transportation Infrastructure",
 
 intro:
-"আমার 2050 vision-এর একটি direction হলো এমন infrastructure তৈরি করা যেখানে structure শুধু load বহন করবে না — বরং নিজের structural condition সম্পর্কে continuously information generate করবে।",
+"This personal 2050 research vision imagines a road network that is represented not only as physical pavement, but as a continuously updated engineering system. Every important asset can have a digital identity, condition history, environmental context and predicted maintenance state.",
 
-plans:[
+points:[
 
 {
-title:"2050 Structural Nervous System",
+title:"Road Genome",
 text:
-"Building-এর ভিতরে distributed sensors এবং monitoring nodes-এর মাধ্যমে structure-এর stress, vibration, deformation এবং environmental condition continuously observe করার concept।"
+"Create a persistent digital identity for each road segment containing geometry, pavement layers, construction history, traffic loading, maintenance events, material information, drainage behaviour and observed deterioration."
 },
 
 {
-title:"Failure Before Failure",
+title:"Predictive Pavement Memory",
 text:
-"Traditional inspection-এর বদলে predictive models ব্যবহার করে সম্ভাব্য structural problem ঘটার আগেই engineering warning তৈরি করার framework।"
+"Instead of treating every inspection as an isolated event, preserve the complete deterioration history of pavement sections and use that accumulated engineering memory to estimate future condition."
 },
 
 {
-title:"Living Digital Twin",
+title:"Self-Diagnosing Road",
 text:
-"Physical structure-এর সাথে continuously synchronized digital twin তৈরি করা — যেখানে design, construction history, inspection এবং operational data একসাথে থাকবে।"
+"Combine periodic inspection, vehicle-based observations, imagery, sensors and engineering models to identify emerging pavement anomalies before they become major rehabilitation problems."
 },
 
 {
-title:"My Role",
+title:"Climate-Adaptive Road Skin",
 text:
-"আমার target হবে Civil Engineering + BIM + structural analysis + project management knowledge একত্র করে intelligent infrastructure workflow develop করা।"
+"Develop a research framework in which pavement performance is evaluated together with heat, rainfall, moisture, flooding and seasonal environmental behaviour rather than as a purely geometric design problem."
 },
 
 {
-title:"Rare Research Direction",
+title:"Road Digital Twin",
 text:
-"Structural health data, construction history এবং environmental data একত্র করে long-term infrastructure behaviour prediction model তৈরি করা।"
+"Connect road geometry, pavement information, drainage, traffic observations, maintenance history and environmental information into one continuously updated digital representation."
 },
 
 {
-title:"2050 Outcome",
+title:"Predictive Maintenance",
 text:
-"একটি infrastructure ecosystem যেখানে engineer শুধুমাত্র damage হওয়ার পরে response না দিয়ে damage হওয়ার সম্ভাবনা আগে থেকেই understand করতে পারবে।"
+"Move maintenance planning from fixed calendar intervals toward condition-based and risk-based intervention strategies."
+},
+
+{
+title:"Drainage Intelligence",
+text:
+"Treat road drainage as an intelligent subsystem. Future models could connect rainfall, water accumulation, drainage capacity, low points and historical flooding behaviour."
+},
+
+{
+title:"Traffic Stress Mapping",
+text:
+"Map repeated heavy-vehicle loading and traffic behaviour against pavement deterioration to create a dynamic engineering stress profile for road segments."
+},
+
+{
+title:"Construction Feedback Loop",
+text:
+"Construction records should return to the digital road model after completion so that the asset remembers how it was actually built, not only how it was designed."
+},
+
+{
+title:"My 2050 Role",
+text:
+"My proposed role is to combine Civil Engineering, AutoCAD, BIM, project management, planning and digital engineering into a practical road intelligence workflow."
 }
 
-]
+],
+
+note:
+"Research status: this is a personal speculative engineering concept for a 2050 portfolio. Individual technologies may already exist in research or industry; the proposed combination and architecture represent the personal vision presented here."
 
 },
 
 
-2:{
+environment:{
 
-label:"02 / DIGITAL CONSTRUCTION",
+kicker:"02 / ENVIRONMENT / 2050 RESEARCH VISION",
 
-title:"Autonomous Construction",
+title:
+"Living Environmental Infrastructure",
 
 intro:
-"Construction industry-কে শুধু digitize নয়, progressively intelligent ও semi-autonomous করার আমার 2050 direction। BIM, AI, robotics এবং simulation একসাথে কাজ করবে।",
+"This vision treats infrastructure and environment as one connected system. Roads, buildings, drainage, water, soil, heat, rainfall and construction activity can be represented together so that future engineering decisions consider environmental behaviour across the full asset lifecycle.",
 
-plans:[
+points:[
 
 {
-title:"AI Construction Sequence",
+title:"Living Environmental Twin",
 text:
-"Project-এর design, resources এবং constraints বিশ্লেষণ করে optimized construction sequence generate করার intelligent planning concept।"
+"Create a digital environmental model that continuously represents water movement, rainfall, temperature, surface conditions, drainage behaviour and infrastructure interaction."
 },
 
 {
-title:"Robotic Site Operations",
+title:"Flood Memory",
 text:
-"Repetitive measurement, inspection, material movement এবং selected construction activities-এ robotics ব্যবহার করার framework।"
+"Store historical flood depth, duration, drainage response and infrastructure impact as engineering memory that can improve future planning."
 },
 
 {
-title:"4D + 5D + AI",
+title:"Climate Scenario Engine",
 text:
-"Time এবং cost information-এর সাথে AI-based risk prediction যুক্ত করে project planning system তৈরি করা।"
+"Test infrastructure strategies against multiple future environmental scenarios before construction or major rehabilitation decisions."
 },
 
 {
-title:"Virtual Construction Before Site",
+title:"Carbon-Aware Construction",
 text:
-"Actual construction শুরু হওয়ার আগে digital environment-এ sequence, clash, logistics এবং potential problems simulate করা।"
-},
-
-{
-title:"My Role",
-text:
-"AutoCAD, Revit, BIM, Primavera P6 এবং project management knowledge-কে একটি integrated digital construction workflow-এ নিয়ে যাওয়া।"
-},
-
-{
-title:"2050 Outcome",
-text:
-"Construction site হবে এমন একটি environment যেখানে human engineer decision-maker থাকবে, আর digital systems continuously optimization ও prediction করবে।"
-}
-
-]
-
-},
-
-
-3:{
-
-label:"03 / CLIMATE INFRASTRUCTURE",
-
-title:"Climate-Adaptive Infrastructure",
-
-intro:
-"Future infrastructure-কে static design হিসেবে না দেখে changing climate এবং environmental condition-এর সাথে adapt করতে পারে এমন system হিসেবে চিন্তা করা।",
-
-plans:[
-
-{
-title:"Adaptive Flood Infrastructure",
-text:
-"Flood intensity, water level এবং drainage condition অনুযায়ী infrastructure response planning-এর digital framework।"
-},
-
-{
-title:"Heat-Resilient Cities",
-text:
-"Future extreme heat condition বিবেচনায় pavement, building envelope, public infrastructure এবং urban planning-এর adaptive strategies।"
+"Add material quantities, transport requirements, construction activities and lifecycle assumptions to project models so environmental consequences become visible during planning."
 },
 
 {
 title:"Water Intelligence",
 text:
-"Water level, rainfall এবং drainage network data ব্যবহার করে urban flood risk prediction এবং early-response planning।"
+"Connect rainfall, drainage capacity, surface runoff and water accumulation into an integrated decision-support model for future infrastructure."
 },
 
 {
-title:"Climate Digital Twin",
+title:"Heat Infrastructure Map",
 text:
-"City বা infrastructure system-এর digital twin-এর সাথে environmental data connect করে future climate scenario simulate করা।"
+"Study the relationship between pavement, buildings, urban surfaces, shade, vegetation and heat behaviour to identify areas where infrastructure design can reduce environmental stress."
 },
 
 {
-title:"My Role",
+title:"Adaptive Drainage",
 text:
-"Civil engineering এবং project management knowledge ব্যবহার করে resilient infrastructure planning ও implementation framework develop করা।"
+"Develop drainage strategies that can be evaluated dynamically according to rainfall intensity, capacity, blockage risk and surrounding land conditions."
 },
 
 {
-title:"2050 Outcome",
+title:"Ecological Construction Planning",
 text:
-"Future infrastructure শুধু climate-এর impact সহ্য করবে না — changing environmental conditions অনুযায়ী planning এবং operation strategy পরিবর্তন করতে পারবে।"
+"Include environmental constraints and ecological impacts directly inside the construction planning process rather than treating them as a separate final-stage consideration."
+},
+
+{
+title:"Lifecycle Environment Score",
+text:
+"Propose a future project metric that combines construction impact, material use, maintenance demand, environmental exposure and lifecycle performance."
+},
+
+{
+title:"My 2050 Role",
+text:
+"My role would focus on connecting Civil Engineering and Project Management with digital environmental modelling and infrastructure lifecycle thinking."
 }
 
-]
+],
+
+note:
+"This is a personal 2050 research framework, not a claim that these capabilities are currently unavailable in the United States or elsewhere."
 
 },
 
 
-4:{
+building:{
 
-label:"04 / HUMAN + AI ENGINEERING",
+kicker:"03 / BUILDINGS + BRIDGES / 2050 RESEARCH VISION",
 
-title:"Cognitive Engineering Platform",
+title:
+"Structural Nervous System for Buildings & Bridges",
 
 intro:
-"এটি আমার সবচেয়ে ambitious direction: Engineer, AI, BIM, simulation, project management এবং real-time data-কে একটি integrated engineering intelligence platform-এ যুক্ত করা।",
+"The central idea is to move from structures that are inspected periodically toward structures represented by continuously evolving digital engineering information. The goal is not to make structures independent of engineers, but to give engineers much richer information about structural behaviour.",
 
-plans:[
+points:[
 
 {
-title:"AI Engineering Assistant",
+title:"Structural Digital Twin",
 text:
-"Design information, project data, specifications এবং schedules analyse করে engineer-কে decision support দেওয়ার concept।"
+"Maintain a digital representation of structural geometry, materials, design information, construction history, inspection observations and operational condition."
 },
 
 {
-title:"Engineering Memory",
+title:"Bridge Nervous System",
 text:
-"Project-এর design decisions, changes, risks, lessons learned এবং construction data structured knowledge হিসেবে সংরক্ষণ করা।"
+"Develop a conceptual sensor-and-data architecture where critical bridge behaviour can be observed continuously and transformed into engineering information."
 },
 
 {
-title:"AI + BIM Brain",
+title:"Structural Memory",
 text:
-"BIM model-কে শুধু 3D visualization না রেখে project intelligence-এর central information environment হিসেবে ব্যবহার করা।"
+"Preserve the history of observed vibration, deformation, maintenance, repairs and environmental exposure so future engineers inherit a structured asset memory."
 },
 
 {
-title:"Predictive Project Management",
+title:"Anomaly Detection",
 text:
-"Schedule, resources, productivity এবং project risks-এর historical এবং real-time data ব্যবহার করে potential delay আগে identify করা।"
+"Use engineering models and data-driven methods to identify unusual behaviour that deserves professional investigation."
 },
 
 {
-title:"My Role",
+title:"Load History Intelligence",
 text:
-"Construction & Project Management + Civil Engineering + BIM + CAD + planning software-এর combination দিয়ে future digital engineering workflow develop করা।"
+"Explore how repeated loading, traffic characteristics and environmental exposure can be represented as part of a bridge's long-term digital history."
 },
 
 {
-title:"2050 Outcome",
+title:"Construction-to-Operation Continuity",
 text:
-"Engineer এবং AI একে অপরের replacement নয় — engineer থাকবে strategic decision-maker, আর AI হবে continuously operating engineering intelligence layer।"
+"Transfer verified BIM and construction information into the operational digital twin instead of allowing valuable project data to disappear after handover."
+},
+
+{
+title:"Inspection Prioritisation",
+text:
+"Use risk and condition information to help engineers determine where detailed inspection resources may provide the greatest value."
+},
+
+{
+title:"Building Behaviour Map",
+text:
+"Represent building systems, structural elements, environmental conditions and operational information in a coordinated engineering model."
+},
+
+{
+title:"Repair Simulation",
+text:
+"Before a major intervention, digitally test possible repair or strengthening scenarios and compare their predicted consequences."
+},
+
+{
+title:"My 2050 Role",
+text:
+"My direction is to combine structural engineering awareness, BIM, AutoCAD, digital modelling and project management into a lifecycle-oriented structural workflow."
 }
 
-]
+],
+
+note:
+"The proposed architecture is intentionally research-oriented. Structural monitoring, BIM and digital twins are active fields today; the portfolio presents a future integrated architecture as a personal 2050 vision."
+
+},
+
+
+construction:{
+
+kicker:"04 / CONSTRUCTION / 2050 RESEARCH VISION",
+
+title:
+"The Cognitive Construction Project",
+
+intro:
+"This vision imagines a future project environment where BIM, schedule, cost, resources, site observations, risk and engineering knowledge are connected through an intelligent decision-support layer.",
+
+points:[
+
+{
+title:"Project Brain",
+text:
+"Create a project information architecture that connects drawings, BIM models, schedules, quantities, procurement, risks, site records and decisions."
+},
+
+{
+title:"AI Schedule Reasoning",
+text:
+"Explore systems that can analyse project dependencies, progress information and resource constraints to identify possible schedule conflicts before they become critical."
+},
+
+{
+title:"Construction Digital Twin",
+text:
+"Represent planned and observed construction states together so project teams can compare what should exist with what actually exists."
+},
+
+{
+title:"4D Construction Intelligence",
+text:
+"Connect the construction schedule to model elements so project teams can understand sequence, dependencies and progress visually."
+},
+
+{
+title:"5D Cost Intelligence",
+text:
+"Connect quantities and cost information to project elements so changes can be traced through their potential schedule and cost implications."
+},
+
+{
+title:"Risk Prediction Layer",
+text:
+"Create a research framework for identifying relationships among delay, resource constraints, procurement, weather, productivity and site conditions."
+},
+
+{
+title:"Engineering Knowledge Memory",
+text:
+"Store decisions, changes, lessons learned and project events in a structured knowledge system so future projects can learn from previous experience."
+},
+
+{
+title:"Site-to-BIM Feedback",
+text:
+"Future site observations should be capable of updating the project information environment rather than remaining isolated in reports and messages."
+},
+
+{
+title:"Human + AI Command",
+text:
+"AI provides analysis and prediction while qualified engineers retain responsibility for validation, safety, design decisions and project accountability."
+},
+
+{
+title:"My 2050 Role",
+text:
+"My professional direction is to connect Construction & Project Management with AutoCAD, BIM, Revit, Tekla, ETABS and Primavera P6 into an integrated digital construction workflow."
+}
+
+],
+
+note:
+"This is a personal future research vision. It does not claim that the complete system described here currently exists as a finished commercial platform."
 
 }
 
@@ -2032,89 +3282,110 @@ text:
 
 
 /* =========================================================
-   OPEN FUTURE MODAL
+   MODAL
 ========================================================= */
 
-function openFuture(id){
+const modal =
+document.getElementById("futureModal");
 
-    const data = futureData[id];
+const modalKicker =
+document.getElementById("modalKicker");
 
-    document.getElementById("modalLabel").textContent =
-        data.label;
+const modalTitle =
+document.getElementById("modalTitle");
 
-    document.getElementById("modalTitle").textContent =
+const modalIntro =
+document.getElementById("modalIntro");
+
+const modalGrid =
+document.getElementById("modalGrid");
+
+const modalNote =
+document.getElementById("modalNote");
+
+
+function openFuture(type){
+
+    const data =
+        futureData[type];
+
+    if(!data){
+        return;
+    }
+
+    modalKicker.textContent =
+        data.kicker;
+
+    modalTitle.textContent =
         data.title;
 
-    document.getElementById("modalIntro").textContent =
+    modalIntro.textContent =
         data.intro;
 
+    modalGrid.innerHTML = "";
 
-    const plans =
-        document.getElementById("modalPlans");
+    data.points.forEach(
+        (point,index)=>{
 
-    plans.innerHTML = "";
+            const card =
+                document.createElement("div");
 
+            card.className =
+                "research-point";
 
-    data.plans.forEach(plan => {
+            card.innerHTML = `
+                <h4>
+                    ${String(index+1).padStart(2,"0")}
+                    / ${point.title}
+                </h4>
 
-        const div =
-            document.createElement("div");
+                <p>
+                    ${point.text}
+                </p>
+            `;
 
-        div.className = "plan";
+            modalGrid.appendChild(card);
 
-        div.innerHTML = `
-            <h4>${plan.title}</h4>
-            <p>${plan.text}</p>
-        `;
+        }
+    );
 
-        plans.appendChild(div);
+    modalNote.textContent =
+        data.note;
 
-    });
+    modal.classList.add("active");
 
-
-    document
-        .getElementById("futureModal")
-        .classList.add("active");
-
-
-    document.body.style.overflow = "hidden";
-
+    document.body.style.overflow =
+        "hidden";
 }
 
 
-/* =========================================================
-   CLOSE MODAL
-========================================================= */
-
-function closeFuture(event){
+function closeModal(event){
 
     if(
         event &&
-        event.target !==
-        document.getElementById("futureModal")
+        event.target !== modal
     ){
         return;
     }
 
-    document
-        .getElementById("futureModal")
-        .classList.remove("active");
+    modal.classList.remove("active");
 
-    document.body.style.overflow = "";
-
+    document.body.style.overflow =
+        "";
 }
 
 
-/* =========================================================
-   ESC KEY
-========================================================= */
-
 document.addEventListener(
     "keydown",
-    function(e){
+    event=>{
 
-        if(e.key === "Escape"){
-            closeFuture();
+        if(event.key === "Escape"){
+
+            modal.classList.remove("active");
+
+            document.body.style.overflow =
+                "";
+
         }
 
     }
@@ -2122,150 +3393,252 @@ document.addEventListener(
 
 
 /* =========================================================
-   MILK MODE
+   MOOD SYSTEM
 ========================================================= */
 
-function toggleMilkMode(){
+const moodMenu =
+document.getElementById("moodMenu");
 
-    document.body.classList.toggle("milk-mode");
+const moodIcon =
+document.getElementById("currentMoodIcon");
 
-    const button =
-        document.getElementById("milkToggle");
-
-    const active =
-        document.body.classList.contains("milk-mode");
+const moodName =
+document.getElementById("currentMoodName");
 
 
-    if(active){
+const moodData = {
 
-        button.innerHTML =
-            "🥛 MILK MODE ON";
+roads:{
+    icon:"🛣️",
+    name:"ROADS"
+},
 
-        localStorage.setItem(
-            "milkMode",
-            "on"
-        );
+environment:{
+    icon:"🌱",
+    name:"ENVIRONMENT"
+},
 
-    }else{
+building:{
+    icon:"🌉",
+    name:"BUILDING + BRIDGE"
+},
 
-        button.innerHTML =
-            "🥛 MILK MODE";
+milk:{
+    icon:"🥛",
+    name:"MILK"
+}
 
-        localStorage.setItem(
-            "milkMode",
-            "off"
+};
+
+
+function toggleMoodMenu(){
+
+    moodMenu.classList.toggle("open");
+
+}
+
+
+function setMood(mood){
+
+    const data =
+        moodData[mood];
+
+    if(!data){
+        return;
+    }
+
+
+    document.body.classList.remove(
+        "milk-mode"
+    );
+
+
+    if(mood === "milk"){
+
+        document.body.classList.add(
+            "milk-mode"
         );
 
     }
 
+
+    moodIcon.textContent =
+        data.icon;
+
+    moodName.textContent =
+        data.name;
+
+
+    document
+        .querySelectorAll(".mood-option")
+        .forEach(option=>{
+
+            option.classList.toggle(
+                "active",
+                option.dataset.mood === mood
+            );
+
+        });
+
+
+    localStorage.setItem(
+        "engineeringMood",
+        mood
+    );
+
+
+    moodMenu.classList.remove(
+        "open"
+    );
+
 }
 
 
-/* =========================================================
-   REMEMBER MILK MODE
-========================================================= */
+document.addEventListener(
+    "click",
+    event=>{
 
-if(
-    localStorage.getItem("milkMode")
-    ===
-    "on"
-){
+        const wrapper =
+            document.querySelector(
+                ".mood-wrapper"
+            );
 
-    document.body.classList.add("milk-mode");
+        if(
+            !wrapper.contains(event.target)
+        ){
 
-    document.getElementById("milkToggle")
-        .innerHTML =
-        "🥛 MILK MODE ON";
+            moodMenu.classList.remove(
+                "open"
+            );
 
-}
-
-
-/* =========================================================
-   AUTOCAD FILE UPLOAD
-========================================================= */
-
-const fileInput =
-    document.getElementById("fileInput");
-
-const uploadZone =
-    document.getElementById("uploadZone");
-
-const fileList =
-    document.getElementById("fileList");
-
-
-let uploadedFiles = [];
-
-
-/* SELECT FILE */
-
-fileInput.addEventListener(
-    "change",
-    function(){
-
-        addFiles(
-            Array.from(this.files)
-        );
+        }
 
     }
 );
 
 
 /* =========================================================
-   DRAG EVENTS
+   RESTORE MOOD
 ========================================================= */
+
+const savedMood =
+localStorage.getItem(
+    "engineeringMood"
+);
+
+
+if(
+    savedMood &&
+    moodData[savedMood]
+){
+
+    setMood(savedMood);
+
+}else{
+
+    setMood("roads");
+
+}
+
+
+/* =========================================================
+   AUTO CAD UPLOAD SYSTEM
+========================================================= */
+
+const fileInput =
+document.getElementById(
+    "fileInput"
+);
+
+const uploadZone =
+document.getElementById(
+    "uploadZone"
+);
+
+const fileList =
+document.getElementById(
+    "fileList"
+);
+
+
+let selectedFiles = [];
+
+
+fileInput.addEventListener(
+    "change",
+    event=>{
+
+        addFiles(
+            Array.from(
+                event.target.files
+            )
+        );
+
+        fileInput.value = "";
+
+    }
+);
+
+
+/* DRAG ENTER */
 
 [
     "dragenter",
     "dragover"
-].forEach(eventName => {
+].forEach(
+    eventName=>{
 
-    uploadZone.addEventListener(
-        eventName,
-        function(e){
+        uploadZone.addEventListener(
+            eventName,
+            event=>{
 
-            e.preventDefault();
+                event.preventDefault();
 
-            uploadZone.classList.add(
-                "dragover"
-            );
+                uploadZone.classList.add(
+                    "dragging"
+                );
 
-        }
-    );
+            }
+        );
 
-});
+    }
+);
 
+
+/* DRAG LEAVE */
 
 [
     "dragleave",
     "drop"
-].forEach(eventName => {
+].forEach(
+    eventName=>{
 
-    uploadZone.addEventListener(
-        eventName,
-        function(e){
+        uploadZone.addEventListener(
+            eventName,
+            event=>{
 
-            e.preventDefault();
+                event.preventDefault();
 
-            uploadZone.classList.remove(
-                "dragover"
-            );
+                uploadZone.classList.remove(
+                    "dragging"
+                );
 
-        }
-    );
+            }
+        );
 
-});
+    }
+);
 
 
-/* DROP FILE */
+/* DROP */
 
 uploadZone.addEventListener(
     "drop",
-    function(e){
+    event=>{
 
         addFiles(
             Array.from(
-                e.dataTransfer.files
+                event.dataTransfer.files
             )
         );
 
@@ -2273,24 +3646,24 @@ uploadZone.addEventListener(
 );
 
 
-/* =========================================================
-   ADD FILES
-========================================================= */
+/* ADD FILES */
 
 function addFiles(files){
 
-    files.forEach(file => {
+    files.forEach(file=>{
 
-        const exists =
-            uploadedFiles.some(
-                f =>
-                f.name === file.name &&
-                f.size === file.size
+        const alreadyExists =
+            selectedFiles.some(
+                existing =>
+                    existing.name === file.name &&
+                    existing.size === file.size &&
+                    existing.lastModified === file.lastModified
             );
 
-        if(!exists){
 
-            uploadedFiles.push(file);
+        if(!alreadyExists){
+
+            selectedFiles.push(file);
 
         }
 
@@ -2302,83 +3675,73 @@ function addFiles(files){
 }
 
 
-/* =========================================================
-   RENDER FILES
-========================================================= */
+/* RENDER FILES */
 
 function renderFiles(){
 
     fileList.innerHTML = "";
 
 
-    if(uploadedFiles.length === 0){
+    selectedFiles.forEach(
+        (file,index)=>{
 
-        return;
+            const item =
+                document.createElement(
+                    "div"
+                );
 
-    }
-
-
-    uploadedFiles.forEach(
-        (file,index) => {
-
-        const item =
-            document.createElement("div");
-
-        item.className =
-            "file-item";
+            item.className =
+                "file-item";
 
 
-        const icon =
-            getFileIcon(file.name);
+            item.innerHTML = `
 
+                <div class="file-left">
 
-        item.innerHTML = `
-
-            <div class="file-info">
-
-                <div class="file-icon">
-                    ${icon}
-                </div>
-
-                <div>
-
-                    <div class="file-name">
-                        ${escapeHTML(file.name)}
+                    <div class="file-type">
+                        ${getFileIcon(file.name)}
                     </div>
 
-                    <div class="file-size">
-                        ${formatBytes(file.size)}
+                    <div>
+
+                        <div class="file-name">
+                            ${escapeHTML(file.name)}
+                        </div>
+
+                        <div class="file-size">
+                            ${formatBytes(file.size)}
+                        </div>
+
                     </div>
 
                 </div>
 
-            </div>
+                <button
+                    class="remove-file"
+                    onclick="removeFile(${index})">
 
-            <button
-                class="remove-file"
-                onclick="removeFile(${index})">
+                    REMOVE
 
-                REMOVE
+                </button>
 
-            </button>
-
-        `;
+            `;
 
 
-        fileList.appendChild(item);
+            fileList.appendChild(
+                item
+            );
 
-    });
+        }
+    );
 
 }
 
 
-/* =========================================================
-   REMOVE FILE
-========================================================= */
+/* REMOVE */
 
 function removeFile(index){
 
-    uploadedFiles.splice(
+    selectedFiles.splice(
         index,
         1
     );
@@ -2388,54 +3751,40 @@ function removeFile(index){
 }
 
 
-/* =========================================================
-   FILE ICON
-========================================================= */
+/* FILE ICON */
 
-function getFileIcon(name){
+function getFileIcon(filename){
 
-    const ext =
-        name
+    const extension =
+        filename
         .split(".")
         .pop()
         .toLowerCase();
 
 
-    if(ext === "dwg"){
-        return "📐";
-    }
+    const icons = {
 
-    if(ext === "dxf"){
-        return "📏";
-    }
+        dwg:"📐",
+        dxf:"📏",
 
-    if(ext === "pdf"){
-        return "📄";
-    }
+        pdf:"📄",
 
-    if(
-        ext === "png" ||
-        ext === "jpg" ||
-        ext === "jpeg"
-    ){
-        return "🖼️";
-    }
+        zip:"🗜️",
+        rar:"🗜️",
 
-    if(
-        ext === "zip" ||
-        ext === "rar"
-    ){
-        return "🗜️";
-    }
+        png:"🖼️",
+        jpg:"🖼️",
+        jpeg:"🖼️"
 
-    return "📁";
+    };
+
+
+    return icons[extension] || "📁";
 
 }
 
 
-/* =========================================================
-   FILE SIZE
-========================================================= */
+/* FILE SIZE */
 
 function formatBytes(bytes){
 
@@ -2452,9 +3801,10 @@ function formatBytes(bytes){
     ];
 
 
-    const i =
+    const index =
         Math.floor(
-            Math.log(bytes) /
+            Math.log(bytes)
+            /
             Math.log(1024)
         );
 
@@ -2463,45 +3813,81 @@ function formatBytes(bytes){
         parseFloat(
             (
                 bytes /
-                Math.pow(1024,i)
-            ).toFixed(2)
+                Math.pow(1024,index)
+            )
+            .toFixed(2)
         )
         +
         " "
         +
-        units[i]
+        units[index]
+    );
+
+}
+
+
+/* ESCAPE */
+
+function escapeHTML(value){
+
+    return value.replace(
+        /[&<>"']/g,
+        character=>{
+
+            const entities = {
+
+                "&":"&amp;",
+                "<":"&lt;",
+                ">":"&gt;",
+                '"':"&quot;",
+                "'":"&#039;"
+
+            };
+
+            return entities[
+                character
+            ];
+
+        }
     );
 
 }
 
 
 /* =========================================================
-   ESCAPE HTML
+   CV UPLOAD
 ========================================================= */
 
-function escapeHTML(str){
+const cvInput =
+document.getElementById(
+    "cvInput"
+);
 
-    return str
-        .replace(
-            /[&<>"']/g,
-            function(match){
+cvInput.addEventListener(
+    "change",
+    event=>{
 
-                const map = {
+        const file =
+            event.target.files[0];
 
-                    "&":"&amp;",
-                    "<":"&lt;",
-                    ">":"&gt;",
-                    '"':"&quot;",
-                    "'":"&#039;"
+        if(!file){
+            return;
+        }
 
-                };
 
-                return map[match];
+        const label =
+            event.target
+                .parentElement
+                .querySelector(
+                    ".file-label"
+                );
 
-            }
-        );
 
-}
+        label.textContent =
+            file.name;
+
+    }
+);
 
 
 /* =========================================================
@@ -2509,10 +3895,11 @@ function escapeHTML(str){
 ========================================================= */
 
 const observer =
-    new IntersectionObserver(
-        entries => {
+new IntersectionObserver(
+    entries=>{
 
-            entries.forEach(entry => {
+        entries.forEach(
+            entry=>{
 
                 if(
                     entry.isIntersecting
@@ -2524,48 +3911,42 @@ const observer =
 
                 }
 
-            });
+            }
+        );
 
-        },
-        {
-            threshold:.12
-        }
-    );
+    },
+    {
+        threshold:.1
+    }
+);
 
 
 document
     .querySelectorAll(".reveal")
     .forEach(
         element =>
-        observer.observe(element)
+            observer.observe(element)
     );
 
 
 /* =========================================================
-   NAVBAR SCROLL EFFECT
+   NAVBAR SCROLL
 ========================================================= */
+
+const navbar =
+document.getElementById(
+    "navbar"
+);
+
 
 window.addEventListener(
     "scroll",
-    function(){
+    ()=>{
 
-        const navbar =
-            document.querySelector(
-                ".navbar"
-            );
-
-
-        if(window.scrollY > 40){
-
-            navbar.style.boxShadow =
-                "0 10px 40px rgba(0,0,0,.12)";
-
-        }else{
-
-            navbar.style.boxShadow =
-                "none";
-
-        }
+        navbar.classList.toggle(
+            "scrolled",
+            window.scrollY > 30
+        );
 
     }
 );
