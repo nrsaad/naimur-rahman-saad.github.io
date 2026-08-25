@@ -26,6 +26,11 @@
   --cyan:#55dcff;
   --gold:#ffd46a;
   --violet:#9c82ff;
+  --milk:#fffdf7;
+  --milk2:#f1eee5;
+  --milkText:#2d2b25;
+  --milkMuted:#716d63;
+  --milkLine:rgba(74,67,53,.14);
   --glass:rgba(7,18,13,.69);
   --line:rgba(255,255,255,.10);
   --heading:"Manrope",sans-serif;
@@ -217,6 +222,58 @@ body.mood-daylight{--bg1:#15313b;--bg2:#07131a}
 body.mood-transportation{--bg1:#061b2e;--bg2:#020711}
 body.mood-environmental{--bg1:#052117;--bg2:#020b06}
 body.mood-construction{--bg1:#201707;--bg2:#090603}
+
+/* ===== MILK MODE ===== */
+body.mood-milk{
+  --bg:#fffdf7;--bg2:#f1eee5;--text:#2d2b25;--muted:#716d63;
+  --green:#718c73;--cyan:#b6c0c8;--gold:#b7a477;--line:rgba(74,67,53,.14);
+  background:radial-gradient(circle at 72% 12%,#fff 0,transparent 34%),linear-gradient(145deg,#fffefa,#f0ede4);
+}
+body.mood-milk #worldCanvas{opacity:.78}
+body.mood-milk #starLayer{opacity:.05}
+body.mood-milk .header{background:rgba(255,253,247,.82);border-color:var(--milkLine);box-shadow:0 14px 50px rgba(80,70,50,.08)}
+body.mood-milk .brand-name strong,body.mood-milk .nav a{color:#39372f}
+body.mood-milk .brand-name small{color:#777268}
+body.mood-milk .nav a:hover{color:#718c73}
+body.mood-milk .lang{border-color:var(--milkLine)}
+body.mood-milk .lang button{color:#777268}
+body.mood-milk .lang button.active{color:#39372f;background:linear-gradient(100deg,#e9e4d8,#fff)}
+body.mood-milk .kicker{color:#6f846f;border-color:rgba(113,140,115,.25);background:rgba(255,255,255,.5)}
+body.mood-milk .hero-sub,body.mood-milk .hero-desc{color:#716d63}
+body.mood-milk .mission{color:#302e27}
+body.mood-milk .mission b{color:#718c73}
+body.mood-milk .btn{color:#3d3a32;border-color:var(--milkLine);background:rgba(255,255,255,.55)}
+body.mood-milk .btn.primary{color:#37362f;background:linear-gradient(100deg,#ece7dc,#fff)}
+body.mood-milk .orbit{border-color:rgba(120,120,105,.20)}
+body.mood-milk .orbit.two{border-color:rgba(180,164,122,.20)}
+body.mood-milk .core{background:radial-gradient(circle,#fff 0 12%,#faf7ef 30%,#ded7c8 62%,#c8c0af 82%);box-shadow:0 0 120px rgba(205,196,176,.30)}
+body.mood-milk .float,body.mood-milk .card,body.mood-milk .agency,body.mood-milk .project,body.mood-milk .stat,body.mood-milk .thesis,body.mood-milk .cad-upload-card{color:#302e27;background:rgba(255,253,247,.68);border-color:var(--milkLine);box-shadow:0 14px 50px rgba(80,70,50,.055)}
+body.mood-milk .section-label,body.mood-milk .project-agency,body.mood-milk .agency a,body.mood-milk .project a{color:#718c73}
+body.mood-milk .section-title{background:linear-gradient(90deg,#57544b,#918a7b,#b8ab90);-webkit-background-clip:text;background-clip:text}
+body.mood-milk .card h3,body.mood-milk .agency h3,body.mood-milk .project h3,body.mood-milk .future-item h3,body.mood-milk .thesis h3{color:#4a473f}
+body.mood-milk .card p,body.mood-milk .card li,body.mood-milk .agency p,body.mood-milk .project p,body.mood-milk .section-desc,body.mood-milk .future-item p,body.mood-milk .thesis p{color:#716d63}
+body.mood-milk .tag,body.mood-milk .skill{color:#5d5a51;background:rgba(255,255,255,.45);border-color:var(--milkLine)}
+body.mood-milk .future{background:radial-gradient(circle at 15% 30%,rgba(255,255,255,.92),transparent 28%),radial-gradient(circle at 82% 20%,rgba(226,219,202,.45),transparent 28%),rgba(255,253,247,.76);border-color:var(--milkLine)}
+body.mood-milk .future-title{background:linear-gradient(90deg,#5c6258,#948d7c,#b8aa8c);-webkit-background-clip:text;background-clip:text}
+body.mood-milk .future-item{background:rgba(255,255,255,.4);border-color:var(--milkLine)}
+body.mood-milk .future-item small{color:#718c73}
+body.mood-milk #moodStatus{color:#716d63;background:rgba(255,253,247,.82);border-color:var(--milkLine)}
+body.mood-milk .mood-btn,body.mood-milk .future2050-launcher button{color:#45423a;background:rgba(255,253,247,.9);border-color:var(--milkLine)}
+body.mood-milk footer{color:#777268}
+body.mood-milk .project-modal{background:rgba(241,238,229,.80)}
+body.mood-milk .project-modal-box{background:linear-gradient(145deg,rgba(255,253,247,.99),rgba(244,240,231,.99));border-color:var(--milkLine);box-shadow:0 35px 120px rgba(71,63,45,.20)}
+body.mood-milk .project-modal h2{color:#34322b}
+body.mood-milk .project-modal-meta,body.mood-milk .detail-card p,body.mood-milk .detail-card li,body.mood-milk .project-modal-note{color:#716d63}
+body.mood-milk .detail-card{background:rgba(255,255,255,.43);border-color:var(--milkLine)}
+body.mood-milk .detail-card h4{color:#718c73}
+body.mood-milk .project-close{color:#4b4840;background:rgba(255,255,255,.55);border-color:var(--milkLine)}
+body.mood-milk .cad-drop{border-color:rgba(125,139,122,.28);background:rgba(255,255,255,.30)}
+body.mood-milk .cad-drop h3{color:#4a4840}
+body.mood-milk .cad-drop p{color:#716d63}
+body.mood-milk .cad-select{color:#34332d;background:linear-gradient(100deg,#e8e2d5,#fffdf7);border:1px solid var(--milkLine)}
+body.mood-milk .cad-file{background:rgba(255,255,255,.40);border-color:var(--milkLine)}
+body.mood-milk .cad-file-size{color:#858075}
+body.mood-milk .cad-remove{color:#a35f66}
 
 body.mood-roads .project:hover,
 body.mood-transportation .project:hover,
@@ -862,6 +919,7 @@ footer{
   <button class="mood-btn" onclick="setMood('roads')">🛣️ Roads • Pavement</button>
   <button class="mood-btn" onclick="setMood('transportation')">🚆 Transportation</button>
   <button class="mood-btn" onclick="setMood('environmental')">🌿 Environmental</button>
+  <button class="mood-btn" onclick="setMood('milk')">🥛 Milk • Pure White</button>
 </div>
 
 
@@ -993,7 +1051,8 @@ function setMood(next){
     "mood-construction",
     "mood-roads",
     "mood-transportation",
-    "mood-environmental"
+    "mood-environmental",
+    "mood-milk"
   );
 
   if(next!=="default"){
@@ -1005,7 +1064,8 @@ function setMood(next){
     construction:"CONSTRUCTION • PROJECT MANAGEMENT",
     roads:"ROADS • PAVEMENT • INFRASTRUCTURE",
     transportation:"TRANSPORTATION • MOBILITY",
-    environmental:"ENVIRONMENTAL • SUSTAINABILITY"
+    environmental:"ENVIRONMENTAL • SUSTAINABILITY",
+    milk:"MILK • PURE WHITE • CLEAN ENGINEERING"
   };
 
   moodStatus.textContent=labels[next];
@@ -1327,6 +1387,29 @@ function drawEnvironmental(){
 }
 
 /* =========================================================
+   MILK MODE
+========================================================= */
+function drawMilk(){
+  const w=innerWidth,h=innerHeight;
+  const bg=ctx.createLinearGradient(0,0,0,h);
+  bg.addColorStop(0,"rgba(255,255,250,.97)");
+  bg.addColorStop(.5,"rgba(248,245,236,.84)");
+  bg.addColorStop(1,"rgba(232,226,214,.80)");
+  ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
+  const glow=ctx.createRadialGradient(w*.70,h*.16,10,w*.70,h*.16,360);
+  glow.addColorStop(0,"rgba(255,255,255,.96)");glow.addColorStop(.45,"rgba(255,253,244,.48)");glow.addColorStop(1,"rgba(255,253,244,0)");
+  ctx.fillStyle=glow;ctx.fillRect(0,0,w,h);
+  for(let i=0;i<5;i++){
+    const yy=h*(.23+i*.14)+Math.sin(t*.7+i)*18;
+    ctx.beginPath();ctx.moveTo(-40,yy);
+    ctx.bezierCurveTo(w*.22,yy-28,w*.48,yy+34,w*.72,yy-4);
+    ctx.bezierCurveTo(w*.86,yy-22,w*.96,yy+8,w+40,yy-10);
+    ctx.strokeStyle=`rgba(160,153,137,${.055-i*.006})`;ctx.lineWidth=1.5;ctx.stroke();
+  }
+  particles.forEach(p=>{p.x+=Math.sin(t*.5+p.phase)*.10;p.y-=p.speed*.08;if(p.y<0)p.y=h;ctx.fillStyle=`rgba(155,147,128,${p.alpha*.10})`;ctx.beginPath();ctx.arc(p.x,p.y,p.size*.7,0,Math.PI*2);ctx.fill();});
+}
+
+/* =========================================================
    DEFAULT
 ========================================================= */
 function drawDefault(){
@@ -1367,6 +1450,9 @@ function animate(){
   }
   else if(mood==="environmental"){
     drawEnvironmental();
+  }
+  else if(mood==="milk"){
+    drawMilk();
   }
   else{
     drawDefault();
