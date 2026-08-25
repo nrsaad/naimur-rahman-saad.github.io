@@ -311,17 +311,17 @@ body.mood-milk .exp-close{color:#4b4840;background:rgba(255,255,255,.55);border-
    Known values are only those explicitly stated in the portfolio.
 */
 const projectFinanceData = [
-  {value:null, credit:["Daily site supervision and quantity verification can reduce measurement errors.","Material reconciliation and progress tracking help control avoidable wastage.","Further reduction: planned procurement, tighter stock records and early correction of rework risks."], savings:"No verified taka saving is stated in the available project record."},
-  {value:null, credit:["RCC execution control: reinforcement, cover blocks, formwork, casting and curing checks.","Slump/cube QA support, BBS review and quantity verification strengthen cost control.","Further reduction: pre-pour checklist, exact bar-cutting/BBS reconciliation and controlled concrete ordering."], savings:"No verified taka saving is stated in the available project record."},
-  {value:null, credit:["Building/civil-work supervision with dimensional and material checks.","Measurement, billing support and material control can reduce over-measurement and wastage risk.","Further reduction: tighter BOQ-to-site reconciliation and planned material issue records."], savings:"No verified taka saving is stated in the available project record."},
-  {value:null, credit:["RCC road supervision with reinforcement, formwork, casting and curing control.","Quantity verification and material reconciliation support efficient resource use.","Further reduction: pre-pour inspection, concrete quantity planning and reinforcement wastage control."], savings:"No verified taka saving is stated in the available project record."},
-  {value:81100000, credit:["Portfolio states approximately BDT 8.11 crore project value.","Roadwork supervision focused on earthwork, compaction, pavement, measurement and material management.","Further reduction: layer-by-layer quantity checks, compaction control and delivery scheduling."], savings:"Actual expenditure/profit is not stated; enter verified cost to calculate."},
-  {value:null, credit:["Building/structural civil-work support, quantity measurement and variation documentation.","Material requirements and site coordination help reduce delay and rework exposure.","Further reduction: variation control, material forecasting and daily productivity tracking."], savings:"No verified taka saving is stated in the available project record."},
-  {value:16800000, credit:["Portfolio states approximately BDT 1.68 crore project value.","Road/link-road execution support with measurement, material movement and quantity verification.","Further reduction: planned aggregate/material delivery and tighter pavement quantity reconciliation."], savings:"Actual expenditure/profit is not stated; enter verified cost to calculate."},
-  {value:null, credit:["Road rehabilitation monitoring with field measurement, pavement inspection and progress documentation.","Material inspection and quantity verification support cost control.","Further reduction: repair-stage measurement before and after work, minimizing rework and material loss."], savings:"No verified taka saving is stated in the available project record."},
-  {value:null, credit:["Emergency protection support with rapid measurement, material coordination and progress monitoring.","Time-sensitive coordination can reduce idle time and emergency logistics waste.","Further reduction: pre-position critical materials and maintain emergency quantity logs."], savings:"No verified taka saving is stated in the available project record."},
-  {value:null, credit:["Temporary emergency protection support with material handling, measurement and field coordination.","Progress records and quantity checks strengthen billing and resource control.","Further reduction: pre-approved emergency material plans and daily reconciliation."], savings:"No verified taka saving is stated in the available project record."},
-  {value:null, credit:["HBB pavement repair support with measurement, material inspection and workmanship observation.","Billing-support records and quantity checks help avoid unsupported quantities.","Further reduction: verify repair limits before material deployment and reconcile HBB quantities daily."], savings:"No verified taka saving is stated in the available project record."}
+  {value:null, title:"Naykerhat Rural Market Development", method:["Prepared/checked work quantities against drawings, BOQ and site measurements before billing.","Tracked material receipt, issue and balance so unnecessary ordering and unexplained loss could be identified early.","Monitored labour productivity and daily progress to reduce idle time and avoidable rework."], profit:["Protected contractor margin by controlling quantity leakage, material wastage, rework and idle resources.","Used measurement and progress records to support accurate billing and avoid disputes."], quality:["Kept cost reduction tied to approved specifications, inspection and workmanship—not by reducing required quality."], gaps:["No verified project-wise actual expenditure, contractor profit or quantified savings is present in the portfolio record."], future:["Use a daily cost sheet, BOQ-vs-actual dashboard, material reconciliation, labour productivity log and weekly cost-to-complete forecast."], routine:["A: approved drawing/BOQ check → B: quantity take-off → C: procurement/material plan → D: daily labour & equipment record → E: incoming-material verification → F: execution measurement → G: QA/QC hold points → H: wastage/rework check → I: billing measurement → J: cost-to-date → K: balance-to-complete → L: forecast final cost → M: margin review."], savings:"No verified taka saving is stated; enter verified baseline/actual figures below."},
+  {value:null, title:"Bagbati–Kazipur RCC Road", method:["Controlled reinforcement, cover blocks, formwork, concrete quantity, casting and curing through pre-pour checks.","Compared BBS/approved drawings with field reinforcement to prevent excess cutting and steel wastage.","Used slump/cube QA and quantity verification to reduce the risk of rejected concrete and rework."], profit:["Contractor margin is protected when steel, concrete, labour and formwork are used only against verified quantities and planned sequences.","Better pour planning reduces waiting, remobilisation and unnecessary concrete loss."], quality:["Low-cost delivery means reducing waste and rework while maintaining specified concrete strength, cover, reinforcement and curing."], gaps:["Actual cost/profit and quantified savings are not documented in the supplied portfolio."], future:["Maintain pour-wise concrete reconciliation, steel cutting-loss report, formwork cycle analysis and cost-per-cubic-metre tracking."], routine:["Daily: steel issued/used/balance; concrete planned/ordered/poured; labour hours; equipment hours; rejected/reworked quantities; certified measurements; cash/billing status."], savings:"No verified taka saving is stated; input actual records to quantify it."},
+  {value:null, title:"Char Someshpur Central Mosque Washblock & Ojukhana", method:["Controlled civil quantities, dimensions, materials and workmanship against drawings/specifications.","Checked measurements before billing and coordinated labour/material supply to avoid unnecessary downtime.","Used inspection records to catch dimensional or finishing problems before they became costly rework."], profit:["Accurate measurement and early defect correction protect contractor margin by reducing unproductive labour and material loss."], quality:["Cost was to be reduced through planning and waste control, not by compromising structural or functional requirements."], gaps:["No verified project-wise financial ledger is available in the portfolio."], future:["Track item-wise BOQ quantity, material consumption, labour productivity and approved variation separately."], routine:["BOQ → daily quantity → material issue → labour/equipment → inspection → approved quantity → bill → cost-to-date → forecast → margin."], savings:"No verified taka saving is stated."},
+  {value:null, title:"RCC Road Project", method:["Controlled earthwork/RCC sequence, reinforcement, formwork, casting, curing and measurement.","Reconciled materials with executed quantities and monitored site productivity."], profit:["Profit is improved by preventing over-ordering, over-measurement, idle labour/equipment and avoidable rework."], quality:["Quality control remains based on approved drawings, testing and inspection."], gaps:["Verified actual cost and profit are not supplied."], future:["Add activity-wise unit-cost tracking and weekly earned-vs-actual cost review."], routine:["Plan quantities → procure → issue → execute → inspect/test → measure → record cost → compare with BOQ rate → forecast final margin."], savings:"No verified taka saving is stated."},
+  {value:81100000, title:"Tamai–Bhabanipur Road", method:["Portfolio records approximately BDT 8.11 crore project value.","Controlled roadwork through earthwork, filling, compaction, pavement, measurement and material management.","Layer-by-layer measurement and compaction checks help prevent rework and unsupported quantities."], profit:["For a road project, contractor margin is protected by controlling material haulage, layer thickness, wastage, plant idle time, labour productivity and measurement accuracy."], quality:["Cost reduction should come from correct quantities, sequencing, compaction and procurement—not from reducing pavement or material standards."], gaps:["The portfolio does not provide actual expenditure, audited saving or contractor profit for this project."], future:["Track cost/km, cost/m³ by layer, haul distance, fuel/equipment hours, aggregate/asphalt/HBB reconciliation and weekly cost-to-complete."], routine:["Daily quantity + material + labour + equipment + transport → compare with BOQ → identify variance → correct next shift → weekly forecast → final margin."], savings:"Known project value only; no verified profit/saving amount is stated."},
+  {value:null, title:"PWD / Civil Building Project", method:["Checked quantities, dimensions, materials and progress against approved drawings and work requirements.","Supported billing/measurement and material coordination to reduce quantity and procurement errors."], profit:["Margin improves when material ordering follows verified quantities and changes/variations are documented before execution."], quality:["Avoiding rework and material waste while keeping specified workmanship protects both quality and margin."], gaps:["Project-wise financial records are not stated."], future:["Use item-wise cost codes, variation register and weekly committed-cost report."], routine:["Drawing/BOQ → quantity → procurement → delivery → issue → execution → inspection → measurement → bill → cost-to-date → forecast."], savings:"No verified taka saving is stated."},
+  {value:16800000, title:"Kuthi Satbaria UZR to Khas Satbaria Utterpara Road", method:["Portfolio records 805 m and approximately BDT 1.68 crore value.","Controlled road/link-road quantities, material movement, measurement and execution sequence.","Tight material reconciliation and pavement quantity checking help reduce wastage."], profit:["Margin can be protected by controlling aggregate/soil movement, labour productivity, equipment utilisation and measured quantities."], quality:["Use correct layer thickness, compaction and approved materials; savings come from efficiency, not specification cuts."], gaps:["Actual expenditure and profit are not provided."], future:["Track cost per metre, haul trips, material balance, equipment hours and daily productivity."], routine:["Per day: planned m/quantity → executed m/quantity → material consumed → labour/equipment → cost → variance → corrective action."], savings:"Known project value only; no verified saving amount is stated."},
+  {value:null, title:"Masumdia UP Office to Dear Bramndi Hat Road Rehabilitation", method:["Monitored repair limits, field measurement, pavement condition and progress documentation.","Verified quantities before/after repair to reduce over-execution and material loss."], profit:["Accurate repair quantities and controlled mobilisation reduce unnecessary material and equipment cost."], quality:["Repair should target the measured damaged area and restore required performance without cutting approved scope."], gaps:["Actual financial result is not stated."], future:["Use pre-repair/post-repair quantity sheets, material reconciliation and cost-per-metre dashboard."], routine:["Inspect damage → measure → approve quantity → plan material → execute → remeasure → reconcile → bill → compare cost with allowance."], savings:"No verified taka saving is stated."},
+  {value:null, title:"Betil Spur-1 Emergency Protection Work", method:["Emergency work requires rapid quantity measurement, material coordination and progress tracking.","Maintained records so urgent procurement and deployment could still be reconciled against actual work."], profit:["In emergency work, margin is protected by reducing idle time, emergency over-ordering, duplicate transport and unmeasured quantities."], quality:["Urgency should never remove required protection, material or workmanship checks."], gaps:["No verified cost/profit ledger is present."], future:["Keep emergency stock norms, trip sheets, daily quantity log and same-day material reconciliation."], routine:["Emergency instruction → rapid estimate → material plan → deployment → daily measurement → delivery/stock reconciliation → bill → final cost review."], savings:"No verified taka saving is stated."},
+  {value:null, title:"Temporary Emergency Protection Work", method:["Coordinated temporary protection materials, labour and field measurements under time-sensitive conditions.","Used progress and quantity records to support billing and resource control."], profit:["Reducing idle resources, duplicate transport and excess material procurement can protect contractor margin."], quality:["Temporary works still require correct quantities, safe execution and required protection performance."], gaps:["Actual cost/profit is not supplied."], future:["Create a daily emergency cost dashboard and compare committed vs consumed materials every shift."], routine:["Instruction → resource plan → deployment → measure → inspect → reconcile materials → record labour/equipment → bill → final variance."], savings:"No verified taka saving is stated."},
+  {value:null, title:"Tarash–Hamkuria HBB Pavement Repair", method:["Measured repair locations and monitored HBB/pavement material placement and workmanship.","Used quantity verification and documentation to avoid unsupported repair quantities.","Coordinated material delivery with actual work fronts to reduce handling and idle time."], profit:["Contractor margin improves when HBB/material quantities, repair limits, labour and transport are tightly controlled."], quality:["Repair economy should come from accurate limits, correct thickness, proper preparation and compaction—not reduced quality."], gaps:["No verified actual expenditure/profit/savings figure is available."], future:["Track cost per repaired metre, HBB quantity per metre, haul trips, labour hours and rework percentage."], routine:["Damage survey → measured repair quantity → material plan → delivery → preparation → placement → compaction → remeasurement → cost reconciliation → margin review."], savings:"No verified taka saving is stated."}
 ];
 
 function moneyBDT(n){
@@ -333,20 +333,21 @@ function projectValueText(n){
   return moneyBDT(n);
 }
 function calculateProjectFinance(){
-  const target=parseFloat(document.getElementById("modalTargetValue").value);
-  const actual=parseFloat(document.getElementById("modalActualCost").value);
-  const other=parseFloat(document.getElementById("modalOtherCost").value)||0;
-  const out=document.getElementById("modalProfitResult");
-
-  if(!Number.isFinite(target) || target<=0 || !Number.isFinite(actual) || actual<0){
-    out.innerHTML="Profit / savings: <em>enter a verified target/contract value and actual cost.</em>";
-    return;
+  const target=parseFloat(modalTargetValue.value);
+  const vals=[modalMaterials,modalLabour,modalEquipment,modalTransport,modalOtherCost,modalOverhead,modalRework].map(x=>parseFloat(x.value)||0);
+  const baseline=parseFloat(modalBaseline.value);
+  const out=modalProfitResult;
+  const total=vals.reduce((a,b)=>a+b,0);
+  if(!Number.isFinite(target)||target<=0){out.innerHTML="Enter a verified contract/target value.";return;}
+  const profit=target-total;
+  const margin=profit/target*100;
+  let html="<b>Total recorded cost:</b> "+moneyBDT(total)+" &nbsp; | &nbsp; <b>Profit / surplus:</b> "+moneyBDT(profit)+" ("+margin.toFixed(2)+"%)";
+  if(Number.isFinite(baseline)&&baseline>0){
+    const saving=baseline-total;
+    html+="<br><b>Cost saving vs baseline:</b> "+moneyBDT(saving)+" ("+(saving/baseline*100).toFixed(2)+"%)";
   }
-  const totalCost=actual+other;
-  const profit=target-totalCost;
-  const margin=(profit/target)*100;
-  const label=profit>=0 ? "Gross surplus / profit" : "Cost overrun";
-  out.innerHTML=label+": "+moneyBDT(profit)+" <em>("+margin.toFixed(2)+"% of target value)</em>";
+  html+="<br><small>A–Z total = Materials + Labour + Equipment + Transport + Other Direct + Overhead + Rework/Waste.</small>";
+  out.innerHTML=html;
 }
 function calculatePortfolioFinance(){
   const exposure=parseFloat(document.getElementById("portfolioValue").value);
@@ -447,6 +448,17 @@ populateCostTable();
 .portfolio-finance-row label{display:block;color:#71847b;font:700 9px var(--heading);letter-spacing:.8px;text-transform:uppercase}
 .portfolio-finance-row input{width:100%;box-sizing:border-box;margin-top:6px;padding:10px;border-radius:10px;border:1px solid rgba(28,83,62,.16);background:#fff;color:#294e3e}
 .portfolio-result{margin-top:12px;padding:12px 14px;border-radius:12px;background:rgba(76,155,110,.08);color:#245840;font:800 13px var(--heading)}
+.finance-story-grid{margin-top:16px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.finance-story{padding:16px;border:1px solid rgba(28,83,62,.10);border-radius:16px;background:rgba(255,255,255,.45)}
+.finance-story h4{margin-bottom:8px;color:#2f7656;font:800 11px var(--heading);letter-spacing:1px;text-transform:uppercase}
+.finance-story ul{margin:0;padding-left:18px;color:#5e7067;font-size:12px;line-height:1.75}
+.finance-story p{margin:0;color:#5e7067;font-size:12px;line-height:1.8}
+.finance-wide{grid-column:1/-1}
+body.mood-milk .finance-story{background:rgba(255,255,255,.52);border-color:rgba(74,67,53,.11)}
+body.mood-milk .finance-story h4{color:#718c73}
+body.mood-milk .finance-story ul,body.mood-milk .finance-story p{color:#716d63}
+@media(max-width:700px){.finance-story-grid{grid-template-columns:1fr}.finance-wide{grid-column:auto}}
+
 @media(max-width:700px){.portfolio-finance-row{grid-template-columns:1fr}.portfolio-finance-row .btn{width:100%}}
 
 /* ===== PROJECT COST / PROFIT ANALYSIS ===== */
@@ -1421,20 +1433,33 @@ body.mood-milk .hero h1,body.mood-milk .section-title,body.mood-milk .future-tit
     </div>
 
     <div class="financial-panel">
-      <h4>Cost • Savings • Profit Analysis</h4>
+      <h4>💰 A–Z Cost Control • Contractor Profit • Quality • Future Improvement</h4>
       <p class="financial-intro" id="modalFinanceIntro"></p>
       <div class="financial-grid">
         <div class="financial-box"><label>Known Project Value</label><strong id="modalKnownValue">Not disclosed</strong></div>
-        <div class="financial-box"><label>Actual Project Cost</label><input id="modalActualCost" type="number" min="0" step="0.01" placeholder="Enter verified cost (BDT)"></div>
-        <div class="financial-box"><label>Other Direct Cost</label><input id="modalOtherCost" type="number" min="0" step="0.01" placeholder="Optional (BDT)"></div>
-        <div class="financial-box"><label>Target / Contract Value</label><input id="modalTargetValue" type="number" min="0" step="0.01" placeholder="Enter verified value (BDT)"></div>
+        <div class="financial-box"><label>Materials</label><input id="modalMaterials" type="number" min="0" step="0.01" placeholder="BDT"></div>
+        <div class="financial-box"><label>Labour</label><input id="modalLabour" type="number" min="0" step="0.01" placeholder="BDT"></div>
+        <div class="financial-box"><label>Equipment / Plant</label><input id="modalEquipment" type="number" min="0" step="0.01" placeholder="BDT"></div>
+        <div class="financial-box"><label>Transport / Haulage</label><input id="modalTransport" type="number" min="0" step="0.01" placeholder="BDT"></div>
+        <div class="financial-box"><label>Subcontract / Other Direct</label><input id="modalOtherCost" type="number" min="0" step="0.01" placeholder="BDT"></div>
+        <div class="financial-box"><label>Overhead / Site Cost</label><input id="modalOverhead" type="number" min="0" step="0.01" placeholder="BDT"></div>
+        <div class="financial-box"><label>Rework / Waste Cost</label><input id="modalRework" type="number" min="0" step="0.01" placeholder="BDT"></div>
+        <div class="financial-box"><label>Contract / Target Value</label><input id="modalTargetValue" type="number" min="0" step="0.01" placeholder="BDT"></div>
+        <div class="financial-box"><label>Baseline / Expected Cost</label><input id="modalBaseline" type="number" min="0" step="0.01" placeholder="Optional BDT"></div>
       </div>
       <div class="financial-calc">
-        <div class="financial-result" id="modalProfitResult">Profit / savings: enter verified figures</div>
-        <button class="btn" type="button" onclick="calculateProjectFinance()">Calculate</button>
+        <div class="financial-result" id="modalProfitResult">Enter verified figures to calculate total cost, profit and savings.</div>
+        <button class="btn" type="button" onclick="calculateProjectFinance()">Calculate A–Z</button>
       </div>
-      <ul class="cost-credit-list" id="modalCostCredit"></ul>
-      <div class="potential-savings"><b>What could reduce cost further:</b> early procurement planning, tighter quantity reconciliation, preventing rework through pre-pour inspection, controlling material wastage, coordinating deliveries, monitoring productivity, and using verified measurements before billing.</div>
+      <div class="finance-story-grid">
+        <div class="finance-story"><h4>How I Reduced / Controlled Cost</h4><ul id="modalCostCredit"></ul></div>
+        <div class="finance-story"><h4>How I Helped Contractor Profit</h4><ul id="modalProfitCredit"></ul></div>
+        <div class="finance-story"><h4>How Low Cost + Good Quality Was Achieved</h4><ul id="modalQualityCredit"></ul></div>
+        <div class="finance-story"><h4>What Was Missing / Could Be Better</h4><ul id="modalGapCredit"></ul></div>
+        <div class="finance-story"><h4>Future: How to Increase Efficiency & Profit</h4><ul id="modalFutureCredit"></ul></div>
+        <div class="finance-story finance-wide"><h4>My Regular A–Z Cost Routine</h4><p id="modalRoutineCredit"></p></div>
+      </div>
+      <div class="potential-savings"><b>Important:</b> the narrative describes a professional cost-control method based on the documented site/QA/QC/measurement responsibilities. It does not claim a specific taka saving or contractor profit unless verified project accounts are entered above.</div>
     </div>
 
     <div class="project-modal-note">
@@ -1999,6 +2024,18 @@ const modalFinanceIntro=document.getElementById("modalFinanceIntro");
 const modalKnownValue=document.getElementById("modalKnownValue");
 const modalActualCost=document.getElementById("modalActualCost");
 const modalOtherCost=document.getElementById("modalOtherCost");
+const modalMaterials=document.getElementById("modalMaterials");
+const modalLabour=document.getElementById("modalLabour");
+const modalEquipment=document.getElementById("modalEquipment");
+const modalTransport=document.getElementById("modalTransport");
+const modalOverhead=document.getElementById("modalOverhead");
+const modalRework=document.getElementById("modalRework");
+const modalBaseline=document.getElementById("modalBaseline");
+const modalProfitCredit=document.getElementById("modalProfitCredit");
+const modalQualityCredit=document.getElementById("modalQualityCredit");
+const modalGapCredit=document.getElementById("modalGapCredit");
+const modalFutureCredit=document.getElementById("modalFutureCredit");
+const modalRoutineCredit=document.getElementById("modalRoutineCredit");
 const modalTargetValue=document.getElementById("modalTargetValue");
 const modalProfitResult=document.getElementById("modalProfitResult");
 const modalCostCredit=document.getElementById("modalCostCredit");
@@ -2032,14 +2069,17 @@ function openProject(index){
   const f=projectFinanceData[index] || {value:null,credit:[]};
   modalKnownValue.textContent=projectValueText(f.value);
   modalTargetValue.value=Number.isFinite(f.value) ? f.value : "";
-  modalActualCost.value="";
-  modalOtherCost.value="";
-  modalProfitResult.innerHTML="Profit / savings: <em>enter verified actual cost to calculate.</em>";
+  [modalMaterials,modalLabour,modalEquipment,modalTransport,modalOtherCost,modalOverhead,modalRework,modalBaseline].forEach(function(x){x.value="";});
+  modalProfitResult.innerHTML="Enter verified figures to calculate total cost, profit and savings.";
   modalFinanceIntro.textContent=Number.isFinite(f.value)
     ? "The portfolio states a project value of "+moneyBDT(f.value)+". Actual expenditure, audited savings and contractor profit are not stated, so the calculation below stays input-based."
     : "No project-wise contract/project value is stated in the current portfolio for this project. Enter the verified contract value and actual cost from your tender/BOQ/billing records to calculate the result.";
-  modalCostCredit.innerHTML=(f.credit||[]).map(x=>"<li>"+x+"</li>").join("");
-  modalCostCredit.innerHTML += "<li><b>Financial status:</b> "+(f.savings||"No verified saving figure available.")+"</li>";
+  modalCostCredit.innerHTML=(f.method||[]).map(x=>"<li>"+x+"</li>").join("");
+  modalProfitCredit.innerHTML=(f.profit||[]).map(x=>"<li>"+x+"</li>").join("");
+  modalQualityCredit.innerHTML=(f.quality||[]).map(x=>"<li>"+x+"</li>").join("");
+  modalGapCredit.innerHTML=(f.gaps||[]).map(x=>"<li>"+x+"</li>").join("");
+  modalFutureCredit.innerHTML=(f.future||[]).map(x=>"<li>"+x+"</li>").join("");
+  modalRoutineCredit.textContent=f.routine||"Maintain daily quantity, material, labour, equipment and billing records, then compare actual cost with BOQ/contract allowance.";
 
   fillDetailList(modalActivities,p.activities);
   fillDetailList(modalQA,p.qa);
