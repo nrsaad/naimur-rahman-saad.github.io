@@ -5543,3 +5543,154 @@ if(triad){
     </div>
 
 </section>
+```html
+<!-- =========================================================
+     DREAM → REALITY OPENING QUOTE
+     Paste immediately after <body>
+========================================================= -->
+
+<style>
+    .dream-reality-intro{
+        position:relative;
+        width:100%;
+        min-height:180px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+        padding:55px 25px 40px;
+        overflow:hidden;
+        background:
+            radial-gradient(
+                circle at center,
+                rgba(0,255,180,.08),
+                transparent 55%
+            );
+    }
+
+    .dream-reality-intro::before{
+        content:"";
+        position:absolute;
+        width:450px;
+        height:450px;
+        border-radius:50%;
+        background:rgba(0,255,170,.045);
+        filter:blur(80px);
+        animation:dreamGlow 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes dreamGlow{
+        from{
+            transform:scale(.8);
+            opacity:.35;
+        }
+        to{
+            transform:scale(1.2);
+            opacity:.8;
+        }
+    }
+
+    .dream-reality-content{
+        position:relative;
+        z-index:2;
+        max-width:900px;
+    }
+
+    .dream-line{
+        margin:0;
+        font-size:clamp(1.35rem,3vw,2.35rem);
+        line-height:1.5;
+        font-weight:800;
+        letter-spacing:-.5px;
+
+        background:
+            linear-gradient(
+                90deg,
+                #7affd5,
+                #ffffff,
+                #8acbff,
+                #ffffff,
+                #7affd5
+            );
+
+        background-size:250% auto;
+
+        -webkit-background-clip:text;
+        background-clip:text;
+        color:transparent;
+
+        animation:dreamText 7s linear infinite;
+    }
+
+    @keyframes dreamText{
+        to{
+            background-position:250% center;
+        }
+    }
+
+    .dream-english{
+        margin:16px 0 0;
+        color:rgba(255,255,255,.45);
+        font-size:.78rem;
+        letter-spacing:2px;
+        text-transform:uppercase;
+    }
+
+    .dream-line .highlight{
+        color:#ff4d5f;
+        -webkit-text-fill-color:#ff4d5f;
+    }
+
+    .dream-divider{
+        width:80px;
+        height:2px;
+        margin:25px auto 0;
+        border-radius:50px;
+        background:linear-gradient(
+            90deg,
+            transparent,
+            #72ffd1,
+            transparent
+        );
+        box-shadow:0 0 20px rgba(114,255,209,.5);
+    }
+
+    @media(max-width:600px){
+
+        .dream-reality-intro{
+            min-height:150px;
+            padding:45px 20px 30px;
+        }
+
+        .dream-line{
+            font-size:1.3rem;
+        }
+
+        .dream-english{
+            font-size:.62rem;
+            letter-spacing:1.2px;
+        }
+    }
+</style>
+
+
+<section class="dream-reality-intro">
+
+    <div class="dream-reality-content">
+
+        <p class="dream-line">
+            “স্বপ্ন একদিন বাস্তব হবেই—
+            যদি স্বপ্নের পেছনে না ছুটে,
+            <span class="highlight">বাস্তবতার পেছনে দৌড়ানো যায়।</span>”
+        </p>
+
+        <p class="dream-english">
+            Dreams become reality when vision meets action.
+        </p>
+
+        <div class="dream-divider"></div>
+
+    </div>
+
+</section>
+```
