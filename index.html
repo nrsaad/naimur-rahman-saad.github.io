@@ -4960,3 +4960,586 @@ if(triad){
 }
 </script>
 ```
+<!-- =========================================================
+     FUTURE VISION — ADD THIS AT THE VERY END
+     DO NOT DELETE ANY PREVIOUS CODE
+========================================================= -->
+
+<style>
+
+.future-vision{
+    position:relative;
+    max-width:1250px;
+    margin:110px auto 70px;
+    padding:70px 45px;
+    border-radius:38px;
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at 15% 20%,rgba(0,255,170,.13),transparent 30%),
+        radial-gradient(circle at 85% 20%,rgba(70,150,255,.14),transparent 30%),
+        radial-gradient(circle at 50% 100%,rgba(150,80,255,.13),transparent 35%),
+        rgba(5,9,18,.82);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    box-shadow:
+        0 40px 120px rgba(0,0,0,.45),
+        inset 0 0 80px rgba(255,255,255,.025);
+
+    backdrop-filter:blur(22px);
+}
+
+/* animated background grid */
+
+.future-vision::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+
+    background-size:45px 45px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        transparent,
+        black 20%,
+        black 80%,
+        transparent
+    );
+
+    pointer-events:none;
+}
+
+/* floating future particles */
+
+.future-particle{
+    position:absolute;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:white;
+    opacity:.45;
+    box-shadow:0 0 15px rgba(255,255,255,.8);
+    animation:futureFloat 8s infinite ease-in-out;
+}
+
+.fp1{top:15%;left:12%;animation-delay:0s}
+.fp2{top:30%;right:14%;animation-delay:2s}
+.fp3{bottom:20%;left:20%;animation-delay:4s}
+.fp4{bottom:28%;right:24%;animation-delay:1s}
+.fp5{top:50%;left:50%;animation-delay:3s}
+
+@keyframes futureFloat{
+
+    0%,100%{
+        transform:translateY(0) scale(1);
+        opacity:.25;
+    }
+
+    50%{
+        transform:translateY(-35px) scale(1.5);
+        opacity:.9;
+    }
+
+}
+
+
+/* top badge */
+
+.future-badge{
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+.future-badge span{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    font-size:.72rem;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:#b9ffe9;
+
+    background:rgba(0,255,170,.07);
+
+    border:1px solid rgba(0,255,170,.18);
+
+    box-shadow:
+        0 0 30px rgba(0,255,170,.06);
+
+}
+
+
+/* title */
+
+.future-title{
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+    margin-top:20px;
+
+}
+
+.future-title h2{
+
+    margin:0;
+
+    font-size:clamp(2.4rem,6vw,5rem);
+
+    font-weight:950;
+
+    letter-spacing:-3px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #70ffd0,
+            #ffffff,
+            #7bc8ff,
+            #b995ff,
+            #70ffd0
+        );
+
+    background-size:300% auto;
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+
+    animation:futureGradient 7s linear infinite;
+
+}
+
+@keyframes futureGradient{
+
+    to{
+        background-position:300% center;
+    }
+
+}
+
+
+.future-title p{
+
+    max-width:780px;
+
+    margin:22px auto 0;
+
+    color:rgba(255,255,255,.64);
+
+    font-size:1rem;
+
+    line-height:1.9;
+
+}
+
+
+/* future timeline */
+
+.future-roadmap{
+
+    position:relative;
+
+    z-index:2;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:18px;
+
+    margin-top:55px;
+
+}
+
+
+.future-step{
+
+    position:relative;
+
+    padding:28px 22px;
+
+    min-height:210px;
+
+    border-radius:24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.065),
+            rgba(255,255,255,.018)
+        );
+
+    border:1px solid rgba(255,255,255,.09);
+
+    transition:
+
+        transform .4s ease,
+        border-color .4s ease,
+        box-shadow .4s ease;
+
+}
+
+.future-step:hover{
+
+    transform:
+        translateY(-10px)
+        scale(1.02);
+
+    border-color:
+        rgba(120,255,220,.3);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.25);
+
+}
+
+
+.future-number{
+
+    font-size:.7rem;
+
+    letter-spacing:3px;
+
+    color:#8fffdc;
+
+    opacity:.7;
+
+}
+
+
+.future-step h3{
+
+    margin:14px 0 10px;
+
+    font-size:1.25rem;
+
+    color:#fff;
+
+}
+
+
+.future-step p{
+
+    margin:0;
+
+    color:rgba(255,255,255,.57);
+
+    line-height:1.7;
+
+    font-size:.88rem;
+
+}
+
+
+/* vision core */
+
+.future-core{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:35px;
+
+    padding:28px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(0,255,180,.08),
+            transparent 60%
+        );
+
+    border:
+        1px solid rgba(120,255,220,.12);
+
+}
+
+
+.future-core h3{
+
+    margin:0 0 12px;
+
+    font-size:1.3rem;
+
+    color:white;
+
+}
+
+
+.future-core p{
+
+    max-width:850px;
+
+    margin:auto;
+
+    color:rgba(255,255,255,.62);
+
+    line-height:1.8;
+
+}
+
+
+.future-keywords{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
+
+
+.future-keywords span{
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    font-size:.72rem;
+
+    color:rgba(255,255,255,.72);
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+
+/* responsive */
+
+@media(max-width:900px){
+
+    .future-roadmap{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .future-vision{
+
+        margin:70px 12px 40px;
+
+        padding:50px 22px;
+
+        border-radius:28px;
+
+    }
+
+    .future-roadmap{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .future-title h2{
+
+        letter-spacing:-1.5px;
+
+    }
+
+}
+
+</style>
+
+
+<section class="future-vision" id="future">
+
+    <!-- Floating particles -->
+
+    <div class="future-particle fp1"></div>
+    <div class="future-particle fp2"></div>
+    <div class="future-particle fp3"></div>
+    <div class="future-particle fp4"></div>
+    <div class="future-particle fp5"></div>
+
+
+    <!-- Badge -->
+
+    <div class="future-badge">
+
+        <span>
+            BEYOND TODAY • FUTURE VISION
+        </span>
+
+    </div>
+
+
+    <!-- Main title -->
+
+    <div class="future-title">
+
+        <h2>
+            Engineering the Future
+        </h2>
+
+        <p>
+            From practical construction experience to advanced
+            engineering knowledge — building a future focused on
+            sustainable infrastructure, intelligent project delivery,
+            resilient transportation and environmental responsibility.
+        </p>
+
+    </div>
+
+
+    <!-- Future Roadmap -->
+
+    <div class="future-roadmap">
+
+
+        <div class="future-step">
+
+            <div class="future-number">
+                01 — FOUNDATION
+            </div>
+
+            <h3>
+                🏗️ Construction Leadership
+            </h3>
+
+            <p>
+                Strengthen expertise in Construction Engineering &
+                Project Management, planning, scheduling, quality
+                management, risk control and project delivery.
+            </p>
+
+        </div>
+
+
+        <div class="future-step">
+
+            <div class="future-number">
+                02 — SUSTAINABILITY
+            </div>
+
+            <h3>
+                🌱 Environmental Innovation
+            </h3>
+
+            <p>
+                Explore sustainable infrastructure, environmental
+                management, water systems, pollution control and
+                climate-resilient engineering solutions.
+            </p>
+
+        </div>
+
+
+        <div class="future-step">
+
+            <div class="future-number">
+                03 — CONNECTIVITY
+            </div>
+
+            <h3>
+                🛣️ Smarter Transportation
+            </h3>
+
+            <p>
+                Develop deeper knowledge in transportation planning,
+                pavement engineering, rehabilitation, traffic systems
+                and sustainable mobility.
+            </p>
+
+        </div>
+
+
+        <div class="future-step">
+
+            <div class="future-number">
+                04 — GLOBAL IMPACT
+            </div>
+
+            <h3>
+                🌍 Sustainable Infrastructure
+            </h3>
+
+            <p>
+                Combine construction, environment and transportation
+                engineering to contribute to safer, smarter and more
+                resilient infrastructure.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Core vision -->
+
+    <div class="future-core">
+
+        <h3>
+            The Long-Term Vision
+        </h3>
+
+        <p>
+            To evolve from hands-on construction engineering into a
+            multidisciplinary infrastructure professional capable of
+            connecting project management, sustainable engineering and
+            transportation systems to solve real-world infrastructure
+            challenges.
+        </p>
+
+
+        <div class="future-keywords">
+
+            <span>Construction Management</span>
+
+            <span>Project Delivery</span>
+
+            <span>Sustainable Infrastructure</span>
+
+            <span>Environmental Engineering</span>
+
+            <span>Transportation Engineering</span>
+
+            <span>Resilient Infrastructure</span>
+
+            <span>Innovation</span>
+
+            <span>Global Engineering</span>
+
+        </div>
+
+    </div>
+
+</section>
