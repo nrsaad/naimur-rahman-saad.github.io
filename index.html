@@ -281,6 +281,30 @@ body.mood-environmental .project:hover,
 body.mood-construction .project:hover{border-color:var(--green)}
 
 
+/* ===== EXPERIENCE DETAIL CARDS ===== */
+.experience-card{cursor:pointer;transition:.3s;position:relative}
+.experience-card:after{content:"CLICK FOR DETAILS →";display:block;margin-top:14px;font:800 9px var(--heading);letter-spacing:1.5px;color:var(--green);opacity:.75}
+.experience-card:hover{transform:translateY(-6px);border-color:rgba(57,243,158,.35);box-shadow:0 18px 55px rgba(57,243,158,.10)}
+.experience-modal{position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.72);backdrop-filter:blur(12px)}
+.experience-modal.open{display:flex}
+.experience-modal-box{width:min(850px,94vw);max-height:88vh;overflow:auto;padding:30px;border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(7,18,13,.98),rgba(10,23,17,.98));box-shadow:0 35px 120px rgba(0,0,0,.45);position:relative}
+.experience-modal-box h2{font:800 clamp(25px,4vw,42px) var(--heading);margin-bottom:8px}
+.experience-modal-box .exp-sub{color:var(--green);font:700 11px var(--heading);letter-spacing:1.5px;margin-bottom:22px}
+.exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.exp-detail{padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.035)}
+.exp-detail h4{color:var(--cyan);font:800 12px var(--heading);margin-bottom:10px}
+.exp-detail ul{padding-left:18px;color:var(--muted);font-size:12px;line-height:1.8}
+.exp-close{position:absolute;right:18px;top:18px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--text);border-radius:50%;width:38px;height:38px;cursor:pointer}
+body.mood-milk .experience-modal{background:rgba(230,225,213,.72)}
+body.mood-milk .experience-modal-box{background:linear-gradient(145deg,rgba(255,253,247,.99),rgba(244,240,231,.99));border-color:rgba(74,67,53,.14);box-shadow:0 35px 120px rgba(71,63,45,.20)}
+body.mood-milk .experience-modal-box h2{color:#34322b}
+body.mood-milk .experience-modal-box .exp-sub{color:#728875}
+body.mood-milk .exp-detail{background:rgba(255,255,255,.43);border-color:rgba(74,67,53,.11)}
+body.mood-milk .exp-detail h4{color:#728875}
+body.mood-milk .exp-detail ul{color:#716d63}
+body.mood-milk .exp-close{color:#4b4840;background:rgba(255,255,255,.55);border-color:rgba(74,67,53,.13)}
+@media(max-width:700px){.exp-grid{grid-template-columns:1fr}.experience-modal-box{padding:22px}}
+
 /* ===== PROJECT DETAIL MODAL ===== */
 .project{cursor:pointer}
 .project .project-open{
@@ -595,7 +619,7 @@ footer{
   <p class="section-desc">Civil Works Contractor • Sirajganj, Bangladesh</p>
 
   <div class="grid">
-    <article class="card">
+    <article class="card experience-card" onclick="openExperience(0)">
       <h3>Site Engineer | 2024 – Present</h3>
       <p>
         Supervise road and civil infrastructure construction according
@@ -605,7 +629,7 @@ footer{
       </p>
     </article>
 
-    <article class="card">
+    <article class="card experience-card" onclick="openExperience(1)">
       <h3>Trainee Site Engineer | 2020 – 2023</h3>
       <p>
         Assisted senior engineers with construction execution,
@@ -614,7 +638,7 @@ footer{
       </p>
     </article>
 
-    <article class="card">
+    <article class="card experience-card" onclick="openExperience(2)">
       <h3>QA/QC & Material Testing</h3>
       <p>
         Slump, concrete cube, sand field-density, brick and bentonite
@@ -623,7 +647,7 @@ footer{
       </p>
     </article>
 
-    <article class="card">
+    <article class="card experience-card" onclick="openExperience(3)">
       <h3>Coordination & Documentation</h3>
       <p>
         Worker, supplier and contractor coordination; measurements,
@@ -967,6 +991,16 @@ footer{
     Better Infrastructure • A Greener Planet • A Brighter Future
   </div>
 </footer>
+
+<!-- ===== EXPERIENCE DETAIL MODAL ===== -->
+<div class="experience-modal" id="experienceModal" aria-hidden="true">
+  <div class="experience-modal-box">
+    <button class="exp-close" onclick="closeExperience()">✕</button>
+    <div class="exp-sub" id="expKicker"></div>
+    <h2 id="expTitle"></h2>
+    <div class="exp-grid" id="expGrid"></div>
+  </div>
+</div>
 
 <script>
 /* =========================================================
@@ -1465,6 +1499,17 @@ function animate(){
 seed(260);
 setMood(localStorage.getItem("siteMood")||"default");
 animate();
+
+/* ===== EXPERIENCE DETAIL DATA / MODAL ===== */
+const experienceDetails=[
+ {title:'Site Engineer | 2024 – Present',sub:'SITE SUPERVISION • CIVIL INFRASTRUCTURE',sections:[['Core Responsibilities',['Supervise road and civil infrastructure construction according to approved drawings, specifications and project requirements.','Monitor earthwork, filling, compaction, pavement, RCC, reinforcement, formwork, casting and curing.']],['Site Execution',['Check work sequence, dimensions, levels and workmanship on site.','Follow construction progress and identify execution issues for timely coordination.']],['Engineering Focus',['Road and civil infrastructure delivery.','RCC, reinforcement, formwork, concrete casting and curing.']]]},
+ {title:'Trainee Site Engineer | 2020 – 2023',sub:'CONSTRUCTION SUPPORT • FIELD ENGINEERING',sections:[['Core Responsibilities',['Assisted senior engineers with construction execution and quality control.','Supported measurements, material testing, progress monitoring and construction documentation.']],['Field Support',['Supported site measurements and quantity verification.','Observed construction progress and assisted with day-to-day site activities.']],['Engineering Focus',['Practical construction execution.','Quality control, material testing and progress documentation.']]]},
+ {title:'QA/QC & Material Testing',sub:'QUALITY ASSURANCE • MATERIAL TESTING',sections:[['Testing Experience',['Slump testing.','Concrete cube testing.','Sand field-density testing.','Brick testing.','Bentonite slurry testing.']],['Inspection Experience',['Reinforcement inspection.','Cover-block inspection.','Dimensions and levels inspection.','BBS inspection and review.']],['Quality Focus',['Construction material quality control.','Pre-casting and workmanship checks.','Field inspection and quality documentation.']]]},
+ {title:'Coordination & Documentation',sub:'SITE COORDINATION • PROJECT DOCUMENTATION',sections:[['Coordination',['Worker coordination.','Supplier coordination.','Contractor coordination.','Day-to-day communication of site requirements and progress.']],['Documentation',['Site measurements.','Inspection records.','Progress reports.','Billing verification.','Material reconciliation.']],['Project Focus',['Keep construction information organized and traceable.','Connect field measurements, inspections, quantities, materials and progress reporting.']]]}
+];
+function openExperience(i){const d=experienceDetails[i];if(!d)return;document.getElementById('expKicker').textContent=d.sub;document.getElementById('expTitle').textContent=d.title;const g=document.getElementById('expGrid');g.innerHTML=d.sections.map(x=>'<div class="exp-detail"><h4>'+x[0]+'</h4><ul>'+x[1].map(y=>'<li>'+y+'</li>').join('')+'</ul></div>').join('');document.getElementById('experienceModal').classList.add('open');document.getElementById('experienceModal').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+function closeExperience(){document.getElementById('experienceModal').classList.remove('open');document.getElementById('experienceModal').setAttribute('aria-hidden','true');document.body.style.overflow='';}
+document.getElementById('experienceModal').addEventListener('click',e=>{if(e.target.id==='experienceModal')closeExperience()});
 
 /* ===== PROJECT DETAIL DATA ===== */
 const projectDetails = [{"role": "Site Engineer — contractor-side construction supervision and project coordination.", "activities": ["Monitor civil works and construction progress in line with drawings and specifications.", "Support execution checks for earthwork, filling, compaction and associated site activities where applicable.", "Verify dimensions, levels, quantities and workmanship observations."], "qa": ["Material inspection and site quality checks.", "Support concrete/RCC-related quality control where applicable.", "Record inspection observations and follow-up with site personnel."], "docs": ["Site measurements and quantity records.", "Progress documentation and site reporting.", "Quantity verification and contractor-side documentation."], "coord": ["Coordinate workers, suppliers and contractor-side site personnel.", "Monitor material availability and usage against site requirements.", "Support material reconciliation and work-progress communication."], "focus": "Rural market/local infrastructure delivery under LGED, with emphasis on practical site supervision, measurement, quality observation and construction progress."}, {"role": "Site Engineer — RCC road construction supervision.", "activities": ["Supervise RCC road construction activities and site execution.", "Check reinforcement, cover blocks, formwork, dimensions, levels and casting readiness.", "Monitor concrete casting, finishing and curing activities."], "qa": ["Slump testing and concrete cube sampling/QA-QC support.", "Reinforcement and cover inspection before casting.", "Material inspection and workmanship checks."], "docs": ["Site measurements and quantity verification.", "BBS review/support and reinforcement records.", "Progress reports, inspection records and contractor billing inputs."], "coord": ["Coordinate workforce, concrete/material supply and site activities.", "Track material usage and reconcile quantities.", "Communicate site progress and quality observations."], "focus": "RCC road delivery — especially reinforcement, concrete quality control, formwork/casting coordination, measurement and curing."}, {"role": "Site Engineer — building-related civil works and repair/construction supervision.", "activities": ["Supervise building-related civil and RCC/concrete activities.", "Monitor excavation, masonry/structural civil activities and finishing-related site progress as applicable.", "Verify dimensions, levels, workmanship and construction sequence."], "qa": ["Concrete/material quality checks where applicable.", "Reinforcement, formwork and dimensional inspection.", "Workmanship and construction-stage inspection."], "docs": ["Measurement records and quantity verification.", "Progress documentation and site reports.", "Contractor billing support and material records."], "coord": ["Coordinate workers and material supply.", "Monitor material availability and usage.", "Coordinate day-to-day construction sequence."], "focus": "Building and sanitation-related civil works, emphasizing practical site supervision, RCC/concrete exposure, measurement and material inspection."}, {"role": "Site Engineer — RCC road execution and quality/measurement support.", "activities": ["Supervise RCC road execution and construction sequence.", "Inspect reinforcement, formwork, cover blocks, levels and dimensions.", "Monitor casting, finishing and curing activities."], "qa": ["Concrete slump and cube-sampling support.", "Reinforcement and pre-casting inspection.", "Material and workmanship checks."], "docs": ["Measurement and quantity verification.", "BBS/reinforcement records.", "Progress and inspection documentation."], "coord": ["Coordinate labour, materials and concrete-related site activities.", "Track material consumption and reconcile quantities.", "Support contractor-side progress communication."], "focus": "RCC road development with direct relevance to reinforcement inspection, concrete quality control, formwork, curing and quantity verification."}, {"role": "Trainee Site Engineer — road improvement and pavement-related construction support.", "activities": ["Assist with earthwork, filling and compaction activities.", "Monitor subgrade, sub-base, base-course and pavement-related work.", "Support site measurements and construction progress monitoring."], "qa": ["Material and layer-quality observations.", "Compaction/site-density related checks where applicable.", "Workmanship and pavement-stage inspection."], "docs": ["Field measurements and quantity records.", "Progress monitoring and site documentation.", "Material and work-quantity records."], "coord": ["Coordinate workforce and material movement.", "Support site logistics and construction sequencing.", "Communicate progress observations to senior engineers."], "focus": "Road improvement — earthwork, compaction, pavement layers, measurement and progress monitoring."}, {"role": "Trainee Site Engineer — building and structural/civil construction support.", "activities": ["Assist senior engineers with building construction and structural/civil works.", "Support site measurements and quantity verification.", "Observe variation works and construction progress."], "qa": ["Construction material and workmanship checks.", "Reinforcement/formwork/concrete-related inspection support where applicable.", "Dimensional and site-quality observations."], "docs": ["Measurement records and quantity calculations.", "Variation-work documentation support.", "Progress records and contractor-side documentation."], "coord": ["Support coordination of workers and site activities.", "Assist with material requirements and site readiness.", "Coordinate information between field activities and senior staff."], "focus": "Building construction and structural/civil works, with exposure to variation, quantity measurement and site coordination."}, {"role": "Trainee Site Engineer — road improvement and link-road construction support.", "activities": ["Assist with road improvement earthwork and pavement-related activities.", "Support site measurements, quantity verification and progress tracking.", "Monitor construction sequence and material movement."], "qa": ["Material inspection and layer/workmanship observations.", "Compaction and pavement-related quality checks where applicable.", "Support site inspection records."], "docs": ["Field measurements and quantities.", "Progress monitoring records.", "Material and contractor-side documentation."], "coord": ["Coordinate workforce and materials with site needs.", "Support logistics and construction sequencing.", "Assist senior engineers in communicating site progress."], "focus": "Road improvement and link-road delivery, emphasizing practical field execution, measurement, material management and progress monitoring."}, {"role": "Trainee Site Engineer — road rehabilitation and pavement-related site support.", "activities": ["Assist with road rehabilitation activities and site execution.", "Monitor pavement-related work, construction progress and measurements.", "Support quantity verification and material inspection."], "qa": ["Pavement/material workmanship observations.", "Compaction and field-density related checks where applicable.", "Routine site-quality inspection support."], "docs": ["Road measurements and quantity records.", "Progress monitoring documentation.", "Material and billing-support records."], "coord": ["Coordinate labour and material movement.", "Support site logistics and work sequencing.", "Assist with material usage monitoring."], "focus": "Road rehabilitation over 1,240 m, with emphasis on pavement works, field measurement, material inspection and progress monitoring."}, {"role": "Trainee Site Engineer — emergency repair and riverbank protection work support.", "activities": ["Support emergency protection and repair-site execution.", "Assist with site measurements, material coordination and progress monitoring.", "Monitor work progress under time-sensitive field conditions."], "qa": ["Material inspection and workmanship checks.", "Quantity/measurement verification for protection works.", "Site-condition and construction-progress observations."], "docs": ["Emergency work measurements.", "Progress documentation and site records.", "Contractor-side quantity and material records."], "coord": ["Coordinate materials, workers and site logistics.", "Support rapid material deployment.", "Coordinate contractor-side field activities."], "focus": "Emergency riverbank/protection work, emphasizing rapid field coordination, measurement, material handling and progress monitoring."}, {"role": "Trainee Site Engineer — temporary emergency protection work support.", "activities": ["Assist with emergency protection site execution.", "Support measurement, material handling and construction progress monitoring.", "Observe work sequence and site conditions during emergency activities."], "qa": ["Material inspection and workmanship observation.", "Quantity verification and measurement checks.", "Progress and field-quality documentation support."], "docs": ["Emergency-work measurement records.", "Progress/site reports.", "Material and quantity documentation."], "coord": ["Coordinate workers and suppliers at the site.", "Assist with material handling and deployment.", "Support contractor-side field coordination."], "focus": "Temporary emergency protection activities, emphasizing field coordination, measurement, material handling and documentation."}, {"role": "Trainee Site Engineer — HBB pavement repair and road maintenance support.", "activities": ["Assist with damaged-pavement repair and HBB-related site execution.", "Support measurements, quantity verification and construction progress monitoring.", "Observe pavement repair workmanship and site sequence."], "qa": ["Pavement/material inspection.", "Workmanship and layer/repair-stage observations.", "Quantity and field-measurement checks."], "docs": ["Repair measurements and quantity records.", "Progress documentation.", "Material and contractor-side billing-support records."], "coord": ["Coordinate workers and materials for repair activities.", "Support material movement and site readiness.", "Assist with progress communication."], "focus": "HBB pavement repair on an RHD road, linking practical road-maintenance, measurement, material inspection and construction monitoring experience."}];
