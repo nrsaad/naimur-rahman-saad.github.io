@@ -305,6 +305,73 @@ body.mood-milk .exp-detail ul{color:#716d63}
 body.mood-milk .exp-close{color:#4b4840;background:rgba(255,255,255,.55);border-color:rgba(74,67,53,.13)}
 @media(max-width:700px){.exp-grid{grid-template-columns:1fr}.experience-modal-box{padding:22px}}
 
+
+/* ===== PROJECT COST / PROFIT DATA =====
+   Source policy: do not invent actual expenditure, profit or savings.
+   Known values are only those explicitly stated in the portfolio.
+*/
+const projectFinanceData = [
+  {value:null, credit:["Site supervision, measurement and quantity verification.","Material inspection/reconciliation and progress documentation."]},
+  {value:null, credit:["RCC road execution monitoring, reinforcement/formwork inspection.","Concrete QA/QC, measurement, BBS support and contractor billing inputs."]},
+  {value:null, credit:["Building/sanitation civil-work supervision and dimensional checks.","Material control, measurement and contractor documentation support."]},
+  {value:null, credit:["RCC road execution, reinforcement/formwork checks and casting readiness.","Concrete quality control, quantity verification and material reconciliation."]},
+  {value:81100000, credit:["Road improvement supervision with practical focus on earthwork, compaction and pavement.","Measurement, material management and progress monitoring support."]},
+  {value:null, credit:["Building/structural civil-work support, quantity measurement and variation documentation.","Coordination of site activities and material requirements."]},
+  {value:16800000, credit:["Road improvement and link-road execution support.","Measurement, material movement, quantity verification and progress tracking."]},
+  {value:null, credit:["Road rehabilitation and pavement-stage monitoring.","Field measurement, material inspection and progress documentation."]},
+  {value:null, credit:["Emergency repair/protection support under time-sensitive site conditions.","Rapid material coordination, measurement and progress monitoring."]},
+  {value:null, credit:["Temporary emergency protection work support.","Material handling, measurement, field coordination and documentation."]},
+  {value:null, credit:["HBB pavement repair and road-maintenance support.","Measurement, material inspection, workmanship observation and billing-support records."]}
+];
+
+function moneyBDT(n){
+  if(!Number.isFinite(n)) return "Not disclosed";
+  return "BDT " + new Intl.NumberFormat("en-IN",{maximumFractionDigits:2}).format(n);
+}
+function projectValueText(n){
+  if(!Number.isFinite(n)) return "Not disclosed";
+  return moneyBDT(n);
+}
+function calculateProjectFinance(){
+  const target=parseFloat(document.getElementById("modalTargetValue").value);
+  const actual=parseFloat(document.getElementById("modalActualCost").value);
+  const other=parseFloat(document.getElementById("modalOtherCost").value)||0;
+  const out=document.getElementById("modalProfitResult");
+
+  if(!Number.isFinite(target) || target<=0 || !Number.isFinite(actual) || actual<0){
+    out.innerHTML="Profit / savings: <em>enter a verified target/contract value and actual cost.</em>";
+    return;
+  }
+  const totalCost=actual+other;
+  const profit=target-totalCost;
+  const margin=(profit/target)*100;
+  const label=profit>=0 ? "Gross surplus / profit" : "Cost overrun";
+  out.innerHTML=label+": "+moneyBDT(profit)+" <em>("+margin.toFixed(2)+"% of target value)</em>";
+}
+function populateCostTable(){
+  const cards=document.querySelectorAll("#projects .project");
+  const body=document.getElementById("costTableBody");
+  if(!body) return;
+  body.innerHTML="";
+  projectFinanceData.forEach((f,i)=>{
+    const card=cards[i];
+    if(!card)return;
+    const tr=document.createElement("tr");
+    const agency=card.querySelector(".project-agency")?.textContent.trim()||"";
+    const title=card.querySelector("h3")?.textContent.trim()||"";
+    const known=Number.isFinite(f.value);
+    tr.innerHTML=
+      "<td>"+(i+1)+"</td>"+
+      "<td><a class='cost-link' href='#projects' onclick='openProject("+i+");return false;'>"+title+"</a></td>"+
+      "<td>"+agency+"</td>"+
+      "<td class='"+(known?"known":"unknown")+"'>"+(known?moneyBDT(f.value):"Not disclosed")+"</td>"+
+      "<td class='unknown'>Not disclosed</td>"+
+      "<td class='unknown'>Requires verified actual-cost data</td>";
+    body.appendChild(tr);
+  });
+}
+populateCostTable();
+
 /* ===== PROJECT DETAIL MODAL ===== */
 .project{cursor:pointer}
 .project .project-open{
@@ -359,6 +426,75 @@ body.mood-milk .exp-close{color:#4b4840;background:rgba(255,255,255,.55);border-
   .project-modal{padding:12px}
   .project-modal-box{padding:20px;border-radius:22px}
   .detail-grid{grid-template-columns:1fr}
+}
+
+
+/* ===== PROJECT COST / PROFIT ANALYSIS ===== */
+.cost-analysis{
+  margin-top:28px;
+  padding:26px;
+  border:1px solid rgba(28,83,62,.14);
+  border-radius:26px;
+  background:linear-gradient(145deg,rgba(255,255,255,.78),rgba(232,245,236,.62));
+  box-shadow:0 18px 60px rgba(42,77,61,.10);
+}
+.cost-analysis-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;flex-wrap:wrap}
+.cost-analysis-kicker{font:800 10px var(--heading);letter-spacing:2px;color:#2f7656;text-transform:uppercase}
+.cost-analysis h3{margin:7px 0 5px;font:800 clamp(23px,3vw,34px) var(--heading);color:#214b3a}
+.cost-analysis-head p{max-width:720px;color:#687b72;font-size:13px;line-height:1.7}
+.cost-summary-grid{margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cost-stat{padding:17px;border:1px solid rgba(28,83,62,.12);border-radius:17px;background:rgba(255,255,255,.60)}
+.cost-stat span{display:block;color:#71847b;font:700 10px var(--heading);letter-spacing:1px;text-transform:uppercase}
+.cost-stat strong{display:block;margin-top:7px;color:#245840;font:800 22px var(--heading)}
+.cost-stat small{display:block;margin-top:5px;color:#7c8e85;font-size:10px}
+.cost-disclaimer{margin-top:14px;padding:12px 14px;border-left:3px solid #4b9b6e;border-radius:10px;background:rgba(76,155,110,.07);color:#65776e;font-size:11px;line-height:1.7}
+.cost-table{margin-top:18px;overflow:auto;border:1px solid rgba(28,83,62,.10);border-radius:18px}
+.cost-table table{width:100%;border-collapse:collapse;min-width:780px}
+.cost-table th,.cost-table td{padding:12px 13px;text-align:left;border-bottom:1px solid rgba(28,83,62,.08);font-size:12px}
+.cost-table th{font:800 10px var(--heading);letter-spacing:1px;text-transform:uppercase;color:#3b6f58;background:rgba(255,255,255,.58)}
+.cost-table td{color:#53685e;background:rgba(255,255,255,.32)}
+.cost-table tr:last-child td{border-bottom:0}
+.cost-table .known{color:#245840;font-weight:800}
+.cost-table .unknown{color:#8b8f8b;font-style:italic}
+.cost-link{color:#2e8059;font-weight:800;text-decoration:none}
+.cost-link:hover{text-decoration:underline}
+
+/* financial panel inside each project modal */
+.financial-panel{
+  margin-top:18px;
+  padding:18px;
+  border:1px solid rgba(76,155,110,.18);
+  border-radius:19px;
+  background:linear-gradient(145deg,rgba(237,249,240,.72),rgba(255,255,255,.56));
+}
+.financial-panel h4{margin-bottom:6px;color:#2f7656;font:800 12px var(--heading);letter-spacing:1px;text-transform:uppercase}
+.financial-intro{color:#687b72;font-size:11px;line-height:1.7;margin-bottom:14px}
+.financial-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.financial-box{padding:13px;border:1px solid rgba(28,83,62,.10);border-radius:14px;background:rgba(255,255,255,.62)}
+.financial-box label{display:block;color:#71847b;font:700 9px var(--heading);letter-spacing:.8px;text-transform:uppercase}
+.financial-box strong{display:block;margin-top:6px;color:#245840;font:800 18px var(--heading)}
+.financial-box input{
+  width:100%;margin-top:6px;padding:9px 10px;border-radius:10px;
+  border:1px solid rgba(28,83,62,.16);background:rgba(255,255,255,.82);
+  color:#294e3e;outline:none;font:700 13px var(--heading)
+}
+.financial-box input:focus{border-color:#4b9b6e;box-shadow:0 0 0 3px rgba(75,155,110,.10)}
+.financial-calc{margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.financial-result{font:800 14px var(--heading);color:#245840}
+.financial-result em{font-style:normal;color:#65776e;font-weight:600;font-size:11px}
+.cost-credit-list{margin-top:14px;padding-left:18px;color:#5d7067;font-size:12px;line-height:1.8}
+.cost-credit-list li::marker{color:#4b9b6e}
+.potential-savings{margin-top:12px;padding:12px 13px;border-radius:12px;background:rgba(76,155,110,.07);color:#5d7067;font-size:11px;line-height:1.7}
+.potential-savings b{color:#2e6f50}
+body.mood-milk .cost-analysis{background:rgba(255,253,247,.72);border-color:rgba(74,67,53,.13);box-shadow:0 18px 60px rgba(71,63,45,.08)}
+body.mood-milk .cost-analysis h3,body.mood-milk .cost-stat strong,body.mood-milk .financial-box strong,body.mood-milk .financial-result{color:#4d554b}
+body.mood-milk .financial-panel{background:rgba(255,255,255,.42);border-color:rgba(74,67,53,.12)}
+@media(max-width:850px){
+  .cost-summary-grid{grid-template-columns:repeat(2,1fr)}
+  .financial-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+  .cost-summary-grid,.financial-grid{grid-template-columns:1fr}
 }
 
 footer{
@@ -997,10 +1133,52 @@ body.mood-milk .hero h1,body.mood-milk .section-title,body.mood-milk .future-tit
       <a href="https://rhd.gov.bd/" target="_blank" onclick="event.stopPropagation()">Official Agency ↗</a>
     </article>
   </div>
+
+</section>
+
+<section id="cost-analysis" class="reveal">
+  <div class="cost-analysis">
+    <div class="cost-analysis-head">
+      <div>
+        <div class="cost-analysis-kicker">05A / PROJECT COST • VALUE • COST CONTROL</div>
+        <h3>Project Cost & Value Analysis</h3>
+        <p>
+          A transparent, project-by-project view of financial exposure, cost-control
+          contribution and profit calculation. Click any project above for the full
+          breakdown and calculator.
+        </p>
+      </div>
+    </div>
+
+    <div class="cost-summary-grid">
+      <div class="cost-stat"><span>Portfolio Exposure</span><strong>25.7 Cr</strong><small>As stated in this portfolio</small></div>
+      <div class="cost-stat"><span>Projects Analysed</span><strong>11</strong><small>Government project cards</small></div>
+      <div class="cost-stat"><span>Verified Project Values</span><strong>2</strong><small>Values explicitly stated in current portfolio</small></div>
+      <div class="cost-stat"><span>Profit Data</span><strong>Input-Based</strong><small>Actual cost/profit not stated in source</small></div>
+    </div>
+
+    <div class="cost-disclaimer">
+      <b>Important:</b> Government contract/project value is not the same as contractor
+      cost or profit. The current portfolio gives a total exposure figure of 25.7 Cr and
+      explicitly states values for two projects, but it does not provide audited
+      project-wise actual expenditure, profit or savings. Therefore this section does
+      <b>not invent financial figures</b>. Where actual cost is unavailable, the site
+      shows “Not disclosed” and lets you enter verified figures to calculate gross
+      savings/profit.
+    </div>
+
+    <div class="cost-table">
+      <table>
+        <thead><tr><th>#</th><th>Project</th><th>Agency</th><th>Known Project Value</th><th>Actual Cost</th><th>Profit / Savings</th></tr></thead>
+        <tbody id="costTableBody"></tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
 <section class="reveal">
   <div class="section-label">06 / EDUCATION</div>
+
   <h2 class="section-title">Academic Foundation.</h2>
 
   <div class="grid">
@@ -1211,11 +1389,28 @@ body.mood-milk .hero h1,body.mood-milk .section-title,body.mood-milk .future-tit
       <div class="detail-card"><h4>Project-Specific Focus</h4><p id="modalFocus"></p></div>
     </div>
 
+    <div class="financial-panel">
+      <h4>Cost • Savings • Profit Analysis</h4>
+      <p class="financial-intro" id="modalFinanceIntro"></p>
+      <div class="financial-grid">
+        <div class="financial-box"><label>Known Project Value</label><strong id="modalKnownValue">Not disclosed</strong></div>
+        <div class="financial-box"><label>Actual Project Cost</label><input id="modalActualCost" type="number" min="0" step="0.01" placeholder="Enter verified cost (BDT)"></div>
+        <div class="financial-box"><label>Other Direct Cost</label><input id="modalOtherCost" type="number" min="0" step="0.01" placeholder="Optional (BDT)"></div>
+        <div class="financial-box"><label>Target / Contract Value</label><input id="modalTargetValue" type="number" min="0" step="0.01" placeholder="Enter verified value (BDT)"></div>
+      </div>
+      <div class="financial-calc">
+        <div class="financial-result" id="modalProfitResult">Profit / savings: enter verified figures</div>
+        <button class="btn" type="button" onclick="calculateProjectFinance()">Calculate</button>
+      </div>
+      <ul class="cost-credit-list" id="modalCostCredit"></ul>
+      <div class="potential-savings"><b>What could reduce cost further:</b> early procurement planning, tighter quantity reconciliation, preventing rework through pre-pour inspection, controlling material wastage, coordinating deliveries, monitoring productivity, and using verified measurements before billing.</div>
+    </div>
+
     <div class="project-modal-note">
-      The activity summary reflects the contractor-side duties and QA/QC,
-      measurement, coordination and documentation responsibilities described
-      in this portfolio. It does not claim that every listed activity occurred
-      on every project.
+      The cost-control contribution shown here is based on the responsibilities documented
+      in this portfolio—quantity verification, material reconciliation, QA/QC, inspection,
+      coordination and billing support. It is not a claim of a specific taka amount saved
+      unless a verified project cost record is entered.
     </div>
 
     <div class="project-modal-actions">
@@ -1769,6 +1964,13 @@ const modalActivities=document.getElementById("modalActivities");
 const modalQA=document.getElementById("modalQA");
 const modalDocs=document.getElementById("modalDocs");
 const modalCoord=document.getElementById("modalCoord");
+const modalFinanceIntro=document.getElementById("modalFinanceIntro");
+const modalKnownValue=document.getElementById("modalKnownValue");
+const modalActualCost=document.getElementById("modalActualCost");
+const modalOtherCost=document.getElementById("modalOtherCost");
+const modalTargetValue=document.getElementById("modalTargetValue");
+const modalProfitResult=document.getElementById("modalProfitResult");
+const modalCostCredit=document.getElementById("modalCostCredit");
 
 function fillDetailList(el,items){
   el.innerHTML=items.map(function(x){return "<li>"+x+"</li>";}).join("");
@@ -1795,6 +1997,17 @@ function openProject(index){
 
   modalRole.textContent=p.role;
   modalFocus.textContent=p.focus;
+
+  const f=projectFinanceData[index] || {value:null,credit:[]};
+  modalKnownValue.textContent=projectValueText(f.value);
+  modalTargetValue.value=Number.isFinite(f.value) ? f.value : "";
+  modalActualCost.value="";
+  modalOtherCost.value="";
+  modalProfitResult.innerHTML="Profit / savings: <em>enter verified actual cost to calculate.</em>";
+  modalFinanceIntro.textContent=Number.isFinite(f.value)
+    ? "The portfolio states a project value of "+moneyBDT(f.value)+". Actual expenditure, audited savings and contractor profit are not stated, so the calculation below stays input-based."
+    : "No project-wise contract/project value is stated in the current portfolio for this project. Enter the verified contract value and actual cost from your tender/BOQ/billing records to calculate the result.";
+  modalCostCredit.innerHTML=(f.credit||[]).map(x=>"<li>"+x+"</li>").join("");
 
   fillDetailList(modalActivities,p.activities);
   fillDetailList(modalQA,p.qa);
