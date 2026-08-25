@@ -1,1970 +1,1403 @@
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- =========================================================
+     ENGINEERING VISUALIZATION
+     Construction Management + Environmental Engineering
+     + Transportation Engineering
+     No external image required
+========================================================= -->
 
-<title>MD. Naimur Rahman Saad | Civil Engineer</title>
+<section class="engineering-visual">
 
-<meta name="description" content="MD. Naimur Rahman Saad — Civil Engineer | Construction Engineering & Project Management">
-<meta name="author" content="MD. Naimur Rahman Saad">
+  <div class="engineering-grid"></div>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Floating engineering particles -->
+  <div class="eng-particles">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <!-- CENTRAL ENGINEERING SCENE -->
+  <div class="eng-scene">
+
+    <!-- SKY / ATMOSPHERE -->
+    <div class="eng-sky"></div>
+
+    <!-- SUN -->
+    <div class="eng-sun"></div>
+
+    <!-- BUILDING -->
+    <div class="eng-building">
+
+      <div class="building-floor floor-1">
+        <span></span><span></span><span></span>
+      </div>
+
+      <div class="building-floor floor-2">
+        <span></span><span></span><span></span>
+      </div>
+
+      <div class="building-floor floor-3">
+        <span></span><span></span><span></span>
+      </div>
+
+      <div class="building-floor floor-4">
+        <span></span><span></span><span></span>
+      </div>
+
+      <div class="building-roof"></div>
+
+    </div>
+
+    <!-- CRANE -->
+    <div class="eng-crane">
+      <div class="crane-tower"></div>
+      <div class="crane-arm"></div>
+      <div class="crane-cable"></div>
+      <div class="crane-hook"></div>
+    </div>
+
+    <!-- ROAD -->
+    <div class="eng-road">
+
+      <div class="road-line line-1"></div>
+      <div class="road-line line-2"></div>
+      <div class="road-line line-3"></div>
+      <div class="road-line line-4"></div>
+
+      <!-- CAR -->
+      <div class="eng-car">
+        <div class="car-body"></div>
+        <div class="car-window"></div>
+        <div class="car-wheel wheel-1"></div>
+        <div class="car-wheel wheel-2"></div>
+      </div>
+
+    </div>
+
+    <!-- TREES / ENVIRONMENT -->
+    <div class="eng-tree tree-1">
+      <i></i><b></b>
+    </div>
+
+    <div class="eng-tree tree-2">
+      <i></i><b></b>
+    </div>
+
+    <div class="eng-tree tree-3">
+      <i></i><b></b>
+    </div>
+
+    <!-- WATER / ENVIRONMENT -->
+    <div class="eng-water">
+      <div></div><div></div><div></div>
+    </div>
+
+    <!-- BLUEPRINT LINES -->
+    <div class="blueprint-lines">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </div>
+
+
+  <!-- ENGINEERING LABELS -->
+
+  <div class="engineering-label construction-label">
+    <div class="label-icon">🏗</div>
+    <div>
+      <strong>CONSTRUCTION</strong>
+      <small>Project Management</small>
+    </div>
+  </div>
+
+  <div class="engineering-label environment-label">
+    <div class="label-icon">🌱</div>
+    <div>
+      <strong>ENVIRONMENT</strong>
+      <small>Sustainable Infrastructure</small>
+    </div>
+  </div>
+
+  <div class="engineering-label transport-label">
+    <div class="label-icon">🛣</div>
+    <div>
+      <strong>TRANSPORTATION</strong>
+      <small>Road & Infrastructure</small>
+    </div>
+  </div>
+
+
+  <!-- MAIN TITLE -->
+
+  <div class="engineering-title">
+
+    <div class="title-small">
+      CIVIL ENGINEERING
+    </div>
+
+    <h2>
+      Building the Future
+    </h2>
+
+    <p>
+      Construction • Environment • Transportation
+    </p>
+
+    <div class="title-line"></div>
+
+  </div>
+
+</section>
+
 
 <style>
-:root{
-  --bg:#07100c;
-  --bg2:#0b1712;
-  --card:rgba(255,255,255,.055);
-  --card2:rgba(255,255,255,.085);
-  --text:#f3f7f4;
-  --muted:#aebbb3;
-  --green:#22c55e;
-  --green2:#86efac;
-  --red:#ef4444;
-  --gold:#f5d77a;
-  --border:rgba(255,255,255,.10);
-  --shadow:0 25px 80px rgba(0,0,0,.35);
-}
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
 
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:Inter,sans-serif;
-  color:var(--text);
-  background:var(--bg);
-  overflow-x:hidden;
-  transition:background 1s ease,color .6s ease;
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-5;
+.engineering-visual {
+  position: relative;
+  width: 100%;
+  min-height: 620px;
+  overflow: hidden;
+  border-radius: 30px;
   background:
-    radial-gradient(circle at 20% 10%,rgba(34,197,94,.12),transparent 30%),
-    radial-gradient(circle at 80% 80%,rgba(59,130,246,.08),transparent 35%),
-    linear-gradient(135deg,var(--bg),var(--bg2));
-  transition:all 1s ease;
+    radial-gradient(circle at 50% 30%,
+      rgba(100,180,255,.18),
+      transparent 35%),
+    linear-gradient(
+      135deg,
+      #06111f,
+      #091a2b 45%,
+      #031018
+    );
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.45),
+    inset 0 0 80px rgba(0,180,255,.05);
+  font-family:
+    Inter,
+    "Segoe UI",
+    Arial,
+    sans-serif;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+
+/* =========================================================
+   ENGINEERING GRID
+========================================================= */
+
+.engineering-grid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(100,200,255,.055) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(100,200,255,.055) 1px,
+      transparent 1px
+    );
+
+  background-size: 45px 45px;
+
+  transform:
+    perspective(700px)
+    rotateX(55deg)
+    scale(1.6)
+    translateY(160px);
+
+  opacity: .55;
+
+  animation:
+    gridMove 14s linear infinite;
 }
 
-button{
-  font-family:inherit;
+@keyframes gridMove {
+
+  from {
+    background-position:
+      0 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      0 45px,
+      45px 0;
+  }
+
 }
 
-.container{
-  width:min(1180px,92%);
-  margin:auto;
+
+/* =========================================================
+   SKY
+========================================================= */
+
+.eng-sky {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 75% 20%,
+      rgba(90,190,255,.20),
+      transparent 25%
+    );
 }
 
-/* =========================
-   LOADER
-========================= */
 
-.loader{
-  position:fixed;
-  inset:0;
-  z-index:99999;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#020604;
-  transition:opacity .8s,visibility .8s;
+/* =========================================================
+   SUN
+========================================================= */
+
+.eng-sun {
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  top: 75px;
+  right: 14%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #fff,
+      #ffeaa0 35%,
+      rgba(255,190,60,.15) 65%,
+      transparent 72%
+    );
+
+  filter: blur(.5px);
+
+  animation:
+    sunPulse 4s ease-in-out infinite;
 }
 
-.loader.hide{
-  opacity:0;
-  visibility:hidden;
+@keyframes sunPulse {
+
+  0%,100% {
+    transform: scale(1);
+    opacity: .75;
+  }
+
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+
 }
 
-.loader-box{
-  text-align:center;
+
+/* =========================================================
+   CENTRAL SCENE
+========================================================= */
+
+.eng-scene {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 850px;
+  height: 560px;
+
+  transform: translateX(-50%);
 }
 
-.loader-ring{
-  width:75px;
-  height:75px;
-  border:2px solid rgba(255,255,255,.1);
-  border-top-color:var(--green);
-  border-right-color:var(--red);
-  border-radius:50%;
-  animation:spin 1s linear infinite;
-  margin:auto auto 20px;
+
+/* =========================================================
+   BUILDING
+========================================================= */
+
+.eng-building {
+  position: absolute;
+
+  left: 315px;
+  bottom: 165px;
+
+  width: 180px;
+  height: 300px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #132d43,
+      #234b66,
+      #10263a
+    );
+
+  border: 2px solid rgba(120,210,255,.45);
+
+  box-shadow:
+    0 0 35px rgba(0,180,255,.15),
+    inset 0 0 25px rgba(100,200,255,.08);
+
+  transform:
+    perspective(600px)
+    rotateY(-10deg);
 }
 
-.loader p{
-  color:#aebbb3;
-  letter-spacing:4px;
-  font-size:12px;
+
+/* BUILDING FLOORS */
+
+.building-floor {
+
+  position: relative;
+
+  width: 100%;
+  height: 25%;
+
+  border-bottom:
+    1px solid rgba(120,210,255,.25);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-around;
+
 }
 
-@keyframes spin{
-  to{transform:rotate(360deg)}
+
+.building-floor span {
+
+  width: 27px;
+  height: 38px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(190,240,255,.9),
+      rgba(30,140,190,.35)
+    );
+
+  border:
+    1px solid rgba(180,240,255,.5);
+
+  box-shadow:
+    0 0 15px rgba(50,190,255,.35);
+
+  animation:
+    buildingLights 3s ease-in-out infinite;
+
 }
 
-/* =========================
+
+.building-floor span:nth-child(2) {
+  animation-delay: .7s;
+}
+
+.building-floor span:nth-child(3) {
+  animation-delay: 1.4s;
+}
+
+
+@keyframes buildingLights {
+
+  0%,100% {
+    opacity: .45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+}
+
+
+.building-roof {
+
+  position: absolute;
+
+  top: -12px;
+  left: -8px;
+
+  width: 196px;
+  height: 12px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #37d4ff,
+      #8df0ff,
+      #37d4ff
+    );
+
+  box-shadow:
+    0 0 20px rgba(50,210,255,.7);
+}
+
+
+/* =========================================================
+   CRANE
+========================================================= */
+
+.eng-crane {
+
+  position: absolute;
+
+  left: 235px;
+  bottom: 160px;
+
+  width: 20px;
+  height: 350px;
+
+}
+
+
+.crane-tower {
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 8px;
+  height: 100%;
+
+  background:
+    repeating-linear-gradient(
+      135deg,
+      #e4ad35 0 7px,
+      #253a4c 7px 13px
+    );
+
+  box-shadow:
+    0 0 12px rgba(255,180,40,.25);
+}
+
+
+.crane-arm {
+
+  position: absolute;
+
+  top: 10px;
+  left: 0;
+
+  width: 320px;
+  height: 8px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f2bf42,
+      #d88a18
+    );
+
+  box-shadow:
+    0 0 15px rgba(255,190,50,.3);
+}
+
+
+.crane-cable {
+
+  position: absolute;
+
+  top: 18px;
+  left: 250px;
+
+  width: 2px;
+  height: 120px;
+
+  background: #d9e7ed;
+
+  animation:
+    cableMove 3s ease-in-out infinite;
+}
+
+
+.crane-hook {
+
+  position: absolute;
+
+  top: 136px;
+  left: 244px;
+
+  width: 14px;
+  height: 18px;
+
+  border:
+    3px solid #d9a62e;
+
+  border-top: none;
+
+  border-radius:
+    0 0 10px 10px;
+
+}
+
+
+@keyframes cableMove {
+
+  0%,100% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(.82);
+  }
+
+}
+
+
+/* =========================================================
+   ROAD
+========================================================= */
+
+.eng-road {
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 170px;
+
+  background:
+    linear-gradient(
+      175deg,
+      #172633,
+      #08131d
+    );
+
+  clip-path:
+    polygon(
+      25% 0,
+      75% 0,
+      100% 100%,
+      0 100%
+    );
+
+  box-shadow:
+    inset 0 15px 20px rgba(0,0,0,.4);
+
+}
+
+
+.road-line {
+
+  position: absolute;
+
+  width: 80px;
+  height: 5px;
+
+  background:
+    #f6e8a6;
+
+  box-shadow:
+    0 0 12px rgba(255,230,120,.3);
+
+  animation:
+    roadMove 2.5s linear infinite;
+}
+
+
+.line-1 {
+  left: 32%;
+  top: 25%;
+}
+
+.line-2 {
+  left: 45%;
+  top: 40%;
+  animation-delay: .6s;
+}
+
+.line-3 {
+  left: 58%;
+  top: 55%;
+  animation-delay: 1.2s;
+}
+
+.line-4 {
+  left: 70%;
+  top: 70%;
+  animation-delay: 1.8s;
+}
+
+
+@keyframes roadMove {
+
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(180px);
+    opacity: 0;
+  }
+
+}
+
+
+/* =========================================================
+   CAR
+========================================================= */
+
+.eng-car {
+
+  position: absolute;
+
+  left: 44%;
+  top: 45%;
+
+  width: 75px;
+  height: 35px;
+
+  animation:
+    carMove 7s linear infinite;
+}
+
+
+.car-body {
+
+  position: absolute;
+
+  bottom: 7px;
+
+  width: 75px;
+  height: 23px;
+
+  border-radius:
+    8px 12px 5px 5px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #42d8ff,
+      #14658c
+    );
+
+  box-shadow:
+    0 0 20px rgba(50,210,255,.5);
+}
+
+
+.car-window {
+
+  position: absolute;
+
+  top: 1px;
+  left: 20px;
+
+  width: 35px;
+  height: 14px;
+
+  background:
+    rgba(180,240,255,.5);
+
+  clip-path:
+    polygon(
+      10% 0,
+      90% 0,
+      100% 100%,
+      0 100%
+    );
+}
+
+
+.car-wheel {
+
+  position: absolute;
+
+  bottom: 0;
+
+  width: 13px;
+  height: 13px;
+
+  background: #05090d;
+
+  border:
+    2px solid #8aa1ad;
+
+  border-radius: 50%;
+}
+
+
+.wheel-1 {
+  left: 10px;
+}
+
+.wheel-2 {
+  right: 10px;
+}
+
+
+@keyframes carMove {
+
+  from {
+    transform:
+      translateX(-350px);
+  }
+
+  to {
+    transform:
+      translateX(450px);
+  }
+
+}
+
+
+/* =========================================================
+   TREES
+========================================================= */
+
+.eng-tree {
+
+  position: absolute;
+
+  bottom: 145px;
+
+  width: 70px;
+  height: 120px;
+}
+
+
+.eng-tree i {
+
+  position: absolute;
+
+  left: 29px;
+  bottom: 0;
+
+  width: 12px;
+  height: 60px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #493322,
+      #9b6335
+    );
+
+}
+
+
+.eng-tree b {
+
+  position: absolute;
+
+  left: 0;
+  bottom: 40px;
+
+  width: 70px;
+  height: 70px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #70e6a0,
+      #18784e 50%,
+      #083a2a
+    );
+
+  box-shadow:
+    0 0 25px rgba(40,220,130,.18);
+}
+
+
+.tree-1 {
+  left: 30px;
+  transform: scale(.8);
+}
+
+.tree-2 {
+  left: 670px;
+  transform: scale(1.05);
+}
+
+.tree-3 {
+  left: 760px;
+  transform: scale(.7);
+}
+
+
+/* =========================================================
+   WATER
+========================================================= */
+
+.eng-water {
+
+  position: absolute;
+
+  right: 10px;
+  bottom: 70px;
+
+  width: 210px;
+  height: 75px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(50,210,255,.35),
+      rgba(10,80,120,.25),
+      transparent 70%
+    );
+
+  overflow: hidden;
+}
+
+
+.eng-water div {
+
+  position: absolute;
+
+  width: 130px;
+  height: 2px;
+
+  background:
+    rgba(130,235,255,.7);
+
+  left: -140px;
+
+  animation:
+    waterFlow 3s linear infinite;
+}
+
+
+.eng-water div:nth-child(1) {
+  top: 20px;
+}
+
+.eng-water div:nth-child(2) {
+  top: 40px;
+  animation-delay: 1s;
+}
+
+.eng-water div:nth-child(3) {
+  top: 60px;
+  animation-delay: 2s;
+}
+
+
+@keyframes waterFlow {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(350px);
+  }
+
+}
+
+
+/* =========================================================
+   BLUEPRINT
+========================================================= */
+
+.blueprint-lines span {
+
+  position: absolute;
+
+  border:
+    1px solid rgba(80,210,255,.22);
+
+  pointer-events: none;
+}
+
+
+.blueprint-lines span:nth-child(1) {
+  left: 20px;
+  top: 80px;
+  width: 160px;
+  height: 100px;
+}
+
+.blueprint-lines span:nth-child(2) {
+  right: 20px;
+  top: 100px;
+  width: 180px;
+  height: 120px;
+}
+
+.blueprint-lines span:nth-child(3) {
+  left: 50px;
+  bottom: 200px;
+  width: 100px;
+  height: 70px;
+}
+
+.blueprint-lines span:nth-child(4) {
+  right: 80px;
+  bottom: 210px;
+  width: 120px;
+  height: 80px;
+}
+
+
+/* =========================================================
+   LABELS
+========================================================= */
+
+.engineering-label {
+
+  position: absolute;
+
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding:
+    12px 17px;
+
+  border-radius: 15px;
+
+  background:
+    rgba(5,18,30,.70);
+
+  border:
+    1px solid rgba(120,220,255,.22);
+
+  backdrop-filter:
+    blur(12px);
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.25);
+
+  animation:
+    labelFloat 4s ease-in-out infinite;
+}
+
+
+.engineering-label strong {
+
+  display: block;
+
+  color: #eafaff;
+
+  font-size: 12px;
+
+  letter-spacing: 1.5px;
+}
+
+
+.engineering-label small {
+
+  display: block;
+
+  margin-top: 3px;
+
+  color: #7edfff;
+
+  font-size: 10px;
+}
+
+
+.label-icon {
+
+  font-size: 24px;
+}
+
+
+.construction-label {
+  top: 80px;
+  left: 30px;
+}
+
+
+.environment-label {
+  top: 235px;
+  right: 30px;
+
+  animation-delay: 1s;
+}
+
+
+.transport-label {
+  bottom: 45px;
+  left: 30px;
+
+  animation-delay: 2s;
+}
+
+
+@keyframes labelFloat {
+
+  0%,100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.engineering-title {
+
+  position: absolute;
+
+  z-index: 30;
+
+  left: 50%;
+  top: 35px;
+
+  transform: translateX(-50%);
+
+  text-align: center;
+
+  width: 90%;
+}
+
+
+.title-small {
+
+  color: #78ddff;
+
+  font-size: 11px;
+
+  letter-spacing: 4px;
+
+  font-weight: 700;
+}
+
+
+.engineering-title h2 {
+
+  margin:
+    8px 0 5px;
+
+  font-size:
+    clamp(30px, 5vw, 55px);
+
+  font-weight: 800;
+
+  letter-spacing:
+    -1.5px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #7ce5ff,
+      #ffffff
+    );
+
+  -webkit-background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
+
+}
+
+
+.engineering-title p {
+
+  margin: 0;
+
+  color:
+    rgba(220,245,255,.70);
+
+  font-size: 13px;
+
+  letter-spacing:
+    2px;
+}
+
+
+.title-line {
+
+  width: 90px;
+  height: 2px;
+
+  margin:
+    15px auto 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #55dfff,
+      transparent
+    );
+
+  box-shadow:
+    0 0 15px #55dfff;
+}
+
+
+/* =========================================================
    PARTICLES
-========================= */
+========================================================= */
 
-#particles{
-  position:fixed;
-  inset:0;
-  z-index:-3;
-  pointer-events:none;
-}
+.eng-particles span {
 
-.particle{
-  position:absolute;
-  width:2px;
-  height:2px;
-  background:white;
-  border-radius:50%;
-  opacity:.7;
-  animation:floatParticle linear infinite;
-}
+  position: absolute;
 
-@keyframes floatParticle{
-  from{
-    transform:translateY(110vh) translateX(0);
-  }
-  to{
-    transform:translateY(-10vh) translateX(80px);
-  }
-}
+  width: 3px;
+  height: 3px;
 
-/* =========================
-   GALAXY BLACK HOLE
-========================= */
+  border-radius: 50%;
 
-.galaxy-layer{
-  position:fixed;
-  inset:0;
-  z-index:-4;
-  pointer-events:none;
-  opacity:0;
-  transition:opacity 1s;
-  overflow:hidden;
-}
-
-body.galaxy .galaxy-layer{
-  opacity:1;
-}
-
-.nebula{
-  position:absolute;
-  width:70vw;
-  height:70vw;
-  left:50%;
-  top:45%;
-  transform:translate(-50%,-50%);
   background:
-    radial-gradient(ellipse,
-      rgba(125,80,255,.30) 0%,
-      rgba(50,120,255,.18) 18%,
-      rgba(0,0,0,0) 62%);
-  filter:blur(25px);
-  animation:nebulaMove 14s ease-in-out infinite alternate;
-}
+    #8deaff;
 
-@keyframes nebulaMove{
-  from{transform:translate(-50%,-50%) rotate(0deg) scale(1)}
-  to{transform:translate(-50%,-50%) rotate(12deg) scale(1.12)}
-}
-
-.blackhole{
-  position:absolute;
-  width:190px;
-  height:190px;
-  left:50%;
-  top:45%;
-  transform:translate(-50%,-50%);
-  border-radius:50%;
-  background:#000;
   box-shadow:
-    0 0 30px rgba(255,130,40,.35),
-    0 0 80px rgba(100,60,255,.28);
+    0 0 10px #7ee8ff;
+
+  animation:
+    particleFloat
+    var(--duration)
+    ease-in-out
+    infinite;
 }
 
-.blackhole::before{
-  content:"";
-  position:absolute;
-  inset:-32px;
-  border-radius:50%;
-  border:12px solid transparent;
-  border-top-color:#ff9d43;
-  border-bottom-color:#7d55ff;
-  filter:blur(5px);
-  animation:orbit 4s linear infinite;
+
+.eng-particles span:nth-child(1) {
+  left: 8%;
+  top: 20%;
+  --duration: 4s;
 }
 
-.blackhole::after{
-  content:"";
-  position:absolute;
-  inset:-60px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,.15);
-  animation:orbit 8s linear infinite reverse;
+.eng-particles span:nth-child(2) {
+  left: 18%;
+  top: 60%;
+  --duration: 6s;
 }
 
-@keyframes orbit{
-  to{transform:rotate(360deg)}
+.eng-particles span:nth-child(3) {
+  left: 28%;
+  top: 15%;
+  --duration: 5s;
 }
 
-.light-burst{
-  position:absolute;
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:white;
-  box-shadow:
-    0 0 20px white,
-    0 0 60px #8b5cf6,
-    0 0 100px #3b82f6;
-  animation:burst 5s ease-in-out infinite;
+.eng-particles span:nth-child(4) {
+  left: 38%;
+  top: 70%;
+  --duration: 7s;
 }
 
-@keyframes burst{
-  0%,100%{transform:scale(.5);opacity:.2}
-  50%{transform:scale(4);opacity:.8}
+.eng-particles span:nth-child(5) {
+  left: 50%;
+  top: 18%;
+  --duration: 4s;
 }
 
-/* =========================
-   NAV
-========================= */
-
-nav{
-  position:fixed;
-  top:18px;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(1120px,92%);
-  z-index:1000;
-  padding:12px 18px;
-  border:1px solid var(--border);
-  background:rgba(4,10,7,.62);
-  backdrop-filter:blur(20px);
-  border-radius:22px;
-  box-shadow:0 10px 40px rgba(0,0,0,.2);
+.eng-particles span:nth-child(6) {
+  left: 62%;
+  top: 65%;
+  --duration: 6s;
 }
 
-.nav-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
+.eng-particles span:nth-child(7) {
+  left: 72%;
+  top: 30%;
+  --duration: 5s;
 }
 
-.logo{
-  font-family:"Space Grotesk",sans-serif;
-  font-weight:800;
-  font-size:18px;
-  white-space:nowrap;
+.eng-particles span:nth-child(8) {
+  left: 82%;
+  top: 72%;
+  --duration: 7s;
 }
 
-.logo .md,
-.logo .saad{
-  color:var(--green);
+.eng-particles span:nth-child(9) {
+  left: 90%;
+  top: 18%;
+  --duration: 4s;
 }
 
-.logo .rahman{
-  color:var(--red);
+.eng-particles span:nth-child(10) {
+  left: 14%;
+  top: 85%;
+  --duration: 5s;
 }
 
-.flag{
-  display:inline-flex;
-  width:24px;
-  height:16px;
-  background:#006a4e;
-  border-radius:3px;
-  margin-left:7px;
-  vertical-align:middle;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 0 12px rgba(34,197,94,.25);
+.eng-particles span:nth-child(11) {
+  left: 55%;
+  top: 82%;
+  --duration: 6s;
 }
 
-.flag::after{
-  content:"";
-  width:8px;
-  height:8px;
-  background:#f42a41;
-  border-radius:50%;
+.eng-particles span:nth-child(12) {
+  left: 92%;
+  top: 50%;
+  --duration: 5s;
 }
 
-.nav-links{
-  display:flex;
-  gap:18px;
-  align-items:center;
-}
 
-.nav-links a{
-  color:#c7d2cc;
-  font-size:13px;
-  transition:.3s;
-}
+@keyframes particleFloat {
 
-.nav-links a:hover{
-  color:white;
-}
+  0%,100% {
+    transform:
+      translate(0,0)
+      scale(.7);
 
-.mood-btn{
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.05);
-  color:white;
-  padding:9px 13px;
-  border-radius:12px;
-  cursor:pointer;
-}
-
-@media(max-width:850px){
-  .nav-links{
-    display:none;
+    opacity: .25;
   }
-}
 
-/* =========================
-   MOOD PANEL
-========================= */
+  50% {
+    transform:
+      translate(15px,-25px)
+      scale(1.5);
 
-.mood-panel{
-  position:fixed;
-  right:20px;
-  top:95px;
-  z-index:999;
-  width:230px;
-  padding:16px;
-  border:1px solid var(--border);
-  background:rgba(5,10,8,.82);
-  backdrop-filter:blur(20px);
-  border-radius:20px;
-  box-shadow:var(--shadow);
-  transform:translateX(280px);
-  transition:.5s;
-}
-
-.mood-panel.open{
-  transform:translateX(0);
-}
-
-.mood-panel h4{
-  margin-bottom:12px;
-  color:#dce8e0;
-}
-
-.mood-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-
-.mood{
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.045);
-  color:#dce8e0;
-  padding:10px 7px;
-  border-radius:11px;
-  cursor:pointer;
-  font-size:12px;
-  transition:.3s;
-}
-
-.mood:hover{
-  transform:translateY(-2px);
-  background:rgba(255,255,255,.1);
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  position:relative;
-  padding-top:100px;
-}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:60px;
-  align-items:center;
-}
-
-@media(max-width:850px){
-  .hero-grid{
-    grid-template-columns:1fr;
+    opacity: 1;
   }
+
 }
 
-.badge{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  border:1px solid rgba(34,197,94,.25);
-  background:rgba(34,197,94,.06);
-  color:#9ae6b4;
-  padding:8px 13px;
-  border-radius:999px;
-  font-size:12px;
-  margin-bottom:22px;
-}
 
-.hero h1{
-  font-family:"Space Grotesk",sans-serif;
-  font-size:clamp(44px,7vw,84px);
-  line-height:.98;
-  letter-spacing:-4px;
-  margin-bottom:22px;
-}
+/* =========================================================
+   MOBILE RESPONSIVE
+========================================================= */
 
-.hero h1 .green{
-  color:var(--green);
-}
+@media (max-width: 768px) {
 
-.hero h1 .red{
-  color:var(--red);
-}
-
-.hero-sub{
-  color:#aebbb3;
-  font-size:18px;
-  line-height:1.8;
-  max-width:680px;
-}
-
-.hero-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:30px;
-}
-
-.btn{
-  padding:13px 18px;
-  border-radius:13px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.055);
-  color:white;
-  font-weight:600;
-  font-size:13px;
-  transition:.35s;
-}
-
-.btn:hover{
-  transform:translateY(-3px);
-  background:rgba(255,255,255,.1);
-  box-shadow:0 12px 35px rgba(0,0,0,.25);
-}
-
-.btn.primary{
-  background:linear-gradient(135deg,#16a34a,#22c55e);
-  color:#041108;
-  border:none;
-}
-
-.hero-card{
-  position:relative;
-  min-height:390px;
-  border:1px solid var(--border);
-  border-radius:30px;
-  background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
-  backdrop-filter:blur(18px);
-  box-shadow:var(--shadow);
-  padding:30px;
-  overflow:hidden;
-}
-
-.hero-card::before{
-  content:"";
-  position:absolute;
-  width:220px;
-  height:220px;
-  border-radius:50%;
-  right:-80px;
-  top:-80px;
-  background:rgba(34,197,94,.12);
-  filter:blur(20px);
-}
-
-.engineer-orbit{
-  height:270px;
-  position:relative;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.orbit{
-  position:absolute;
-  width:210px;
-  height:210px;
-  border:1px solid rgba(134,239,172,.18);
-  border-radius:50%;
-  animation:orbitSpin 10s linear infinite;
-}
-
-.orbit2{
-  width:150px;
-  height:150px;
-  animation-duration:7s;
-  animation-direction:reverse;
-}
-
-@keyframes orbitSpin{
-  to{transform:rotate(360deg)}
-}
-
-.engineer-icon{
-  font-size:100px;
-  filter:drop-shadow(0 0 30px rgba(34,197,94,.25));
-}
-
-.hero-card-info{
-  position:absolute;
-  bottom:25px;
-  left:30px;
-  right:30px;
-}
-
-.hero-card-info strong{
-  display:block;
-  font-family:"Space Grotesk";
-  font-size:20px;
-}
-
-.hero-card-info span{
-  color:#9eaba3;
-  font-size:12px;
-}
-
-/* =========================
-   SECTIONS
-========================= */
-
-section{
-  padding:110px 0;
-  position:relative;
-}
-
-.section-head{
-  margin-bottom:45px;
-}
-
-.kicker{
-  color:var(--green2);
-  font-size:12px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  margin-bottom:10px;
-}
-
-.section-title{
-  font-family:"Space Grotesk",sans-serif;
-  font-size:clamp(32px,5vw,52px);
-  letter-spacing:-2px;
-}
-
-.section-desc{
-  color:var(--muted);
-  max-width:750px;
-  line-height:1.8;
-  margin-top:12px;
-}
-
-/* =========================
-   STATS
-========================= */
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-
-@media(max-width:800px){
-  .stats{
-    grid-template-columns:repeat(2,1fr);
+  .engineering-visual {
+    min-height: 600px;
+    border-radius: 20px;
   }
-}
 
-.stat{
-  padding:28px;
-  border:1px solid var(--border);
-  background:var(--card);
-  border-radius:20px;
-}
+  .eng-scene {
+    transform:
+      translateX(-50%)
+      scale(.72);
 
-.stat strong{
-  font-family:"Space Grotesk";
-  font-size:34px;
-}
-
-.stat span{
-  display:block;
-  color:var(--muted);
-  margin-top:6px;
-  font-size:12px;
-}
-
-/* =========================
-   CARDS
-========================= */
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
-
-@media(max-width:750px){
-  .cards{
-    grid-template-columns:1fr;
+    transform-origin:
+      bottom center;
   }
-}
 
-.card{
-  border:1px solid var(--border);
-  background:var(--card);
-  border-radius:24px;
-  padding:28px;
-  transition:.4s;
-}
-
-.card:hover{
-  transform:translateY(-7px);
-  background:var(--card2);
-  box-shadow:var(--shadow);
-}
-
-.card h3{
-  font-family:"Space Grotesk";
-  font-size:22px;
-  margin-bottom:10px;
-}
-
-.card h4{
-  color:#9ae6b4;
-  font-size:13px;
-  margin-bottom:12px;
-}
-
-.card p,
-.card li{
-  color:#aebbb3;
-  line-height:1.75;
-  font-size:14px;
-}
-
-.card ul{
-  padding-left:18px;
-}
-
-/* =========================
-   AGENCIES
-========================= */
-
-.agencies{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-
-@media(max-width:900px){
-  .agencies{
-    grid-template-columns:repeat(2,1fr);
+  .construction-label {
+    left: 12px;
+    top: 110px;
   }
-}
 
-@media(max-width:500px){
-  .agencies{
-    grid-template-columns:1fr;
+  .environment-label {
+    right: 12px;
+    top: 250px;
   }
-}
 
-.agency{
-  padding:25px;
-  border-radius:22px;
-  border:1px solid var(--border);
-  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
-  transition:.4s;
-}
-
-.agency:hover{
-  transform:translateY(-8px);
-  border-color:rgba(134,239,172,.3);
-}
-
-.agency-icon{
-  font-size:32px;
-  margin-bottom:15px;
-}
-
-.agency h3{
-  font-family:"Space Grotesk";
-}
-
-.agency p{
-  color:#aebbb3;
-  font-size:12px;
-  line-height:1.6;
-  margin:8px 0 18px;
-}
-
-.agency a{
-  display:inline-block;
-  color:#86efac;
-  font-size:12px;
-}
-
-/* =========================
-   PROJECTS
-========================= */
-
-.projects{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
-
-@media(max-width:800px){
-  .projects{
-    grid-template-columns:1fr;
+  .transport-label {
+    left: 12px;
+    bottom: 25px;
   }
-}
 
-.project{
-  position:relative;
-  padding:27px;
-  border-radius:23px;
-  border:1px solid var(--border);
-  background:var(--card);
-  overflow:hidden;
-  transition:.4s;
-}
-
-.project:hover{
-  transform:translateY(-6px);
-  box-shadow:var(--shadow);
-}
-
-.project::after{
-  content:"";
-  position:absolute;
-  width:180px;
-  height:180px;
-  right:-100px;
-  bottom:-100px;
-  border-radius:50%;
-  background:rgba(34,197,94,.08);
-  filter:blur(15px);
-}
-
-.project-tag{
-  color:#86efac;
-  font-size:11px;
-  letter-spacing:1px;
-  margin-bottom:12px;
-}
-
-.project h3{
-  font-family:"Space Grotesk";
-  font-size:19px;
-  line-height:1.4;
-  margin-bottom:10px;
-}
-
-.project p{
-  color:#aebbb3;
-  font-size:13px;
-  line-height:1.7;
-}
-
-.project-meta{
-  margin-top:16px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-}
-
-.project-meta span{
-  font-size:10px;
-  padding:6px 9px;
-  border-radius:999px;
-  background:rgba(255,255,255,.06);
-  color:#b9c6bf;
-}
-
-/* =========================
-   TIMELINE
-========================= */
-
-.timeline{
-  position:relative;
-  max-width:900px;
-  margin:auto;
-}
-
-.timeline::before{
-  content:"";
-  position:absolute;
-  left:16px;
-  top:0;
-  bottom:0;
-  width:1px;
-  background:linear-gradient(var(--green),transparent);
-}
-
-.timeline-item{
-  position:relative;
-  padding-left:55px;
-  margin-bottom:38px;
-}
-
-.timeline-dot{
-  position:absolute;
-  left:10px;
-  top:4px;
-  width:13px;
-  height:13px;
-  border-radius:50%;
-  background:var(--green);
-  box-shadow:0 0 20px rgba(34,197,94,.6);
-}
-
-/* =========================
-   SKILLS
-========================= */
-
-.skill-wrap{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-}
-
-.skill{
-  padding:10px 13px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.045);
-  color:#c8d4ce;
-  font-size:12px;
-  transition:.3s;
-}
-
-.skill:hover{
-  transform:translateY(-3px);
-  border-color:rgba(134,239,172,.3);
-}
-
-/* =========================
-   CONTACT
-========================= */
-
-.contact-box{
-  padding:45px;
-  border-radius:30px;
-  border:1px solid var(--border);
-  background:
-    radial-gradient(circle at 90% 10%,rgba(34,197,94,.12),transparent 30%),
-    rgba(255,255,255,.045);
-  text-align:center;
-}
-
-.contact-box h2{
-  font-family:"Space Grotesk";
-  font-size:42px;
-  margin-bottom:12px;
-}
-
-.contact-box p{
-  color:var(--muted);
-  margin-bottom:25px;
-}
-
-.socials{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-  padding:35px 0;
-  border-top:1px solid var(--border);
-  color:#7f8d85;
-  text-align:center;
-  font-size:12px;
-}
-
-/* =========================
-   MOODS
-========================= */
-
-body.moon{
-  --bg:#080d18;
-  --bg2:#111b31;
-  --green:#9cc9ff;
-  --green2:#c8e3ff;
-}
-
-body.night{
-  --bg:#03040b;
-  --bg2:#080b17;
-  --green:#8ab4ff;
-  --green2:#bcd3ff;
-}
-
-body.day{
-  --bg:#eef5f1;
-  --bg2:#dcebe3;
-  --text:#17221c;
-  --muted:#52625a;
-  --card:rgba(255,255,255,.58);
-  --card2:rgba(255,255,255,.82);
-  --border:rgba(20,40,30,.12);
-  --green:#16803c;
-  --green2:#126b33;
-}
-
-body.day nav{
-  background:rgba(255,255,255,.7);
-}
-
-body.forest{
-  --bg:#06140d;
-  --bg2:#0b2417;
-  --green:#4ade80;
-  --green2:#bbf7d0;
-}
-
-body.ocean{
-  --bg:#03141c;
-  --bg2:#062b3a;
-  --green:#38bdf8;
-  --green2:#bae6fd;
-}
-
-body.snow{
-  --bg:#08131c;
-  --bg2:#dceaf2;
-  --green:#4ade80;
-  --green2:#dcfce7;
-}
-
-.snowfall{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-2;
-  opacity:0;
-}
-
-body.snow .snowfall{
-  opacity:1;
-}
-
-.snowflake{
-  position:absolute;
-  top:-20px;
-  color:white;
-  animation:snowfall linear infinite;
-  opacity:.8;
-}
-
-@keyframes snowfall{
-  to{
-    transform:translateY(110vh) translateX(100px) rotate(360deg);
+  .engineering-label {
+    padding: 9px 12px;
   }
+
+  .engineering-label strong {
+    font-size: 9px;
+  }
+
+  .engineering-label small {
+    font-size: 8px;
+  }
+
+  .label-icon {
+    font-size: 19px;
+  }
+
 }
 
-/* =========================
-   REVEAL
-========================= */
 
-.reveal{
-  opacity:0;
-  transform:translateY(35px);
-  transition:opacity .8s ease,transform .8s ease;
+/* =========================================================
+   MOUSE INTERACTION
+========================================================= */
+
+.engineering-visual {
+  --mx: 0px;
+  --my: 0px;
 }
 
-.reveal.show{
-  opacity:1;
-  transform:none;
+.eng-scene {
+  transition:
+    transform .25s ease-out;
 }
 
-/* =========================
-   TOP BUTTON
-========================= */
-
-.top{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.08);
-  color:white;
-  cursor:pointer;
-  z-index:900;
-  backdrop-filter:blur(10px);
-}
 </style>
-</head>
 
-<body>
-
-<!-- LOADER -->
-<div class="loader" id="loader">
-  <div class="loader-box">
-    <div class="loader-ring"></div>
-    <p>LOADING PORTFOLIO</p>
-  </div>
-</div>
-
-<!-- GALAXY -->
-<div class="galaxy-layer">
-  <div class="nebula"></div>
-  <div class="blackhole"></div>
-  <div class="light-burst" style="left:22%;top:25%;"></div>
-  <div class="light-burst" style="left:75%;top:70%;animation-delay:2s;"></div>
-</div>
-
-<div id="particles"></div>
-<div class="snowfall" id="snowfall"></div>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-
-    <a href="#home" class="logo">
-      <span class="md">MD.</span>
-      <span class="rahman">NAIMUR RAHMAN</span>
-      <span class="saad"> SAAD</span>
-      <span class="flag"></span>
-    </a>
-
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <button class="mood-btn" onclick="toggleMood()">🎨 Mood</button>
-
-  </div>
-</nav>
-
-<!-- MOOD PANEL -->
-<div class="mood-panel" id="moodPanel">
-  <h4>Choose Your Atmosphere</h4>
-
-  <div class="mood-grid">
-    <button class="mood" onclick="setMood('galaxy')">🌌 Galaxy</button>
-    <button class="mood" onclick="setMood('moon')">🌙 Moonlight</button>
-    <button class="mood" onclick="setMood('night')">🌃 Night</button>
-    <button class="mood" onclick="setMood('day')">☀️ Day</button>
-    <button class="mood" onclick="setMood('forest')">🌲 Forest</button>
-    <button class="mood" onclick="setMood('ocean')">🌊 Ocean</button>
-    <button class="mood" onclick="setMood('snow')">❄️ Snow</button>
-  </div>
-</div>
-
-<!-- HERO -->
-<header class="hero" id="home">
-  <div class="container hero-grid">
-
-    <div class="reveal">
-
-      <div class="badge">
-        🇧🇩 Civil Engineer • Construction • Project Management
-      </div>
-
-      <h1>
-        <span class="green">MD.</span>
-        <span class="red">Naimur Rahman</span>
-        <span class="green">Saad</span>
-      </h1>
-
-      <p class="hero-sub">
-        Civil Engineer focused on Construction Engineering & Project Management,
-        with 6+ years of practical construction experience across roads,
-        RCC works, building construction, rehabilitation and water-resource
-        protection projects in Bangladesh.
-      </p>
-
-      <div class="hero-buttons">
-        <a class="btn primary" href="#projects">Explore Projects →</a>
-        <a class="btn" href="#contact">Contact Me</a>
-        <a class="btn" href="CV.pdf" download>📄 Download CV</a>
-      </div>
-
-    </div>
-
-    <div class="hero-card reveal">
-
-      <div class="engineer-orbit">
-        <div class="orbit"></div>
-        <div class="orbit orbit2"></div>
-        <div class="engineer-icon">🏗️</div>
-      </div>
-
-      <div class="hero-card-info">
-        <strong>Construction Engineering</strong>
-        <span>Site Engineering • QA/QC • Infrastructure • Project Delivery</span>
-      </div>
-
-    </div>
-
-  </div>
-</header>
-
-<!-- STATS -->
-<section>
-  <div class="container">
-    <div class="stats reveal">
-
-      <div class="stat">
-        <strong>6+</strong>
-        <span>Years Practical Experience</span>
-      </div>
-
-      <div class="stat">
-        <strong>11+</strong>
-        <span>Government Projects</span>
-      </div>
-
-      <div class="stat">
-        <strong>৳25.7Cr</strong>
-        <span>Project Value Exposure</span>
-      </div>
-
-      <div class="stat">
-        <strong>~$2.1M</strong>
-        <span>Approx. USD Equivalent</span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-
-    <div class="section-head reveal">
-      <div class="kicker">Profile</div>
-      <h2 class="section-title">Professional Profile</h2>
-      <p class="section-desc">
-        Civil Engineering graduate with extensive contractor-side construction
-        experience through M/S. Mahima Steel & Cong., progressing from Trainee
-        Site Engineer to Site Engineer.
-      </p>
-    </div>
-
-    <div class="cards">
-
-      <div class="card reveal">
-        <h3>Construction Experience</h3>
-        <p>
-          Experienced in site supervision, QA/QC, construction material testing,
-          reinforcement inspection, BBS review, quantity verification,
-          contractor billing, material reconciliation, project coordination
-          and construction documentation.
-        </p>
-      </div>
-
-      <div class="card reveal">
-        <h3>Infrastructure Exposure</h3>
-        <p>
-          Hands-on exposure to road construction and rehabilitation, RCC roads,
-          rigid pavement, building works, emergency protection and riverbank
-          protection projects under LGED, PWD, BWDB and RHD.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- GOVERNMENT AGENCIES -->
-<section id="agencies">
-  <div class="container">
-
-    <div class="section-head reveal">
-      <div class="kicker">Public Infrastructure</div>
-      <h2 class="section-title">Government Agencies</h2>
-      <p class="section-desc">
-        Government-sector project exposure across four major engineering agencies
-        of Bangladesh. Click any agency to visit its official website.
-      </p>
-    </div>
-
-    <div class="agencies">
-
-      <div class="agency reveal">
-        <div class="agency-icon">🏗️</div>
-        <h3>LGED</h3>
-        <p>
-          Local Government Engineering Department — rural roads,
-          RCC roads, market development, rehabilitation and local infrastructure.
-        </p>
-        <a href="https://www.lged.gov.bd/" target="_blank">
-          Official Website ↗
-        </a>
-      </div>
-
-      <div class="agency reveal">
-        <div class="agency-icon">🏢</div>
-        <h3>PWD</h3>
-        <p>
-          Public Works Department — building construction,
-          structural works, civil works and government infrastructure.
-        </p>
-        <a href="https://pwd.gov.bd/" target="_blank">
-          Official Website ↗
-        </a>
-      </div>
-
-      <div class="agency reveal">
-        <div class="agency-icon">🌊</div>
-        <h3>BWDB</h3>
-        <p>
-          Bangladesh Water Development Board — emergency protection,
-          riverbank protection and water-resource infrastructure.
-        </p>
-        <a href="https://www.bwdb.gov.bd/" target="_blank">
-          Official Website ↗
-        </a>
-      </div>
-
-      <div class="agency reveal">
-        <div class="agency-icon">🛣️</div>
-        <h3>RHD</h3>
-        <p>
-          Roads and Highways Department — national and regional road
-          infrastructure, pavement and rehabilitation works.
-        </p>
-        <a href="https://rhd.gov.bd/" target="_blank">
-          Official Website ↗
-        </a>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="container">
-
-    <div class="section-head reveal">
-      <div class="kicker">Career</div>
-      <h2 class="section-title">Professional Experience</h2>
-    </div>
-
-    <div class="timeline">
-
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-
-        <div class="card">
-          <h3>M/S. Mahima Steel & Cong.</h3>
-          <h4>Site Engineer | 2024 – Present</h4>
-
-          <ul>
-            <li>Supervise road and civil infrastructure construction.</li>
-            <li>Monitor earthwork, excavation, filling, compaction and pavement works.</li>
-            <li>Inspect reinforcement, formwork, concrete casting and curing.</li>
-            <li>Perform/assist QA/QC and construction material testing.</li>
-            <li>Verify quantities, contractor billing and material reconciliation.</li>
-            <li>Coordinate workers, suppliers, contractors and project personnel.</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-
-        <div class="card">
-          <h3>M/S. Mahima Steel & Cong.</h3>
-          <h4>Trainee Site Engineer | 2020 – 2023</h4>
-
-          <ul>
-            <li>Assisted senior engineers in construction execution.</li>
-            <li>Supported quality control and material testing.</li>
-            <li>Maintained measurements and progress documentation.</li>
-            <li>Supported site supervision and project coordination.</li>
-          </ul>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="container">
-
-    <div class="section-head reveal">
-      <div class="kicker">Field Portfolio</div>
-      <h2 class="section-title">Government Project Experience</h2>
-      <p class="section-desc">
-        Selected civil infrastructure projects executed through
-        M/S. Mahima Steel & Cong.
-      </p>
-    </div>
-
-    <div class="projects">
-
-      <div class="project reveal">
-        <div class="project-tag">LGED • KURIGRAM</div>
-        <h3>Naykerhat Rural Market Development (NOBIDEP)</h3>
-        <p>
-          Tender ID: 107138 | Package: WNOBI-Kur-RM-147 (C)
-        </p>
-        <div class="project-meta">
-          <span>Site Engineer</span>
-          <span>Market Development</span>
-          <span>Infrastructure</span>
-        </div>
-      </div>
-
-      <div class="project reveal">
-        <div class="project-tag">LGED • SIRAJGANJ</div>
-        <h3>Bagbati–Kazipur C&B Ghorachora Monsur Ali Road to Sarkar Bari Jame Mosque RCC Road</h3>
-        <p>
-          Tender ID: 810008 | Package: ADP/SAD/SER/2022-23/06
-        </p>
-        <div class="project-meta">
-          <span>RCC Road</span>
-          <span>QA/QC</span>
-          <span>Site Measurement</span>
-        </div>
-      </div>
-
-      <div class="project reveal">
-        <div class="project-tag">LGED • SIRAJGANJ</div>
-        <h3>Char Someshpur Central Mosque Washblock & Ojukhana</h3>
-        <p>
-          Tender ID: 757953 | Package: GSID-2/SRJ/DW-04
-        </p>
-        <div class="project-meta">
-          <span>Building Works</span>
-          <span>RCC</span>
-          <span>Repair</span>
-        </div>
-      </div>
-
-      <div class="project reveal">
-        <div class="project-tag">LGED • SIRAJGANJ</div>
-        <h3>Kaelgati Mosque to Kalumondol Bari RCC Road Development</h3>
-        <p>
-          Tender ID: 810013 | Package: UDF/SAD/SER/2022-23
-        </p>
-        <div class="project-meta">
-          <span>RCC Road</span>
-          <span>Formwork</span>
-          <span>Concrete</span>
-        </div>
-      </div>
-
-      <div class="project reveal">
-        <div class="project-tag">LGED • SIRAJGANJ</div>
-        <h3>Tamai RHD (Bashtola) to Char Tengrail Road Improvement</h3>
-        <p>
-          700 m | Approx. Project Value: BDT 8.11 Crore |
-          Package: LGED/XEN/Siraj/2017/1214
-        </p>
-        <div class="project-meta">
-          <span>Road Improvement</span>
-          <span>Earthwork</span>
-          <span>Pavement</span>
-        </div>
-      </div>
-
-      <div class="project reveal">
-        <div class="project-tag">PWD • SIRAJGANJ</div>
-        <h3>07 RAB Complex Project (RAB-12), Hatikumrul</h3>
-        <p>
-          Package: 02(U)(OTM)/2015-2016
-        </p>
-        <div class="project-meta">
-          <span>Building</span>
-          <span>Structural Works</span>
-          <span>Quantity</span>
-        </div>
-      </div>
-
-      <div class="project reveal">
-        <div class="project-tag">LGED</div>
-        <h3>Kuthi Satbaria UZR to Khas Satbaria Utterpara Road Improvement</h3>
-        <p>
-          805 m | Approx. Project Value: BDT 1.68 Crore |
-          Tender ID: 599746 | Package: IRIDP-3/SRJ/DW-35
-        </p>
-        <div class="project-meta">
-          <span>Road Improvement</span>
-          <span>Material Management</span>
-          <span>Measurement</span>
-        </div>
-      </div>
-
-      <div class="project reveal">
-        <div class="project-tag">LGED • PABNA</div>
-        <h3>Masumdia UP Office to Dear Bramndi Hat Road Rehabilitation</h3>
-        <p>
-          1,240 m | ID No.: 615468 |
-          Package: GOBM/2021-22/W-33
-        </p>
-        <div class="project-meta">
-          <span>Rehabilitation</span>
-          <span>Pavement</span>
-          <span>Inspection</span>
-        </div>
-      </div>
-
-      <div class="project reveal">
-        <div class="project-tag">BWDB • SIRAJGANJ</div>
-        <h3>Emergency Repair & Protection Work at Betil Spur-1, Belkuchi</h3>
-        <p>
-          Tender ID: 535754 |
-          Package: L/NDR/08/2020-2021
-        </p>
-        <div class="project-meta">
-          <span>Emergency Work</span>
-          <span>Riverbank Protection</span>
-          <span>Coordination</span>
-        </div>
-      </div>
-
-      <div class="project reveal">
-        <div class="project-tag">BWDB • SIRAJGANJ</div>
-        <h3>Temporary Emergency Protection Work — Sirajganj O&M Division</h3>
-        <p>
-          Package: I-NDR-05/2021
-        </p>
-        <div class="project-meta">
-          <span>Protection</span>
-          <span>Measurement</span>
-          <span>Documentation</span>
-        </div>
-      </div>
-
-      <div class="project reveal">
-        <div class="project-tag">RHD • SIRAJGANJ</div>
-        <h3>Tarash–Hamkuria (Z-6032) Road HBB Pavement Repair</h3>
-        <p>
-          Tender ID: 621337 LTM |
-          Package: 12/e-GP/eeshid/2021-2022
-        </p>
-        <div class="project-meta">
-          <span>HBB Pavement</span>
-          <span>Repair</span>
-          <span>Quality Monitoring</span>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education">
-  <div class="container">
-
-    <div class="section-head reveal">
-      <div class="kicker">Academic Journey</div>
-      <h2 class="section-title">Education</h2>
-    </div>
-
-    <div class="cards">
-
-      <div class="card reveal">
-        <h3>Daffodil International University</h3>
-        <h4>B.Sc. in Civil Engineering | January 2019 – May 2026</h4>
-
-        <p>
-          CGPA: <strong>2.57/4.00</strong><br>
-          Medium of Instruction: English
-        </p>
-
-        <br>
-
-        <a class="btn" href="https://www.daffodilvarsity.edu.bd/" target="_blank">
-          DIU Official Website ↗
-        </a>
-
-        <br><br>
-
-        <a class="btn" href="https://faculty.daffodilvarsity.edu.bd/teachers/ce" target="_blank">
-          Civil Engineering Department ↗
-        </a>
-      </div>
-
-      <div class="card reveal">
-        <h3>Sirajganj Collectorate School & College</h3>
-        <h4>HSC, Science | 2018</h4>
-
-        <p>
-          GPA: <strong>3.17/5.00</strong>
-        </p>
-
-        <br>
-
-        <a class="btn" href="https://scsc.edu.bd/" target="_blank">
-          Official Website ↗
-        </a>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- THESIS -->
-<section>
-  <div class="container">
-
-    <div class="section-head reveal">
-      <div class="kicker">Research</div>
-      <h2 class="section-title">Undergraduate Thesis</h2>
-    </div>
-
-    <div class="card reveal">
-
-      <h3>
-        Investigation on the Causes of Cracks in RCC Structures
-        and Possible Preventive Measures
-      </h3>
-
-      <br>
-
-      <ul>
-        <li>
-          Investigated structural and non-structural cracking in RCC structures.
-        </li>
-
-        <li>
-          Examined construction, material, environmental and workmanship factors.
-        </li>
-
-        <li>
-          Reviewed preventive measures and repair approaches to improve durability.
-        </li>
-
-        <li>
-          Connected academic investigation with practical construction and QA/QC observations.
-        </li>
-      </ul>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="container">
-
-    <div class="section-head reveal">
-      <div class="kicker">Engineering Toolkit</div>
-      <h2 class="section-title">Technical Skills</h2>
-    </div>
-
-    <div class="skill-wrap reveal">
-
-      <div class="skill">Site Supervision</div>
-      <div class="skill">RCC Construction</div>
-      <div class="skill">Concrete Casting</div>
-      <div class="skill">Reinforcement Inspection</div>
-      <div class="skill">Cover Block Inspection</div>
-      <div class="skill">BBS Review</div>
-      <div class="skill">Quantity Verification</div>
-      <div class="skill">Contractor Billing</div>
-      <div class="skill">Material Reconciliation</div>
-
-      <div class="skill">Slump Testing</div>
-      <div class="skill">Concrete Cube Sampling</div>
-      <div class="skill">Bentonite Slurry Testing</div>
-      <div class="skill">Sand Field-Density Testing</div>
-      <div class="skill">Brick Testing</div>
-
-      <div class="skill">Construction Planning</div>
-      <div class="skill">Progress Monitoring</div>
-      <div class="skill">Project Execution</div>
-      <div class="skill">Site Coordination</div>
-      <div class="skill">Material Management</div>
-
-      <div class="skill">AutoCAD 2D</div>
-      <div class="skill">AutoCAD 3D</div>
-      <div class="skill">ETABS</div>
-      <div class="skill">Primavera P6</div>
-      <div class="skill">Revit</div>
-      <div class="skill">Microsoft Excel</div>
-      <div class="skill">Microsoft Word</div>
-      <div class="skill">PowerPoint</div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- GRADUATE INTERESTS -->
-<section>
-  <div class="container">
-
-    <div class="section-head reveal">
-      <div class="kicker">Future Direction</div>
-      <h2 class="section-title">Graduate Study Interests</h2>
-    </div>
-
-    <div class="cards">
-
-      <div class="card reveal">
-        <h3>Construction Engineering & Project Management</h3>
-        <p>
-          Construction Planning & Scheduling • Quality Management •
-          Project Risk Management • Construction Methods • Project Delivery
-        </p>
-      </div>
-
-      <div class="card reveal">
-        <h3>Environmental Engineering</h3>
-        <p>
-          Sustainable Infrastructure • Environmental Management •
-          Water & Wastewater Systems • Pollution Control
-        </p>
-      </div>
-
-      <div class="card reveal">
-        <h3>Transportation Engineering</h3>
-        <p>
-          Transportation Infrastructure • Transportation Planning •
-          Traffic Engineering • Pavement Rehabilitation • Sustainable Transportation
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ACADEMIC -->
-<section>
-  <div class="container">
-
-    <div class="section-head reveal">
-      <div class="kicker">Academic Record</div>
-      <h2 class="section-title">Selected Academic Highlights</h2>
-    </div>
-
-    <div class="card reveal">
-
-      <div class="skill-wrap">
-
-        <div class="skill">Physics I — A+</div>
-        <div class="skill">Physics I Laboratory — A+</div>
-        <div class="skill">English — A</div>
-        <div class="skill">Environmental Engineering II Lab — A-</div>
-        <div class="skill">Socio Economics of Development Project — A-</div>
-        <div class="skill">Transportation Engineering I Lab — B+</div>
-        <div class="skill">Engineering Ethics — B+</div>
-        <div class="skill">Mathematics I — B+</div>
-        <div class="skill">Geotechnical Engineering II — B</div>
-        <div class="skill">Surveying — B</div>
-        <div class="skill">Water Resources Engineering II Lab — B-</div>
-        <div class="skill">Climate Change & Sustainable Development — B-</div>
-        <div class="skill">Quantity Surveying Laboratory — B-</div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-
-    <div class="contact-box reveal">
-
-      <div class="kicker">Let's Connect</div>
-
-      <h2>Build. Manage. Deliver.</h2>
-
-      <p>
-        Civil Engineering • Construction Engineering • Project Management
-      </p>
-
-      <div class="socials">
-
-        <a class="btn primary"
-           href="mailto:naimurrahmansaad0@gmail.com">
-          ✉ Email
-        </a>
-
-        <a class="btn"
-           href="https://www.linkedin.com/in/md-naimur-rahman-saad-4240ba431"
-           target="_blank">
-          LinkedIn ↗
-        </a>
-
-        <a class="btn"
-           href="https://github.com/nrsaad"
-           target="_blank">
-          GitHub ↗
-        </a>
-
-        <a class="btn"
-           href="CV.pdf"
-           download>
-          📄 Download CV
-        </a>
-
-      </div>
-
-      <br>
-
-      <p>
-        Sirajganj, Bangladesh • +880 1570-279183
-      </p>
-
-    </div>
-
-  </div>
-</section>
-
-<footer>
-  © 2026 MD. Naimur Rahman Saad 🇧🇩
-  <br>
-  Civil Engineer | Construction Engineering & Project Management
-</footer>
-
-<button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  ↑
-</button>
 
 <script>
 
-/* =========================
-   LOADER
-========================= */
+/* =========================================================
+   SUBTLE MOUSE PARALLAX
+========================================================= */
 
-window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    document.getElementById("loader").classList.add("hide");
-  },700);
-});
+const engineeringVisual =
+  document.querySelector(".engineering-visual");
 
+const engineeringScene =
+  document.querySelector(".eng-scene");
 
-/* =========================
-   MOOD
-========================= */
+if (engineeringVisual && engineeringScene) {
 
-function toggleMood(){
-  document.getElementById("moodPanel").classList.toggle("open");
-}
+  engineeringVisual.addEventListener(
+    "mousemove",
+    function(e) {
 
-function setMood(mood){
+      const rect =
+        engineeringVisual.getBoundingClientRect();
 
-  document.body.classList.remove(
-    "galaxy",
-    "moon",
-    "night",
-    "day",
-    "forest",
-    "ocean",
-    "snow"
+      const x =
+        (e.clientX - rect.left)
+        / rect.width
+        - 0.5;
+
+      const y =
+        (e.clientY - rect.top)
+        / rect.height
+        - 0.5;
+
+      engineeringScene.style.transform =
+        `translateX(-50%)
+         rotateY(${x * 2}deg)
+         rotateX(${y * -1.5}deg)`;
+
+    }
   );
 
-  document.body.classList.add(mood);
 
-  if(mood === "galaxy"){
-    createStars(160);
-  }
+  engineeringVisual.addEventListener(
+    "mouseleave",
+    function() {
 
-  if(mood === "snow"){
-    createSnow(70);
-  }
-}
+      engineeringScene.style.transform =
+        "translateX(-50%)";
 
-
-/* =========================
-   DEFAULT GALAXY
-========================= */
-
-setMood("galaxy");
-
-
-/* =========================
-   PARTICLES
-========================= */
-
-function createStars(amount){
-
-  const container=document.getElementById("particles");
-  container.innerHTML="";
-
-  for(let i=0;i<amount;i++){
-
-    const star=document.createElement("div");
-
-    star.className="particle";
-
-    star.style.left=Math.random()*100+"%";
-    star.style.top=Math.random()*100+"%";
-    star.style.opacity=(Math.random()*.8+.1);
-
-    const size=Math.random()*3+1;
-
-    star.style.width=size+"px";
-    star.style.height=size+"px";
-
-    star.style.animationDuration=(Math.random()*15+8)+"s";
-    star.style.animationDelay=(-Math.random()*15)+"s";
-
-    container.appendChild(star);
-  }
-}
-
-createStars(160);
-
-
-/* =========================
-   SNOW
-========================= */
-
-function createSnow(amount){
-
-  const container=document.getElementById("snowfall");
-  container.innerHTML="";
-
-  for(let i=0;i<amount;i++){
-
-    const flake=document.createElement("div");
-
-    flake.className="snowflake";
-    flake.innerHTML="❄";
-
-    flake.style.left=Math.random()*100+"%";
-    flake.style.fontSize=(Math.random()*10+8)+"px";
-    flake.style.animationDuration=(Math.random()*8+6)+"s";
-    flake.style.animationDelay=(-Math.random()*10)+"s";
-
-    container.appendChild(flake);
-  }
-}
-
-createSnow(70);
-
-
-/* =========================
-   MOUSE GALAXY INTERACTION
-========================= */
-
-document.addEventListener("mousemove",(e)=>{
-
-  if(!document.body.classList.contains("galaxy")) return;
-
-  const x=(e.clientX/window.innerWidth-.5);
-  const y=(e.clientY/window.innerHeight-.5);
-
-  const nebula=document.querySelector(".nebula");
-
-  if(nebula){
-    nebula.style.marginLeft=(x*25)+"px";
-    nebula.style.marginTop=(y*25)+"px";
-  }
-
-  document.querySelectorAll(".particle").forEach((star,i)=>{
-
-    if(i%3===0){
-      star.style.transform=
-        `translate(${x*20}px,${y*20}px)`;
     }
+  );
 
-  });
-
-});
-
-
-/* =========================
-   REVEAL ANIMATION
-========================= */
-
-const observer=new IntersectionObserver(
-  entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add("show");
-      }
-    });
-  },
-  {threshold:.12}
-);
-
-document.querySelectorAll(".reveal").forEach(el=>{
-  observer.observe(el);
-});
-
-
-/* =========================
-   CLOSE MOOD WHEN CLICK OUTSIDE
-========================= */
-
-document.addEventListener("click",(e)=>{
-
-  const panel=document.getElementById("moodPanel");
-  const btn=document.querySelector(".mood-btn");
-
-  if(
-    panel.classList.contains("open") &&
-    !panel.contains(e.target) &&
-    !btn.contains(e.target)
-  ){
-    panel.classList.remove("open");
-  }
-
-});
+}
 
 </script>
-
-</body>
-</html>
 ```
+
+**এটা কী করবে:**
+🏗️ Construction Management → animated building + tower crane
+🌱 Environmental Engineering → trees + water + sustainable landscape
+🛣️ Transportation Engineering → futuristic road + moving vehicle
+📐 Engineering → blueprint/grid + technical visualization
+✨ সবকিছু **HTML/CSS/JS-এর ভিতরেই**, কোনো ছবি upload করার দরকার নেই।
