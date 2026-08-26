@@ -17,14 +17,28 @@ section{padding:68px 0}.section-head{display:flex;justify-content:space-between;
 </style>
 </head>
 <body>
-<header class="top"><div class="container nav"><div class="brand">NAIMUR <span>RAHMAN SAAD</span></div><nav class="navlinks"><a href="#home">Home</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#future">Future 2050</a><a href="#contact">Contact</a></nav></div></header>
+<header class="top"><div class="container nav"><div class="brand">NAIMUR <span>RAHMAN SAAD</span></div><nav class="navlinks"><a href="#home">Home</a><a href="#exposure">Exposure</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#future">Future 2050</a><a href="#contact">Contact</a></nav></div></header>
 
 <section class="hero" id="home"><div class="container hero-grid"><div>
 <span class="kicker">🇧🇩 Civil Engineer • Construction Engineering • Project Management</span>
 <h1>Build Better.<br>Control Cost.<br><span style="color:var(--accent)">Protect Value.</span></h1>
-<p>One-click project command centers covering estimation, BOQ, quantity control, measurement, billing, labour productivity, materials, QA/QC, cost control, profit analysis and Google Maps.</p>
+<p>One-click project command centers covering estimation, BOQ, quantity control, measurement, billing, labour productivity, materials, QA/QC, cost control, profit analysis, Google Maps, BDT/USD live conversion, and the full Future Engineering 2050 mood system.</p>
 <div class="actions"><a class="btn primary" href="#projects">Explore 13 Projects</a><a class="btn" href="https://github.com/nrsaad/naimur-rahman-saad.github.io" target="_blank">GitHub</a><a class="btn" href="https://www.linkedin.com/in/md-naimur-rahman-saad-4240ba431/" target="_blank">LinkedIn</a></div>
 </div><div class="hero-card"><div class="fx-ticker"><span>USD/BDT LIVE</span><strong id="liveFx">Loading…</strong><em id="fxMove">—</em><small id="fxTime">Waiting for market feed</small></div><div class="stat-grid"><div class="stat"><b>13+</b><small>Government Projects</small></div><div class="stat"><b>BDT</b><small>Project values</small></div><div class="stat"><b>USD</b><small>Live equivalent</small></div><div class="stat"><b>A–Z</b><small>Command center</small></div></div><p class="muted">Live USD/BDT: <b id="rateText">Loading…</b></p></div></div></section>
+
+<section id="exposure"><div class="container">
+<div class="section-head"><div><h2>Project Exposure Dashboard</h2><p>All 13 listed projects • automatically calculated from the project values provided.</p></div></div>
+<div class="feature-grid">
+<div class="feature"><b>💰 Total Known Project Exposure</b><span style="font-size:25px;font-weight:900">BDT 350,926,443.80</span><br><span class="muted">≈ 35.09 Crore+</span></div>
+<div class="feature"><b>📁 Project Count</b><span style="font-size:25px;font-weight:900">13</span><br><span class="muted">Government projects</span></div>
+<div class="feature"><b>💵 USD Equivalent</b><span id="totalUSD" style="font-size:25px;font-weight:900">Loading…</span><br><span class="muted">Live reference conversion</span></div>
+<div class="feature"><b>📌 Pending Value</b><span style="font-size:25px;font-weight:900">1 Project</span><br><span class="muted">Sarkar Bari Jame Mosque RCC Road</span></div>
+</div>
+<div class="note" style="margin-top:18px"><b>Financial-data note:</b> Project exposure uses the values supplied for the portfolio. Profit figures inside project command centers are illustrative planning targets, not claims of actual realized profit. Replace them with verified accounts when available.</div><div class="card" style="padding:20px;margin-top:18px">
+<h3 style="margin-top:0">Department Exposure</h3>
+<div id="deptExposure" class="three"></div>
+</div>
+</div></section>
 
 <section id="projects"><div class="container"><div class="section-head"><div><h2>13 Government Projects</h2><p>Click any project — all details open in one smooth command center.</p></div><button class="btn" onclick="refreshRate()">↻ Refresh USD Rate</button></div><div class="grid"><article class="card project-card" onclick="openProject(0)"><div class="dept">LGED • PROJECT 01</div><h3>NOBIDEP – Development of Naykerhat Rural Market, Nageswari, Kurigram</h3><p><b>Package/Memo:</b> WNOBI-Kur-RM-147 (C)<br><b>Tender/Memo:</b> 107138</p><div class="money">BDT 67,733,935.40<small class="usd-card" data-index="0">USD — loading live rate…</small></div><div class="tagrow"><span class="tag">CLICK FOR A–Z</span><span class="tag">COST</span><span class="tag">BOQ</span><span class="tag">BILLING</span></div><button class="btn primary" type="button">Open Project Command Center →</button></article>
 <article class="card project-card" onclick="openProject(1)"><div class="dept">LGED • PROJECT 02</div><h3>Sarkar Bari Jame Mosque RCC Road</h3><p><b>Package/Memo:</b> Not provided yet<br><b>Tender/Memo:</b> Not provided yet</p><div class="money">Amount Pending<small class="usd-card" data-index="1">USD — loading live rate…</small></div><div class="tagrow"><span class="tag">CLICK FOR A–Z</span><span class="tag">COST</span><span class="tag">BOQ</span><span class="tag">BILLING</span></div><button class="btn primary" type="button">Open Project Command Center →</button></article>
@@ -115,6 +129,20 @@ let fxRate=null,currentProject=0;
 function money(n){return Number(n||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
 function bdt(n){return 'BDT '+money(n)}
 function usd(n){return fxRate?'USD '+money(n/fxRate):'USD —'}
+
+function updateExposure(){
+ const total=projects.reduce((a,p)=>a+Number(p[4]||0),0);
+ const usdEl=document.getElementById('totalUSD');
+ if(usdEl) usdEl.textContent=fxRate?'USD '+money(total/fxRate):'Loading…';
+ const d={};
+ projects.forEach(p=>{d[p[0]]=(d[p[0]]||0)+Number(p[4]||0)});
+ const box=document.getElementById('deptExposure');
+ if(box) box.innerHTML=Object.entries(d).sort((a,b)=>b[1]-a[1]).map(([k,v])=>{
+   const pct=total?v/total*100:0;
+   return '<div class="info"><b>'+k+'</b><span>'+bdt(v)+'</span><br><span class="muted">'+pct.toFixed(1)+'% of known exposure</span><div class="bar" style="margin-top:8px"><i style="width:'+pct+'%"></i></div></div>';
+ }).join('');
+}
+
 let fxPrev=null,fxBase=null;
 async function refreshRate(){
  const el=document.getElementById('rateText'), live=document.getElementById('liveFx'), move=document.getElementById('fxMove'), tm=document.getElementById('fxTime');
@@ -131,7 +159,7 @@ async function refreshRate(){
    move.className=delta>=0?'up':'down';
    tm.textContent='Reference refreshed '+new Date().toLocaleTimeString();
    document.querySelectorAll('.usd-card').forEach(x=>{let p=projects[Number(x.dataset.index)];x.textContent=p[4]==null?'USD — pending amount':usd(p[4])});
-   if(document.getElementById('projectModal').classList.contains('open'))updateModalCurrency();
+   updateExposure(); if(document.getElementById('projectModal').classList.contains('open'))updateModalCurrency();
  }else throw 1}catch(e){
    live.textContent=fxRate?'৳ '+money(fxRate):'OFFLINE';
    move.textContent='—'; tm.textContent='Live feed unavailable';
@@ -170,6 +198,6 @@ function switchTab(n){document.querySelectorAll('.tab').forEach(b=>b.classList.t
 function val(id){return Number(document.getElementById(id).value)||0}
 function calc(){let value=val('cValue'),mat=val('cMat'),lab=val('cLab'),equip=val('cEquip'),trans=val('cTrans'),other=val('cOther'),over=val('cOver'),waste=val('cWaste'),base=val('cBase');let cost=mat+lab+equip+trans+other+over+waste,profit=value-cost,margin=value?profit/value*100:0,ratio=value?cost/value*100:0,saving=base?base-cost:0;document.getElementById('rCost').textContent=bdt(cost);document.getElementById('rProfit').textContent=bdt(profit);document.getElementById('rMargin').textContent=margin.toFixed(2)+'%';document.getElementById('rRatio').textContent=ratio.toFixed(2)+'%';document.getElementById('rSaving').textContent=bdt(saving);document.getElementById('rBreak').textContent=bdt(cost);let a=[['Materials',mat],['Labour',lab],['Equipment/Plant/Fuel',equip],['Transport',trans],['Other Direct',other],['Overhead',over],['Rework/Wastage',waste]];document.getElementById('sectorBars').innerHTML=a.map(x=>{let pct=cost?x[1]/cost*100:0;return '<div class="sector"><div style="display:flex;justify-content:space-between"><span>'+x[0]+'</span><b>'+money(x[1])+' • '+pct.toFixed(1)+'%</b></div><div class="bar"><i style="width:'+Math.min(100,pct)+'%"></i></div></div>'}).join('')}
 function resetCalc(){['cMat','cLab','cEquip','cTrans','cOther','cOver','cWaste','cBase'].forEach(id=>document.getElementById(id).value=0);document.getElementById('cValue').value=projects[currentProject][4]??'';calc()}
-setInterval(tickFx,1000);setInterval(refreshRate,1800000);refreshRate();
+updateExposure(); setInterval(tickFx,1000);setInterval(refreshRate,1800000);refreshRate();
 </script>
 </body></html>
