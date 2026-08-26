@@ -344,6 +344,18 @@ background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(238,249,241,.96));b
 @media(max-width:800px){.pcc10x-grid,.pcc10x-ledger,.pcc10x-results,.pcc10x-breakdown{grid-template-columns:1fr}.pcc10x-head{display:block}}
 </style>
 
+
+<style>
+.fx-bar{width:min(1180px,92%);margin:8px auto 0;padding:10px 14px;border:1px solid var(--line);background:rgba(255,255,255,.8);border-radius:14px;display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.fx-bar b{color:var(--accent)}
+.project .usd-value{display:block;color:#176b58;font-weight:700;margin-top:3px}
+.project .fx-note{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.modal-money{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:15px 0}
+.modal-money .money-box{padding:15px;border:1px solid var(--line);border-radius:14px;background:#f5faf9}
+.modal-money small{display:block;color:var(--muted)}
+.modal-money strong{font-size:24px;color:var(--accent)}
+@media(max-width:600px){.modal-money{grid-template-columns:1fr}}
+</style>
 </head>
 
 <body>
@@ -451,7 +463,13 @@ background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(238,249,241,.96));b
     material reconciliation, project coordination and construction documentation.
   </p>
 
-  <div class="stats">
+  
+<div id="fxBar" class="fx-bar">
+  <span>💱 <b>Live USD Conversion</b></span>
+  <span>1 USD = <b id="fxRate">Loading…</b> BDT</span>
+  <span id="fxUpdated">Updating automatically</span>
+</div>
+<div class="stats">
     <div class="stat"><strong>6+</strong><span>Years Experience</span></div>
     <div class="stat"><strong>11+</strong><span>Civil Projects</span></div>
     <div class="stat"><strong>25.7 Cr</strong><span>BDT Project Exposure</span></div>
@@ -1769,3 +1787,52 @@ try{
 
 </body>
 </html>
+// ===== LIVE USD/BDT CONVERSION =====
+let usdBdtRate = null;
+const FX_FALLBACK = 122; // used only if the live service is temporarily unavailable
+
+function formatBDTNumber(n){
+  return Number(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+function parseBDT(text){
+  if(!text || /pending/i.test(text)) return null;
+  const n = Number(String(text).replace(/[^\d.-]/g,""));
+  return Number.isFinite(n) ? n : null;
+}
+function formatUSD(bdt){
+  if(bdt==null || !usdBdtRate) return "—";
+  return "$"+(bdt/usdBdtRate).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+async function fetchLiveFX(){
+  try{
+    const r = await fetch("https://open.er-api.com/v6/latest/USD",{cache:"no-store"});
+    const j = await r.json();
+    if(j && j.result==="success" && j.rates && Number(j.rates.BDT)>0){
+      usdBdtRate=Number(j.rates.BDT);
+      document.getElementById("fxRate").textContent=usdBdtRate.toFixed(2);
+      document.getElementById("fxUpdated").textContent="Live rate • "+new Date().toLocaleTimeString();
+      refreshAllUSD();
+      return;
+    }
+  }catch(e){}
+  usdBdtRate=FX_FALLBACK;
+  document.getElementById("fxRate").textContent=usdBdtRate.toFixed(2)+"*";
+  document.getElementById("fxUpdated").textContent="Live rate unavailable — temporary reference rate";
+  refreshAllUSD();
+}
+function refreshAllUSD(){
+  document.querySelectorAll("[data-bdt]").forEach(el=>{
+    const bdt=parseBDT(el.getAttribute("data-bdt"));
+    const target=el.querySelector(".usd-value");
+    if(target) target.textContent=formatUSD(bdt);
+  });
+  const mv=document.getElementById("modalBDT");
+  if(mv){
+    const bdt=parseBDT(mv.getAttribute("data-bdt"));
+    const u=document.getElementById("modalUSD");
+    if(u) u.textContent=formatUSD(bdt);
+  }
+}
+setInterval(fetchLiveFX, 30*60*1000);
+
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));}
