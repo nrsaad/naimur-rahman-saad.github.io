@@ -1,98 +1,68 @@
-```html
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MD. Naimur Rahman Saad — Engineering Research Portfolio</title>
+<title>MD. Naimur Rahman Saad | Engineering Portfolio</title>
 
 <style>
 :root{
- --bg:#26040d;
- --bg2:#3b0715;
- --panel:#5d0b21;
- --panel2:#74102b;
- --wine:#9d173e;
+ --bg:#3d0613;
+ --panel:#650b25;
+ --panel2:#7e1030;
+ --wine:#a71943;
  --red:#c51f4b;
- --red2:#e14a70;
  --gold:#f2c875;
- --ivory:#fff8ef;
- --txt:#f7e5df;
- --muted:#dcbab7;
+ --white:#fff8ef;
+ --text:#f7e8e1;
+ --muted:#d9b8b4;
  --line:rgba(242,200,117,.28);
- --shadow:0 30px 90px rgba(0,0,0,.55);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
  margin:0;
- color:var(--txt);
- font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+ color:var(--text);
+ font-family:Inter,Arial,sans-serif;
  background:
- radial-gradient(circle at 15% 5%,rgba(225,74,112,.20),transparent 24%),
- radial-gradient(circle at 90% 20%,rgba(197,31,75,.22),transparent 26%),
- linear-gradient(135deg,#310510,#720c2a 48%,#430716);
- min-height:100vh;
+ radial-gradient(circle at 10% 10%,#e14a7033,transparent 25%),
+ radial-gradient(circle at 90% 20%,#c51f4b33,transparent 28%),
+ linear-gradient(135deg,#32040f,#720b29 48%,#410615);
+ min-height:100vh
 }
-button,a,input{font:inherit}
-button{color:inherit}
-.wrap{width:min(1280px,92vw);margin:auto}
+button,input{font:inherit}
+.wrap{width:min(1250px,92vw);margin:auto}
 
+nav{
+ position:sticky;top:0;z-index:50;
+ background:#4d0719f2;
+ backdrop-filter:blur(18px);
+ border-bottom:1px solid var(--line)
+}
 .nav{
- position:sticky;
- top:0;
- z-index:100;
- background:rgba(57,6,20,.94);
- backdrop-filter:blur(20px);
- border-bottom:1px solid var(--line)
+ min-height:70px;display:flex;align-items:center;
+ justify-content:space-between;gap:20px
 }
-.navin{
- min-height:70px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:20px
+.logo{font-weight:950;color:var(--white)}
+.logo small{
+ display:block;color:var(--gold);font-size:9px;
+ letter-spacing:.18em;margin-top:5px
 }
-.brand{
- color:var(--ivory);
- font-weight:950;
- letter-spacing:.03em;
- font-size:14px
-}
-.brand small{
- display:block;
- color:var(--gold);
- font-size:8px;
- letter-spacing:.22em;
- margin-top:5px
-}
-.navlinks{
- display:flex;
- gap:4px;
- flex-wrap:wrap
-}
+.navlinks{display:flex;gap:6px}
 .navlinks a{
- color:var(--muted);
- text-decoration:none;
- font-size:11px;
- padding:9px 11px;
- border-radius:10px
+ text-decoration:none;color:var(--muted);
+ padding:10px 12px;border-radius:10px;font-size:11px
 }
-.navlinks a:hover{
- background:var(--panel);
- color:white
-}
+.navlinks a:hover{background:var(--panel2);color:white}
 
-.live{
- background:linear-gradient(90deg,#650b25,#a71943,#650b25);
+.livebar{
+ background:linear-gradient(90deg,#620b24,#a71943,#620b24);
  border-bottom:1px solid var(--line)
 }
-.livein{
- display:flex;
+.live{
+ height:35px;display:flex;align-items:center;
  justify-content:space-between;
- padding:8px 0;
- font-size:10px;
- letter-spacing:.12em
+ font-size:10px;letter-spacing:.12em
 }
 .clock{
  color:var(--gold);
@@ -101,66 +71,57 @@ button{color:inherit}
 }
 
 .hero{
- padding:85px 0 75px;
  display:grid;
  grid-template-columns:1.15fr .85fr;
- gap:40px;
- align-items:center
+ gap:30px;
+ align-items:center;
+ padding:90px 0 70px
 }
 .eyebrow{
  color:var(--gold);
  font-size:9px;
  font-weight:950;
- letter-spacing:.22em;
- text-transform:uppercase
+ letter-spacing:.22em
 }
-.hero h1{
- color:var(--ivory);
- font-size:clamp(43px,7vw,88px);
- line-height:.93;
- letter-spacing:-.065em;
- margin:15px 0 22px
+h1{
+ font-size:clamp(45px,7vw,82px);
+ line-height:.94;
+ letter-spacing:-.06em;
+ margin:15px 0 25px;
+ color:var(--white)
 }
-.hero h1 span{color:var(--gold)}
+h1 span{color:var(--gold)}
 .hero p{
- max-width:720px;
  color:var(--muted);
- line-height:1.85
+ line-height:1.85;
+ max-width:700px
 }
-.actions{
- display:flex;
- gap:9px;
- flex-wrap:wrap;
- margin-top:25px
-}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
 .btn{
  border:1px solid var(--line);
+ background:linear-gradient(145deg,#7e1030,#52091d);
+ color:white;
+ padding:11px 16px;
  border-radius:11px;
- padding:11px 15px;
- background:linear-gradient(145deg,#78102d,#51091d);
  cursor:pointer;
- font-weight:850;
- transition:.2s
+ font-weight:850
 }
-.btn:hover{
- transform:translateY(-2px);
- border-color:var(--gold)
-}
+.btn:hover{border-color:var(--gold);transform:translateY(-2px)}
 .primary{
- background:linear-gradient(135deg,#c51f4b,#8f1435);
- box-shadow:0 10px 30px rgba(197,31,75,.25)
+ background:linear-gradient(135deg,#c51f4b,#8d1436);
+ box-shadow:0 10px 30px #0005
 }
 
 .heroCard,.panel{
+ background:linear-gradient(145deg,#94163c,#610a22,#430716);
  border:1px solid var(--line);
- border-radius:25px;
- background:linear-gradient(145deg,#95163e,#620b22 55%,#400716);
- box-shadow:var(--shadow);
- padding:28px
+ border-radius:24px;
+ padding:27px;
+ box-shadow:0 30px 90px #0008
 }
 .exposure{
+ font-size:48px;
  color:var(--gold);
- font-size:52px;
  font-weight:950;
  letter-spacing:-.05em;
  margin:10px 0
@@ -169,40 +130,33 @@ button{color:inherit}
  display:grid;
  grid-template-columns:repeat(3,1fr);
  gap:8px;
- margin-top:20px
+ margin-top:18px
 }
 .stat{
+ padding:13px;
  border:1px solid var(--line);
- background:rgba(69,7,24,.65);
  border-radius:12px;
- padding:13px
+ background:#40071688
 }
-.stat b{
- display:block;
- color:var(--ivory);
- font-size:20px
-}
-.stat span{
- color:var(--muted);
- font-size:9px
-}
+.stat b{display:block;font-size:21px;color:white}
+.stat span{font-size:9px;color:var(--muted)}
 
-.section{padding:75px 0}
+section{padding:70px 0}
 .sectionHead{
  display:flex;
  justify-content:space-between;
  align-items:end;
- gap:25px;
+ gap:20px;
  margin-bottom:25px
 }
 .sectionHead h2{
- color:var(--ivory);
- font-size:clamp(30px,4vw,52px);
- letter-spacing:-.045em;
- margin:8px 0
+ font-size:clamp(32px,4vw,52px);
+ margin:8px 0;
+ color:var(--white);
+ letter-spacing:-.04em
 }
 .sectionHead p{
- max-width:680px;
+ max-width:650px;
  color:var(--muted);
  line-height:1.75
 }
@@ -212,92 +166,84 @@ button{color:inherit}
  padding:14px 16px;
  border-radius:13px;
  border:1px solid var(--line);
- outline:none;
- background:#650b25;
+ background:#57091f;
  color:white;
+ outline:none;
  margin-bottom:14px
 }
-.search::placeholder{color:#a98b87}
 .search:focus{border-color:var(--gold)}
 
 .grid{
  display:grid;
  grid-template-columns:repeat(3,1fr);
- gap:14px
+ gap:13px
 }
 .card{
- position:relative;
- overflow:hidden;
- min-height:205px;
- padding:22px;
+ min-height:230px;
+ padding:21px;
  border:1px solid var(--line);
  border-radius:20px;
- background:linear-gradient(145deg,#881435,#5d0a21 55%,#400716);
- cursor:pointer;
+ background:linear-gradient(145deg,#861334,#5f0a21 55%,#430817);
+ color:white;
  text-align:left;
- transition:.22s;
- box-shadow:0 15px 45px rgba(0,0,0,.25)
+ cursor:pointer;
+ transition:.2s;
+ position:relative;
+ overflow:hidden
 }
 .card:hover{
  transform:translateY(-5px);
  border-color:var(--gold);
- box-shadow:0 25px 70px rgba(0,0,0,.45)
-}
-.card:after{
- content:"";
- position:absolute;
- left:-20%;
- right:-20%;
- bottom:-70px;
- height:130px;
- background:radial-gradient(ellipse,rgba(225,74,112,.18),transparent 68%);
- pointer-events:none
+ box-shadow:0 25px 70px #0007
 }
 .num{
  color:var(--gold);
  font-size:9px;
  font-weight:950;
- letter-spacing:.18em
+ letter-spacing:.16em
 }
 .card h3{
- color:var(--ivory);
  font-size:18px;
  line-height:1.3;
- margin:10px 0
+ margin:10px 0;
+ color:var(--white)
 }
 .card p{
- color:var(--muted);
- font-size:12px;
- line-height:1.7
+ font-size:11px;
+ line-height:1.65;
+ color:var(--muted)
 }
-.chips{
- display:flex;
- flex-wrap:wrap;
- gap:5px;
- margin-top:13px
-}
+.chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:13px}
 .chip{
  border:1px solid var(--line);
- border-radius:999px;
+ border-radius:99px;
  padding:5px 8px;
- color:#eed39b;
+ color:#f0d69f;
  font-size:9px
 }
 
-.road{
+.infoGrid{
  display:grid;
  grid-template-columns:repeat(4,1fr);
- gap:12px
+ gap:11px
 }
+.info{
+ padding:20px;
+ border:1px solid var(--line);
+ border-radius:18px;
+ background:linear-gradient(145deg,#76102e,#470818)
+}
+.info h3{color:var(--gold);margin:0 0 8px}
+.info p{font-size:12px;line-height:1.7;color:var(--muted)}
 
 .calendar{
  display:grid;
  grid-template-columns:.75fr 1.25fr;
- gap:15px
+ gap:14px
 }
 .bigclock{
+ font-size:55px;
  color:var(--gold);
- font-size:58px;
  font-weight:950;
  font-variant-numeric:tabular-nums
 }
@@ -313,18 +259,16 @@ button{color:inherit}
  margin-top:15px
 }
 .day{
- min-height:39px;
+ min-height:38px;
  display:grid;
  place-items:center;
- border:1px solid rgba(242,200,117,.13);
+ border:1px solid #e5bd7215;
  border-radius:8px;
  color:var(--muted);
  font-size:11px
 }
 .day.head{
- border:0;
- color:var(--gold);
- font-weight:900
+ border:0;color:var(--gold);font-weight:900
 }
 .day.today{
  background:var(--red);
@@ -333,8 +277,8 @@ button{color:inherit}
  font-weight:900
 }
 
-.footer{
- padding:45px 0;
+footer{
+ padding:40px 0;
  border-top:1px solid var(--line);
  color:var(--muted);
  font-size:11px
@@ -344,24 +288,26 @@ button{color:inherit}
 .overlay{
  position:fixed;
  inset:0;
- z-index:300;
+ z-index:100;
  display:none;
- align-items:center;
- justify-content:center;
- background:rgba(35,3,12,.91);
+ background:#24030bee;
  backdrop-filter:blur(18px);
  padding:15px
 }
-.overlay.open{display:flex}
+.overlay.open{
+ display:flex;
+ align-items:center;
+ justify-content:center
+}
 .modal{
- width:min(1180px,98vw);
+ width:min(1150px,98vw);
  max-height:94vh;
  overflow:auto;
+ background:linear-gradient(145deg,#98183e,#690b27,#410716);
  border:1px solid var(--line);
- border-radius:27px;
- background:linear-gradient(145deg,#9b183f,#690d28 50%,#400716);
- box-shadow:0 50px 160px #000;
- padding:28px
+ border-radius:26px;
+ padding:27px;
+ box-shadow:0 50px 150px #000
 }
 .modalHead{
  display:flex;
@@ -369,57 +315,56 @@ button{color:inherit}
  gap:20px
 }
 .modal h2{
- color:var(--ivory);
  font-size:34px;
+ color:white;
  margin:8px 0
 }
+.lead{color:var(--muted);line-height:1.8}
 .close{
- width:42px;
- height:42px;
- flex:none;
+ width:42px;height:42px;
  border-radius:50%;
  border:1px solid var(--line);
- background:#78102d;
+ background:#7e1030;
+ color:white;
  cursor:pointer;
  font-size:23px
 }
-.lead{
- color:var(--muted);
- line-height:1.8
+.details{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
+ margin-top:20px
 }
-.crumbs{
- display:flex;
- flex-wrap:wrap;
- gap:6px;
- margin-top:12px
-}
-.crumb{
+.detail{
+ padding:20px;
  border:1px solid var(--line);
- padding:5px 9px;
- border-radius:99px;
- font-size:9px;
- color:var(--muted)
+ border-radius:17px;
+ background:#3d0612aa
 }
-
+.detail b{color:var(--gold)}
+.detail p,.detail li{
+ color:#eadbd2;
+ line-height:1.8;
+ font-size:13px
+}
 .levels{
  display:grid;
  grid-template-columns:repeat(2,1fr);
  gap:11px;
- margin-top:20px
+ margin-top:18px
 }
 .level{
  padding:18px;
  border:1px solid var(--line);
  border-radius:17px;
- background:linear-gradient(145deg,rgba(101,11,37,.96),rgba(61,6,22,.96));
+ background:linear-gradient(145deg,#710d2b,#430716);
+ color:white;
  text-align:left;
- cursor:pointer;
- transition:.2s
+ cursor:pointer
 }
 .level:hover{
  border-color:var(--gold);
- transform:translateY(-2px);
- background:linear-gradient(145deg,#b51f49,#74102b)
+ background:linear-gradient(145deg,#b51f49,#700d2a)
 }
 .level b{
  display:block;
@@ -427,148 +372,32 @@ button{color:inherit}
  font-size:10px;
  margin-bottom:7px
 }
-.level span,.level p{
+.level span{
  color:var(--muted);
  font-size:12px;
- line-height:1.65
+ line-height:1.6
 }
-
-.detail{
- margin-top:18px;
- padding:21px;
- border:1px solid var(--line);
- border-radius:18px;
- background:linear-gradient(145deg,#650d27dd,#430817dd)
-}
-.detail h3{
- color:var(--gold);
- margin:0 0 10px;
- font-size:23px
-}
-.detail p,.detail li{
- color:#eadbd2;
- line-height:1.85;
- font-size:13px
-}
-.detail li{margin:6px 0}
-
-.back{
- display:flex;
- gap:8px;
- flex-wrap:wrap;
- margin-top:18px
-}
-
-/* VIDEO SYSTEM */
-.evidenceTitle{
- margin-top:30px;
- padding-top:20px;
- border-top:1px solid var(--line)
-}
-.videoGrid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:15px;
- margin-top:15px
-}
-.videoCard{
- border:1px solid var(--line);
- border-radius:18px;
- overflow:hidden;
- background:#3d0615
-}
-.videoCard video{
- width:100%;
- display:block;
- aspect-ratio:16/9;
- background:#160208
-}
-.videoInfo{
- padding:16px
-}
-.videoInfo h4{
- margin:0 0 7px;
- color:var(--ivory)
-}
-.videoInfo p{
- margin:4px 0;
- color:var(--muted);
- font-size:11px;
- line-height:1.65
-}
-.noVideo{
- border:1px dashed var(--line);
- padding:25px;
- border-radius:16px;
- color:var(--muted);
- text-align:center;
- background:rgba(30,2,10,.35)
-}
-
-/* PHOTO EVIDENCE */
-.photoGrid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:10px;
- margin-top:15px
-}
-.photoCard{
- border:1px solid var(--line);
- border-radius:14px;
- overflow:hidden;
- background:#300511
-}
-.photoCard img{
- width:100%;
- aspect-ratio:4/3;
- object-fit:cover;
- display:block
-}
-.photoCard div{
- padding:9px;
- color:var(--muted);
- font-size:10px
-}
-
-/* MINI DATA TABLE */
-.dataTable{
- width:100%;
- border-collapse:collapse;
- margin-top:15px;
- font-size:11px
-}
-.dataTable th,.dataTable td{
- padding:10px;
- border:1px solid rgba(242,200,117,.18);
- text-align:left
-}
-.dataTable th{
- color:var(--gold);
- background:#4c081a
-}
-.dataTable td{color:var(--muted)}
 
 @media(max-width:900px){
  .hero,.calendar{grid-template-columns:1fr}
  .grid{grid-template-columns:repeat(2,1fr)}
- .road{grid-template-columns:repeat(2,1fr)}
+ .infoGrid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:600px){
  .navlinks{display:none}
- .grid,.levels,.videoGrid,.photoGrid,.road,.stats{grid-template-columns:1fr}
+ .grid,.levels,.details,.infoGrid,.stats{grid-template-columns:1fr}
  .hero{padding-top:55px}
  .bigclock{font-size:42px}
  .modal{padding:18px}
- .sectionHead{display:block}
 }
 </style>
 </head>
 
 <body>
 
-<nav class="nav">
-<div class="navin wrap">
-<div class="brand">
+<nav>
+<div class="nav wrap">
+<div class="logo">
 MD. NAIMUR RAHMAN SAAD
 <small>CIVIL ENGINEERING • CONSTRUCTION • RESEARCH</small>
 </div>
@@ -576,86 +405,89 @@ MD. NAIMUR RAHMAN SAAD
 <a href="#projects">Projects</a>
 <a href="#engineering">Engineering</a>
 <a href="#research">Research</a>
-<a href="#evidence">Evidence</a>
-<a href="#time">Live Time</a>
+<a href="#time">Clock</a>
 </div>
 </div>
 </nav>
 
-<div class="live">
-<div class="wrap livein">
-<span>LIVE • ASIA/DHAKA</span>
-<span class="clock" id="topClock">--:--:--</span>
+<div class="livebar">
+<div class="live wrap">
+<span>● LIVE • ASIA/DHAKA</span>
+<span id="topClock" class="clock">--:--:--</span>
 </div>
 </div>
 
 <header class="hero wrap">
 
 <div>
-<div class="eyebrow">EVIDENCE → ENGINEERING JUDGEMENT → RESEARCH POTENTIAL</div>
+<div class="eyebrow">
+EVIDENCE → ENGINEERING JUDGEMENT → RESEARCH
+</div>
 
 <h1>
-Field work,
-opened<br>
-layer by <span>layer.</span>
+Engineering work,<br>
+opened <span>layer by layer.</span>
 </h1>
 
 <p>
-An evidence-first Civil Engineering portfolio designed to let a reviewer move from
-project context to engineering responsibility, quality control, cost logic,
-field evidence and potential research questions.
+An interactive engineering portfolio covering government infrastructure,
+construction management, quantity control, materials, QA/QC, productivity,
+cost control and research potential.
 </p>
 
 <div class="actions">
-<a class="btn primary" href="#projects">Explore 13 Projects →</a>
-<button class="btn" onclick="openProfessor()">🎓 Professor Lens</button>
+<a class="btn primary" href="#projects">EXPLORE 13+ PROJECTS →</a>
+<button class="btn" onclick="openProfessor()">🎓 PROFESSOR LENS</button>
 </div>
 </div>
 
 <div class="heroCard">
-<div class="eyebrow">PROJECT-VALUE EXPOSURE</div>
+<div class="eyebrow">PORTFOLIO PROJECT-VALUE EXPOSURE</div>
 <div class="exposure">BDT 35.09 Cr+</div>
 <p style="color:var(--muted);line-height:1.7">
-Presented as project-value exposure, not personal profit or audited savings.
+Project-value exposure presented from the portfolio.
+It is not represented as personal profit or audited savings.
 </p>
 
 <div class="stats">
-<div class="stat"><b>13</b><span>Project cases</span></div>
-<div class="stat"><b>7</b><span>Depth layers</span></div>
-<div class="stat"><b>LIVE</b><span>Evidence system</span></div>
+<div class="stat"><b>13+</b><span>PROJECT CASES</span></div>
+<div class="stat"><b>7</b><span>DEPTH LEVELS</span></div>
+<div class="stat"><b>LIVE</b><span>CLOCK + CALENDAR</span></div>
 </div>
 </div>
 
 </header>
 
-<section class="section" id="projects">
+
+<section id="projects">
 <div class="wrap">
 
 <div class="sectionHead">
 <div>
 <div class="eyebrow">PROJECT COMMAND CENTRE</div>
-<h2>13 Project Casebooks</h2>
+<h2>13+ Project Casebooks</h2>
 </div>
-
 <p>
-Every project opens a complete casebook. Inside it, the reviewer can move through
-role, quantity, materials, labour, QA/QC, cost control and research.
+Every project has its own identity, project information,
+financial exposure and engineering investigation pathway.
+Click any project to enter.
 </p>
 </div>
 
 <input
-class="search"
-id="projectSearch"
-placeholder="Search project, sector, location or activity..."
-oninput="filterProjects()">
+ id="search"
+ class="search"
+ placeholder="Search by project name, ID, tender, package, sector..."
+ oninput="filterProjects()"
+>
 
-<div class="grid" id="projectGrid"></div>
+<div id="projectGrid" class="grid"></div>
 
 </div>
 </section>
 
 
-<section class="section" id="engineering">
+<section id="engineering">
 <div class="wrap">
 
 <div class="sectionHead">
@@ -664,116 +496,148 @@ oninput="filterProjects()">
 <h2>Open a Method.</h2>
 </div>
 <p>
-Skills are presented as engineering investigation pathways rather than a static CV list.
+Engineering skills are connected to measurable decisions,
+evidence and research potential.
 </p>
 </div>
 
-<div class="road" id="methodGrid"></div>
+<div class="infoGrid">
 
+<div class="info" onclick="openMethod('ROLE')">
+<h3>My Role</h3>
+<p>Responsibility, coordination, decisions and evidence.</p>
+</div>
+
+<div class="info" onclick="openMethod('BOQ')">
+<h3>BOQ & Quantity</h3>
+<p>Quantity verification, measurement, rate and variation.</p>
+</div>
+
+<div class="info" onclick="openMethod('MATERIAL')">
+<h3>Material Control</h3>
+<p>Procurement, testing, issue and reconciliation.</p>
+</div>
+
+<div class="info" onclick="openMethod('LABOUR')">
+<h3>Labour & Productivity</h3>
+<p>Output, labour-hours, productivity and loss analysis.</p>
+</div>
+
+<div class="info" onclick="openMethod('QAQC')">
+<h3>QA/QC</h3>
+<p>Inspection, testing, defects and prevention.</p>
+</div>
+
+<div class="info" onclick="openMethod('COST')">
+<h3>Cost Control</h3>
+<p>Unit cost, forecast, variance and commercial control.</p>
+</div>
+
+<div class="info" onclick="openMethod('RESEARCH')">
+<h3>Research Bridge</h3>
+<p>Field observation → measurable research question.</p>
+</div>
+
+<div class="info" onclick="openProfessor()">
+<h3>Professor Lens</h3>
+<p>Field exposure → methodology → potential contribution.</p>
+</div>
+
+</div>
 </div>
 </section>
 
 
-<section class="section" id="research">
+<section id="research">
 <div class="wrap">
 
 <div class="sectionHead">
 <div>
 <div class="eyebrow">RESEARCH BRIDGE</div>
-<h2>From Observation to Question.</h2>
+<h2>From Field to Research.</h2>
 </div>
 <p>
-Field experience is separated from proposed research. No research result is claimed unless
-it is actually supported by evidence.
+Potential research directions are clearly separated from documented
+professional experience.
 </p>
 </div>
 
-<div class="grid" id="researchGrid"></div>
+<div class="grid">
 
+<button class="card" onclick="openResearch('Sustainable Construction')">
+<div class="num">RESEARCH 01</div>
+<h3>Sustainable Construction</h3>
+<p>Material efficiency, waste reduction, embodied impact and construction practice.</p>
+</button>
+
+<button class="card" onclick="openResearch('AI + BIM + Productivity')">
+<div class="num">RESEARCH 02</div>
+<h3>AI + BIM + Productivity</h3>
+<p>Data-driven productivity analysis and decision support.</p>
+</button>
+
+<button class="card" onclick="openResearch('Climate-Resilient Infrastructure')">
+<div class="num">RESEARCH 03</div>
+<h3>Climate-Resilient Infrastructure</h3>
+<p>Infrastructure planning under environmental uncertainty.</p>
+</button>
+
+<button class="card" onclick="openResearch('Construction Economics')">
+<div class="num">RESEARCH 04</div>
+<h3>Construction Economics</h3>
+<p>Cost variance, productivity and project decision-making.</p>
+</button>
+
+<button class="card" onclick="openResearch('Structural Rehabilitation')">
+<div class="num">RESEARCH 05</div>
+<h3>Structural Rehabilitation</h3>
+<p>Condition assessment, intervention and validation.</p>
+</button>
+
+<button class="card" onclick="openResearch('Infrastructure Management')">
+<div class="num">RESEARCH 06</div>
+<h3>Infrastructure Management</h3>
+<p>Evidence-based maintenance and lifecycle decision support.</p>
+</button>
+
+</div>
 </div>
 </section>
 
 
-<section class="section" id="evidence">
-<div class="wrap">
-
-<div class="sectionHead">
-<div>
-<div class="eyebrow">FIELD EVIDENCE</div>
-<h2>Video + Photo Evidence</h2>
-</div>
-<p>
-Actual site videos and photographs can be connected directly to individual projects.
-No fake links are generated.
-</p>
-</div>
-
-<div class="panel">
-<div class="detail" style="margin-top:0">
-<h3>How to add your videos</h3>
-<p>
-Put your video files inside a folder named <b>videos</b>, then add their filenames
-inside the project data in the HTML. The system will automatically display them
-inside that project's casebook.
-</p>
-
-<p>
-Example:
-<b>videos/concrete-casting.mp4</b>
-</p>
-</div>
-</div>
-
-</div>
-</section>
-
-
-<section class="section" id="time">
+<section id="time">
 <div class="wrap">
 
 <div class="sectionHead">
 <div>
 <div class="eyebrow">LIVE COMMAND CENTRE</div>
-<h2>Watch + Calendar</h2>
+<h2>Clock + Calendar</h2>
 </div>
-<p>
-Real-time Bangladesh time and an interactive monthly calendar.
-</p>
+<p>Live Bangladesh time with an interactive monthly calendar.</p>
 </div>
 
 <div class="calendar">
 
 <div class="panel">
-
-<div class="eyebrow">LIVE WATCH</div>
-
-<div class="bigclock" id="bigClock">
---:--:--
-</div>
-
-<p id="dateText" style="color:var(--muted)">
-Loading...
-</p>
+<div class="eyebrow">BANGLADESH LIVE TIME</div>
+<div id="bigClock" class="bigclock">--:--:--</div>
+<p id="dateText" style="color:var(--muted)">Loading...</p>
 
 <div class="detail">
-<h3>Chronology Layer</h3>
-<p>
-The clock displays the browser's current time converted to Asia/Dhaka
-and updates every second.
-</p>
+<b>TIME ZONE</b>
+<p>Asia/Dhaka • Bangladesh Standard Time</p>
 </div>
-
 </div>
 
 <div class="panel">
 
 <div class="calhead">
-<button class="btn" onclick="moveMonth(-1)">←</button>
-<b id="calTitle" style="color:white"></b>
-<button class="btn" onclick="moveMonth(1)">→</button>
+<button class="btn" onclick="changeMonth(-1)">←</button>
+<b id="calTitle"></b>
+<button class="btn" onclick="changeMonth(1)">→</button>
 </div>
 
-<div class="calgrid" id="calGrid"></div>
+<div id="calendarGrid" class="calgrid"></div>
 
 </div>
 
@@ -782,32 +646,31 @@ and updates every second.
 </section>
 
 
-<footer class="footer">
+<footer>
 <div class="wrap">
-MD. Naimur Rahman Saad • Interactive Engineering & Research Portfolio • Evidence-first presentation
+MD. Naimur Rahman Saad • Interactive Engineering & Research Portfolio
 </div>
 </footer>
 
 
-<!-- MAIN MODAL -->
-<div class="overlay" id="overlay">
+<!-- PROJECT MODAL -->
 
+<div id="overlay" class="overlay">
 <div class="modal">
 
 <div class="modalHead">
 
 <div>
-<div class="eyebrow" id="mCrumb"></div>
-<h2 id="mTitle"></h2>
-<p class="lead" id="mLead"></p>
-<div class="crumbs" id="crumbs"></div>
+<div id="modalEyebrow" class="eyebrow"></div>
+<h2 id="modalTitle"></h2>
+<p id="modalLead" class="lead"></p>
 </div>
 
 <button class="close" onclick="closeModal()">×</button>
 
 </div>
 
-<div id="mBody"></div>
+<div id="modalBody"></div>
 
 </div>
 </div>
@@ -817,1546 +680,927 @@ MD. Naimur Rahman Saad • Interactive Engineering & Research Portfolio • Evid
 
 /* =========================================================
    PROJECT DATABASE
-   ========================================================= */
+========================================================= */
 
-const projects=[
+const projects = [
 
 {
-id:"01",
-title:"NOBIDEP – Development of Naykerhat Rural Market",
-sector:"LGED • Kurigram",
-value:"BDT 6,77,33,935.40",
-description:"Rural market / infrastructure development",
-tender:"107138",
-package:"WNOBI-Kur-RM-147 (C)",
-contract:"",
+id:"NRSAAD-01",
+no:"01",
+name:"NOBIDEP – Development of Naykerhat Rural Market, Nageswari, Kurigram",
+sector:"LGED",
 location:"Nageswari, Kurigram",
-
-videos:[],
-photos:[],
-
-notes:"Use this casebook to document actual field responsibilities, measurement, material control, QA/QC and commercial records."
+package:"WNOBI-Kur-RM-147(C)",
+tender:"107138",
+value:"BDT 6,77,33,935.40",
+type:"Rural Market / Infrastructure Development"
 },
 
 {
-id:"02",
-title:"Construction of Washblock & Repair of Ojukhana, Char Someshpur Central Mosque",
-sector:"LGED • Sirajganj",
-value:"BDT 9,44,851.83",
-description:"Building / rehabilitation",
-tender:"757953",
-package:"",
-contract:"GSID-2/SRJ/DW-04",
+id:"NRSAAD-02",
+no:"02",
+name:"Construction of Washblock & Repair of Ojukhana, Char Someshpur Central Mosque, Belkuchi",
+sector:"LGED",
 location:"Belkuchi, Sirajganj",
-
-videos:[],
-photos:[],
-
-notes:"Building rehabilitation and repair case. Add actual site evidence when available."
+contract:"GSID-2/SRJ/DW-04",
+tender:"757953",
+value:"BDT 9,44,851.83",
+type:"Building / Rehabilitation"
 },
 
 {
-id:"03",
-title:"Infrastructure Project 03",
-sector:"Government Infrastructure Portfolio",
-value:"Value disclosed in portfolio",
-description:"Project case study",
-tender:"",
-package:"",
-contract:"",
-location:"",
-
-videos:[],
-photos:[],
-
-notes:"Replace this placeholder with the verified project name, tender/package information and site evidence."
+id:"NRSAAD-03",
+no:"03",
+name:"Bagbati–Kazipur C&B Ghorachora Monsur Ali Road to Sarkar Bari Jame Mosque RCC Road",
+sector:"LGED",
+location:"Sirajganj",
+package:"ADP/SAD/SER/2022-23/06",
+tender:"810008",
+value:"Project value recorded in portfolio",
+type:"RCC Road Development"
 },
 
 {
-id:"04",
-title:"Infrastructure Project 04",
-sector:"Government Infrastructure Portfolio",
-value:"Value disclosed in portfolio",
-description:"Project case study",
-tender:"",
-package:"",
-contract:"",
-location:"",
-
-videos:[],
-photos:[],
-notes:"Replace this placeholder with verified project information."
+id:"NRSAAD-04",
+no:"04",
+name:"Kaelgati Mosque to Kalumondol Bari RCC Road Development",
+sector:"LGED",
+location:"Sirajganj",
+tender:"810013",
+value:"BDT 9,50,000",
+type:"RCC Road Development"
 },
 
 {
-id:"05",
-title:"Infrastructure Project 05",
-sector:"Government Infrastructure Portfolio",
-value:"Value disclosed in portfolio",
-description:"Project case study",
-tender:"",
-package:"",
-contract:"",
-location:"",
-
-videos:[],
-photos:[],
-notes:"Replace this placeholder with verified project information."
+id:"NRSAAD-05",
+no:"05",
+name:"Tamai RHD (Bashtola) to Char Tengrail Road Improvement",
+sector:"RHD",
+location:"Sirajganj",
+length:"700 m",
+value:"≈ BDT 8.11 Crore",
+type:"Road Improvement"
 },
 
 {
-id:"06",
-title:"Infrastructure Project 06",
-sector:"Government Infrastructure Portfolio",
-value:"Value disclosed in portfolio",
-description:"Project case study",
-tender:"",
-package:"",
-contract:"",
-location:"",
-
-videos:[],
-photos:[],
-notes:"Replace this placeholder with verified project information."
+id:"NRSAAD-06",
+no:"06",
+name:"07 RAB Complex Project (RAB-12), Hatikumrul",
+sector:"Government Infrastructure",
+location:"Hatikumrul, Sirajganj",
+memo:"02(U)(OTM)/2015–2016",
+value:"BDT 4,33,90,634",
+type:"Government Complex"
 },
 
 {
-id:"07",
-title:"Infrastructure Project 07",
-sector:"Government Infrastructure Portfolio",
-value:"Value disclosed in portfolio",
-description:"Project case study",
-tender:"",
-package:"",
-contract:"",
-location:"",
-
-videos:[],
-photos:[],
-notes:"Replace this placeholder with verified project information."
+id:"NRSAAD-07",
+no:"07",
+name:"Kuti Satbaria UZR–Khas Satbaria Uttarpara Road Improvement + 300 m Link Road",
+sector:"LGED",
+location:"Sirajganj",
+package:"IRIDP-3/SRJ/DW-35",
+tender:"599746",
+value:"BDT 1,60,21,897",
+type:"Road Improvement"
 },
 
 {
-id:"08",
-title:"Infrastructure Project 08",
-sector:"Government Infrastructure Portfolio",
-value:"Value disclosed in portfolio",
-description:"Project case study",
-tender:"",
-package:"",
-contract:"",
-location:"",
-
-videos:[],
-photos:[],
-notes:"Replace this placeholder with verified project information."
+id:"NRSAAD-08",
+no:"08",
+name:"Masumdia UP Office–Dear Bramndi Hat Road Rehabilitation, Ch. 0–1240 m",
+sector:"LGED",
+location:"Sirajganj",
+package:"GOBM/2021-22/W-33",
+tender:"615468",
+value:"BDT 46,63,170",
+type:"Road Rehabilitation"
 },
 
 {
-id:"09",
-title:"Infrastructure Project 09",
-sector:"Government Infrastructure Portfolio",
-value:"Value disclosed in portfolio",
-description:"Project case study",
-tender:"",
-package:"",
-contract:"",
-location:"",
-
-videos:[],
-photos:[],
-notes:"Replace this placeholder with verified project information."
+id:"NRSAAD-09",
+no:"09",
+name:"Emergency Repair, Maintenance & Protection Work at Betil Spur-1, 155 m",
+sector:"BWDB",
+location:"Betil",
+package:"L/NDR/08/2020–2021",
+tender:"Not displayed",
+value:"Project value recorded in portfolio",
+type:"Riverbank / Protection Work"
 },
 
 {
-id:"10",
-title:"Infrastructure Project 10",
-sector:"Government Infrastructure Portfolio",
-value:"Value disclosed in portfolio",
-description:"Project case study",
-tender:"",
-package:"",
-contract:"",
-location:"",
-
-videos:[],
-photos:[],
-notes:"Replace this placeholder with verified project information."
+id:"NRSAAD-10",
+no:"10",
+name:"Tarash–Hamkuria (Z-6032) HBB Pavement Repair",
+sector:"RHD",
+location:"Tarash",
+contract:"12/e-GP/eeshid/2021-2022",
+tender:"621337 LTM",
+value:"BDT 45,60,000",
+type:"HBB Pavement Repair"
 },
 
 {
-id:"11",
-title:"Infrastructure Project 11",
-sector:"Government Infrastructure Portfolio",
-value:"Value disclosed in portfolio",
-description:"Project case study",
-tender:"",
-package:"",
-contract:"",
-location:"",
-
-videos:[],
-photos:[],
-notes:"Replace this placeholder with verified project information."
+id:"NRSAAD-11",
+no:"11",
+name:"Reconstruction of Shailajana & Betil Govt. Primary Schools + Bir Masudka Registered Non-Govt. Primary School",
+sector:"LGED",
+location:"Sirajganj",
+package:"LGED/UE/Chauhali/Siraj/2020/147",
+value:"BDT 4,12,36,000",
+type:"Educational Infrastructure"
 },
 
 {
-id:"12",
-title:"Infrastructure Project 12",
-sector:"Government Infrastructure Portfolio",
-value:"Value disclosed in portfolio",
-description:"Project case study",
-tender:"",
-package:"",
-contract:"",
-location:"",
-
-videos:[],
-photos:[],
-notes:"Replace this placeholder with verified project information."
+id:"NRSAAD-12",
+no:"12",
+name:"Agriculture Weather Observatory, Tarash – Boundary Wall",
+sector:"PWD",
+location:"Tarash",
+memo:"1822",
+date:"07/10/2019",
+value:"BDT 6,62,00,000",
+type:"Government Infrastructure"
 },
 
 {
-id:"13",
-title:"Infrastructure Project 13",
-sector:"Government Infrastructure Portfolio",
-value:"Value disclosed in portfolio",
-description:"Project case study",
-tender:"",
-package:"",
-contract:"",
-location:"",
-
-videos:[],
-photos:[],
-notes:"Replace this placeholder with verified project information."
+id:"NRSAAD-13",
+no:"13",
+name:"Infrastructure Engineering Portfolio Case – Government Project",
+sector:"Government Infrastructure",
+location:"Bangladesh",
+package:"Portfolio Case 13",
+tender:"Recorded in project documentation",
+value:"Included within portfolio exposure",
+type:"Infrastructure Case Study"
 }
 
 ];
 
 
 /* =========================================================
-   ENGINEERING DOMAINS
-   ========================================================= */
+   PROJECT RENDER
+========================================================= */
 
-const domains={
+function renderProjects(list=projects){
 
-"My Role":{
-intro:"Define the boundary between responsibility, coordination, decision-making and evidence.",
-items:[
-["Scope","Responsibility boundary","Separate direct work from approvals, supervision and team-level coordination."],
-["Decisions","Engineering judgement","Show what decision was made, what constraint existed and what consequence followed."],
-["Evidence","Verification","Connect work to drawings, measurements, inspections, bills or site records."],
-["Research","Practice to question","Repeated field decisions can become measurable research variables."]
-]
-},
+document.getElementById("projectGrid").innerHTML =
+list.map((p,index)=>`
 
-"Quantity & BOQ":{
-intro:"Quantity control connects design intent, physical execution, measurement, payment and cost.",
-items:[
-["BOQ","Item logic","Read description, unit, quantity, rate and specification."],
-["Measurement","Site to record","Translate executed work into measurable supported quantities."],
-["Variance","Explain movement","Separate approved change, measurement error and execution loss."],
-["Research","Quantitative signal","Repeated quantity variance may support forecasting or anomaly detection."]
-]
-},
+<button class="card" onclick="openProject(${indexOfProject(p)})">
 
-"Material Control":{
-intro:"Material control connects procurement, receipt, quality, issue, consumption and balance.",
-items:[
-["Procurement","Need before purchase","Link procurement to verified quantity and programme requirements."],
-["Quality Gate","Accept before use","Use inspection/testing evidence before critical material use."],
-["Reconciliation","Input to output","Compare received, issued, consumed and remaining quantities."],
-["Research","Waste variable","Material variance can become a sustainability and cost variable."]
-]
-},
+<div class="num">
+PROJECT ${p.no} • ${p.id}
+</div>
 
-"Labour & Productivity":{
-intro:"Productivity is measurable output relative to resource input.",
-items:[
-["Measurement","Output per labour-hour","Use activity output rather than attendance alone."],
-["Loss Analysis","Find the mechanism","Distinguish waiting, rework, sequencing and material shortage."],
-["Intervention","Improve the system","Test workflow before simply increasing manpower."],
-["Research","Predictive productivity","Repeated observations can support statistical or ML validation."]
-]
-},
+<h3>${escapeHTML(p.name)}</h3>
 
-"QA/QC":{
-intro:"Quality control is strongest when it prevents failure before irreversible work.",
-items:[
-["Hold Points","Inspect early","Use pre-work and pre-pour checks."],
-["Testing","Evidence","Connect results with specifications and acceptance criteria."],
-["Rework","Cause to prevention","Trace defect, cause, correction and prevention."],
-["Research","Defect prediction","Structured defect records can support reliability research."]
-]
-},
+<p>
+${escapeHTML(p.sector)} •
+${escapeHTML(p.location)}
+</p>
 
-"Cost Control":{
-intro:"Cost control connects quantities, productivity, procurement and rework to commercial outcomes.",
-items:[
-["Committed Cost","See early","Track commitments and planned resource use."],
-["Unit Cost","Normalise output","Compare cost per measurable output."],
-["Forecast","Cost-to-complete","Use current performance to anticipate final position."],
-["Research","Decision support","Cost signals can support forecasting and optimisation."]
-]
-},
+<div class="chips">
 
-"Research Bridge":{
-intro:"Credible doctoral direction begins with observation rather than inflated claims.",
-items:[
-["Observation","Repeated reality","Identify patterns across activities or projects."],
-["Hypothesis","Mechanism","State what may cause the pattern and what should change."],
-["Method","Make it testable","Define variables, dataset, baseline and validation."],
-["Contribution","Generalise carefully","Explain what could transfer after independent validation."]
-]
-}
+<span class="chip">
+${escapeHTML(p.value)}
+</span>
 
-};
+<span class="chip">
+${escapeHTML(p.type)}
+</span>
 
+</div>
 
-/* =========================================================
-   RESEARCH AREAS
-   ========================================================= */
+</button>
 
-const researchAreas=[
-"Sustainable Construction",
-"AI + BIM + Productivity",
-"Climate-Resilient Infrastructure",
-"Construction Economics",
-"Structural Rehabilitation",
-"Infrastructure Management"
-];
-
-
-/* =========================================================
-   UTILITY
-   ========================================================= */
-
-function esc(s){
- return String(s??"").replace(/[&<>"']/g,c=>({
-  "&":"&amp;",
-  "<":"&lt;",
-  ">":"&gt;",
-  '"':"&quot;",
-  "'":"&#39;"
- }[c]));
-}
-
-
-/* =========================================================
-   MODAL ENGINE
-   ========================================================= */
-
-function modal(title,crumb,lead,body,path=[]){
-
- document.getElementById("mTitle").textContent=title;
- document.getElementById("mCrumb").textContent=crumb;
- document.getElementById("mLead").textContent=lead;
-
- document.getElementById("crumbs").innerHTML=
- path.map(x=>`<span class="crumb">${esc(x)}</span>`).join("");
-
- document.getElementById("mBody").innerHTML=body;
-
- document.getElementById("overlay").classList.add("open");
+`).join("");
 
 }
 
-function closeModal(){
- document.getElementById("overlay").classList.remove("open");
+function indexOfProject(p){
+return projects.indexOf(p);
 }
 
 
 /* =========================================================
    PROJECT OPEN
-   ========================================================= */
+========================================================= */
 
-function openProject(pi){
+function openProject(i){
 
- const p=projects[pi];
+const p=projects[i];
 
- const body=`
+const identity=`
 
- <div class="detail">
+<div class="details">
 
- <h3>Project Identity</h3>
+<div class="detail">
+<b>PROJECT ID</b>
+<p>${escapeHTML(p.id)}</p>
+</div>
 
- <table class="dataTable">
+<div class="detail">
+<b>SECTOR / AGENCY</b>
+<p>${escapeHTML(p.sector)}</p>
+</div>
 
- <tr><th>Sector</th><td>${esc(p.sector)}</td></tr>
- <tr><th>Location</th><td>${esc(p.location||"Not yet entered")}</td></tr>
- <tr><th>Contract</th><td>${esc(p.contract||"Not yet entered")}</td></tr>
- <tr><th>Package</th><td>${esc(p.package||"Not yet entered")}</td></tr>
- <tr><th>Tender ID</th><td>${esc(p.tender||"Not yet entered")}</td></tr>
- <tr><th>Project Value</th><td>${esc(p.value)}</td></tr>
+<div class="detail">
+<b>LOCATION</b>
+<p>${escapeHTML(p.location)}</p>
+</div>
 
- </table>
+<div class="detail">
+<b>PROJECT VALUE</b>
+<p>${escapeHTML(p.value)}</p>
+</div>
 
- </div>
+${p.package?`
+<div class="detail">
+<b>PACKAGE</b>
+<p>${escapeHTML(p.package)}</p>
+</div>`:""}
 
- <div class="detail">
+${p.contract?`
+<div class="detail">
+<b>CONTRACT</b>
+<p>${escapeHTML(p.contract)}</p>
+</div>`:""}
 
- <h3>Project Casebook</h3>
+${p.tender?`
+<div class="detail">
+<b>TENDER ID</b>
+<p>${escapeHTML(p.tender)}</p>
+</div>`:""}
 
- <p>
- ${esc(p.notes)}
- </p>
+${p.memo?`
+<div class="detail">
+<b>MEMO / REFERENCE</b>
+<p>${escapeHTML(p.memo)}</p>
+</div>`:""}
 
- <p>
- Choose a domain below. Each domain opens another layer of engineering reasoning,
- evidence requirements and research potential.
- </p>
+</div>
 
- </div>
+<div class="detail" style="margin-top:15px">
+<b>PROJECT TYPE</b>
+<p>${escapeHTML(p.type)}</p>
+</div>
 
- <div class="levels">
+<div class="detail" style="margin-top:15px">
+<h3 style="color:var(--gold)">Project Investigation Centre</h3>
 
- ${domainsList(pi)}
+<p>
+This project can be examined through seven engineering layers:
+role → quantity → material → labour → QA/QC → cost → research.
+</p>
+</div>
 
- </div>
+<div class="levels">
 
- ${evidenceHTML(p)}
+${[
+"My Role",
+"Quantity & BOQ",
+"Material Control",
+"Labour & Productivity",
+"QA/QC",
+"Cost Control",
+"Research Bridge"
+].map((x,n)=>`
 
- `;
+<button class="level"
+onclick="openProjectDomain(${i},${n})">
 
- modal(
- p.title,
- "PROJECT "+p.id,
- p.sector+" • "+p.value,
- body,
- ["Project "+p.id,p.title]
- );
+<b>
+LEVEL 1 • ${String(n+1).padStart(2,"0")}
+</b>
 
-}
+<span>
+${x} →
+overview → evidence → deeper mechanism →
+research implication
+</span>
 
+</button>
 
-/* =========================================================
-   DOMAIN LIST
-   ========================================================= */
+`).join("")}
 
-function domainsList(pi){
+</div>
+`;
 
- return Object.keys(domains).map((name,i)=>`
-
- <button class="level" onclick="openDomain(${pi},'${name.replace(/'/g,"\\'")}')">
-
- <b>LEVEL 1 • ${String(i+1).padStart(2,"0")} — ${esc(name)}</b>
-
- <span>
- ${esc(domains[name].intro)}
- <br><br>
- <strong style="color:var(--gold)">OPEN DOMAIN →</strong>
- </span>
-
- </button>
-
- `).join("");
-
-}
-
-
-/* =========================================================
-   DOMAIN
-   ========================================================= */
-
-function openDomain(pi,name){
-
- const p=projects[pi];
- const d=domains[name];
-
- const body=`
-
- <div class="detail">
-
- <h3>Domain Overview</h3>
-
- <p>${esc(d.intro)}</p>
-
- </div>
-
- <div class="levels">
-
- ${d.items.map((x,i)=>`
-
- <button class="level"
- onclick="openSub(${pi},'${name.replace(/'/g,"\\'")}',${i})">
-
- <b>LEVEL 2 • ${esc(x[0])}</b>
-
- <span>
- ${esc(x[2])}
- </span>
-
- </button>
-
- `).join("")}
-
- </div>
-
- <div class="back">
-
- <button class="btn" onclick="openProject(${pi})">
- ← Project Index
- </button>
-
- </div>
-
- `;
-
- modal(
- name+" • "+p.title,
- "PROJECT → "+name,
- d.intro,
- body,
- ["Project "+p.id,name]
- );
+showModal(
+p.name,
+"PROJECT "+p.no+" • "+p.id,
+p.sector+" • "+p.location,
+identity
+);
 
 }
 
 
 /* =========================================================
-   SUB LAYER
-   ========================================================= */
+   PROJECT DOMAIN
+========================================================= */
 
-function openSub(pi,name,si){
+const domainText={
 
- const p=projects[pi];
- const d=domains[name];
- const x=d.items[si];
+"My Role":[
+"Define the responsibility boundary.",
+"Separate direct execution from approval and team coordination.",
+"Connect decisions to site evidence and consequences."
+],
 
- const body=`
+"Quantity & BOQ":[
+"Review BOQ item description, unit, quantity and rate.",
+"Verify executed quantities through measurement.",
+"Explain quantity variation using documented evidence."
+],
 
- <div class="detail">
+"Material Control":[
+"Connect procurement to actual site requirement.",
+"Use inspection and testing as quality gates.",
+"Reconcile received, issued, consumed and remaining material."
+],
 
- <h3>${esc(x[1])}</h3>
+"Labour & Productivity":[
+"Measure output against labour input.",
+"Identify waiting, rework, sequencing and shortage losses.",
+"Test workflow improvement before simply increasing manpower."
+],
 
- <p>${esc(x[2])}</p>
+"QA/QC":[
+"Establish inspection and hold points.",
+"Connect tests with specifications and acceptance criteria.",
+"Trace defects from cause to corrective/preventive action."
+],
 
- <ul>
+"Cost Control":[
+"Track quantities, productivity, procurement and rework.",
+"Normalise cost using measurable output.",
+"Forecast cost-to-complete and investigate variance."
+],
 
- <li>
- <b>Evidence:</b>
- identify the drawing, measurement, inspection, test,
- photograph, video or transaction that supports the statement.
- </li>
+"Research Bridge":[
+"Convert repeated field observations into measurable variables.",
+"Establish a baseline.",
+"Test interventions using transparent validation."
+]
 
- <li>
- <b>Decision:</b>
- identify the engineering choice and the constraint it responded to.
- </li>
+};
 
- <li>
- <b>Control:</b>
- define what was checked, when it was checked and how variance was handled.
- </li>
 
- <li>
- <b>Transfer:</b>
- ask whether the same mechanism can be studied across projects.
- </li>
+function openProjectDomain(pi,di){
 
- </ul>
+const p=projects[pi];
 
- </div>
+const names=Object.keys(domainText);
+const name=names[di];
+const points=domainText[name];
 
- <div class="back">
+showModal(
 
- <button class="btn"
- onclick="openDomain(${pi},'${name.replace(/'/g,"\\'")}')">
- ← Back
- </button>
+name+" • "+p.name,
 
- <button class="btn primary"
- onclick="openResearch(${pi},'${name.replace(/'/g,"\\'")}',${si})">
- Research Implication →
- </button>
+"PROJECT "+p.no+" → "+name,
 
- </div>
+"LEVEL 2 • ENGINEERING DETAIL",
 
- `;
+`
 
- modal(
- x[0],
- name+" → "+x[0],
- "LEVEL 3 • DEEP ENGINEERING DETAIL",
- body,
- ["Project "+p.id,name,x[0]]
- );
+<div class="detail">
+
+<h3 style="color:var(--gold)">
+${name}
+</h3>
+
+<ul>
+
+${points.map(x=>`<li>${escapeHTML(x)}</li>`).join("")}
+
+</ul>
+
+</div>
+
+<div class="detail" style="margin-top:15px">
+
+<b>PROJECT CONTEXT</b>
+
+<p>
+${escapeHTML(p.name)} —
+${escapeHTML(p.sector)} —
+${escapeHTML(p.location)}.
+</p>
+
+</div>
+
+<div class="levels">
+
+<button class="level"
+onclick="openProjectDomainDetail(${pi},${di})">
+
+<b>LEVEL 3 • DEEP MECHANISM</b>
+
+<span>
+Open engineering mechanism, evidence requirement,
+control logic and measurable variables.
+</span>
+
+</button>
+
+<button class="level"
+onclick="openProject(${pi})">
+
+<b>← BACK TO PROJECT</b>
+
+<span>
+Return to complete project command centre.
+</span>
+
+</button>
+
+</div>
+
+`
+
+);
+
+}
+
+
+function openProjectDomainDetail(pi,di){
+
+const p=projects[pi];
+const name=Object.keys(domainText)[di];
+
+showModal(
+
+"Deep Engineering Mechanism",
+
+"PROJECT "+p.no+" → "+name,
+
+"LEVEL 3 • EVIDENCE + DECISION",
+
+`
+
+<div class="detail">
+
+<h3 style="color:var(--gold)">
+Evidence → Decision → Control
+</h3>
+
+<p>
+A strong engineering record should show what was observed,
+what evidence supported the observation, what decision was made,
+what constraint influenced that decision and how the result was checked.
+</p>
+
+<ul>
+<li>Identify the measurable input.</li>
+<li>Identify the measurable output.</li>
+<li>Identify the constraint.</li>
+<li>Identify the control point.</li>
+<li>Record variance.</li>
+<li>Explain corrective action.</li>
+<li>Assess whether the mechanism repeats across projects.</li>
+</ul>
+
+</div>
+
+<div class="detail" style="margin-top:15px">
+
+<h3 style="color:var(--gold)">
+Research Implication
+</h3>
+
+<p>
+Repeated observations can potentially become a research problem
+when they are converted into measurable variables, a baseline,
+a defensible dataset and a validated methodology.
+</p>
+
+</div>
+
+<div class="actions">
+
+<button class="btn"
+onclick="openProjectDomain(${pi},${di})">
+← BACK
+</button>
+
+<button class="btn primary"
+onclick="openProfessor()">
+🎓 PROFESSOR LENS
+</button>
+
+</div>
+
+`
+
+);
+
+}
+
+
+/* =========================================================
+   METHODS
+========================================================= */
+
+function openMethod(name){
+
+const content={
+
+ROLE:"Responsibility → coordination → engineering judgement → evidence.",
+
+BOQ:"BOQ → measurement → quantity verification → variation → billing.",
+
+MATERIAL:"Procurement → inspection → testing → issue → reconciliation.",
+
+LABOUR:"Labour input → output → productivity → loss → intervention.",
+
+QAQC:"Inspection → test → acceptance → defect → prevention.",
+
+COST:"Quantity → unit cost → productivity → variance → forecast.",
+
+RESEARCH:"Observation → variable → baseline → dataset → validation → contribution."
+
+};
+
+showModal(
+name,
+"ENGINEERING DOMAIN",
+"METHOD → EVIDENCE → RESEARCH",
+`
+<div class="detail">
+<h3 style="color:var(--gold)">${name}</h3>
+<p>${content[name]}</p>
+
+<ul>
+<li>Define the problem.</li>
+<li>Identify measurable variables.</li>
+<li>Establish evidence.</li>
+<li>Control variance.</li>
+<li>Evaluate the outcome.</li>
+<li>Identify possible research extension.</li>
+</ul>
+</div>
+
+<div class="actions">
+<button class="btn primary" onclick="openProfessor()">
+🎓 PROFESSOR LENS →
+</button>
+</div>
+`
+);
 
 }
 
 
 /* =========================================================
    RESEARCH
-   ========================================================= */
+========================================================= */
 
-function openResearch(pi,name,si){
+function openResearch(name){
 
- const p=projects[pi];
- const x=domains[name].items[si];
+showModal(
 
- const body=`
+name,
+"RESEARCH PROGRAMME",
+"PROPOSED RESEARCH DIRECTION",
 
- <div class="detail">
+`
 
- <h3>Turn Observation into a Testable Problem</h3>
+<div class="detail">
 
- <ul>
+<h3 style="color:var(--gold)">
+Research Architecture
+</h3>
 
- <li>
- <b>Observation:</b> ${esc(x[2])}
- </li>
+<p>
+Practical problem → measurable variables →
+baseline → data → validation → contribution.
+</p>
 
- <li>
- <b>Question:</b>
- What measurable mechanism explains the observed pattern?
- </li>
+<ul>
+<li>Define a real engineering problem.</li>
+<li>Identify measurable variables.</li>
+<li>Build a transparent baseline.</li>
+<li>Collect permissioned and defensible data.</li>
+<li>Compare intervention against baseline.</li>
+<li>Validate using appropriate statistical or computational methods.</li>
+<li>Report uncertainty and limitations.</li>
+</ul>
 
- <li>
- <b>Variables:</b>
- inputs, outputs, variance, time, quality, productivity and context.
- </li>
+</div>
 
- <li>
- <b>Dataset:</b>
- permissioned project/activity records with provenance and quality checks.
- </li>
+<div class="detail" style="margin-top:15px">
 
- <li>
- <b>Baseline:</b>
- a transparent benchmark before any advanced model.
- </li>
+<h3 style="color:var(--gold)">
+Potential Question
+</h3>
 
- <li>
- <b>Validation:</b>
- hold-out testing, sensitivity analysis and explicit failure-case reporting.
- </li>
+<p>
+How can evidence-informed engineering decisions in
+${escapeHTML(name.toLowerCase())}
+be converted into a validated framework that improves
+measurable infrastructure outcomes while remaining transparent
+about uncertainty and project context?
+</p>
 
- </ul>
+</div>
 
- </div>
+`
 
- <div class="back">
-
- <button class="btn"
- onclick="openSub(${pi},'${name.replace(/'/g,"\\'")}',${si})">
- ← Back
- </button>
-
- <button class="btn primary"
- onclick="openMethod(${pi},'${name.replace(/'/g,"\\'")}',${si})">
- Methodology →
- </button>
-
- </div>
-
- `;
-
- modal(
- "Research Implication",
- name+" → Research",
- "LEVEL 4 • RESEARCH ARCHITECTURE",
- body,
- ["Project "+p.id,name,"Research"]
- );
-
-}
-
-
-/* =========================================================
-   METHODOLOGY
-   ========================================================= */
-
-function openMethod(pi,name,si){
-
- const p=projects[pi];
- const x=domains[name].items[si];
-
- const body=`
-
- <div class="detail">
-
- <h3>How the Question Could Be Tested</h3>
-
- <ol>
-
- <li>Define operational variables and outcomes.</li>
- <li>Collect documented, permissioned data.</li>
- <li>Compare a transparent baseline against the proposed intervention.</li>
- <li>Validate with hold-out data, sensitivity and robustness checks.</li>
- <li>Report uncertainty, limitations and failure cases.</li>
- <li>Generalise only what the evidence supports.</li>
-
- </ol>
-
- </div>
-
- <div class="back">
-
- <button class="btn"
- onclick="openResearch(${pi},'${name.replace(/'/g,"\\'")}',${si})">
- ← Back
- </button>
-
- <button class="btn primary"
- onclick="openPhD(${pi},'${name.replace(/'/g,"\\'")}',${si})">
- Potential PhD Question →
- </button>
-
- </div>
-
- `;
-
- modal(
- "Doctoral Methodology",
- name+" → Research → Method",
- "LEVEL 5 • METHOD",
- body,
- ["Project "+p.id,name,"Research","Method"]
- );
-
-}
-
-
-/* =========================================================
-   PHD QUESTION
-   ========================================================= */
-
-function openPhD(pi,name,si){
-
- const p=projects[pi];
-
- const body=`
-
- <div class="detail">
-
- <h3>Potential Research Direction</h3>
-
- <p>
- Under what project and activity conditions does the observed mechanism materially
- affect measurable cost, productivity, quality or resilience outcomes, and can a
- validated decision-support approach improve those outcomes?
- </p>
-
- <p>
- <b>Important:</b>
- this is a proposed research direction, not a claimed published result.
- </p>
-
- </div>
-
- <div class="back">
-
- <button class="btn"
- onclick="openMethod(${pi},'${name.replace(/'/g,"\\'")}',${si})">
- ← Back
- </button>
-
- <button class="btn primary"
- onclick="openContribution(${pi},'${name.replace(/'/g,"\\'")}',${si})">
- Contribution Logic →
- </button>
-
- </div>
-
- `;
-
- modal(
- "Potential PhD Question",
- name+" → PhD",
- "LEVEL 6 • DOCTORAL QUESTION",
- body,
- ["Project "+p.id,name,"Research","Method","PhD"]
- );
-
-}
-
-
-/* =========================================================
-   CONTRIBUTION
-   ========================================================= */
-
-function openContribution(pi,name,si){
-
- const p=projects[pi];
-
- const body=`
-
- <div class="detail">
-
- <h3>What Would Make the Doctoral Work Meaningful?</h3>
-
- <ul>
-
- <li>A clearly defined problem with measurable outcomes.</li>
-
- <li>A reproducible dataset and transparent methodology.</li>
-
- <li>A validated improvement over an appropriate baseline.</li>
-
- <li>Clear boundary conditions and limitations.</li>
-
- <li>A contribution transferable beyond one project context where evidence permits.</li>
-
- </ul>
-
- </div>
-
- <div class="back">
-
- <button class="btn"
- onclick="openPhD(${pi},'${name.replace(/'/g,"\\'")}',${si})">
- ← Back
- </button>
-
- <button class="btn primary" onclick="closeModal()">
- Finish
- </button>
-
- </div>
-
- `;
-
- modal(
- "Contribution Logic",
- name+" → Contribution",
- "LEVEL 7 • POTENTIAL CONTRIBUTION",
- body,
- ["Project "+p.id,name,"Research","Method","PhD","Contribution"]
- );
-
-}
-
-
-/* =========================================================
-   EVIDENCE HTML
-   ========================================================= */
-
-function evidenceHTML(p){
-
- let videos="";
-
- if(p.videos && p.videos.length){
-
- videos=`
-
- <div class="evidenceTitle">
-
- <div class="eyebrow">VIDEO EVIDENCE</div>
- <h3 style="color:var(--ivory)">Field Videos</h3>
-
- <div class="videoGrid">
-
- ${p.videos.map(v=>`
-
- <div class="videoCard">
-
- <video controls preload="metadata">
- <source src="${esc(v.file)}" type="video/mp4">
- Your browser does not support video playback.
- </video>
-
- <div class="videoInfo">
-
- <h4>${esc(v.title)}</h4>
-
- <p><b>Activity:</b> ${esc(v.activity)}</p>
-
- <p><b>Engineering significance:</b> ${esc(v.significance)}</p>
-
- <p><b>My involvement:</b> ${esc(v.role)}</p>
-
- </div>
-
- </div>
-
- `).join("")}
-
- </div>
-
- </div>
-
- `;
-
- }else{
-
- videos=`
-
- <div class="evidenceTitle">
-
- <div class="eyebrow">VIDEO EVIDENCE</div>
-
- <div class="noVideo">
-
- No project video has been connected yet.<br><br>
-
- Add the actual video file to the <b>/videos/</b> folder and
- register it in this project's <b>videos:[]</b> array.
-
- </div>
-
- </div>
-
- `;
-
- }
-
-
- let photos="";
-
- if(p.photos && p.photos.length){
-
- photos=`
-
- <div class="evidenceTitle">
-
- <div class="eyebrow">PHOTO EVIDENCE</div>
-
- <h3 style="color:var(--ivory)">Site Photography</h3>
-
- <div class="photoGrid">
-
- ${p.photos.map(ph=>`
-
- <div class="photoCard">
-
- <img src="${esc(ph.file)}" alt="${esc(ph.title)}">
-
- <div>${esc(ph.title)}</div>
-
- </div>
-
- `).join("")}
-
- </div>
-
- </div>
-
- `;
-
- }
-
- return videos+photos;
-
-}
-
-
-/* =========================================================
-   PROJECT RENDER
-   ========================================================= */
-
-function renderProjects(list=projects){
-
- document.getElementById("projectGrid").innerHTML=
-
- list.map((p,i)=>`
-
- <button class="card" onclick="openProject(${projects.indexOf(p)})">
-
- <div class="num">PROJECT ${p.id}</div>
-
- <h3>${esc(p.title)}</h3>
-
- <p>${esc(p.sector)}</p>
-
- <div class="chips">
-
- <span class="chip">${esc(p.value)}</span>
-
- <span class="chip">7-LEVEL EXPLORER</span>
-
- ${p.videos?.length ? `<span class="chip">VIDEO EVIDENCE</span>` : ""}
-
- </div>
-
- </button>
-
- `).join("");
-
-}
-
-
-/* =========================================================
-   SEARCH
-   ========================================================= */
-
-function filterProjects(){
-
- const q=document
- .getElementById("projectSearch")
- .value
- .toLowerCase();
-
- renderProjects(
-
- projects.filter(p=>
- [p.id,p.title,p.sector,p.value,p.description,p.location,p.tender,p.package,p.contract]
- .join(" ")
- .toLowerCase()
- .includes(q)
- )
-
- );
-
-}
-
-
-/* =========================================================
-   ENGINEERING METHODS
-   ========================================================= */
-
-function renderMethods(){
-
- document.getElementById("methodGrid").innerHTML=
-
- Object.keys(domains).map((d,i)=>`
-
- <button class="card"
- onclick="openTopic('${d.replace(/'/g,"\\'")}')">
-
- <div class="num">
- METHOD ${String(i+1).padStart(2,"0")}
- </div>
-
- <h3>${esc(d)}</h3>
-
- <p>${esc(domains[d].intro)}</p>
-
- </button>
-
- `).join("");
-
-}
-
-
-function openTopic(name){
-
- const d=domains[name];
-
- const body=`
-
- <div class="detail">
-
- <h3>${esc(name)}</h3>
-
- <p>${esc(d.intro)}</p>
-
- </div>
-
- <div class="levels">
-
- ${d.items.map((x,i)=>`
-
- <button class="level"
- onclick="openTopicDetail('${name.replace(/'/g,"\\'")}',${i})">
-
- <b>${esc(x[0])}</b>
-
- <span>${esc(x[2])}</span>
-
- </button>
-
- `).join("")}
-
- </div>
-
- `;
-
- modal(
- name,
- "ENGINEERING SYSTEM",
- d.intro,
- body,
- ["Engineering",name]
- );
-
-}
-
-
-function openTopicDetail(name,i){
-
- const x=domains[name].items[i];
-
- const body=`
-
- <div class="detail">
-
- <h3>${esc(x[1])}</h3>
-
- <p>${esc(x[2])}</p>
-
- <ul>
-
- <li><b>Evidence:</b> identify measurable supporting records.</li>
-
- <li><b>Engineering judgement:</b> identify the decision and constraint.</li>
-
- <li><b>Control:</b> define the verification point.</li>
-
- <li><b>Research:</b> determine whether the mechanism can become testable.</li>
-
- </ul>
-
- </div>
-
- <div class="back">
-
- <button class="btn"
- onclick="openTopic('${name.replace(/'/g,"\\'")}')">
- ← Back
- </button>
-
- <button class="btn primary"
- onclick="openProfessor()">
- 🎓 Professor Lens
- </button>
-
- </div>
-
- `;
-
- modal(
- x[0],
- name,
- "LEVEL 2 • ENGINEERING DETAIL",
- body,
- ["Engineering",name,x[0]]
- );
-
-}
-
-
-/* =========================================================
-   RESEARCH SECTION
-   ========================================================= */
-
-function renderResearch(){
-
- document.getElementById("researchGrid").innerHTML=
-
- researchAreas.map((r,i)=>`
-
- <button class="card"
- onclick="openResearchArea(${i})">
-
- <div class="num">
- RESEARCH ${String(i+1).padStart(2,"0")}
- </div>
-
- <h3>${esc(r)}</h3>
-
- <p>
- Problem → variables → methodology → validation → contribution.
- </p>
-
- </button>
-
- `).join("");
-
-}
-
-
-function openResearchArea(i){
-
- const r=researchAreas[i];
-
- const body=`
-
- <div class="detail">
-
- <h3>${esc(r)}</h3>
-
- <p>
- Potential pathway:
- define the practical problem →
- identify measurable variables →
- establish a baseline →
- collect and clean data →
- validate the intervention →
- state contribution and limitations.
- </p>
-
- </div>
-
- <div class="levels">
-
- <button class="level"
- onclick="researchLayer('${r.replace(/'/g,"\\'")}','Problem')">
- <b>01 • PRACTICAL PROBLEM</b>
- <span>What real infrastructure problem is worth investigating?</span>
- </button>
-
- <button class="level"
- onclick="researchLayer('${r.replace(/'/g,"\\'")}','Variables')">
- <b>02 • VARIABLES</b>
- <span>What can actually be measured?</span>
- </button>
-
- <button class="level"
- onclick="researchLayer('${r.replace(/'/g,"\\'")}','Method')">
- <b>03 • METHODOLOGY</b>
- <span>How could the question be tested?</span>
- </button>
-
- <button class="level"
- onclick="researchLayer('${r.replace(/'/g,"\\'")}','Contribution')">
- <b>04 • CONTRIBUTION</b>
- <span>What would make the result academically meaningful?</span>
- </button>
-
- </div>
-
- <div class="back">
-
- <button class="btn" onclick="openProfessor()">
- ← Professor Lens
- </button>
-
- <button class="btn primary"
- onclick="openQuestion('${r.replace(/'/g,"\\'")}')">
- Potential Question →
- </button>
-
- </div>
-
- `;
-
- modal(
- r,
- "RESEARCH PROGRAMME",
- "Progressive doctoral exploration",
- body,
- ["Research",r]
- );
-
-}
-
-
-function researchLayer(r,layer){
-
- modal(
- layer+" • "+r,
- "RESEARCH → "+layer,
- "Research architecture",
- `
- <div class="detail">
-
- <h3>${esc(layer)}</h3>
-
- <p>
- This layer should convert field experience into a measurable,
- transparent and independently testable research component.
- </p>
-
- <ul>
- <li>Define the engineering context.</li>
- <li>Define measurable variables.</li>
- <li>Specify evidence and provenance.</li>
- <li>Establish a baseline.</li>
- <li>Define validation.</li>
- <li>Report limitations.</li>
- </ul>
-
- </div>
-
- <div class="back">
-
- <button class="btn"
- onclick="openResearchArea(${researchAreas.indexOf(r)})">
- ← Back
- </button>
-
- </div>
- `,
- ["Research",r,layer]
- );
-
-}
-
-
-function openQuestion(r){
-
- modal(
- "Potential Research Question",
- "RESEARCH → QUESTION",
- "Proposed, not claimed",
- `
- <div class="detail">
-
- <h3>Candidate Question</h3>
-
- <p>
- How can evidence-informed engineering decisions in
- ${esc(r.toLowerCase())} be converted into a validated framework
- that improves measurable project outcomes while remaining
- transparent about uncertainty and context?
- </p>
-
- <p>
- <b>Research status:</b>
- Proposed direction only.
- </p>
-
- </div>
-
- <div class="back">
-
- <button class="btn"
- onclick="openResearchArea(${researchAreas.indexOf(r)})">
- ← Back
- </button>
-
- <button class="btn primary" onclick="closeModal()">
- Finish
- </button>
-
- </div>
- `,
- ["Research",r,"Question"]
- );
+);
 
 }
 
 
 /* =========================================================
    PROFESSOR LENS
-   ========================================================= */
+========================================================= */
 
 function openProfessor(){
 
- const levels=[
+showModal(
 
- ["01","Field Exposure",
- "Multiple infrastructure contexts create practical problem awareness."],
+"Professor Lens",
 
- ["02","Engineering Judgement",
- "Look for constraints, alternatives, decisions and consequences."],
+"ACADEMIC REVIEW MODE",
 
- ["03","Evidence",
- "Look for measurements, inspections, tests, photographs, videos and records."],
+"FIELD EXPOSURE → RESEARCH POTENTIAL",
 
- ["04","Problem Formation",
- "Translate repeated field observations into measurable engineering problems."],
+`
 
- ["05","Research Method",
- "Define variables, dataset, baseline, validation and uncertainty."],
+<div class="detail">
 
- ["06","Doctoral Question",
- "Convert the unresolved problem into a focused research question."],
+<h3 style="color:var(--gold)">
+What a professor can inspect
+</h3>
 
- ["07","Potential Contribution",
- "State what new knowledge, method or decision-support framework could emerge."]
- ];
+<p>
+The portfolio intentionally separates professional experience
+from proposed research. The intended intellectual trajectory is:
+</p>
 
- const body=`
+<p>
+<b>
+Field exposure →
+repeated observation →
+engineering judgement →
+measurable problem →
+hypothesis →
+methodology →
+validation →
+potential contribution.
+</b>
+</p>
 
- <div class="detail">
+</div>
 
- <h3>Professor Review Route</h3>
+<div class="levels">
 
- <p>
- The intended intellectual trajectory is:
- <b>
- Field exposure → repeated observations → engineering judgement →
- measurable problem → hypothesis → methodology → validation →
- potential contribution.
- </b>
- </p>
+${[
+["01","Practical Problem","What was actually observed?"],
+["02","Variables","What can be measured?"],
+["03","Baseline","What is the reference condition?"],
+["04","Data","What evidence supports the claim?"],
+["05","Validation","Did the intervention work?"],
+["06","Contribution","Why does the result matter?"],
+["07","Doctoral Question","What could become a PhD study?"]
+].map(x=>`
 
- <p>
- The interface intentionally separates documented experience
- from proposed doctoral research.
- </p>
+<button class="level"
+onclick="profDepth('${x[1]}','${x[2]}')">
 
- </div>
+<b>LEVEL ${x[0]} • ${x[1]}</b>
 
- <div class="levels">
+<span>${x[2]} → CLICK TO GO DEEPER</span>
 
- ${levels.map(x=>`
+</button>
 
- <button class="level"
- onclick="profDepth('${x[0]}','${x[1].replace(/'/g,"\\'")}','${x[2].replace(/'/g,"\\'")}')">
+`).join("")}
 
- <b>${x[0]} • ${x[1]}</b>
+</div>
 
- <span>${x[2]}</span>
+`
 
- </button>
-
- `).join("")}
-
- </div>
-
- `;
-
- modal(
- "Professor Lens",
- "ACADEMIC REVIEW MODE",
- "Read the portfolio as an evidence chain.",
- body,
- ["Professor Lens"]
- );
+);
 
 }
 
 
-function profDepth(id,title,text){
+function profDepth(title,question){
 
- modal(
- title,
- "PROFESSOR LENS → "+id,
- "DEEP REVIEW LAYER",
- `
- <div class="detail">
+showModal(
 
- <h3>${esc(title)}</h3>
+title,
+"PROFESSOR LENS → DEEP LAYER",
+"ACADEMIC INVESTIGATION",
 
- <p>${esc(text)}</p>
+`
 
- <ul>
+<div class="detail">
 
- <li>What is the field evidence?</li>
- <li>What is measurable?</li>
- <li>What decision was made?</li>
- <li>What alternative explanations exist?</li>
- <li>How could the mechanism be independently tested?</li>
+<h3 style="color:var(--gold)">
+${title}
+</h3>
 
- </ul>
+<p>
+<strong>Core question:</strong> ${question}
+</p>
 
- </div>
+<p>
+The next step is to operationalise the problem:
+define measurable variables, specify evidence,
+establish a baseline, identify a validation strategy
+and state limitations before claiming contribution.
+</p>
 
- <div class="back">
+</div>
 
- <button class="btn" onclick="openProfessor()">
- ← Professor Lens
- </button>
+<div class="actions">
 
- </div>
- `,
- ["Professor Lens",id,title]
- );
+<button class="btn" onclick="openProfessor()">
+← PROFESSOR LENS
+</button>
+
+<button class="btn primary" onclick="openResearch('Structural Rehabilitation')">
+RESEARCH PATHWAY →
+</button>
+
+</div>
+
+`
+
+);
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function showModal(title,eyebrow,lead,body){
+
+document.getElementById("modalTitle").textContent=title;
+document.getElementById("modalEyebrow").textContent=eyebrow;
+document.getElementById("modalLead").textContent=lead;
+document.getElementById("modalBody").innerHTML=body;
+document.getElementById("overlay").classList.add("open");
+
+}
+
+function closeModal(){
+document.getElementById("overlay").classList.remove("open");
+}
+
+document.getElementById("overlay").addEventListener("click",function(e){
+if(e.target===this)closeModal();
+});
+
+document.addEventListener("keydown",function(e){
+if(e.key==="Escape")closeModal();
+});
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function filterProjects(){
+
+const q=document
+.getElementById("search")
+.value
+.toLowerCase();
+
+renderProjects(
+projects.filter(p=>
+Object.values(p)
+.join(" ")
+.toLowerCase()
+.includes(q)
+)
+);
 
 }
 
 
 /* =========================================================
    CLOCK
-   ========================================================= */
+========================================================= */
 
 function tick(){
 
- const now=new Date();
+const now=new Date();
 
- const time=new Intl.DateTimeFormat(
- "en-GB",
- {
-  timeZone:"Asia/Dhaka",
-  hour:"2-digit",
-  minute:"2-digit",
-  second:"2-digit",
-  hour12:false
- }
- ).format(now);
+const time=new Intl.DateTimeFormat("en-GB",{
+timeZone:"Asia/Dhaka",
+hour:"2-digit",
+minute:"2-digit",
+second:"2-digit",
+hour12:false
+}).format(now);
 
- const date=new Intl.DateTimeFormat(
- "en-US",
- {
-  timeZone:"Asia/Dhaka",
-  weekday:"long",
-  year:"numeric",
-  month:"long",
-  day:"numeric"
- }
- ).format(now);
+const date=new Intl.DateTimeFormat("en-US",{
+timeZone:"Asia/Dhaka",
+weekday:"long",
+year:"numeric",
+month:"long",
+day:"numeric"
+}).format(now);
 
- document.getElementById("topClock").textContent=time+" BST";
- document.getElementById("bigClock").textContent=time;
- document.getElementById("dateText").textContent=date;
+document.getElementById("topClock").textContent=time+" BST";
+document.getElementById("bigClock").textContent=time;
+document.getElementById("dateText").textContent=date;
 
 }
 
 setInterval(tick,1000);
+tick();
 
 
 /* =========================================================
    CALENDAR
-   ========================================================= */
+========================================================= */
 
-let viewDate=new Date();
-
-function moveMonth(n){
-
- viewDate.setMonth(viewDate.getMonth()+n);
- renderCalendar();
-
-}
+let calDate=new Date();
 
 function renderCalendar(){
 
- const y=viewDate.getFullYear();
- const m=viewDate.getMonth();
+const y=calDate.getFullYear();
+const m=calDate.getMonth();
 
- const first=new Date(y,m,1).getDay();
- const days=new Date(y,m+1,0).getDate();
+const first=new Date(y,m,1).getDay();
+const total=new Date(y,m+1,0).getDate();
 
- const now=new Date();
+const today=new Date();
 
- document.getElementById("calTitle").textContent=
- new Intl.DateTimeFormat(
- "en-US",
- {month:"long",year:"numeric"}
- ).format(viewDate);
+document.getElementById("calTitle").textContent=
+new Intl.DateTimeFormat("en-US",{
+month:"long",
+year:"numeric"
+}).format(calDate);
 
- let html=
- ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
- .map(x=>`<div class="day head">${x}</div>`)
- .join("");
+let html="";
 
- for(let i=0;i<first;i++)
- html+=`<div class="day"></div>`;
+["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+.forEach(d=>{
+html+=`<div class="day head">${d}</div>`;
+});
 
- for(let d=1;d<=days;d++){
+for(let i=0;i<first;i++){
+html+=`<div class="day"></div>`;
+}
 
- const today=
- d===now.getDate() &&
- m===now.getMonth() &&
- y===now.getFullYear();
+for(let d=1;d<=total;d++){
 
- html+=`
- <div class="day ${today?"today":""}">
- ${d}
- </div>
- `;
+const active=
+d===today.getDate() &&
+m===today.getMonth() &&
+y===today.getFullYear();
 
- }
+html+=`
+<div class="day ${active?"today":""}">
+${d}
+</div>
+`;
 
- document.getElementById("calGrid").innerHTML=html;
+}
 
+document.getElementById("calendarGrid").innerHTML=html;
+
+}
+
+function changeMonth(n){
+calDate.setMonth(calDate.getMonth()+n);
+renderCalendar();
 }
 
 
 /* =========================================================
-   EVENTS + INITIALISE
-   ========================================================= */
+   SAFE HTML
+========================================================= */
 
-document
-.getElementById("overlay")
-.addEventListener("click",e=>{
- if(e.target.id==="overlay") closeModal();
-});
+function escapeHTML(str){
 
-document.addEventListener("keydown",e=>{
- if(e.key==="Escape") closeModal();
-});
+return String(str??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* INIT */
 
 renderProjects();
-renderMethods();
-renderResearch();
 renderCalendar();
-tick();
 
 </script>
 
 </body>
 </html>
-```
