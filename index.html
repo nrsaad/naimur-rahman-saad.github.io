@@ -74,7 +74,11 @@ function openGeneric(pi,di){const p=projects[pi],name=domains[di];modal(name+" �
 function openTopic(name){const d=topicData(name);const items=d[1]||[];const body=items.length?items.map((x,i)=>`<button class="level" onclick="openTopicDetail('${name.replace(/'/g,"\\'")}',${i})"><b>${esc(x[0])}</b><span>${esc(x[2]||"Open deeper detail.")}</span></button>`).join(""):`<button class="level" onclick="openProfessor()">Open progressive review</button>`;modal(name,"ENGINEERING SYSTEM",d[0]||"Progressive exploration",`<div class="levels">${body}</div>`,["Engineering",name]);}
 function openTopicDetail(name,i){const d=topicData(name),x=d[1][i];modal(x[0],name,"LEVEL 2 • DETAIL",`<div class="detail"><h3>${esc(x[1]||x[0])}</h3><p>${esc(x[2]||"")}</p><div class="back"><button class="btn" onclick="openTopic('${name.replace(/'/g,"\\'")}')">← Back</button><button class="btn primary" onclick="openProfessor()">Research / Professor Lens →</button></div></div>`,["Engineering",name,x[0]]);}
 function openProfessor(){modal("Professor Lens","ACADEMIC REVIEW","Read the portfolio as an evidence chain",`<div class="detail"><h3>The intended intellectual trajectory</h3><p><b>Field exposure → repeated observations → engineering judgement → measurable problem → research hypothesis → methodology → validation → potential contribution.</b></p><p>This interface intentionally separates documented experience from proposed doctoral research. A professor can inspect each layer without being forced through a wall of text.</p></div><div class="levels">${researchAreas.map((x,i)=>`<button class="level" onclick="openResearchArea(${i})"><b>RESEARCH PROGRAMME • ${String(i+1).padStart(2,"0")}</b><span>${x} → problem → variables → method → contribution</span></button>`).join("")}</div>`,["Professor Lens"]);}
-function openResearchArea(i){const r=researchAreas[i];modal(r,"RESEARCH PROGRAMME","Progressive doctoral exploration",`<div class="detail"><h3>${r}</h3><p>Potential pathway: define the practical problem → identify measurable variables → establish a baseline → collect/clean data → validate the intervention → state contribution and limitations.</p><div class="back"><button class="btn" onclick="openProfessor()">← Professor Lens</button><button class="btn primary" onclick="openQuestion(r)">Potential question →</button></div></div>`,["Research",r]);}
+function openResearchArea(i){const r=researchAreas[i];modal(r,"RESEARCH PROGRAMME","Progressive doctoral exploration",`<div class="detail"><h3>${r}</h3><p>Potential pathway: define the practical problem → identify measurable variables → establish a baseline → collect/clean data → validate the intervention → state contribution and limitations.
+<div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+  <button class="btn primary" type="button" onclick="openProfessorLens()">🎓 Open Professor Lens</button>
+  <button class="btn" type="button" onclick="openResearchPathway()">🔬 Explore Research Pathway</button>
+</div></p><div class="back"><button class="btn" onclick="openProfessor()">← Professor Lens</button><button class="btn primary" onclick="openQuestion(r)">Potential question →</button></div></div>`,["Research",r]);}
 function openQuestion(r){modal("Potential Research Question","RESEARCH → "+r,"Proposed, not claimed",`<div class="detail"><h3>Candidate question</h3><p>How can evidence-informed engineering decisions in ${r.toLowerCase()} be converted into a validated framework that improves measurable project outcomes while remaining transparent about uncertainty and context?</p><div class="back"><button class="btn" onclick="openResearchArea(${researchAreas.indexOf(r)})">← Back</button><button class="btn primary" onclick="closeModal()">Finish</button></div></div>`,["Research",r,"Question"]);}
 
 function renderProjects(list=projects){document.getElementById("projectGrid").innerHTML=list.map((p,i)=>`<button class="card" onclick="openProject(${projects.indexOf(p)})"><div class="num">PROJECT ${p[0]}</div><h3>${esc(p[1])}</h3><p>${esc(p[2]||"Infrastructure case")}</p><div class="chips"><span class="chip">${esc(p[3]||"Casebook")}</span><span class="chip">7-LEVEL EXPLORER</span></div></button>`).join("");}
@@ -87,4 +91,78 @@ function moveMonth(n){viewDate.setMonth(viewDate.getMonth()+n);renderCalendar();
 function renderCalendar(){const y=viewDate.getFullYear(),m=viewDate.getMonth(),first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate(),now=new Date();document.getElementById("calTitle").textContent=new Intl.DateTimeFormat("en-US",{month:"long",year:"numeric"}).format(viewDate);let s=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(x=>`<div class="day head">${x}</div>`).join("");for(let i=0;i<first;i++)s+=`<div class="day"></div>`;for(let d=1;d<=days;d++){const t=d===now.getDate()&&m===now.getMonth()&&y===now.getFullYear();s+=`<div class="day ${t?"today":""}">${d}</div>`}document.getElementById("calGrid").innerHTML=s;}
 document.getElementById("overlay").addEventListener("click",e=>{if(e.target.id==="overlay")closeModal();});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
 renderProjects();renderMethods();renderResearch();renderCalendar();tick();setInterval(tick,1000);
-</script></body></html>
+</script>
+<!-- PROFESSOR LENS / RESEARCH PATHWAY OVERLAY -->
+<div id="professorLensOverlay" class="modalBack" style="display:none">
+  <div class="modal" style="max-width:980px;max-height:88vh;overflow:auto">
+    <button class="close" type="button" onclick="closeProfessorLens()">×</button>
+    <div class="eyebrow">PROFESSOR REVIEW MODE</div>
+    <h2 id="profLensTitle">Structural Rehabilitation — Research Lens</h2>
+    <p id="profLensIntro" style="color:var(--muted)">
+      A layered route from field problem to a defensible research contribution.
+    </p>
+    <div id="profLensLevels" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:18px"></div>
+    <div id="profLensDeep" class="detail" style="display:none;margin-top:18px"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const data = [
+    ["01","Practical Problem","What was observed in the field?","Define the rehabilitation problem precisely, including condition, context, affected element and operational consequence."],
+    ["02","Measurable Variables","What can actually be measured?","Translate the problem into observable variables such as condition indicators, material response, intervention parameters, productivity or cost indicators."],
+    ["03","Baseline","What is the reference condition?","Establish the pre-intervention state so improvement, deterioration or variance can be compared rather than described subjectively."],
+    ["04","Data & Evidence","What evidence supports the claim?","Collect, organize and clean field observations, measurements, test results, photographs, project records and other defensible evidence."],
+    ["05","Validation","Did the intervention work?","Define a comparison or validation logic and identify limitations before making a conclusion."],
+    ["06","Contribution","Why does this matter academically?","State what the field evidence may contribute to knowledge, practice, methodology or decision-making—and clearly separate evidence from future research."],
+    ["07","Doctoral Question","What could become a PhD study?","Turn the unresolved, measurable problem into a focused research question with variables, methodology, validation and expected contribution."]
+  ];
+
+  window.openProfessorLens = function(){
+    const ov=document.getElementById('professorLensOverlay');
+    const wrap=document.getElementById('profLensLevels');
+    const deep=document.getElementById('profLensDeep');
+    if(!ov||!wrap) return;
+    wrap.innerHTML=data.map((x,i)=>`
+      <button type="button" class="level" style="text-align:left;border:1px solid var(--line);cursor:pointer"
+        onclick="showProfessorDepth(${i})">
+        <div class="eyebrow">${x[0]}</div>
+        <h3>${x[1]}</h3>
+        <p>${x[2]}</p>
+        <span style="color:var(--gold);font-size:12px">CLICK TO GO DEEPER →</span>
+      </button>`).join('');
+    deep.style.display='none';
+    ov.style.display='flex';
+  };
+
+  window.showProfessorDepth = function(i){
+    const x=data[i], deep=document.getElementById('profLensDeep');
+    if(!deep) return;
+    deep.innerHTML=`
+      <div class="eyebrow">${x[0]} · DEEP LAYER</div>
+      <h3>${x[1]}</h3>
+      <p><strong>Core question:</strong> ${x[2]}</p>
+      <p>${x[3]}</p>
+      <div style="margin-top:16px;display:flex;gap:9px;flex-wrap:wrap">
+        <button class="btn primary" onclick="showProfessorDepth(${Math.min(i+1,data.length-1)})">
+          ${i<data.length-1 ? "NEXT DEEP LAYER →" : "RESEARCH ENDPOINT ✓"}
+        </button>
+        ${i>0 ? `<button class="btn" onclick="showProfessorDepth(${i-1})">← PREVIOUS</button>` : ""}
+      </div>
+    `;
+    deep.style.display='block';
+    deep.scrollIntoView({behavior:'smooth',block:'nearest'});
+  };
+
+  window.openResearchPathway = function(){ openProfessorLens(); };
+
+  window.closeProfessorLens = function(){
+    const ov=document.getElementById('professorLensOverlay');
+    if(ov) ov.style.display='none';
+  };
+
+  document.addEventListener('keydown',e=>{if(e.key==='Escape') closeProfessorLens();});
+})();
+</script>
+
+</body></html>
